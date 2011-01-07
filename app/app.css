@@ -1,0 +1,28 @@
+.funcit_app {
+	position: relative;
+}
+.funcit_app.loading {
+	background-color: #ccccdd;
+}
+.funcit_app iframe {
+	height: 100%;
+	border: none;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+.funcit_app input {
+	margin: 0 auto;
+	width: 500px;
+	font-size: 2em;
+}
+.funcit_app form{
+	width: 500px;
+	margin: auto auto;
+	position: absolute;
+	top: 50%;
+	height: 45px;
+	margin-top: -25px;
+	left: 50%;
+	margin-left: -250px;
+}

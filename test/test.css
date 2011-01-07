@@ -1,0 +1,23 @@
+.funcit_test .func-body {
+	/*display: none;*/
+	padding-left: 20px;
+}
+.funcit_test .func-body textarea {
+	margin: 0px;
+	padding: 0px;
+	background-color: white;
+	border: solid 1px white;
+}
+.funcit_test.active .func-body textarea {
+	border: solid 1px #aaccaa;
+}
+.funcit_test {
+
+}
+.funcit_test h3 {
+	font-size: 12px;
+	font-family:"Courier New", Courier, monospace;
+	padding: 0px;
+	margin: 0px;
+	cursor: pointer;
+}

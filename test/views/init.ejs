@@ -1,0 +1,7 @@
+<%if( /setup|teardown/.test(this.options.name||"") ){%>
+<h3>setup : function(){ </h3>
+<%}else{%>
+<h3>test( <span class='test-name'><%= this.options.name ? '"'+this.options.name+'"' : "<input type='text'/>" %></span>, function(){ </h3>
+<%}%>
+<div class='func-body'><textarea></textarea></div>
+<div>}</div>

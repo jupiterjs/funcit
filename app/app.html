@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>app</title>
+        <style type='text/css'>
+            #app {
+            	position: fixed;
+				top: 0px;
+				bottom: 0px;
+				width: 100%;
+				
+            }
+			body {
+				margin: 0px;
+				padding: 0px;
+			}
+        </style>
+	</head>
+	<body>
+	   <div id='app'></div>
+		<script type='text/javascript' 
+                src='../../steal/steal.js?funcit/app,development'>   
+        </script>
+		<script type='text/javascript'>
+			$('#app').funcit_app().bind("addClick", function(){
+				console.log.apply(console, ['addClick'].concat( $.makeArray( arguments ) ))
+			}).bind("addChar", function(){
+				console.log.apply(console, ['addChar'].concat( $.makeArray( arguments )))
+			}).bind("addDrag", function(){
+				console.log.apply(console, ['addDrag'].concat( $.makeArray( arguments )))
+			});
+		</script>
+	</body>
+</html>
