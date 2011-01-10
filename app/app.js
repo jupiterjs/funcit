@@ -40,12 +40,12 @@ steal.plugins('jquery/controller','funcunit/syn').css('app').then(function($){
 			
 			//now create an iframe, bind on it, and start sending everyone else messages
 			//we might need to put a mask over it if people are stopPropagation
-			$("<iframe src='"+url+"'></iframe>").load(this.callback('loaded')).appendTo(this.element)
+			$("<iframe src='"+url+"'></iframe>").load(this.callback('loaded', url)).appendTo(this.element)
 		},
-		loaded : function(ev){
+		loaded : function(url, ev){
 			this.element.removeClass('loading')
 			//listen to everything on this guy ...
-			this.element.trigger("addEvent",["open",undefined, ev.target])
+			this.element.trigger("addEvent",["open",url, ev.target])
 			$(ev.target.contentWindow.document)
 				.keydown(this.callback('onKeydown'))
 				.keyup(this.callback('onKeyup'))

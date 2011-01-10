@@ -13,7 +13,9 @@ steal.plugins('steal/less').then(function($){
 		
 		if(!current){
 			$("#funcit").show()
-			$('<li/>').funcit_test({name: 'setup'}).appendTo(tests).funcit_test("show"); //activates this one
+			$('#setup').funcit_test({name: 'setup'}).funcit_test("show"); //activates this one
+			$('#teardown').funcit_test({name: 'teardown'});
+			
 			var moveHere = $('<li/>').funcit_test().appendTo(tests);
 			setTimeout(function(){
 				moveHere.funcit_test("show");
@@ -23,7 +25,7 @@ steal.plugins('steal/less').then(function($){
 		current.funcit_test.apply(current,["addEvent"].concat( $.makeArray(arguments) ))
 	});
 	
-	tests.delegate("li","shown",function(){
+	tests.delegate(".funcit_test","shown",function(){
 		if(current){
 			current.funcit_test("hide")
 		}
