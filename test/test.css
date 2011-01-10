@@ -21,3 +21,9 @@
 	margin: 0px;
 	cursor: pointer;
 }
+.funcit_test .test-name input {
+	color: gray;
+}
+.funcit_test .test-name input.active {
+	color: black;
+}

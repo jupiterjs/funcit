@@ -1,7 +1,8 @@
 steal.css('test')
 	.plugins('jquery/controller/view',
 		'jquery/view/ejs',
-		'funcit/grow').then(function($){
+		'funcit/grow',
+		'funcit/defaulttext').then(function($){
 
 //manages a test
 $.Controller("Funcit.Test",
@@ -15,6 +16,9 @@ $.Controller("Funcit.Test",
 	},
 	growTextarea : function(){
 		this.find('textarea').funcit_grow();
+		this.find('input').funcit_defaulttext({
+			text : "add test name"
+		})
 	},
 	"h3 input click" : function(el, ev){
 		ev.stopImmediatePropagation();
@@ -47,7 +51,7 @@ $.Controller("Funcit.Test",
 			val = ta.val();
 			
 		ta.val( (val ? val+"\n" : "" )+eventType)
-		
+		ta.trigger("keyup")
 	}
 	
 })
