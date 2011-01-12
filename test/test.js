@@ -74,6 +74,21 @@ $.Controller("Funcit.Test",
 	addDrag : function(options, el){
 		this.write("S('"+$(el).prettySelector()+"').drag("+$.toJSON(options)+");")
 	},
+	addWait: function(options, el){
+		var val = options.value||"";
+		if(typeof options.value == "string") {
+			val = "'"+val+"'";
+		}
+		this.write("S('"+$(el).prettySelector()+"')."+options.type+"("+val+");")
+	},
+	addAssert: function(options, el){
+		var val = options.value||"";
+		if(typeof options.value == "string") {
+			val = "'"+val+"'";
+		}
+		this.write("equals(S('"+$(el).prettySelector()+"')."+options.type+"(), "+val+", '"+
+			options.type+" is correct');")
+	},
 	addChar : function(text, el){
 		//need to check what's before current place
 	},

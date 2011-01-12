@@ -1,4 +1,12 @@
-steal.plugins('jquery/controller','funcunit/syn').css('app').then(function($){
+steal
+	.plugins('steal/less')
+	.then(function($){
+		steal.less('app')
+	})
+	.plugins('jquery/controller','funcunit/syn', 
+		'funcit/highlight', 'mxui/fittable', 'jquery/dom/form_params')
+	.then('wait_menu')
+	.then(function($){
 	var getKey =  function( code ) {
 		for(var key in Syn.keycodes){
 			if(Syn.keycodes[key] == code){
@@ -16,13 +24,23 @@ steal.plugins('jquery/controller','funcunit/syn').css('app').then(function($){
 	},
 	{
 		init : function(){
-			this.element.html("<form action=''><input type='text' name='url'/></form>")
-				.find('input').val(this.options.text);
-			this.element.addClass('loading');
 			this.downKeys = [];
 			this.current = [];
 			this.justKey = true;
 			this.mousemoves =0;
+			this.hoveredEl = null;
+			
+			// if the a test is appended to the URL, load it and skip the form
+			// http://localhost:8000/funcit/funcit.html?url=/funcunit/syn/demo.html
+			var pageURL = location.search && location.search.match(/\?url\=(.*)/);
+			if(pageURL && pageURL.length > 0){
+				this.loadIframe(pageURL[1]);
+				return;
+			}
+			
+			this.element.html("<form action=''><input type='text' name='url'/></form>")
+				.find('input').val(this.options.text);
+			this.element.addClass('loading');
 		},
 		"input focusin" : function(el){
 			if(el.val() == this.options.text){
@@ -37,7 +55,9 @@ steal.plugins('jquery/controller','funcunit/syn').css('app').then(function($){
 		"form submit" : function(){
 			var url = this.find('[name=url]').val();
 			this.element.html("");
-			
+			this.loadIframe(url);
+		},
+		loadIframe: function(url){
 			//now create an iframe, bind on it, and start sending everyone else messages
 			//we might need to put a mask over it if people are stopPropagation
 			$("<iframe src='"+url+"'></iframe>").load(this.callback('loaded', url)).appendTo(this.element)
@@ -111,4 +131,5 @@ steal.plugins('jquery/controller','funcunit/syn').css('app').then(function($){
 			}
 		}
 	})
+	
 });

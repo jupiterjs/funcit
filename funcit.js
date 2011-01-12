@@ -1,9 +1,13 @@
-steal.plugins('steal/less').then(function($){
-	steal.less('funcit')
-}).plugins('mxui/filler',
-	'funcit/app',
-	'funcit/test')
-.then(function(){
+steal
+	.plugins('steal/less')
+	.then(function($){
+		steal.less('funcit')
+	})
+	.plugins('mxui/filler',
+		'funcit/app',
+		'funcit/test',
+		'funcit/controls')
+	.then(function(){
 	
 	var current,
 		tests = $("#tests");
@@ -31,6 +35,9 @@ steal.plugins('steal/less').then(function($){
 		}
 		current = $(this);
 	});
+	
+	$("#controls").funcit_controls();
+	$("<div />").appendTo(document.body).funcit_wait_menu()
 
 	
 });
