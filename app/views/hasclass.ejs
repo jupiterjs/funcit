@@ -1,0 +1,9 @@
+<%if(options.length==0){%>
+	<p>No classes for this element.</p>
+<%} else {%>
+<ul>
+	<%for(var i=0; i<options.length; i++){%>
+		<li><input class='radio' type='radio' name='commandval' value='<%=options[i]%>' /><%=options[i]%></li>
+	<%}%>
+</ul>
+<%}%>

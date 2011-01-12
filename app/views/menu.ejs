@@ -1,0 +1,14 @@
+<p class='header step1'>1. Choose a <span class='statement_type'>type</span> of command</p>
+<p class='header step2' style='display:none;'>2. Choose a <span class='value_type'>value</span></p>
+<p class='statement'>S('<%=selector%>').<span class='statement_type'>type</span>(<span class='statement_value'>value</span>)</p>
+<form action=''>
+<div class='value_selector' style='display:none;'>
+	<div class='value_input'></div>
+	<input type='submit' value='OK' />
+</div>
+<ul class='types'>
+	<%for(var option in options){%>
+		<li><input class='radio' type='radio' name='type' value='<%=option%>' /><%= option %></li>
+	<%}%>
+</ul>
+</form>
