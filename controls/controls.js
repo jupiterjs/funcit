@@ -43,7 +43,9 @@ $.Controller("Funcit.Controls", {
 				this.mask.hide();
 				this.highlightedEl = this.document.elementFromPoint(ev.clientX, ev.clientY);
 				this.mask.show();
-				$(this.highlightedEl).highlight();
+				if(this.highlightedEl) {
+					$(this.highlightedEl).highlight();
+				}
 			}
             this.lastInspecting = new Date().getTime();
 		},
