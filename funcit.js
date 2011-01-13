@@ -5,36 +5,38 @@ steal
 	})
 	.plugins('mxui/filler',
 		'funcit/app',
-		'funcit/test',
-		'funcit/controls')
+		'funcit/editor',
+		'funcit/grow',
+		'funcit/controls',
+		'jquery/view/ejs')
 	.then(function(){
 	
-	var current,
-		tests = $("#tests");
+	var editor,
+			first = false;
 	
 	$('#app').mxui_filler({parent: document.body})
 		.funcit_app().bind("addEvent", function(ev, type, data, el){
 		
-		if(!current){
-			$("#funcit").show()
-			$('#setup').funcit_test({name: 'setup'}).funcit_test("show"); //activates this one
-			$('#teardown').funcit_test({name: 'teardown'});
-			
-			var moveHere = $('<li/>').funcit_test().appendTo(tests);
-			setTimeout(function(){
-				moveHere.funcit_test("show");
-				$(window).trigger("resize")
-			},0)
+		if(!first){
+			$('#funcit').show();
+			editor = $('#editor').funcit_editor();
+			//if(!editor.val()){
+				editor.funcit_editor('val',"//funcit/views/init.ejs",{
+					module : data,
+					test : "change me!"
+				})
+			//}
+			//editor.funcit_grow();
+			$(window).trigger("resize");
+			first = true;
 		}
-		current.funcit_test.apply(current,["addEvent"].concat( $.makeArray(arguments) ))
+		
+		
+		
+		editor.funcit_editor.apply(editor,["addEvent"].concat( $.makeArray(arguments) ))
 	});
 	
-	tests.delegate(".funcit_test","shown",function(){
-		if(current){
-			current.funcit_test("hide")
-		}
-		current = $(this);
-	});
+	
 	
 	$("#controls").funcit_controls();
 	$("<div />").appendTo(document.body).funcit_wait_menu()

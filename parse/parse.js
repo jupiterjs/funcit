@@ -1,50 +1,189 @@
-steal('resources/tokens',function($){
-
+steal.plugins('jquery').then('resources/jslint',function($){
+var isArray = Array.isArray || function( obj ) {
+		return jQuery.type(obj) === "array";
+	},
+	me = new Date();
 window.Funcit = (window.Funcit || {});
-Funcit.parse = function(str){
-		//print("Breaking up strs")
-		var tokens = str.tokens('=<>!+-*&|/%^', '=<>&|'),
-			tokenNum = 0;
-			
-		var moveNext = function(){
-			var next = tokens[tokenNum++];
-			if(next){
-				//print("Next TOken = "+next.value);
+
+// an arry of nodes ...
+Funcit.Parse = function(str){
+	if(!this._parse){
+		return new arguments.callee(str);
+	}
+	if(typeof str == 'string'){
+		//console.log(str)
+		JSLINT(str,{devel: true, forin: true, browser: true, windows: true, rhino: true, predefined : true, indent:  1})
+		str =  JSLINT.tree;
+	}
+	if(str._parse === me){
+		str = $.makeArray(str)
+	}
+	
+	if(!$.isArray(str)){
+		str = [str]
+	}
+	this.push.apply(this, str);
+};
+var p = function(tree){
+	return new Funcit.Parse(tree);
+}
+count = 100000;
+bisect = function(tree, func, parent){
+	count--;
+	if(count <= 0){
+		console.log('outa here')
+		return false;
+	}
+	var res;
+	if(!tree || typeof tree == 'string'){
+		return;
+	}else if(tree.length && tree[0]){
+		for(var i=0; i< tree.length;i++){
+			if(parent){
+				tree[i].parent = parent;
 			}
-			return next;
+			res = bisect(tree[i], func, parent && tree)
+			if(res === false){
+				return res;
+			}
+		}
+	}else{
+		if(parent){
+			tree.parent = parent;
 		}
 		
-		return {
-			moveNext : moveNext,
-			next : function(){
-				return tokens[tokenNum];
-			},
-			until: function(){
-				var token, 
-					matchCounts = [];
-				for(var i =0; i < arguments.length;i++){
-					matchCounts[i] =0;
-					if(typeof arguments[i] == "string"){
-						arguments[i] = [arguments[i]]
-					}
-				}
-				while (token = moveNext() ) {
-					for(var i =0; i< arguments.length; i++){
-						if( token.type !== "string" && 
-							token.value === arguments[i][matchCounts[i]]){
-							matchCounts[i] = matchCounts[i]+1;
-							if(matchCounts[i] === arguments[i].length){
-								return token;
-							}
-						}else{
-							matchCounts[i] = 0;
-						}
-					}
-				}
+		if(tree.arity == 'statement'){
+			
+			res = func(tree);
+			if(res === false){
+				return res;
+			}
+			res = bisect(tree.first, func, tree);
+			if(res === false){
+				return res;
+			}
+		}else{
+			res = bisect(tree.first, func, tree);
+			if(res === false){
+				return res;
+			}
+			res = func(tree);
+			if(res === false){
+				return res;
 			}
 		}
-	};
+		
+		
+		if(tree.block){
+			tree.block.definedIn = parent;
+			res = bisect(tree.block, func)
+			if(res === false){
+				return res;
+			}
+		}
+		if(tree.second){
+			if(typeof tree.second == "string"){
+				//func(tree)
+			}else{
+				if(parent){
+					tree.second.parent = parent
+				}
+				res = bisect(tree.second, func, tree);
+				if(res === false){
+					return res;
+				}
+			}
+			
+			
+		}
+	}	
+}
 
-	
+$.extend( Funcit.Parse.prototype, {
+	_parse : me,
+	each : function(func){
+		return $.each(this, func)
+	},
+	get : function(line, from, thru, func){
+		matches = [];
+		if(!func){
+			func = thru;
+			thru = from;
+		}
+		bisect(this.tree || this, function(tree){
+			console.log(tree, tree.line , tree.from)
+			if(tree.line == line && tree.from <= from &&  from < tree.thru){
+				matches.push(tree);
+				return func && func(tree) ;
+			}
+			
+		});
+		return p(matches);
+	},
+	func : function(line, from, thru, func){
+		matches = [];
+
+		bisect(this, function(tree){
+			if (tree.arity === 'function') {
+				var last = tree.end;
+				if (tree.line <= line && line <= last.line &&
+				    (
+					 (tree.line !== line && last.line !== line) ||
+				     ( tree.line == line && from >= tree.from) ||
+				     ( last.line == line && from <= last.from))
+					) {
+					matches.push(tree);
+					return func && func(tree);
+				}
+			}
+		});
+		return p(matches);
+	},
+	last : function(){
+		var last = null;
+		bisect(this, function(tree){
+			if(!tree || tree.thru){
+				last = tree
+			}
+		});
+	},
+	statement : function(){
+		var matches = [];
+		this.each(function(i, tree){
+			while(tree.parent && (tree = tree.parent)){};
+			matches.push(tree)
+		})
+		return p(matches);
+	},
+	find : function(obj, func){
+		var matches = [] 
+		bisect(this, function(tree){
+			var equal = true;
+			for(var name in obj){
+				if(obj[name] != tree[name]){
+					equal  = false;
+					break;
+				}
+			}
+			if(equal){
+				matches.push(tree);
+				return func && func(tree) ;
+			}
+			
+		})
+		return p(matches);
+	},
+	args : function(obj, func){
+		return this.parent.second
+	},
+	push: [].push,
+	//gets the last part of a function
+	last : function(){
+		
+	},
+	block : function(){
+		return p(this[0].block)
+	}
+})
 
 });

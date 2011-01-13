@@ -8,16 +8,89 @@
             .error {border: solid 1px red;}
             .error_text { color: red; font-size: 10px;}
             td {padding: 3px;}
+			textarea {
+				width: 800px;
+				height: 420px;
+			}
         </style>
 	</head>
 	<body>
-	    <h1>Welcome to JavaScriptMVC 3.0!</h1>
-        <ul>
-            <li>Include plugins and files in <i>funcit/parse/parse.js</i>.</li>
-            <li>Change to production mode by changing <i>development</i> to <i>production</i> in this file.</li>
-        </ul>
+	    <textarea id='code'></textarea>
+		<a href='javascript://' id='refresh'>REFRESH</a>
+		<a href='javascript://' id='parse'>PARSE</a>
 		<script type='text/javascript' 
-                src='../../steal/steal.js?funcit/parse,development'>   
+                src='../../steal/steal.js'>   
         </script>
+		<script type='text/javascript'>
+			steal.plugins('funcit/parse','jquery/dom/selection').then(function(){
+				var line = function(str, num){
+					var newLine = new RegExp("\n","g"),
+						previous = 0,
+						count = 0;
+					while(newLine.exec(str) && newLine.lastIndex <= num){
+						previous = newLine.lastIndex;
+						count++;
+					}
+					return {
+						line : count,
+						character : num - previous
+					}
+					
+				},
+				charLocation = function(str, pos){
+					var newLine = new RegExp("\n","g"),
+						previous = 0,
+						total = 0,
+						lines = pos.line;
+					while(lines && newLine.exec(str) ){
+						lines --;
+					}
+					return newLine.lastIndex+pos.character
+				}
+				$('#parse').click(function(){
+					var p = new Funcit.Parse($('#code').val());
+					console.log(p)
+				})
+				$('#refresh').click(function(){
+					$.get(steal.root.join("funcit/parse/test/tabs_test.js"), function(tabsTest){
+						$('#code').val(tabsTest);
+					},'text');
+				})
+				$("#code").click(function(){
+					var code = $(this).val()
+					var p = new Funcit.Parse(code);
+					var sel = $(this).selection(),
+						lines = line(code, sel.start);
+					LAST = p;
+					console.log("cursor",sel.start);
+					
+					p.statement(lines.line+1,lines.character+1, function(val){
+						
+						console.log("got statement",typeof val.second == 'string' ?
+							val.second : val.value, "from",val.from,"thru", val.thru, val)
+
+						val.find({
+							type: "(identifier)",
+							value : "S"
+						}, function(val){
+							console.log("S code",val.from, val.thru)
+							var first = val.args()[0]
+							
+							var start = charLocation(code, {
+									line: first.line -1,
+									character : first.from-1
+								}),
+								end = charLocation(code, {
+									line: first.line -1,
+									character : first.thru-1
+								})
+							console.log(start,end)
+							$("#code").selection(start, end);
+							return false;
+						})
+					})
+				})
+			})
+		</script>
 	</body>
 </html>

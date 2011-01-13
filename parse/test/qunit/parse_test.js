@@ -1,11 +1,40 @@
 steal
-  .plugins("funcunit/qunit", "funcit/parse").then(function(){
+  .plugins('jquery',"funcunit/qunit", "funcit/parse").then(function(){
 
 
-module("parse");
+module("parse",{
+	setup : function(){
+		stop();
+		var self = this;
+		$.get(steal.root.join("funcit/parse/test/tabs_test.js"), function(text){
+			this.tabsTest = text;
+			start();
+		},'text');
+	}
+});
 
 test("parse testing works", function(){
-	Funcit.parse.statements("foo.bar\ncar\n.bar()")
+	//Funcit.parse.statements("foo.bar\ncar\n.bar()");
+	var s = "S('.foo').click(function(){ var a = 1; });\n"+
+			"S('.bar').type('abc')"
+	var p = new Funcit.Parse(s);
+	
+	p.get(1, 10, function(val){
+		console.log(typeof val.second == 'string' ?
+			val.second : val.value, val.from, val.thru, val)
+	});
+	p.statement(1,10, function(val){
+		console.log(typeof val.second == 'string' ?
+			val.second : val.value, val.from, val.thru, val)
+			
+		val.find({
+			type: "(identifier)",
+			value : "S"
+		}, function(val){
+			console.log( val.args() );
+		})
+	})
+	//JSLINT(,{devel: true, forin: true, browser: true, windows: true, rhino: true, predefined : true});
 });
 
 })
