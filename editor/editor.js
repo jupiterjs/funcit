@@ -36,48 +36,24 @@ charLoc = function(str, pos){
  */
 $.Controller("Funcit.Editor",{
 	init : function(){
-		//this.element.lastselection();
-		this.element.funcit_grow()
+		this.element.funcit_grow().lastselection()
 		this.first = true;
 		this.modified = true;
 		//this.element[0].contentEditable = true;
 		//this.element.attr('tabindex',0)
-		var pre = $("<pre><span>W</span></pre>").appendTo(this.element.parent());
-		this.charDims = {
-			width: pre.find('span').width(),
-			height: this.element.controller('grow').diff
-		};
+		
 		//this.element.curStyles('borderTopWidth','paddingTop','paddingLeft')
-		pre.remove();
-	},
-	"focusin" : function(){
-		this.lastSelection = null;
-		$('#cursor').remove();
-	},
-	"focusout" : function(el){
-		this.lastSelection = this.element.selection();
-		console.log('s',this.lastSelection)
-		var locs = lineLoc(this.val(), this.lastSelection.start),
-			off = this.element.offset();
-		
-		
-		$('<div id="cursor"/>').css({position: 'absolute'}).appendTo(document.body)
-			.width(this.charDims.width).height(this.charDims.height).offset({
-				top : off.top+(locs.line - 1)*this.charDims.height,
-				left : off.left+(locs.from - 1)*this.charDims.width
-			})
 		
 	},
 	val : function(){
 		return this.element.val.apply(this.element, arguments);
 	},
-	selection : function(){
-		return this.lastSelection || this.element.selection();
-	},
-	hide : function(){
-		this.element.removeClass("active");
-		//this.find('.show').show();
-		//this.find('.func-body').hide();
+	selection : function(v){
+		if(v){
+			this.element.lastselection(v)
+		}else{
+			return this.element.controller('lastselection').val()
+		}
 	},
 	parser : function(){
 		// can say it hasn't been modified so we don't need to reparse
@@ -108,11 +84,11 @@ $.Controller("Funcit.Editor",{
 				text = this.val(),
 				loc = charLoc(text, lastChar)
 			
-			this.lastSelection = {
+			this.selection({
 				start : loc,
 				end : loc
-			}
-			setTimeout(this.callback('moveToFirstTest'),13)
+			});
+			setTimeout(this.callback('moveToLastTest'),13)
 			//console.log(lastChar.line, lastChar.from)
 			//this.writeBefore("Hello",lastChar)
 			//this.openFunction(found[0], lastChar);
@@ -123,8 +99,15 @@ $.Controller("Funcit.Editor",{
 		
 		this["add"+$.String.capitalize(eventType)].apply(this,args.slice(2))
 	},
-	moveToFirstTest : function(){
+	moveToLastTest : function(){
+		var found = this.find({type: "(identifier)", value : 'test'}),
+			func = Funcit.Parse(found[found.length-1].parent).find({ arity: "function" }),
+			end = func[0].end,
+			line = this.line(end.line-1),
+			chr = charLoc(this.val(), {line:  end.line - 1, from: line.length+1});
 		
+		this.selection({start: chr, end: chr});
+		//console.log(chr)
 	},
 	click : function(){
 		this.parse = new Funcit.Parse(this.val());
@@ -133,7 +116,7 @@ $.Controller("Funcit.Editor",{
 		
 		
 		var f = this.parse.func(selection.line,selection.from,selection.from)
-		console.log(this.selection(), selection, f)
+		//console.log(this.selection(), selection, f)
 	},
 	writeBefore : function(text, pos){
 		
@@ -203,10 +186,10 @@ $.Controller("Funcit.Editor",{
 			
 		this.val(before+( "")+text+after);
 		
-		this.lastSelection ={
+		this.selection({
 			start : before.length + text.length,
 			end : before.length + text.length
-		}
+		});
 	},
 	writeLn : function(text){
 		//only writes statements ...
@@ -227,7 +210,7 @@ $.Controller("Funcit.Editor",{
 			//console.log(stmnt)
 		})
 		if(last){
-			console.log('implement')
+			//console.log('implement')
 		}else{
 			// no statement, this is the only thing in the function.
 			this.insert(this.indent()+text+";\n"+this.indent())

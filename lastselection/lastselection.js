@@ -1,42 +1,51 @@
-steal.plugins('jquery/controller','jquery/dom/selection').then(function($){
-var getLast = function(){
-	clearTimeout(this.timer);
-	this.timer = setTimeout(this.callback('setLast'),0)
-}
+steal.plugins('jquery/controller',
+	'jquery/dom/selection',
+	'funcit/rowheight').then(function($){
+
+/**
+ * Keeps the last selected text for a textarea.
+ */
 $.Controller("Lastselection",{
 	init : function(){
-		this.timer = null;
-		this.element.attr('tabindex',0)
-		//this.bind('blur','blurred')
+		var pre = $("<pre><span>W</span></pre>").appendTo(this.element.parent());
+		
+		this.dims = {
+			height: this.element.rowheight(),
+			width : pre.find('span').width()
+		}
+		this.cursor = 
+		$('<div class="selection-cursor"/>')
+			.css({position: 'absolute'})
+			
+			.appendTo(this.element.parent())
+			.width( this.dims.width )
+			.height( this.dims.height ).hide();
+			
+		pre.remove();
+	},
+	update : function(options){
+		if(!this.focused){
+			this.last = options;
+			var locs = $.fn.rowheight.lineLoc(this.element.val(), this.last.start),
+				off = this.element.offset();
+
+			this.cursor.show().offset({
+				top : off.top+(locs.line - 1)*this.dims.height,
+				left : off.left+(locs.from - 1)*this.dims.width
+			})
+		}
 	},
 	"focusin" : function(){
-		$('#cursor').remove();
+		this.focused = true;
+		this.last = null;
+		this.cursor.hide();
 	},
 	"focusout" : function(){
-		//console.log('blur',this.element.selection())
-		var sel = this.last,
-			text = this.element.text(),
-			before = text.substr(0,sel.start),
-			after = text.substr(sel.start);
-		
-		this.element.html(before+"<span id='cursor'> </span>"+after);
-		var cur = $('#cursor'),
-			offset = cur.offset(),
-			width = cur.width(),
-			height = cur.height();
-		cur.remove();
-		
-		$('<div id="cursor"/>').css({position: 'absolute'}).appendTo(document.body).width(width).height(height).offset(offset)
-	},
-	keyup : getLast,
-	keypress : getLast,
-	mouseleave : getLast,
-	setLast : function(){
-		//console.log('setting', this.element.selection())
-		this.last = this.element.selection() || this.last;
+		this.focused = false;
+		this.update(this.element.selection());
 	},
 	val : function(){
-		return this.last;
+		return this.last || this.element.selection();
 	}
 })
 
