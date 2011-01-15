@@ -3,7 +3,8 @@ steal.plugins('jquery/controller',
 	'jquery/dom/selection',
 	'funcit/lastselection',
 	'funcit/grow',
-	'jquery/dom/cur_styles').then(function($){
+	'jquery/dom/cur_styles',
+	'jquery/lang/json').then(function($){
 var lineLoc = function(str, num, name){
 	var newLine = new RegExp("\n","g"),
 		previous = 0,
@@ -69,65 +70,15 @@ $.Controller("Funcit.Editor",{
 		
 		//from our current selection, figure out what statement we
 	},
-	func : function(line, from){
-		return this.parser().func(line, from, from);
-	},
-	addEvent : function(ev, eventType){
-		
-		if(this.first && eventType == 'open'){
-			
-			
-			//find the module's setup function, add to the end
-			var found = this.find({type: "(identifier)", value : 'setup'})
-
-			var lastChar = found[0].first.end,
-				text = this.val(),
-				loc = charLoc(text, lastChar)
-			
-			this.selection({
-				start : loc,
-				end : loc
-			});
-			setTimeout(this.callback('moveToLastTest'),13)
-			//console.log(lastChar.line, lastChar.from)
-			//this.writeBefore("Hello",lastChar)
-			//this.openFunction(found[0], lastChar);
-			//this.first = false;
-		}
-		
-		var args = $.makeArray(arguments);
-		
-		this["add"+$.String.capitalize(eventType)].apply(this,args.slice(2))
-	},
-	moveToLastTest : function(){
-		var found = this.find({type: "(identifier)", value : 'test'}),
-			func = Funcit.Parse(found[found.length-1].parent).find({ arity: "function" }),
-			end = func[0].end,
-			line = this.line(end.line-1),
-			chr = charLoc(this.val(), {line:  end.line - 1, from: line.length+1});
-		
-		this.selection({start: chr, end: chr});
-		//console.log(chr)
-	},
-	click : function(){
-		this.parse = new Funcit.Parse(this.val());
-		PARSE = this.parse;
-		var selection = lineLoc(this.selection().start)
-		
-		
-		var f = this.parse.func(selection.line,selection.from,selection.from)
-		//console.log(this.selection(), selection, f)
-	},
-	writeBefore : function(text, pos){
-		
-	},
-	openFunc : function(func){
-		if(func.line == func.end.line){
-			// add a line between them
-			this.insert("\n"+this.indent(func.line), func.end, func.end )
-		}
+	// gets the function at this location
+	func : function(loc){
+		loc = loc || this.selectPos();
+		return this.parser().func(loc.line, loc.from, loc.from);
 	},
 	line : function(line){
+		if(line === undefined){
+			line  = this.selectPos().line
+		}
 		return this.val().split("\n")[line-1]
 	},
 	indent : function(line){
@@ -138,22 +89,68 @@ $.Controller("Funcit.Editor",{
 		}
 		return new Array(4+1).join(" ");
 	},
+	
+	moveToLastTest : function(){
+		var found = this.find({type: "(identifier)", value : 'test'}),
+			func = found.last().up().find({ arity: "function" }),
+			end = func[0].end,
+			line = this.line(end.line-1),
+			chr = charLoc(this.val(), {line:  end.line - 1, from: line.length+1});
+		
+		this.selection({start: chr, end: chr});
+		//console.log(chr)
+	},
+	openFunc : function(func){
+		if(func.line == func.end.line){
+			// add a line between them
+			this.insert("\n"+this.indent(func.line), func.end, func.end )
+		}
+	},
+	
+	funcIndent : function(func){
+		return this.indent(func.line)
+	},
+	click : function(){
+		var found = this.find({type: "(identifier)", value : 'test'}),
+			func = found.last().up().find({ arity: "function" })
+		console.log(this.selectPos(), func)
+	},
+	addEvent : function(ev, eventType){
+		
+		if(this.first && eventType == 'open'){
+			//find the module's setup function, add to the end
+			var found = this.find({type: "(identifier)", value : 'setup'})
+			var loc = found.first().end();
+			
+			this.selection({
+				start : loc,
+				end : loc
+			});
+			setTimeout(this.callback('moveToLastTest'),13)
+		}
+		
+		var args = $.makeArray(arguments);
+		
+		this["add"+$.String.capitalize(eventType)].apply(this,args.slice(2))
+	},
 	addOpen : function(url){
 		this.writeLn("S.open('"+url+"')")
 	},
 	addClick : function(options, el){
+		this.chainOrWriteLn($(el).prettySelector(),".click()")
 		//this.write("S('"+$(el).prettySelector()+"').click();")
 	},
 	addDrag : function(options, el){
-		this.write("S('"+$(el).prettySelector()+"').drag("+$.toJSON(options)+");")
+		this.chainOrWriteLn($(el).prettySelector(),".drag("+$.toJSON(options)+")");
 	},
 	addWait: function(options, el){
 		var val = options.value||"";
 		if(typeof options.value == "string") {
 			val = "'"+val+"'";
 		}
-		this.write("S('"+$(el).prettySelector()+"')."+options.type+"("+val+");")
+		this.chainOrWriteLn($(el).prettySelector(),"."+options.type+"("+val+")");
 	},
+	
 	addAssert: function(options, el){
 		var val = options.value||"";
 		if(typeof options.value == "string") {
@@ -163,8 +160,42 @@ $.Controller("Funcit.Editor",{
 			options.type+" is correct');")
 	},
 	addChar : function(text, el){
-		//need to check what's before current place
+		
+		var stmntOrFunc = this.funcStatement(),
+			selector = $(el).prettySelector();
+		
+		// if a function
+		if(stmntOrFunc[0].arity == 'function'){
+			//we have an empty function, insert in the 'right' place
+			this.writeInFunc("S('"+selector+"').type("+text+")", stmntOrFunc)
+			
+		}else{
+			var stmnt = stmntOrFunc,
+				indent = this.funcIndent(stmnt.up()[0])
+			if(stmnt.hasSelector(selector)){
+				//check if method calls
+				console.log(stmnt);
+				if(stmnt.first()[0].second == "type"){
+					var firstArg = stmnt.second().eq(0),
+						str = firstArg[0].value,
+						start = firstArg.start();
+					
+					this.insert(str+text, start+1,start+str.length+1);
+				}else{
+					this.insert("\n"+indent+this.indent()+this.indent()+".type(\""+text+"\")", stmnt.ender()+1);
+				}
+			}else{
+				this.insert("\n"+indent+this.indent()+"S('"+selector+"').type(\""+text+"\");",stmnt.end()+1);
+			}
+		}
+		
 	},
+	/**
+	 * Inserts text into the textarea from start to end
+	 * @param {Object} text
+	 * @param {Object} start
+	 * @param {Object} end
+	 */
 	insert : function(text, start, end ){
 		var ta = this.element,
 			current = this.val(),
@@ -190,20 +221,17 @@ $.Controller("Funcit.Editor",{
 			start : before.length + text.length,
 			end : before.length + text.length
 		});
+		this.element.trigger("keyup")
 	},
 	writeLn : function(text){
 		//only writes statements ...
-		var selection = this.selection(),
-			pos = lineLoc(this.val(), selection.start),
-			func = this.func(pos.line, pos.from),
+		var func = this.func(),
 			last;
 		
 		this.openFunc(func[0]);
 		
 		//now insert a line where we are
-		selection = this.selection();
-		pos = lineLoc(this.val(), selection.start);
-		func = this.func(pos.line, pos.from),
+		func = this.func(),
 		
 		//go through the current function's statements, find the 'last' one.  Add after its end.
 		func.block().each(function(i, stmnt){
@@ -216,19 +244,69 @@ $.Controller("Funcit.Editor",{
 			this.insert(this.indent()+text+";\n"+this.indent())
 		}
 		this.element.trigger('keyup')
-		//last character
-		
-		
-		//this.insert("\n")
-		//console.log('func', func)
-		/*		
-		ta.val(before+(before ? "\n" : "")+text+after) ;
-		this.lastSelection ={
-			start : before.length + text.length,
-			end : before.length + text.length
-		}
+	},
+	// writes text in an empty function
+	writeInFunc : function(text, func){
+		var line = this.line(),
+			indent = this.funcIndent(func[0]),
+			pos = this.selectPos();
 
-		ta.trigger("keyup")*/
+		if(/[^\s]/.test(line)){
+			// add a new line
+			
+		}else{
+			this.insert(indent+this.indent()+text+";",{
+				line: pos.line,
+				from: 1
+			},{
+				line: pos.line,
+				from: line.length
+			})
+		}
+	},
+	// chains on selector or writes a new line
+	chainOrWriteLn : function(selector, text){
+		//get an empty function or last statement
+		var stmntOrFunc = this.funcStatement();
+		
+		// if a function
+		if(stmntOrFunc[0].arity == 'function'){
+			//we have an empty function, insert in the 'right' place
+			this.writeInFunc("S('"+selector+"')"+text, stmntOrFunc)
+			
+		}else{
+			var stmnt = stmntOrFunc,
+				indent = this.funcIndent(stmnt.up()[0])
+			if(stmnt.hasSelector(selector)){
+				this.insert("\n"+indent+this.indent()+this.indent()+text, stmnt.ender()+1)
+			}else{
+				this.insert("\n"+indent+this.indent()+"S('"+selector+"')"+text+";",stmnt.end()+1)
+			}
+		}
+	},
+	selectPos : function(){
+		return  lineLoc(this.val(), this.selection().start)
+	},
+	funcStatement : function(){
+		var func = this.func(),
+			last,
+			val;
+		
+		this.openFunc(func[0]);
+		
+		//now insert a line where we are
+		var selection = this.selection();
+		func = this.func();
+		
+		//go through the current function's statements, find the 'last' one.  Add after its end.
+		var blocks = func.block();
+		for(var i =0; i < blocks.length ; i++){
+			var loc = blocks.eq(i).end() // charLoc(val, blocks[i].end );
+			if(loc > selection.start){
+				return blocks.eq(i);
+			}
+		}
+		return blocks.length ? blocks.last() : func;
 	}
 	
 });
