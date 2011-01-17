@@ -110,13 +110,19 @@ $.Controller("Funcit.Editor",{
 	funcIndent : function(func){
 		return this.indent(func.line)
 	},
+	// going to set the cursor
+	//   if we are in 'record' mode, get current location, and run test
+	//   
 	click : function(){
-		var found = this.find({type: "(identifier)", value : 'test'}),
-			func = found.last().up().find({ arity: "function" })
-		console.log(this.selectPos(), func)
+		//var found = this.find({type: "(identifier)", value : 'test'}),
+		//	func = found.last().up().find({ arity: "function" })
+		//console.log(this.selectPos(), func);
+		
+		console.log(this.funcStatement())
+		this.trigger("run", this.val())
 	},
 	addEvent : function(ev, eventType){
-		
+		console.log(eventType)
 		if(this.first && eventType == 'open'){
 			//find the module's setup function, add to the end
 			var found = this.find({type: "(identifier)", value : 'setup'})
@@ -291,8 +297,12 @@ $.Controller("Funcit.Editor",{
 		var func = this.func(),
 			last,
 			val;
+		if(func.length){
+			this.openFunc(func[0]);
+		}else{
+			return func;
+		}
 		
-		this.openFunc(func[0]);
 		
 		//now insert a line where we are
 		var selection = this.selection();

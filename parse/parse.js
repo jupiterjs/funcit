@@ -237,6 +237,14 @@ $.extend( Funcit.Parse.prototype, {
 	hasSelector : function(selector){
 		var s =  this.S();
 		return s.length && s.args().length && s.args()[0].value == selector
+	},
+	toString : function(){
+		var str = "";
+		bisect(this, function(tree){
+			str += tree.value + (typeof tree.second == 'string' ? tree.second : "" )
+			
+		})
+		return str;
 	}
 })
 

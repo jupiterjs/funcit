@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>runner</title>
+        <style type='text/css'>
+            body {font-family: verdana}
+            .error {border: solid 1px red;}
+            .error_text { color: red; font-size: 10px;}
+            td {padding: 3px;}
+			iframe {
+				width: 900px;
+				height: 300px;
+			}
+			textarea {
+				width: 900px;
+			}
+        </style>
+	</head>
+	<body>
+		<div>
+		<iframe id='runHere'></iframe>
+		</div>
+		<textarea id='code' rows='10'></textarea>
+		<a href='javascript://' id='run'>go</a>
+		<script type='text/javascript' 
+                src='../../steal/steal.js'>   
+        </script>
+		<script type='text/javascript'>
+steal.plugins('funcit/runner').then(function(){
+	
+	$("#run").click(function(){
+		$("#runHere").funcit_runner($("#code").val());
+		
+	})
+	
+})
+		</script>
+	</body>
+</html>
