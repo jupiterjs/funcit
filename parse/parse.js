@@ -57,6 +57,8 @@ bisect = function(tree, func, parent, fnc){
 				return res;
 			}
 		}
+	}else if(tree.length === 0){
+	  //almost certainly an empty array	
 	}else{
 		if(parent){
 			tree.parent = parent;
@@ -208,7 +210,7 @@ $.extend( Funcit.Parse.prototype, {
 		return p(this[num], this._context)
 	},
 	start : function(){
-		return charLoc(this._context, this[0])
+		return charLoc(this._context, this.firstPos())
 	},
 	end : function(){
 		return charLoc(this._context, this[0].end)
@@ -293,6 +295,9 @@ $.extend( Funcit.Parse.prototype, {
 		}
 		str.push(this._context.substring(last, this._context.length))
 		return  str.join("")
+	},
+	text : function(){
+		return this._context.substring(this.start(),this.end()+1)
 	}
 })
 // this should cache line lengths eventually

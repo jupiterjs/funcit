@@ -110,10 +110,20 @@ $.Controller("Funcit.Editor",{
 	funcIndent : function(func){
 		return this.indent(func.line)
 	},
+	//gets the module
+	module : function(){
+		return this.find({type: "(identifier)", value : 'module'})
+			.eq(0);
+	},
 	// going to set the cursor
 	//   if we are in 'record' mode, get current location, and run test
 	//   
 	click : function(){
+		var funcStatement = this.funcStatement(),
+			moduleText = this.module().up().text();
+			
+
+		console.log(funcStatement, module)
 		//find out what we clicked on ...
 		
 		//if an element, show in the page
