@@ -245,9 +245,57 @@ $.extend( Funcit.Parse.prototype, {
 			
 		})
 		return str;
+	},
+	posSort : function(a, b){
+		 if(a.line > b.line){
+			return 1;
+		}else if(a.line == b.line){
+			return a.from - b.from;
+		}else{
+			return -1;
+		}
+	},
+	firstPos : function(){
+		var pos = {line : 10000000,
+				   from : 10000000},
+			   sort = this.posSort;
+		bisect(this, function(tree){
+			if(sort(tree, pos) < 0){
+				pos = tree;
+			}
+		});
+		return pos;
+	},
+	ordered : function(){
+		var stmnts = this.find({parent: null}),
+			locs = [],
+			chr,
+			str = [],
+			last = 0;;
+		for(var i =0; i < stmnts.length; i++){
+			locs.push(stmnts.eq(i).firstPos())
+		}
+		return locs.sort(this.posSort);
+	},
+	stated : function(){
+		//must go through statements in reverse order
+		//this will prevent incorrect spacing
+		var locs = this.ordered(),
+			chr,
+			str = [],
+			last = 0;;
+
+		for(var i=0; i < locs.length; i++){
+			chr = charLoc(this._context,locs[i]);
+			str.push(this._context.substring(last,chr));
+			str.push("__s("+i+");");
+			last = chr;
+		}
+		str.push(this._context.substring(last, this._context.length))
+		return  str.join("")
 	}
 })
-
+// this should cache line lengths eventually
 var charLoc = function(str, pos){
 	var newLine = new RegExp("\n","g"),
 		previous = 0,

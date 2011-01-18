@@ -114,12 +114,21 @@ $.Controller("Funcit.Editor",{
 	//   if we are in 'record' mode, get current location, and run test
 	//   
 	click : function(){
+		//find out what we clicked on ...
+		
+		//if an element, show in the page
+		
+		//if an S command, show dialoug
+		
+		//if a test run
+		
+		//
 		//var found = this.find({type: "(identifier)", value : 'test'}),
 		//	func = found.last().up().find({ arity: "function" })
 		//console.log(this.selectPos(), func);
 		
-		console.log(this.funcStatement())
-		this.trigger("run", this.val())
+		//console.log(this.funcStatement())
+		//this.trigger("run", this.val())
 	},
 	addEvent : function(ev, eventType){
 		console.log(eventType)

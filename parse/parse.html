@@ -18,6 +18,8 @@
 	    <textarea id='code'></textarea>
 		<a href='javascript://' id='refresh'>REFRESH</a>
 		<a href='javascript://' id='parse'>PARSE</a>
+		<a href='javascript://' id='lined'>LINED</a>
+		<pre id='lines'></pre>
 		<script type='text/javascript' 
                 src='../../steal/steal.js'>   
         </script>
@@ -55,6 +57,10 @@
 					$.get(steal.root.join("funcit/parse/test/tabs_test.js"), function(tabsTest){
 						$('#code').val(tabsTest);
 					},'text');
+				})
+				$('#lined').click(function(){
+					var p = new Funcit.Parse($('#code').val());
+					$('#lines').html(p.stated())
 				})
 				$("#code").click(function(){
 					var code = $(this).val()

@@ -30,7 +30,9 @@
 steal.plugins('funcit/runner').then(function(){
 	
 	$("#run").click(function(){
-		$("#runHere").funcit_runner($("#code").val());
+		$("#runHere").funcit_runner($("#code").val(), function(i, stmnt){
+			console.log('running',stmnt );
+		});
 		
 	})
 	

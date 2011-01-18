@@ -1,17 +1,41 @@
-steal.plugins('jquery','funcunit').then(function($){
-
-	$.fn.funcit_runner = function(text){
+steal.plugins('jquery','funcunit','funcit/parse').then(function($){
+	
+	/**
+	 * Takes JS text, parses it, adds a statement count before
+	 * each statement and then evals it.
+	 * 
+	 * It also points FuncUnit to a particular iFrame and
+	 * sets up QUnit.
+	 * 
+	 * Before each statement is run, it calls
+	 * cb with that statement.  By giving a callback
+	 * to funcit_runner, you can show which statement is being 
+	 * run.
+	 * @param {Object} text
+	 * @param {Object} cb
+	 */
+	$.fn.funcit_runner = function(text, cb){
 		
 			//'restart' QUnit
 			//eval text
 		//QUnit.init();
+		var p = new Funcit.Parse(text),
+			stated = p.stated();
+			ordered = p.ordered(),
+			el = this;
+		
+		__s = function(statement){
+			__s.cur = statement
+			cb(statement,ordered[statement], ordered)
+		}
+		
 		FuncUnit.frame = this[0]
 		QUnit.testStart = function(name){
 			console.log("test start")
 		};
-		
-		eval(text)	
+		console.log(stated)
+		eval(stated)	
 		QUnit.load()
 	}
-
+	
 });
