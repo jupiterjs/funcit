@@ -25,14 +25,15 @@ $.Controller("Funcit.Codewrapper", {
 		$("#tabs li:eq(1)").trigger("activate");
 	},
 	// start running a test because someone clicked the run button
-	".runtest click": function(){
+	".runtest click": function(el, ev){
 		this.toggleRecord(false);
 		this.openResultsTab();
 		this.runnerTimeout = null;
 		this.isFirstStatement = true;
 		this.lineCounter = {};
 		// get test name
-		//QUnit.config.filters = [testName];
+		var testName = el.data('testName');
+		QUnit.config.filters = [testName];
 		$("iframe").funcit_runner(this.textarea.val(), this.callback('runnerCallback'));
 	},
 	/**
@@ -88,15 +89,16 @@ $.Controller("Funcit.Codewrapper", {
 		var tests = this.editor.tests(),
 			lineheight = this.rowHeight,
 			wrapper = this.find(".wrapper"), 
-			buttonTop;
+			buttonTop, testName;
 			
 		// TODO implement caching for this, so you're not removing/creating these buttons every time
 		this.find(".runtest").remove();
 		tests.each(function(i, val){
 			buttonTop = (val.line-1)*lineheight-4;
+			testName = val.parent.second[0].value;
 			$("<div class='runtest'></div>")
 				.appendTo(wrapper)
-				.data('testName', 'soemthing')
+				.data('testName', testName)
 				.css('top', buttonTop);
 		})
 	}
