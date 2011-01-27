@@ -10,10 +10,169 @@
 @highlightcolor: #B0C840;
 @highlightborder: #A0B43B;
 
+/**
+ * CSS Reset
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.funcit_app {
+	position: relative;
+}
+.funcit_app.loading {
+	background-color: #ccccdd;
+}
+.funcit_app iframe {
+	height: 100%;
+	border: none;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+.funcit_app input {
+	margin: 0 auto;
+	width: 500px;
+	font-size: 2em;
+}
+.funcit_app form{
+	width: 500px;
+	margin: auto auto;
+	position: absolute;
+	top: 50%;
+	height: 45px;
+	margin-top: -25px;
+	left: 50%;
+	margin-left: -250px;
+}
+
+
+@bgcolor: #ccccdd;
+.rounded_corners (@radius: 5px) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.funcit_wait_menu {
+  .rounded_corners;
+    background-color: #B4B4C3;
+	border:1px solid Black;
+    width: 300px;
+	height: 250px;
+	position:absolute;
+	padding:10px;
+	overflow:auto;
+}
+
+.funcit_wait_menu h2 {
+	font-family:  Arial, Helvetica, sans-serif;
+	font-size:18px;
+	padding-bottom: 10px;
+}
+
+@code_blue: #336699;
+@code_red: #990000;
+.funcit_wait_menu .statement {
+	font-family: "Courier New","Andale Mono",monospace;
+	padding-bottom:10px;
+}
+
+.funcit_wait_menu ul.types li {
+	padding:0;
+	color: #555555;
+	cursor: pointer;
+}
+
+.funcit_wait_menu ul.types li.selected {
+	color: Black;
+}
+
+.funcit_wait_menu .statement_type {
+	color: @code_blue;
+}
+.funcit_wait_menu .statement_value {
+	color: @code_red;
+}
+
+.funcit_wait_menu ul input.text {
+    width: 40px;
+	margin-left:10px;
+}
+
+.funcit_wait_menu .value_selector {
+	float: right;
+	width: 150px;
+}
+
+.funcit_wait_menu .value_input {
+	padding-bottom:10px;
+}
+
+.funcit_wait_menu .value_input input.text {
+	width: 50px;
+}
+
+.controls_overlay {
+	z-index: 99999;
+	opacity: 1;
+	cursor: pointer;
+	position:absolute;
+}
+
+
 body {
 	margin: 0px;
 	padding: 0px;
-	font-family: "Lucida Grande",Verdana,sans-serif;
+	font-family: "Lucida Grande", "Lucida Sans", Verdana,sans-serif;
+	overflow: hidden;
 }
 
 iframe {
@@ -24,12 +183,11 @@ iframe {
 	margin: 0px;
 }
 #funcit {
-	height: @funcitHeight+20;
+	height: 273px;
 	margin: 0px;
-	padding: 0px;
+	padding: 2px 0 0 0;
 	overflow: none;
-	border-top: solid 2px gray;
-	background-color: #ccccdd;
+	background-image: url(images/backgrounds/panel.png)
 }
 .rounded-corners (@radius: 5px) {
   border-radius: @radius;
@@ -38,103 +196,210 @@ iframe {
 }
 
 #controls {
-	height: @funcitHeight+15;
-	background-color: @leftsidebarbg;
-	h2 {
-		margin-bottom: 10px;
-		font-size:16px;
+	width: 450px;
+	float: left;
+	position: relative;
+	li {
+		padding-bottom: 0;
 	}
-	.commandcol {
-		float: left;
-		width:80px;
-		margin-right:10px;
-		a{
-			color: #142D58;
-		}
-		h3{
-			margin-bottom: 10px;
-			font-size:12px;
-		}
-		ul {
-			padding:5px;
-			background-color:@commandbg;
-			.rounded-corners;
-		}
-	}
+	
 	.tabarea {
-		background-color:@tabbg;
-		padding-top:5px;
 		li{
 			float: left;
-			padding: 10px;
 			list-style: none;
 			color: black;
 			cursor: pointer;
+			margin-right: -20px;
 		}
 		ul {
-			height: 38px;
-			border-bottom: solid 1px black;
 			padding: 0px;
 			margin: 0px;
-			padding-left:5px;
+		}
+		a {
+			display: block;
+			height: 32px;
+			padding-left: 14px;
+			text-decoration: none;
+			span {
+				display: block;
+				height: 32px;
+				padding: 0 24px 0 10px;
+				line-height: 40px;
+				font-size: 11px;
+				text-shadow: 0px 1px white;
+				color: #404040;
+				font-weight: bold;
+			}
 		}
 		.active {
-			background-color: @leftsidebarbg;
-			border-left:1px solid black;
-			border-right:1px solid black;
-			border-top:1px solid black;
-			border-bottom:none;
+			a {
+				background: url(images/backgrounds/tab_left.png);
+				span {
+					display: block;
+					background: url(images/backgrounds/tab_right.png);
+					background-position: right;
+					color: #222;
+				}
+			}
 		}
 		li.selected {
 			
 		}
 	}
 	.tabpane {
-		height: @funcitHeight;
-		padding:10px;
+		width: 450px;
+		height: 242px;
+		float: left;
 	}
 }
 
+#commands {
+	h2 {
+		margin-bottom: 10px;
+		font-size:16px;
+	}
+	.commandcol {
+		float: left;
+		width:111px;
+		border-right: 1px solid #aaaaaa;
+		border-left: 1px solid #f7f7f7;
+		a, .command {
+			color: #4c5a6b;
+			text-decoration: none;
+			font-size: 11px;
+			display: block;
+			height: 19px;
+			padding: 0 5px;
+			position: relative;
+			cursor: pointer;
+			text-shadow: 0px 1px white;
+		}
+		a:hover, .command:hover {
+			background: url(images/backgrounds/command_hover.png);
+			color: #303452;
+		}
+		.command a {
+			position: absolute;
+			height: 17px;
+			width: 16px;
+			right: 3px;
+			top: 1px;
+			background: url(images/backgrounds/waits_getters.png);
+			color: white;
+			line-height: 15px;
+			text-shadow: 0px 1px black;
+			padding: 0;
+			text-align: center;
+			font-size: 9px;
+			font-weight: bold;
+			display: none;
+		}
+		.command:hover a {
+			display: block;
+		}
+		.command a:hover {
+			background-position: left -17px;
+		}
+		.command a:active {
+			background-position: left -34px;
+		}
+		.command a.w {
+			right: 21px;
+		}
+		h3{
+			border-bottom: 1px solid #aaa;
+			font-size: 11px;
+			text-align: center;
+			height: 24px;
+			line-height: 24px;
+			text-shadow: 0px 1px white;
+			color: #414141;
+		}
+		ul {
+			padding: 2px 0 0 0;
+			background-color: #e5e5e5;
+			background-image: url(images/backgrounds/commandcol.png);
+			background-repeat: repeat-x;
+			height: 213px;
+			border-top: 1px solid #f7f7f7;
+			line-height: 19px;
+			float: left;
+			width: 111px
+		}
+	}
+	#actions {
+		border-left: none;
+	}
+	#waits_getters {
+		width: 224px;
+		border-right: none;
+		#right_commands {
+			width: 110px;
+			margin-left: 2px;
+			background-image: url(images/backgrounds/right_commands.png);
+			background-position: right top;
+		}
+	}
+}
 
 #test {
-	height: @funcitHeight;
 	overflow: auto;
-	background-color: white;
-	padding:10px;
-	padding-left:30px;
 	position:relative;
+	height: 273px;
 	.rec{
-		background-color: red;
+		background: url(images/backgrounds/record.png);
+		width: 46px;
+		height: 22px;
 		float:left;
-	    color: white;
-	    padding: 5px;
-	    vertical-align: middle;
-		.rounded-corners;
 		cursor: pointer;
+		margin: 4px 0 0 5px;
+	}
+	.rec:hover{
+		background-position: left -22px;
+	}
+	.rec:active{
+		background-position: left -44px;
 	}
 	.recording {
-		background-color:#B21212;
+		background-image: url(images/backgrounds/recording.png);
+	}
+	.recording:before {
+		content: url(images/backgrounds/recording_spinner.gif);
+		margin-left: 6px;
+		margin-top: 4px;
+	}
+	.recording:hover:before {
+		content: url(images/backgrounds/recording_spinner_light.gif);
 	}
 	.wrapper{
-    	margin-top: 30px;
+		margin-top: 31px;
+		padding-left: 60px;
+		height: 240px;
+		overflow-y: auto;
 	}
 	.runtest {
-		width:20px;
-		height:20px;
+		width:14px;
+		height:15px;
 		position:absolute;
-		background-image:url(images/play_icon.gif);
-		.rounded-corners;
-		left: -23px;
+		background-image:url(images/backgrounds/play.png);
+		left: 5px;
 		cursor:pointer;
+		margin-top: 3px;
+	}
+	.runtest:hover {
+		background-position: left -15px;
+	}
+	.runtest:active {
+		background-position: left 15px;
 	}
 }
 textarea {
-	width: 100%;
+	width: 99%;
 	margin: 0px;
-	
+	background: transparent;
+	line-height: 16px;
 }
 li {
-	padding: 5px 5px 5px 5px;
 	list-style : none;
 }
 .selection-cursor{
@@ -153,30 +418,72 @@ li {
 }
 
 #results{
-	font-family:Arial, Helvetica, sans-serif;
-	font-weight:bold;
-	font-size:14px;
+	line-height: 14px;
+	font-size:12px;
+	text-shadow: 0px 1px white;
 	.testname{
+		padding: 5px;
+		margin-top: 5px;
 		.module{
+			
+			font-weight: bold;
 			color:@lefsidebarheader;
 		}
 	}
 	.fail{
 		color:@failcolor;
 		background-image:url(images/fail.png);
+		
 	}
 	.pass{
 		color:@passcolor;
 		background-image:url(images/pass.png);
 	}
+	
 	.result{
-		height:20px;
+		
+		min-height: 18px;
 		margin:10px 0;
-		padding-left:30px;
-		background-position:0px 0px;
+		background-position:0px 3px;
 		background-repeat:no-repeat;
+		margin: 5px;
+		padding: 5px 0 5px 30px;
+		border-bottom: 1px dotted #999;
 		.message{
 			padding-left:45px;
 		}
 	}
+}
+.numbers {
+	position: absolute;
+	top: 0;
+	left: 20px;
+	overflow: hidden;
+	width: 30px;
+	font-family: Monospace, "Courier New", monospace;
+	text-align: right;
+	font-size: 12px;
+	line-height: 16px;
+	color: #333;
+	text-shadow: 0px 1px white;
+}
+
+#help {
+	width: 150px;
+	position: absolute;
+	left: 293px;
+	text-align: right;
+	top: 9px;
+	font-size: 11px;
+	color: #222;
+	text-shadow: 0px 1px white;
+}
+#goto {
+	color: #222;
+	font-size: 11px;
+	position: absolute;
+	top: 2px;
+	right: 5px;
+	font-weight: bold;
+	text-shadow: 0px 1px white;
 }

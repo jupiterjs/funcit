@@ -14,10 +14,10 @@ $.Controller("Funcit.Codewrapper", {
 	toggleRecord: function(record){
 		var el = this.find(".rec");
 		if(!record){ // turn off recording
-			el.text("Record").removeClass("recording")
+			el.text("").removeClass("recording")
 			this.publish("funcit.record", {recording: false});
 		} else {
-			el.text("Recording").addClass("recording")
+			el.text("").addClass("recording")
 			this.publish("funcit.record", {recording: true});
 		}
 	},
@@ -73,7 +73,7 @@ $.Controller("Funcit.Codewrapper", {
 		this.textarea.lastselection('highlight', start, end);
 	},
 	// call the method that adds run buttons
-	"textarea keyup": function(){
+	"textarea keyup": function(){ 
 		var self = this;
 		if(this.keydownTimeout){
 			clearTimeout(this.keydownTimeout);
