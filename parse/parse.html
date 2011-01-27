@@ -70,17 +70,19 @@
 					LAST = p;
 					console.log("cursor",sel.start);
 					
-					p.statement(lines.line+1,lines.character+1, function(val){
+					p.get(lines.line+1,lines.character+1, function(val){
+						var $val = new Funcit.Parse(val);
+						var statement = $val.statement();
+						console.log("got statement",typeof statement[0].second == 'string' ?
+							statement[0].second : statement[0].value, "from",statement[0].from,"thru", statement[0].thru, statement)
 						
-						console.log("got statement",typeof val.second == 'string' ?
-							val.second : val.value, "from",val.from,"thru", val.thru, val)
-
-						val.find({
+						statement.find({
 							type: "(identifier)",
 							value : "S"
 						}, function(val){
 							console.log("S code",val.from, val.thru)
-							var first = val.args()[0]
+							var $val = new Funcit.Parse(val);
+							var first = $val.args()[0]
 							
 							var start = charLocation(code, {
 									line: first.line -1,

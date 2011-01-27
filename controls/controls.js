@@ -1,4 +1,6 @@
-steal.plugins('jquery/controller').then(function($){
+steal.plugins('jquery/controller')
+	.then('codewrapper')
+	.then(function($){
 
 $.Controller("Funcit.Controls", {
 		init: function(){
@@ -7,10 +9,9 @@ $.Controller("Funcit.Controls", {
 		// user has clicked Wait or Assert
 		"a click": function(el, ev){
 			ev.preventDefault();
-			this.type = el.attr('class');
+			this.type = el.text();
+			this.category = el.closest(".commandcol").attr("id");
 			this.addMask();
-			this.find('.step2').show();
-			this.find('.step1').hide();
 		},
 		addMask: function(){
 			if(!this.mask){
@@ -50,17 +51,15 @@ $.Controller("Funcit.Controls", {
             this.lastInspecting = new Date().getTime();
 		},
 		mask_mouseup: function(ev){
-			$(".funcit_wait_menu").controller().open(this.callback('selected', this.highlightedEl), this.highlightedEl);
 			this.removeMask();
-			this.find('.step2').hide();
-			this.find('.step1').show();
+			this.selected(this.highlightedEl)
 		},
 		// called after the user selects an option and submits the form on the menu
-		selected: function(waitEl, type, value){
+		selected: function(waitEl){
 			$(this.highlightedEl).unhighlight();
-			$("#app").trigger("addEvent",[this.type,{
-					type : type,
-					value: value
+			$("#app").trigger("addEvent",[this.category,{
+					type : this.type,
+					value: $(waitEl)[this.type]()
 				}, waitEl])
 		},
 		destroy: function(){

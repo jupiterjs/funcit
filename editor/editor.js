@@ -4,6 +4,7 @@ steal.plugins('jquery/controller',
 	'funcit/lastselection',
 	'funcit/grow',
 	'jquery/dom/cur_styles',
+	'jquery/controller/subscribe',
 	'jquery/lang/json').then(function($){
 var lineLoc = function(str, num, name){
 	var newLine = new RegExp("\n","g"),
@@ -40,6 +41,7 @@ $.Controller("Funcit.Editor",{
 		this.element.funcit_grow().lastselection()
 		this.first = true;
 		this.modified = true;
+		this.record = true;
 		//this.element[0].contentEditable = true;
 		//this.element.attr('tabindex',0)
 		
@@ -115,6 +117,10 @@ $.Controller("Funcit.Editor",{
 		return this.find({type: "(identifier)", value : 'module'})
 			.eq(0);
 	},
+	//gets the module
+	tests : function(){
+		return this.find({type: "(identifier)", value : 'test'});
+	},
 	// going to set the cursor
 	//   if we are in 'record' mode, get current location, and run test
 	//   
@@ -123,7 +129,7 @@ $.Controller("Funcit.Editor",{
 			moduleText = this.module().up().text();
 			
 
-		console.log(funcStatement, module)
+		//console.log(funcStatement, moduleText)
 		//find out what we clicked on ...
 		
 		//if an element, show in the page
@@ -163,17 +169,18 @@ $.Controller("Funcit.Editor",{
 	},
 	addClick : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(),".click()")
-		//this.write("S('"+$(el).prettySelector()+"').click();")
 	},
 	addDrag : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(),".drag("+$.toJSON(options)+")");
 	},
+	// if el is blank, add "target"
 	addWait: function(options, el){
-		var val = options.value||"";
+		var val = options.value||"",
+			sel = $(el).prettySelector();
 		if(typeof options.value == "string") {
 			val = "'"+val+"'";
 		}
-		this.chainOrWriteLn($(el).prettySelector(),"."+options.type+"("+val+")");
+		this.chainOrWriteLn(sel,"."+options.type+"("+val+")");
 	},
 	
 	addAssert: function(options, el){
@@ -222,6 +229,7 @@ $.Controller("Funcit.Editor",{
 	 * @param {Object} end
 	 */
 	insert : function(text, start, end ){
+		if(!this.recording()) return;
 		var ta = this.element,
 			current = this.val(),
 			sel = this.selection();
@@ -336,6 +344,17 @@ $.Controller("Funcit.Editor",{
 			}
 		}
 		return blocks.length ? blocks.last() : func;
+	},
+	"funcit.record subscribe": function(called, params){
+		if(params.recording) {
+			this.record = true;
+		} else {
+			this.record = false;
+		}
+	},
+	// returns true if we're recording, false otherwise
+	recording: function(){
+		return this.record;
 	}
 	
 });

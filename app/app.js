@@ -4,7 +4,8 @@ steal
 		steal.less('app')
 	})
 	.plugins('jquery/controller','funcunit/syn', 
-		'funcit/highlight', 'mxui/fittable', 'jquery/dom/form_params')
+		'funcit/highlight', 'mxui/fittable', 'jquery/dom/form_params', 
+		'jquery/controller/subscribe')
 	.then('wait_menu')
 	.then(function($){
 	var getKey =  function( code ) {
@@ -29,6 +30,7 @@ steal
 			this.justKey = true;
 			this.mousemoves =0;
 			this.hoveredEl = null;
+			this.record = true;
 			
 			// if the a test is appended to the URL, load it and skip the form
 			// http://localhost:8000/funcit/funcit.html?url=/funcunit/syn/demo.html

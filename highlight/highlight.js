@@ -3,6 +3,7 @@ steal.plugins('jquery')
 	.css('highlight')
 	.then(function($){
 	
+	// highlights an element
 	$.fn.highlight = function(){
 		var hl = $.fn.highlight;
 		//Firebug.Inspector.drawOutline(this[0])
@@ -66,5 +67,4 @@ steal.plugins('jquery')
 		hl.tBorder.hide();
 		hl.bBorder.hide();
 	}
-	
 });

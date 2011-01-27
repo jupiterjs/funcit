@@ -22,6 +22,7 @@ Funcit.Parse = function(str, context){
 	if(context && typeof context != 'string'){
 		console.log(context)
 	}
+	if(!str) return;
 	if(str._parse === me){
 		str = $.makeArray(str)
 	}
@@ -122,12 +123,26 @@ $.extend( Funcit.Parse.prototype, {
 			func = thru;
 			thru = from;
 		}
+		var self = this;
 		bisect(this.tree || this, function(tree){
-			console.log(tree, tree.line , tree.from)
-			if(tree.line == line && tree.from <= from &&  from < tree.thru){
-				matches.push(tree);
-				return func && func(tree) ;
-			}
+			//console.log(tree, tree.line , tree.from)
+//			if (tree.end) {
+//				var last = tree.end;
+//				if (tree.line <= line && line <= last.line &&
+//				((tree.line !== line && last.line !== line) ||
+//				(tree.line == line && from >= tree.from) ||
+//				(last.line == line && from <= last.from))) {
+//					matches.push(tree);
+//					return func && func(tree);
+//				}
+//			}
+//			else {
+				if (tree.line == line && tree.from <= from && from < tree.thru) {
+					matches.push(tree);
+					return func && func(tree);
+				}
+//			}
+				
 			
 		});
 		return p(matches, this._context);
@@ -196,6 +211,16 @@ $.extend( Funcit.Parse.prototype, {
 	second : function(){
 		return p(this[0].second, this._context)
 	},
+	// gets all the second parts in a chain
+	chains: function(){
+		var matches = [];
+		bisect(this, function(tree){
+			if(typeof tree.second == "string")
+				matches.push(tree);
+			
+		})
+		return p(matches, this._context);
+	},
 	first : function(){
 		return p(this[0].first, this._context)
 	},
@@ -243,6 +268,8 @@ $.extend( Funcit.Parse.prototype, {
 	toString : function(){
 		var str = "";
 		bisect(this, function(tree){
+			if(typeof tree.second == "string")
+				console.log(tree, tree.value, tree.second)
 			str += tree.value + (typeof tree.second == 'string' ? tree.second : "" )
 			
 		})

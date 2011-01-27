@@ -9,28 +9,48 @@
 
 	    </div>
 		<div id='funcit' style='display:none'>
+			
 			<div id='controls'>
-				<div class='step1'>
-					<p class='header'>Click a command to add it to the test</p>
-					<ul>
-						<li>
-							<a class='wait' href='#'>Wait</a>
-							<div class='description'>Pause the test and wait for a condition in the page to be 
-							true before the test resumes.</div>
-						</li>
-						<li>
-							<a class='assert' href='#'>Assert</a>
-							<div class='description'>Evaluate if some condition of the page is correct. 
-							Pass/fail the test based on the result.</div>
-						</li>
-					</ul>
+			    <div class='tabarea'>
+					<ul id="tabs">
+				        <li tabindex='1' class='selected active'><a><span>Commands</span></a></li>
+				        <li tabindex='2'><a><span>Results</span></a></li>
+				    </ul>
 				</div>
-				<div class='step2' style='display:none;'>
-					<p class='header'>Put your mouse over the app above and select an element</p>
-				</div>
+			    <div class='tabpane'>
+					<div id="wait" class='commandcol'>
+						<h3>Waits</h3>
+						<ul>
+							<li><a href="#">width</a></li>
+							<li><a href="#">height</a></li>
+							<li><a href="#">visible</a></li>
+							<li><a href="#">attr</a></li>
+						</ul>
+					</div>
+					<div id="getter" class='commandcol'>
+						<h3>Getter</h3>
+						<ul>
+							<li><a href="#">width</a></li>
+							<li><a href="#">height</a></li>
+							<li><a href="#">visible</a></li>
+							<li><a href="#">attr</a></li>
+						</ul>
+					</div>
+					<div id="assert" class='commandcol'>
+						<h3>Assertions</h3>
+						<ul>
+							<li><a href="#">ok</a></li>
+							<li><a href="#">equal</a></li>
+							<li><a href="#">notEqual</a></li>
+							<li><a href="#">deepEqual</a></li>
+						</ul>
+					</div>
+			    </div>
+			    <div id='results' class='tabpane'></div>
 			</div>
 			<div id='test'>
-				<div style='position: relative'><textarea id='editor'></textarea></div>
+				<div class='rec recording'>Recording</div>
+				<div class='wrapper' style='position: relative'><textarea id='editor'></textarea></div>
 				
 			</div>	
 		</div>

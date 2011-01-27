@@ -1,4 +1,6 @@
-steal.plugins('jquery','funcunit','funcit/parse').then(function($){
+steal.plugins('jquery','funcunit','funcit/parse')
+	.then('results')
+	.then(function($){
 	
 	/**
 	 * Takes JS text, parses it, adds a statement count before
@@ -20,21 +22,18 @@ steal.plugins('jquery','funcunit','funcit/parse').then(function($){
 			//eval text
 		//QUnit.init();
 		var p = new Funcit.Parse(text),
-			stated = p.stated();
+			stated = p.stated(),
 			ordered = p.ordered(),
 			el = this;
 		
 		__s = function(statement){
 			__s.cur = statement
-			cb(statement,ordered[statement], ordered)
+			cb(statement, ordered[statement], ordered)
 		}
 		
 		FuncUnit.frame = this[0]
-		QUnit.testStart = function(name){
-			console.log("test start")
-		};
-		console.log(stated)
-		eval(stated)	
+		stop();
+		eval(stated);
 		QUnit.load()
 	}
 	
