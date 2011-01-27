@@ -10,31 +10,53 @@ $.Controller("Funcit.Codewrapper", {
 	".rec click": function(el){
 		this.toggleRecord(!el.hasClass("recording"));
 	},
-	
+	// runs test up to current cursor's statement
+	".sync click": function(){
+		//get an empty function or last statement
+		var stmntOrFunc = this.editor.funcStatement();
+		
+		if(stmntOrFunc[0].arity == 'function'){
+			// handle this
+		}else{ // statement
+			// get test up to current statement
+			var endChar = stmntOrFunc.end(),
+				test = this.textarea.val().substr(0,endChar)+"});"
+		}
+		
+		// get test name
+		// TODO refactor this code into editor or parse
+		var testName = stmntOrFunc[0].func.parent[0].value;
+		
+		QUnit.config.filters = [testName];
+		this.run(this.textarea.val());
+	},
 	toggleRecord: function(record){
 		var el = this.find(".rec");
 		if(!record){ // turn off recording
-			el.text("Record").removeClass("recording")
+			el.removeClass("recording")
 			this.publish("funcit.record", {recording: false});
 		} else {
-			el.text("Recording").addClass("recording")
+			el.addClass("recording")
 			this.publish("funcit.record", {recording: true});
 		}
 	},
 	openResultsTab: function(){
 		$("#tabs li:eq(1)").trigger("activate");
 	},
-	// start running a test because someone clicked the run button
-	".runtest click": function(el, ev){
+	run: function(test){
 		this.toggleRecord(false);
-		this.openResultsTab();
 		this.runnerTimeout = null;
 		this.isFirstStatement = true;
 		this.lineCounter = {};
+		$("iframe").funcit_runner(this.textarea.val(), this.callback('runnerCallback'));
+	},
+	// start running a test because someone clicked the run button
+	".runtest click": function(el, ev){
+		this.openResultsTab();
 		// get test name
 		var testName = el.data('testName');
 		QUnit.config.filters = [testName];
-		$("iframe").funcit_runner(this.textarea.val(), this.callback('runnerCallback'));
+		this.run(this.textarea.val());
 	},
 	/**
 	 * Assumes you have only one module.  Grabs that module and returns the string of its text

@@ -1,7 +1,7 @@
 steal
 	.plugins('steal/less')
 	.then(function($){
-		steal.less('app')
+		//steal.less('app')
 	})
 	.plugins('jquery/controller','funcunit/syn', 
 		'funcit/highlight', 'mxui/fittable', 'jquery/dom/form_params', 

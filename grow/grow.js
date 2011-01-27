@@ -19,14 +19,17 @@ $.Controller("Funcit.Grow",{
 			ch = this.element.height(),
 			lines = this.lines();
 		if(sh > ch){
-			this.element.height(sh)
+			this.element.height(sh);
 			this.numLines = this.lines();
+			$('#' + this.element.attr('id') + '_numbers').height(sh);
 		}
 		if(this.numLines !== lines ){
 			this.element.height( ch - (this.numLines - lines)*this.element.rowheight() );
+			$('#' + this.element.attr('id') + '_numbers').height(ch - (this.numLines - lines)*this.element.rowheight());
 			//make sure it's ok
 			setTimeout(this.callback('checkHeight'),0)
 		}
+		
 	}
 })
 
