@@ -11,6 +11,9 @@ $.Controller("Funcit.Codewrapper", {
 		this.toggleRecord(!el.hasClass("recording"));
 	},
 	// runs test up to current cursor's statement
+	// grabs the entire textarea string up to the cursor and passes this testname as a filter to QUnit
+	// since the text isn't modified, the highlighting still works
+	// TODO there has to be a better way to do this
 	".sync click": function(){
 		//get an empty function or last statement
 		var stmntOrFunc = this.editor.funcStatement();
@@ -19,16 +22,13 @@ $.Controller("Funcit.Codewrapper", {
 			// handle this
 		}else{ // statement
 			// get test up to current statement
-			var endChar = stmntOrFunc.end(),
-				test = this.textarea.val().substr(0,endChar)+"});"
+			var endChar = stmntOrFunc.end(), 
+				test = this.textarea.val().substr(0,endChar)+"\n});";
+				
 		}
-		
-		// get test name
-		// TODO refactor this code into editor or parse
 		var testName = stmntOrFunc[0].func.parent[0].value;
-		
 		QUnit.config.filters = [testName];
-		this.run(this.textarea.val());
+		this.run(test);
 	},
 	toggleRecord: function(record){
 		var el = this.find(".rec");
@@ -48,7 +48,7 @@ $.Controller("Funcit.Codewrapper", {
 		this.runnerTimeout = null;
 		this.isFirstStatement = true;
 		this.lineCounter = {};
-		$("iframe").funcit_runner(this.textarea.val(), this.callback('runnerCallback'));
+		$("iframe").funcit_runner(test, this.callback('runnerCallback'));
 	},
 	// start running a test because someone clicked the run button
 	".runtest click": function(el, ev){
@@ -75,10 +75,11 @@ $.Controller("Funcit.Codewrapper", {
 	highlightStatement: function(lineCount, stmnt) {
 		// skip the first statement, because it will always be the last synchronous statement
 		if (this.isFirstStatement) {
+			console.log("cancel "+stmnt.line);
 			this.isFirstStatement = false;
 			return;
 		}
-		
+			console.log("run "+stmnt.line);
 		var count = 0;
 		if(this.lineCounter[lineCount.toString()]){
 			count = this.lineCounter[lineCount.toString()];
@@ -90,6 +91,7 @@ $.Controller("Funcit.Codewrapper", {
 			$st = chains.eq(count);
 			
 		if(!$st.length) return;
+		console.log("run2 "+stmnt.line);
 		var start = {line: $st[0].line, from: $st[0].thru},
 			end = {line: $st[0].line, from: $st[0].thru+$st[0].second.length};
 			

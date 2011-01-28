@@ -121,6 +121,10 @@ $.Controller("Funcit.Editor",{
 	tests : function(){
 		return this.find({type: "(identifier)", value : 'test'});
 	},
+	// gets the test with the given name
+	test : function(testName){
+		return this.find({type: "(identifier)", value : 'test'});
+	},
 	// going to set the cursor
 	//   if we are in 'record' mode, get current location, and run test
 	//   

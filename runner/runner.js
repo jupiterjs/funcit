@@ -18,9 +18,6 @@ steal.plugins('jquery','funcunit','funcit/parse')
 	 */
 	$.fn.funcit_runner = function(text, cb){
 		
-			//'restart' QUnit
-			//eval text
-		//QUnit.init();
 		var p = new Funcit.Parse(text),
 			stated = p.stated(),
 			ordered = p.ordered(),
