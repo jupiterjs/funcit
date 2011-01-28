@@ -28,7 +28,10 @@ $.Controller("Funcit.Codewrapper", {
 		}
 		var testName = stmntOrFunc[0].func.parent[0].value;
 		QUnit.config.filters = [testName];
-		this.run(test);
+		
+		// add the opaque mask
+		this.mask = $("iframe:first").mask().addClass('syncing');
+		this.run(test, this.callback('runDone'));
 	},
 	toggleRecord: function(record){
 		var el = this.find(".rec");
@@ -43,12 +46,13 @@ $.Controller("Funcit.Codewrapper", {
 	openResultsTab: function(){
 		$("#tabs li:eq(1)").trigger("activate");
 	},
-	run: function(test){
+	run: function(test, doneCb){
 		this.toggleRecord(false);
-		this.runnerTimeout = null;
-		this.isFirstStatement = true;
 		this.lineCounter = {};
-		$("iframe").funcit_runner(test, this.callback('runnerCallback'));
+		$("iframe").funcit_runner(test, this.callback('runnerCallback'), doneCb);
+	},
+	runDone: function(){
+		this.mask.remove();
 	},
 	// start running a test because someone clicked the run button
 	".runtest click": function(el, ev){
@@ -62,36 +66,29 @@ $.Controller("Funcit.Codewrapper", {
 	 * Assumes you have only one module.  Grabs that module and returns the string of its text
 	 */
 	// called by the runner module right before a statement is run
-	// this will set up callbacks so that asynchrounous statements are highlighted, but synchronous ones are not
-	runnerCallback: function(lineCount, stmnt){
-		// only highlight statements for asynchronous stuff (actions and waits)
-		if(this.runnerTimeout){
-			clearTimeout(this.runnerTimeout);
-			this.runnerTimeout = null;
-		}
-		this.runnerTimeout = setTimeout(this.callback('highlightStatement', lineCount, stmnt), 0);
-	},
 	// highlights the statement in the textarea as its being run
-	highlightStatement: function(lineCount, stmnt) {
-		// skip the first statement, because it will always be the last synchronous statement
-		if (this.isFirstStatement) {
-			console.log("cancel "+stmnt.line);
-			this.isFirstStatement = false;
-			return;
-		}
-			console.log("run "+stmnt.line);
+	runnerCallback: function(lineCount, stmnt){
+		console.log("run0 "+stmnt.line);
+		// any line that should be highlighted will call the runnerCallback >1x
+		// the first pass should be ignored (the synchronous pass)
+		// the second pass should run the highlight
 		var count = 0;
 		if(this.lineCounter[lineCount.toString()]){
 			count = this.lineCounter[lineCount.toString()];
 		}
 		this.lineCounter[lineCount.toString()] = count+1;
 		
+		// skip the first statement, because it will always be the synchronous statement
+		if (count == 0) {
+			return;
+		}
+		
 		// places cursor at the end of the given statement
 		var chains = (new Funcit.Parse(stmnt)).statement().chains(),
-			$st = chains.eq(count);
+			$st = chains.eq(count-1);
 			
 		if(!$st.length) return;
-		console.log("run2 "+stmnt.line);
+		
 		var start = {line: $st[0].line, from: $st[0].thru},
 			end = {line: $st[0].line, from: $st[0].thru+$st[0].second.length};
 			

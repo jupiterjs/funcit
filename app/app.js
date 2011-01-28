@@ -3,7 +3,7 @@ steal
 	.then(function($){
 		//steal.less('app')
 	})
-	.plugins('jquery/controller','funcunit/syn', 
+	.plugins('jquery/controller/subscribe','funcunit/syn', 
 		'funcit/highlight', 'mxui/fittable', 'jquery/dom/form_params', 
 		'jquery/controller/subscribe')
 	.then('wait_menu')
@@ -75,6 +75,37 @@ steal
 				.mousemove(this.callback('onMousemove'))
 				.mouseup(this.callback('onMouseup'))
 				.change(this.callback('onChange'))
+				.bind("DOMAttrModified",this.callback('onModified'))
+				.bind("DOMNodeInserted",function(ev){
+					//console.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
+				})
+				.bind("DOMNodeRemoved",function(ev){
+					//console.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
+				})
+		},
+		onModified: function(ev){
+			var newVal = ev.originalEvent.newValue,
+				prop = ev.originalEvent.attrName;
+			console.log(prop, newVal, ev.target);
+			if(prop == 'style'){
+				var attrArr = newVal.split(":"),
+					attr = attrArr[0],
+					val = attrArr[1];
+				if(attr == 'display'){
+					if (/block/.test(val)) {
+						this.publish('funcit.suggestion',{
+							el: ev.target,
+							type: 'visible'
+						})
+					}
+					else if (/none/.test(val)) {
+						this.publish('funcit.suggestion',{
+							el: ev.target,
+							type: 'invisible'
+						})
+					}
+				}
+			}
 		},
 		onMousemove : function(){
 			this.mousemoves++;

@@ -274,7 +274,7 @@ iframe {
 			cursor: pointer;
 			text-shadow: 0px 1px white;
 		}
-		a:hover, .command:hover {
+		a:hover, .command:hover, .command.suggestion {
 			background: url(images/backgrounds/command_hover.png);
 			color: #303452;
 		}
@@ -294,16 +294,16 @@ iframe {
 			font-weight: bold;
 			display: none;
 		}
-		.command:hover a {
+		.command:hover a, .command.suggestion a {
 			display: block;
 		}
-		.command a:hover {
+		.command a:hover, .command.suggestion a {
 			background-position: left -17px;
 		}
 		.command a:active {
 			background-position: left -34px;
 		}
-		.command a.w {
+		.command a.wait {
 			right: 21px;
 		}
 		h3{
@@ -494,4 +494,9 @@ li {
 	right: 5px;
 	font-weight: bold;
 	text-shadow: 0px 1px white;
+}
+
+.syncing{
+	opacity:0.7;
+	background-color:#eeeeee;
 }
