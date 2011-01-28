@@ -196,7 +196,7 @@ iframe {
 }
 
 #controls {
-	width: 450px;
+	width: 490px;
 	float: left;
 	position: relative;
 	li {
@@ -247,7 +247,7 @@ iframe {
 		}
 	}
 	.tabpane {
-		width: 450px;
+		width: 490px;
 		height: 242px;
 		float: left;
 	}
@@ -260,7 +260,7 @@ iframe {
 	}
 	.commandcol {
 		float: left;
-		width:111px;
+		width:121px;
 		border-right: 1px solid #aaaaaa;
 		border-left: 1px solid #f7f7f7;
 		a, .command {
@@ -324,17 +324,17 @@ iframe {
 			border-top: 1px solid #f7f7f7;
 			line-height: 19px;
 			float: left;
-			width: 111px
+			width: 121px
 		}
 	}
 	#actions {
 		border-left: none;
 	}
 	#waits_getters {
-		width: 224px;
+		width: 244px;
 		border-right: none;
 		#right_commands {
-			width: 110px;
+			width: 120px;
 			margin-left: 2px;
 			background-image: url(images/backgrounds/right_commands.png);
 			background-position: right top;
@@ -368,16 +368,22 @@ iframe {
 		margin-left: 6px;
 		margin-top: 4px;
 	}
-	.recording:hover:before, .sync:hover:before {
+	.recording:hover:before {
 		content: url(images/backgrounds/recording_spinner_light.gif);
 	}
 	.sync{
-		width:54px;
+		width:79px;
 		float:left;
-		height:22px;
-		background: #00727F;
-		.rounded-corners(5px);
+		height:20px;
+		background: url(images/backgrounds/sync.png);
 		margin: 4px 0 0 5px;
+		cursor: pointer;
+	}
+	.sync:hover {
+		background-position: left -20px;
+	}
+	.sync:active {
+		background-position: left -40px;
 	}
 	.wrapper{
 		margin-top: 31px;
@@ -479,7 +485,7 @@ li {
 #help {
 	width: 150px;
 	position: absolute;
-	left: 293px;
+	left: 333px;
 	text-align: right;
 	top: 9px;
 	font-size: 11px;
@@ -497,6 +503,47 @@ li {
 }
 
 .syncing{
-	opacity:0.7;
-	background-color:#eeeeee;
+	background-color: rgba(0,0,0,0.8);
+	position: absolute;
+}
+.message {
+	background: url(images/backgrounds/black_bar.png);
+	color:white;
+	width: 230px;
+	height: 55px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -125px;
+	margin-top: -27px;
+	img {
+		display: block;
+		float: left;
+		margin: 10px 0 0 10px;
+	}
+	div {
+		float: right;
+		background: url(images/backgrounds/black_bar.png);
+		background-position: right top;
+		height: 55px;
+		margin-right: -20px;
+		line-height: 53px;
+		font-size: 22px;
+		width: 200px;
+	}
+}
+#tooltip-click {
+	height: 36px;
+	padding: 57px 15px 0 15px;
+	text-align: center;
+	font-size:10px;
+	color: white;
+	background: url(images/backgrounds/tooltip_click.png);
+	position: absolute;
+	left: 150px;
+	bottom: 264px;
+	width: 170px;
+	z-index: 999;
+	line-height: 16px;
+	text-shadow: 0px 1px #000;
 }
