@@ -52,7 +52,7 @@ $.Controller("Funcit.Codewrapper", {
 		$("iframe").funcit_runner(test, this.callback('runnerCallback'), this.callback('runDone'));
 	},
 	runDone: function(){
-		this.mask.hide().removeClass('syncing');
+		this.mask.remove();
 	},
 	// start running a test because someone clicked the run button
 	".runtest click": function(el, ev){
