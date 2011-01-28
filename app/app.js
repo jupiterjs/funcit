@@ -86,7 +86,7 @@ steal
 		onModified: function(ev){
 			var newVal = ev.originalEvent.newValue,
 				prop = ev.originalEvent.attrName;
-			console.log(prop, newVal, ev.target);
+			//console.log(prop, newVal, ev.target);
 			if(prop == 'style'){
 				var attrArr = newVal.split(":"),
 					attr = attrArr[0],

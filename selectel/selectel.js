@@ -10,6 +10,7 @@ $.Controller("Funcit.Selectel", {
 			this.mask.mouseup(this.callback('mask_mouseup'));
 		},
 		update: function(callback){
+			$("#tooltip-click").show();
 			this.document = this.element[0].contentDocument;
 			this.mask.show();
 			this.lastInspecting = 0;
@@ -20,6 +21,7 @@ $.Controller("Funcit.Selectel", {
 		},
 		mask_mousemove: function(ev){
 			// throttle this function a little
+			$("#tooltip-click").hide();
 	        if (new Date().getTime() - this.lastInspecting > 30) {
 				this.mask.hide();
 				this.highlightedEl = this.document.elementFromPoint(ev.clientX, ev.clientY);
