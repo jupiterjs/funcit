@@ -26,12 +26,12 @@
 		<h3>Waits / Getters</h3>
 		<ul>
 			<%for(var i=0; i<11; i++){%>
-			<li><span class="command"><span class='name'><%=waits[i]%></span><a href="#" class="wait">W</a><a href="#" class="getter">G</a></span></li>
+			<li><span class="command <%=waits[i]%>"><span class='name'><%=waits[i]%></span><a href="#" class="wait">W</a><a href="#" class="getter">G</a></span></li>
 			<%}%>
 		</ul>
 		<ul id="right_commands">
 			<%for(var i=11; i<waits.length; i++){%>
-			<li><span class="command"><span class='name'><%=waits[i]%></span><a href="#" class="wait">W</a><a href="#" class="getter">G</a></span></li>
+			<li><span class="command <%=waits[i]%>"><span class='name'><%=waits[i]%></span><a href="#" class="wait">W</a><a href="#" class="getter">G</a></span></li>
 			<%}%>
 		</ul>
 	</div>

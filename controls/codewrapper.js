@@ -49,7 +49,7 @@ $.Controller("Funcit.Codewrapper", {
 	run: function(test, doneCb){
 		this.toggleRecord(false);
 		this.lineCounter = {};
-		$("iframe").funcit_runner(test, this.callback('runnerCallback'), this.callback('runDone'));
+		$("iframe").funcit_runner(test, this.callback('runnerCallback'), doneCb);
 	},
 	runDone: function(){
 		this.mask.remove();

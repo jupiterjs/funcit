@@ -17,7 +17,9 @@ steal.plugins('jquery','funcunit','funcit/parse')
 	 * @param {Object} cb
 	 */
 	$.fn.funcit_runner = function(text, cb, doneCb){
-		QUnit.done = doneCb;
+		if (doneCb) {
+			QUnit.done = doneCb;
+		}
 		var p = new Funcit.Parse(text),
 			stated = p.stated(),
 			ordered = p.ordered(),
