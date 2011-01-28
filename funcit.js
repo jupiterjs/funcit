@@ -34,6 +34,7 @@ steal
 			$("<div />").appendTo(document.body).funcit_wait_menu()
 			$("#tabs").mxui_tabs();
 			$("#results").funcit_results();
+			$("iframe:first").funcit_selectel();
 			
 			editor.funcit_editor('val',"//funcit/views/init.ejs",{
 				module : data,

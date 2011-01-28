@@ -28,7 +28,10 @@ $.Controller("Funcit.Codewrapper", {
 		}
 		var testName = stmntOrFunc[0].func.parent[0].value;
 		QUnit.config.filters = [testName];
-		this.run(test);
+		
+		// add the opaque mask
+		this.mask = $("iframe:first").mask().addClass('syncing');
+		this.run(test, this.callback('runDone'));
 	},
 	toggleRecord: function(record){
 		var el = this.find(".rec");
@@ -43,10 +46,13 @@ $.Controller("Funcit.Codewrapper", {
 	openResultsTab: function(){
 		$("#tabs li:eq(1)").trigger("activate");
 	},
-	run: function(test){
+	run: function(test, doneCb){
 		this.toggleRecord(false);
 		this.lineCounter = {};
-		$("iframe").funcit_runner(test, this.callback('runnerCallback'));
+		$("iframe").funcit_runner(test, this.callback('runnerCallback'), this.callback('runDone'));
+	},
+	runDone: function(){
+		this.mask.hide().removeClass('syncing');
 	},
 	// start running a test because someone clicked the run button
 	".runtest click": function(el, ev){
