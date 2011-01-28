@@ -1,0 +1,40 @@
+<label id="help">Enable help <input type="checkbox" /></label>
+<div class='tabarea'>
+	<ul id="tabs">
+        <li tabindex='1' class='selected active'><a><span>Commands</span></a></li>
+        <li tabindex='2'><a><span>Results</span></a></li>
+    </ul>
+</div>
+<div class='tabpane' id="commands">
+	<div id="actions" class='commandcol'>
+		<h3>Actions</h3>
+		<ul>
+			<%for(var i=0; i<actions.length; i++){%>
+			<li><a href="#"><%=actions[i]%></a></li>
+			<%}%>
+		</ul>
+	</div>
+	<div id="assert" class='commandcol'>
+		<h3>Assert</h3>
+		<ul>
+			<%for(var i=0; i<asserts.length; i++){%>
+			<li><a href="#"><%=asserts[i]%></a></li>
+			<%}%>
+		</ul>
+	</div>
+	<div id="waits_getters" class='commandcol'>
+		<h3>Waits / Getters</h3>
+		<ul>
+			<%for(var i=0; i<11; i++){%>
+			<li><span class="command"><span class='name'><%=waits[i]%></span><a href="#" class="wait">W</a><a href="#" class="getter">G</a></span></li>
+			<%}%>
+		</ul>
+		<ul id="right_commands">
+			<%for(var i=11; i<waits.length; i++){%>
+			<li><span class="command"><span class='name'><%=waits[i]%></span><a href="#" class="wait">W</a><a href="#" class="getter">G</a></span></li>
+			<%}%>
+		</ul>
+	</div>
+</div>
+<div id='results' class='tabpane'>
+</div>
