@@ -72,8 +72,6 @@ $.Controller("Funcit.Codewrapper", {
 		}
 		this.lineCounter[lineCount.toString()] = count+1;
 		
-		console.log(lineCount, count, stmnt.line, this.lineCounter)
-		
 		// skip the first statement, because it will always be the synchronous statement
 		if (count == 0) {
 			return;
