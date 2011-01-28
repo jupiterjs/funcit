@@ -10,30 +10,53 @@ $.Controller("Funcit.Codewrapper", {
 	".rec click": function(el){
 		this.toggleRecord(!el.hasClass("recording"));
 	},
-	
+	// runs test up to current cursor's statement
+	// grabs the entire textarea string up to the cursor and passes this testname as a filter to QUnit
+	// since the text isn't modified, the highlighting still works
+	// TODO there has to be a better way to do this
+	".sync click": function(){
+		//get an empty function or last statement
+		var stmntOrFunc = this.editor.funcStatement();
+		
+		if(stmntOrFunc[0].arity == 'function'){
+			// handle this
+		}else{ // statement
+			// get test up to current statement
+			var endChar = stmntOrFunc.end(), 
+				test = this.textarea.val().substr(0,endChar)+"\n});";
+				
+		}
+		var testName = stmntOrFunc[0].func.parent[0].value;
+		QUnit.config.filters = [testName];
+		this.run(test);
+	},
 	toggleRecord: function(record){
 		var el = this.find(".rec");
 		if(!record){ // turn off recording
-			el.text("").removeClass("recording")
+			el.removeClass("recording")
 			this.publish("funcit.record", {recording: false});
 		} else {
-			el.text("").addClass("recording")
+			el.addClass("recording")
 			this.publish("funcit.record", {recording: true});
 		}
 	},
 	openResultsTab: function(){
 		$("#tabs li:eq(1)").trigger("activate");
 	},
-	// start running a test because someone clicked the run button
-	".runtest click": function(){
+	run: function(test){
 		this.toggleRecord(false);
-		this.openResultsTab();
 		this.runnerTimeout = null;
 		this.isFirstStatement = true;
 		this.lineCounter = {};
+		$("iframe").funcit_runner(test, this.callback('runnerCallback'));
+	},
+	// start running a test because someone clicked the run button
+	".runtest click": function(el, ev){
+		this.openResultsTab();
 		// get test name
-		//QUnit.config.filters = [testName];
-		$("iframe").funcit_runner(this.textarea.val(), this.callback('runnerCallback'));
+		var testName = el.data('testName');
+		QUnit.config.filters = [testName];
+		this.run(this.textarea.val());
 	},
 	/**
 	 * Assumes you have only one module.  Grabs that module and returns the string of its text
@@ -52,10 +75,11 @@ $.Controller("Funcit.Codewrapper", {
 	highlightStatement: function(lineCount, stmnt) {
 		// skip the first statement, because it will always be the last synchronous statement
 		if (this.isFirstStatement) {
+			console.log("cancel "+stmnt.line);
 			this.isFirstStatement = false;
 			return;
 		}
-		
+			console.log("run "+stmnt.line);
 		var count = 0;
 		if(this.lineCounter[lineCount.toString()]){
 			count = this.lineCounter[lineCount.toString()];
@@ -67,6 +91,7 @@ $.Controller("Funcit.Codewrapper", {
 			$st = chains.eq(count);
 			
 		if(!$st.length) return;
+		console.log("run2 "+stmnt.line);
 		var start = {line: $st[0].line, from: $st[0].thru},
 			end = {line: $st[0].line, from: $st[0].thru+$st[0].second.length};
 			
@@ -88,15 +113,16 @@ $.Controller("Funcit.Codewrapper", {
 		var tests = this.editor.tests(),
 			lineheight = this.rowHeight,
 			wrapper = this.find(".wrapper"), 
-			buttonTop;
+			buttonTop, testName;
 			
 		// TODO implement caching for this, so you're not removing/creating these buttons every time
 		this.find(".runtest").remove();
 		tests.each(function(i, val){
 			buttonTop = (val.line-1)*lineheight-4;
+			testName = val.parent.second[0].value;
 			$("<div class='runtest'></div>")
 				.appendTo(wrapper)
-				.data('testName', 'soemthing')
+				.data('testName', testName)
 				.css('top', buttonTop);
 		})
 	}
