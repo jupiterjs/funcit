@@ -31,7 +31,11 @@ $.Controller("Funcit.Codewrapper", {
 		
 		// add the opaque mask
 		this.mask = $("iframe:first").mask().addClass('syncing').html('<div class="message"><img src="images/backgrounds/big_spinner.gif" /><div>Syncing app state</div></div>');
-		this.run(test, this.callback('runDone'));
+		this.run(test, this.callback('syncDone'));
+	},
+	syncDone: function(){
+		this.toggleRecord(true);
+		this.mask.remove();
 	},
 	toggleRecord: function(record){
 		var el = this.find(".rec");
@@ -51,16 +55,16 @@ $.Controller("Funcit.Codewrapper", {
 		this.lineCounter = {};
 		$("iframe").funcit_runner(test, this.callback('runnerCallback'), doneCb);
 	},
-	runDone: function(){
-		this.mask.remove();
-	},
 	// start running a test because someone clicked the run button
 	".runtest click": function(el, ev){
 		this.openResultsTab();
 		// get test name
 		var testName = el.data('testName');
 		QUnit.config.filters = [testName];
-		this.run(this.textarea.val());
+		this.run(this.textarea.val(), this.callback('runtestDone'));
+	},
+	runtestDone: function(){
+		this.toggleRecord(true);
 	},
 	/**
 	 * Assumes you have only one module.  Grabs that module and returns the string of its text

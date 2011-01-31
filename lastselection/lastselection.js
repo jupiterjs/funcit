@@ -74,12 +74,19 @@ $.Controller("Lastselection",{
 				left : off.left+this.padding.left+(start.from - 1)*this.dims.width
 			})
 	},
+	"mouseenter": function(){
+		this.hideHighlight();
+	},
+	
+	hideHighlight: function(){
+		this.highlightBox.hide();
+	},
 	
 	"focusin" : function(){
 		this.focused = true;
 		this.last = null;
 		this.cursor.hide();
-		this.highlightBox.hide();
+		this.hideHighlight();
 	},
 	"focusout" : function(){
 		this.focused = false;

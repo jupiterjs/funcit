@@ -242,6 +242,9 @@ $.Controller("Funcit.Editor",{
 		var ta = this.element,
 			current = this.val(),
 			sel = this.selection();
+			
+		this.element.lastselection('hideHighlight');
+			
 		if(!start){
 			start = sel.start
 		}
