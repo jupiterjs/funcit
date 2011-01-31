@@ -75,13 +75,13 @@ steal
 				.mousemove(this.callback('onMousemove'))
 				.mouseup(this.callback('onMouseup'))
 				.change(this.callback('onChange'))
-				.bind("DOMAttrModified",this.callback('onModified'))
-				.bind("DOMNodeInserted",function(ev){
-					//console.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
-				})
-				.bind("DOMNodeRemoved",function(ev){
-					//console.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
-				})
+//				.bind("DOMAttrModified",this.callback('onModified'))
+//				.bind("DOMNodeInserted",function(ev){
+//					//console.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
+//				})
+//				.bind("DOMNodeRemoved",function(ev){
+//					//console.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
+//				})
 		},
 		onModified: function(ev){
 			var newVal = ev.originalEvent.newValue,

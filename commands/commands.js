@@ -6,7 +6,16 @@ steal.plugins('jquery/controller/subscribe', 'funcit/selectel')
 $.Controller("Funcit.Commands", 
 	{
 		moreActions: ['open', 'move', 'trigger', 'scroll'],
-		asserts: ['ok', 'equal', 'notEqual', 'deepEqual', 'notDeepEqual', 'strictEqual', 'notStrictEqual', 'raises'],
+		asserts: {
+			'ok': 2, 
+			'equal': 3, 
+			'notEqual': 3, 
+			'deepEqual': 3, 
+			'notDeepEqual': 3, 
+			'strictEqual': 3, 
+			'notStrictEqual': 3, 
+			'raises': 2
+		},
 		waits: ['width', 'height', 'attr', 'position', 'size', 'css', 'innerWidth', 'innerHeight', 'hasClass', 'offset', 'exists',
 				'visible','outerWidth','outerHeight','val','scrollLeft','missing','invisible','text','scrollTop','html'],
 	},
@@ -17,6 +26,12 @@ $.Controller("Funcit.Commands",
 				asserts: this.Class.asserts,
 				actions: this.Class.moreActions
 			})
+		},
+		"#assert li mousedown": function(el, ev){
+			var name = el.text();
+			$("#app").trigger("addEvent",['assert',{
+					type : name
+				}])
 		},
 		".getter click": function(el, ev){
 			this.getterSetter(el, 'getter');

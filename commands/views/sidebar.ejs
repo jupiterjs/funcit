@@ -16,8 +16,8 @@
 	<div id="assert" class='commandcol'>
 		<h3>Assert</h3>
 		<ul>
-			<%for(var i=0; i<asserts.length; i++){%>
-			<li><a href="#"><%=asserts[i]%></a></li>
+			<%for(var assert in asserts){%>
+			<li><a href="#"><%=assert%></a></li>
 			<%}%>
 		</ul>
 	</div>

@@ -192,44 +192,19 @@ $.Controller("Funcit.Editor",{
 		this.chainOrWriteLn(sel,"."+options.type+"("+val+")");
 	},
 	
-	addAssert: function(options, el){
+	addAssert: function(options){
 		var val = options.value||"";
 		if(typeof options.value == "string") {
 			val = "'"+val+"'";
 		}
-		this.write("equals(S('"+$(el).prettySelector()+"')."+options.type+"(), "+val+", '"+
-			options.type+" is correct');")
-	},
-	addChar : function(text, el){
 		
-		var stmntOrFunc = this.funcStatement(),
-			selector = $(el).prettySelector();
+		this.insertStmt(options.type+"()");
 		
-		// if a function
-		if(stmntOrFunc[0].arity == 'function'){
-			//we have an empty function, insert in the 'right' place
-			this.writeInFunc("S('"+selector+"').type("+text+")", stmntOrFunc)
-			
-		}else{
-			var stmnt = stmntOrFunc,
-				indent = this.funcIndent(stmnt.up()[0])
-			if(stmnt.hasSelector(selector)){
-				//check if method calls
-				console.log(stmnt);
-				if(stmnt.first()[0].second == "type"){
-					var firstArg = stmnt.second().eq(0),
-						str = firstArg[0].value,
-						start = firstArg.start();
-					
-					this.insert(str+text, start+1,start+str.length+1);
-				}else{
-					this.insert("\n"+indent+this.indent()+this.indent()+".type(\""+text+"\")", stmnt.ender()+1);
-				}
-			}else{
-				this.insert("\n"+indent+this.indent()+"S('"+selector+"').type(\""+text+"\");",stmnt.end()+1);
-			}
-		}
-		
+//		var sel = this.selection();
+//		this.selection({
+//			start: sel.start - 2,
+//			end: sel.start - 2
+//		});
 	},
 	/**
 	 * Inserts text into the textarea from start to end
@@ -261,11 +236,13 @@ $.Controller("Funcit.Editor",{
 			after = current.substr(end);
 			
 		this.val(before+( "")+text+after);
-		
-		this.selection({
-			start : before.length + text.length,
-			end : before.length + text.length
-		});
+		var self = this;
+		setTimeout(function(){
+			self.selection({
+				start : before.length + text.length,
+				end : before.length + text.length
+			});
+		}, 0);
 		this.element.trigger("keyup")
 	},
 	writeLn : function(text){
@@ -327,6 +304,28 @@ $.Controller("Funcit.Editor",{
 			}else{
 				this.insert("\n"+indent+this.indent()+"S('"+selector+"')"+text+";",stmnt.end()+1)
 			}
+		}
+	},
+	// Add the statement inside a callback function, either:
+	// 	- cursor is in a callback, add it here
+	// 	- add a callback to the previous statement, add it there
+	// 	- add it synchronously to the first line of the test
+	insertStmt : function(text){
+		//get an empty function or last statement
+		var stmntOrFunc = this.funcStatement();
+		
+		// if a function
+		if(stmntOrFunc[0].arity == 'function'){
+			//we have an empty function, insert in the 'right' place
+			this.writeInFunc(text, stmntOrFunc)
+			
+		}else{
+			var stmnt = stmntOrFunc,
+			indent = this.funcIndent(stmnt.up()[0]);
+			var txt = "\n"+indent+this.indent()+text+";",
+				start = stmnt.end()+1;
+			this.insert(txt,start)
+			return txt.length+start;
 		}
 	},
 	selectPos : function(){

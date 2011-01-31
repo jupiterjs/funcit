@@ -19,6 +19,7 @@ $.Controller("Lastselection",{
 			
 			.appendTo(this.element.parent())
 			.width( this.dims.width )
+			.click(this.callback('cursorClick'))
 			.height( this.dims.height ).hide();
 			
 		this.highlightBox = 
@@ -33,6 +34,9 @@ $.Controller("Lastselection",{
 			top: parseInt(this.element.css('padding-top'), 10),
 			left: parseInt(this.element.css('padding-left'), 10)
 		}
+	},
+	cursorClick: function(ev){
+		this.element[0].focus();
 	},
 	update : function(options){
 		if(!this.focused){
