@@ -18,7 +18,7 @@ $.Controller("Funcit.Results", {
 		this.module = name;
 	},
 	test_start: function(name){
-		this.element.append('//funcit/runner/views/test.ejs', {
+		this.element.html('//funcit/runner/views/test.ejs', {
 			test: name,
 			module: this.module
 		})
