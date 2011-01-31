@@ -7,9 +7,9 @@
 <div class='tabpane' id="commands">
 	<div id="actions" class='commandcol'>
 		<h3>Actions</h3>
-		<ul>
+		<ul class="alt">
 			<%for(var i=0; i<actions.length; i++){%>
-			<li><a href="#"><%=actions[i]%></a></li>
+			<li><a href="#" id="action-<%= actions[i] %>"><%=actions[i]%></a></li>
 			<%}%>
 		</ul>
 	</div>
@@ -23,7 +23,7 @@
 	</div>
 	<div id="waits_getters" class='commandcol'>
 		<h3>Waits / Getters</h3>
-		<ul>
+		<ul class="alt">
 			<%for(var i=0; i<11; i++){%>
 			<li><span class="command <%=waits[i]%>"><span class='name'><%=waits[i]%></span><a href="#" class="wait">W</a><a href="#" class="getter">G</a></span></li>
 			<%}%>

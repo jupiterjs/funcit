@@ -329,6 +329,10 @@ iframe {
 			width: 121px
 		}
 	}
+	.commandcol ul.alt {
+		background-image: url(images/backgrounds/commandcol_alt.png);
+		background-color: #dfdfdf;
+	}
 	#actions {
 		border-left: none;
 	}
@@ -508,7 +512,7 @@ li {
 	background-color: rgba(0,0,0,0.8);
 	position: absolute;
 }
-.message {
+.overlay-message {
 	background: url(images/backgrounds/black_bar.png);
 	color:white;
 	width: 230px;
@@ -516,7 +520,7 @@ li {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin-left: -125px;
+	
 	margin-top: -27px;
 	img {
 		display: block;
@@ -527,11 +531,63 @@ li {
 		float: right;
 		background: url(images/backgrounds/black_bar.png);
 		background-position: right top;
+		font-size: 12px;
 		height: 55px;
 		margin-right: -20px;
+		width: 220px;
+		
+	}
+	div.sync-message {
+		font-size: 18px;
+		text-align: center;
+		width: 240px;
 		line-height: 53px;
-		font-size: 22px;
-		width: 200px;
+	}
+}
+.overlay-open-page {
+	width: 400px;
+	margin-left: -200px;
+	div {
+		width: 410px;
+		label {
+			display: block;
+			margin: 8px 0 5px;
+		}
+		input[type="text"] {
+			width: 350px;
+			height: 18px;
+			line-height: 18px;
+			padding: 2px;
+			float: left;
+			display: block;
+			border: none;
+			border-bottom: 1px solid black;
+			-moz-box-shadow: 0px 1px 0px #434343;
+		}
+		input[type="button"] {
+			cursor: pointer;
+			float: left;
+			display: block;
+			border: none;
+			margin-left: 7px;
+			height: 23px;
+			width: 40px;
+			border-top: 1px solid #68ca4a;
+			border-bottom: 1px solid black;
+			-moz-border-radius: 2px;
+			background: -moz-linear-gradient(19% 75% 90deg, #186500, #2AB200);
+			color: white;
+			text-shadow: 0px 1px black;
+			text-transform: uppercase;
+			line-height: 21px;
+			-moz-box-shadow: 0px 1px 0px #434343;
+		}
+		input[type="button"]:hover {
+			background: -moz-linear-gradient(19% 75% 90deg, #2a6b15, #49bd26);
+		}
+		input[type="button"]:active {
+			background: -moz-linear-gradient(19% 75% 90deg, #2AB200, #186500);
+		}
 	}
 }
 #tooltip-click {

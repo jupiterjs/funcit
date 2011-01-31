@@ -16,8 +16,7 @@ $.Controller("Funcit.Commands",
 			'notStrictEqual': 3, 
 			'raises': 2
 		},
-		waits: ['width', 'height', 'attr', 'position', 'size', 'css', 'innerWidth', 'innerHeight', 'hasClass', 'offset', 'exists',
-				'visible','outerWidth','outerHeight','val','scrollLeft','missing','invisible','text','scrollTop','html'],
+		waits: ["attr", "css", "exists", "hasClass", "height", "html", "innerHeight", "innerWidth", "invisible", "missing", "offset", "outerHeight", "outerWidth", "position", "scrollLeft", "scrollTop", "size", "text", "val", "visible", "width"],
 	},
 	{
 		init: function(){
@@ -41,6 +40,13 @@ $.Controller("Funcit.Commands",
 				return this.suggest();
 			}
 			this.getterSetter(el, 'wait');
+		},
+		'#actions #action-open click': function(el, ev){
+			ev.preventDefault();
+			this.loadPrompt('//funcit/commands/views/open.ejs');
+		},
+		loadPrompt: function(view_url){
+			$("iframe:first").mask().addClass('syncing').html(view_url, {});
 		},
 		getterSetter: function(el, category){
 			var name = el.prevAll('.name').text();

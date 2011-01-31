@@ -30,7 +30,7 @@ $.Controller("Funcit.Testbuttons", {
 		QUnit.config.filters = [testName];
 		
 		// add the opaque mask
-		this.mask = $("iframe:first").mask().addClass('syncing').html('<div class="message"><img src="images/backgrounds/big_spinner.gif" /><div>Syncing app state</div></div>');
+		this.mask = $("iframe:first").mask().addClass('syncing').html('<div class="overlay-message"><img src="images/backgrounds/big_spinner.gif" /><div class="sync-message">Syncing app state</div></div>');
 		this.run(test, this.callback('syncDone'));
 	},
 	syncDone: function(){
