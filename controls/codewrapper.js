@@ -90,8 +90,11 @@ $.Controller("Funcit.Codewrapper", {
 		if(!$st.length) return;
 		
 		var start = {line: $st[0].line, from: $st[0].thru},
-			end = {line: $st[0].line, from: $st[0].thru+$st[0].second.length};
+			end = {line: $st[0].line, from: $st[0].thru+$st[0].second.length},
+			endLoc = this.editor.lastCharOfLine(end.line),
+			cursorLoc = {line: end.line, from: endLoc};
 			
+		this.textarea.lastselection('updateCursor', cursorLoc);
 		this.textarea.lastselection('highlight', start, end);
 	},
 	// call the method that adds run buttons

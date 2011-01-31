@@ -83,6 +83,11 @@ $.Controller("Funcit.Editor",{
 		}
 		return this.val().split("\n")[line-1]
 	},
+	// returns the number of the last character in the given line
+	lastCharOfLine: function(line){
+		var linetxt = this.line(line);
+		return linetxt.length+1;
+	},
 	indent : function(line){
 		if(line){
 			var line = this.line(line),

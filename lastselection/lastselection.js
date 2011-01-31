@@ -38,13 +38,20 @@ $.Controller("Lastselection",{
 		if(!this.focused){
 			this.last = options;
 			var loc = $.fn.rowheight.lineLoc(this.element.val(), this.last.start);
-			var off = this.element.offset();
-	
-			this.cursor.show().offset({
-				top : off.top+this.padding.top+(loc.line - 1)*this.dims.height,
-				left : off.left+this.padding.left+(loc.from - 1)*this.dims.width
-			})
+			this.updateCursor(loc);
 		}
+	},
+	/**
+	 * Update the cursor with the given location
+	 * @param {Object} loc some object like {line: 3, from: 4}
+	 */
+	updateCursor: function(loc){
+		var off = this.element.offset();
+
+		this.cursor.show().offset({
+			top : off.top+this.padding.top+(loc.line - 1)*this.dims.height,
+			left : off.left+this.padding.left+(loc.from - 1)*this.dims.width
+		})
 	},
 	/**
 	 * 
