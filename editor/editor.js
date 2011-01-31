@@ -217,14 +217,19 @@ $.Controller("Funcit.Editor",{
 		}else{
 			var stmnt = stmntOrFunc;
 			// if statement is an S and doesn't have a callback function, add one
-			this.openCallbackFunc(stmnt, text);
+			var s = stmnt.S(),
+				isS = s.length > 0;
+			if (isS) {
+				this.openCallbackFunc(stmnt, text);
+			}
+			else{
+				var indent = this.funcIndent(stmnt.up()[0]),
+					txt = "\n"+indent+indent+text+";",
+					start = stmnt.end()+1;
+					
+				this.insert(txt,start);
+			}
 			 
-			var indent = this.funcIndent(stmnt.up()[0]),
-				txt = "\n"+indent+this.indent()+text+";",
-				start = stmnt.end()+1;
-				
-			//this.insert(txt,start)
-			return txt.length+start;
 		}
 		
 //		var sel = this.selection();
@@ -239,9 +244,6 @@ $.Controller("Funcit.Editor",{
 	 * @param {Object} stmnt
 	 */
 	openCallbackFunc: function(stmnt, text){
-		var s = stmnt.S(),
-			isS = s.length > 0;
-		if(!isS) return;
 		var indent = this.funcIndent(stmnt[0]);
 		// if theres another argument, add a comma
 		var insertTxt = "";
@@ -361,7 +363,8 @@ $.Controller("Funcit.Editor",{
 	 */
 	funcStatement : function(options){
 		options = options || {};
-		var func = this.func(),
+		var allfuncs = this.func(),
+			func = allfuncs.last(),
 			last,
 			val;
 		if(func.length){
@@ -377,7 +380,7 @@ $.Controller("Funcit.Editor",{
 		//go through the current function's statements, find the 'last' one.  Add after its end.
 		var blocks = func.block(), 
 			loc,
-			last;
+			last = blocks.length ? blocks.last() : func;
 		for(var i =0; i < blocks.length ; i++){
 			loc = blocks.eq(i).end()
 			if(loc > selection.start){			
