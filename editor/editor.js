@@ -197,14 +197,59 @@ $.Controller("Funcit.Editor",{
 		if(typeof options.value == "string") {
 			val = "'"+val+"'";
 		}
+		var text = options.type+"()";
 		
-		this.insertStmt(options.type+"()");
+		// Add the statement inside a callback function, either:
+		// 	- cursor is in a callback, add it here
+		// 	- add a callback to the previous statement, add it there
+		// 	- add it synchronously to the first line of the test
+		
+		//get an empty function or last statement
+		var stmntOrFunc = this.funcStatement({
+			previous: true
+		});
+		
+		// if a function
+		if(stmntOrFunc[0].arity == 'function'){
+			//we have an empty function, insert in the 'right' place
+			this.writeInFunc(text, stmntOrFunc)
+			
+		}else{
+			var stmnt = stmntOrFunc;
+			// if statement is an S and doesn't have a callback function, add one
+			this.openCallbackFunc(stmnt, text);
+			 
+			var indent = this.funcIndent(stmnt.up()[0]),
+				txt = "\n"+indent+this.indent()+text+";",
+				start = stmnt.end()+1;
+				
+			//this.insert(txt,start)
+			return txt.length+start;
+		}
 		
 //		var sel = this.selection();
 //		this.selection({
 //			start: sel.start - 2,
 //			end: sel.start - 2
 //		});
+	},
+	/**
+	 * if the statement begins with an S, it creates a function as its last 
+	 * parameter and places the cursor inside of it
+	 * @param {Object} stmnt
+	 */
+	openCallbackFunc: function(stmnt, text){
+		var s = stmnt.S(),
+			isS = s.length > 0;
+		if(!isS) return;
+		var indent = this.funcIndent(stmnt[0]);
+		// if theres another argument, add a comma
+		var insertTxt = "";
+		if(stmnt.second().length){
+			insertTxt += ", "
+		}
+		insertTxt += "function(val){\n"+indent+indent+text+";\n"+indent+"}";
+		this.insert(insertTxt, stmnt.end()-1);
 	},
 	/**
 	 * Inserts text into the textarea from start to end
@@ -306,32 +351,16 @@ $.Controller("Funcit.Editor",{
 			}
 		}
 	},
-	// Add the statement inside a callback function, either:
-	// 	- cursor is in a callback, add it here
-	// 	- add a callback to the previous statement, add it there
-	// 	- add it synchronously to the first line of the test
-	insertStmt : function(text){
-		//get an empty function or last statement
-		var stmntOrFunc = this.funcStatement();
-		
-		// if a function
-		if(stmntOrFunc[0].arity == 'function'){
-			//we have an empty function, insert in the 'right' place
-			this.writeInFunc(text, stmntOrFunc)
-			
-		}else{
-			var stmnt = stmntOrFunc,
-			indent = this.funcIndent(stmnt.up()[0]);
-			var txt = "\n"+indent+this.indent()+text+";",
-				start = stmnt.end()+1;
-			this.insert(txt,start)
-			return txt.length+start;
-		}
-	},
 	selectPos : function(){
 		return  lineLoc(this.val(), this.selection().start)
 	},
-	funcStatement : function(){
+	/**
+	 * 
+	 * @param {Boolean} previous if true, gets the previous statement, otherwise gets the 
+	 * next statement from the cursor position 
+	 */
+	funcStatement : function(options){
+		options = options || {};
 		var func = this.func(),
 			last,
 			val;
@@ -344,15 +373,20 @@ $.Controller("Funcit.Editor",{
 		
 		//now insert a line where we are
 		var selection = this.selection();
-		func = this.func();
 		
 		//go through the current function's statements, find the 'last' one.  Add after its end.
-		var blocks = func.block();
+		var blocks = func.block(), 
+			loc,
+			last;
 		for(var i =0; i < blocks.length ; i++){
-			var loc = blocks.eq(i).end() // charLoc(val, blocks[i].end );
-			if(loc > selection.start){
+			loc = blocks.eq(i).end()
+			if(loc > selection.start){			
+				if (options.previous) {
+					return last;
+				}
 				return blocks.eq(i);
 			}
+			last = blocks.eq(i);
 		}
 		return blocks.length ? blocks.last() : func;
 	},
