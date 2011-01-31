@@ -1,10 +1,9 @@
 steal.plugins('jquery/controller/subscribe', 'funcit/selectel')
-	.then('codewrapper')
 	.then(function($){
 /**
  * Controls the command tab and inserting waits/getters/asserts into the test.
  */
-$.Controller("Funcit.Controls", 
+$.Controller("Funcit.Commands", 
 	{
 		moreActions: ['open', 'move', 'trigger', 'scroll'],
 		asserts: ['ok', 'equal', 'notEqual', 'deepEqual', 'notDeepEqual', 'strictEqual', 'notStrictEqual', 'raises'],
@@ -13,7 +12,7 @@ $.Controller("Funcit.Controls",
 	},
 	{
 		init: function(){
-			this.element.html('//funcit/controls/views/sidebar.ejs', {
+			this.element.html('//funcit/commands/views/sidebar.ejs', {
 				waits: this.Class.waits,
 				asserts: this.Class.asserts,
 				actions: this.Class.moreActions

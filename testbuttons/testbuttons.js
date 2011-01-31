@@ -1,7 +1,7 @@
 steal.plugins('jquery/controller', 'jquery/controller/subscribe')
 	.then(function($){
 
-$.Controller("Funcit.Codewrapper", {
+$.Controller("Funcit.Testbuttons", {
 	init: function(){
 		this.textarea = this.find('textarea');
 		this.editor = $('#editor').controllers(Funcit.Editor)[0];
