@@ -220,7 +220,7 @@ $.Controller("Funcit.Editor",{
 			var s = stmnt.S(),
 				isS = s.length > 0;
 			if (isS) {
-				this.openCallbackFunc(stmnt, text);
+				this.addToCallbackFunc(stmnt, text);
 			}
 			else{
 				var indent = this.funcIndent(stmnt.up()[0]),
@@ -239,19 +239,35 @@ $.Controller("Funcit.Editor",{
 //		});
 	},
 	/**
-	 * if the statement begins with an S, it creates a function as its last 
-	 * parameter and places the cursor inside of it
+	 * If the statement begins with an S, it creates a function as its last 
+	 * parameter and places the cursor inside of it.  If this statement already 
+	 * has a callback, it adds the new statement inside of the callback.
 	 * @param {Object} stmnt
 	 */
-	openCallbackFunc: function(stmnt, text){
-		var indent = this.funcIndent(stmnt[0]);
-		// if theres another argument, add a comma
-		var insertTxt = "";
-		if(stmnt.second().length){
-			insertTxt += ", "
+	addToCallbackFunc: function(stmnt, text){
+		// does this statement have a callback?
+		// check its last argument
+		var lastArg = stmnt.second().last(),
+			indent = this.funcIndent(stmnt[0]),
+			insertTxt = "";
+		if(lastArg.length && lastArg[0].arity == "function"){
+			// grab the last statement, if there is one
+			var lastInFunc = lastArg.block().last(),
+				end = lastArg.end();
+			if(lastInFunc.length){
+				end = lastInFunc.end()+1;
+			}
+			insertTxt += "\n"+indent+indent+text+";";
+			this.insert(insertTxt, end);
+		} else {
+			// create the callback
+			// if theres another argument, add a comma
+			if(stmnt.second().length){
+				insertTxt += ", ";
+			}
+			insertTxt += "function(val){\n"+indent+indent+text+";\n"+indent+"}";
+			this.insert(insertTxt, stmnt.end()-1);
 		}
-		insertTxt += "function(val){\n"+indent+indent+text+";\n"+indent+"}";
-		this.insert(insertTxt, stmnt.end()-1);
 	},
 	/**
 	 * Inserts text into the textarea from start to end
@@ -379,11 +395,13 @@ $.Controller("Funcit.Editor",{
 		
 		//go through the current function's statements, find the 'last' one.  Add after its end.
 		var blocks = func.block(), 
-			loc,
+			blockEnd,
+			blockStart,
 			last = blocks.length ? blocks.last() : func;
 		for(var i =0; i < blocks.length ; i++){
-			loc = blocks.eq(i).end()
-			if(loc > selection.start){			
+			blockEnd = blocks.eq(i).end();
+			blockEnd = blocks.eq(i).start();
+			if(blockEnd > selection.start && blockStart <= selection.start){
 				if (options.previous) {
 					return last;
 				}
