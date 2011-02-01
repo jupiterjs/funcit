@@ -26,7 +26,7 @@ $.Controller("Funcit.Commands",
 				actions: this.Class.moreActions
 			})
 		},
-		"#assert li mousedown": function(el, ev){
+		"#assert li click": function(el, ev){
 			var name = el.text();
 			$("#app").trigger("addEvent",['assert',{
 					type : name

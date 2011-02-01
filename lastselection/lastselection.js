@@ -8,7 +8,6 @@ steal.plugins('jquery/controller',
 $.Controller("Lastselection",{
 	init : function(){
 		var pre = $("<pre><span>W</span></pre>").appendTo(this.element.parent());
-		console.log(this.element.rowheight())
 		this.dims = {
 			height: this.element.rowheight(),
 			width : pre.find('span').width()
@@ -19,7 +18,7 @@ $.Controller("Lastselection",{
 			
 			.appendTo(this.element.parent())
 			.width( this.dims.width )
-			.click(this.callback('cursorClick'))
+			.click(this.callback('showCursor'))
 			.height( this.dims.height ).hide();
 			
 		this.highlightBox = 
@@ -35,9 +34,6 @@ $.Controller("Lastselection",{
 			left: parseInt(this.element.css('padding-left'), 10)
 		}
 	},
-	cursorClick: function(ev){
-		this.element[0].focus();
-	},
 	update : function(options){
 		if(!this.focused){
 			this.last = options;
@@ -51,7 +47,6 @@ $.Controller("Lastselection",{
 	 */
 	updateCursor: function(loc){
 		var off = this.element.offset();
-
 		this.cursor.show().offset({
 			top : off.top+this.padding.top+(loc.line - 1)*this.dims.height,
 			left : off.left+this.padding.left+(loc.from - 1)*this.dims.width
@@ -80,21 +75,28 @@ $.Controller("Lastselection",{
 	},
 	"mouseenter": function(){
 		this.hideHighlight();
+		this.showCursor();
 	},
 	
 	hideHighlight: function(){
 		this.highlightBox.hide();
 	},
 	
-	"focusin" : function(){
+	showCursor: function(ev){
+		var val = this.val()
+		this.element.selection(val.start)
+	},
+	focusin : function(){
 		this.focused = true;
 		this.last = null;
 		this.cursor.hide();
 		this.hideHighlight();
 	},
-	"focusout" : function(){
+	// called after cursor is gone, can't get a selection
+	focusout : function(){
 		this.focused = false;
-		this.update(this.element.selection());
+		var sel = this.element.selection();
+		this.update(sel);
 	},
 	val : function(){
 		return this.last || this.element.selection();
