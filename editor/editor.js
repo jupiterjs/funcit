@@ -197,7 +197,8 @@ $.Controller("Funcit.Editor",{
 		if(typeof options.value == "string") {
 			val = "'"+val+"'";
 		}
-		var text = options.type+"()";
+		// * the location where insert will place the cursor
+		var text = options.type+"(*)";
 		
 		// Add the statement inside a callback function, either:
 		// 	- cursor is in a callback, add it here
@@ -223,20 +224,18 @@ $.Controller("Funcit.Editor",{
 				this.addToCallbackFunc(stmnt, text);
 			}
 			else{
-				var indent = this.funcIndent(stmnt.up()[0]),
-					txt = "\n"+indent+indent+text+";",
+				var indent = this.funcIndent(stmnt[0]),
+					txt = "\n"+indent+text+";",
 					start = stmnt.end()+1;
 					
 				this.insert(txt,start);
 			}
 			 
 		}
-		
-//		var sel = this.selection();
-//		this.selection({
-//			start: sel.start - 2,
-//			end: sel.start - 2
-//		});
+		this.showCursor();
+	},
+	showCursor: function(){
+		this.element.controller('lastselection').showCursor()
 	},
 	/**
 	 * If the statement begins with an S, it creates a function as its last 
@@ -270,7 +269,8 @@ $.Controller("Funcit.Editor",{
 		}
 	},
 	/**
-	 * Inserts text into the textarea from start to end
+	 * Inserts text into the textarea from start to end.
+	 * If the string has a *, it is removed, and this is where the cursor is placed.
 	 * @param {Object} text
 	 * @param {Object} start
 	 * @param {Object} end
@@ -298,14 +298,18 @@ $.Controller("Funcit.Editor",{
 		var before = current.substr(0,start),
 			after = current.substr(end);
 			
+		var start;
+		if(/\*/.test(text)){
+			start = before.length + text.indexOf("*");
+			text = text.replace(/\*/,'');
+		} else {
+			start = before.length + text.length;
+		}
 		this.val(before+( "")+text+after);
-		var self = this;
-		setTimeout(function(){
-			self.selection({
-				start : before.length + text.length,
-				end : before.length + text.length
-			});
-		}, 0);
+		this.selection({
+			start : start,
+			end : start
+		});
 		this.element.trigger("keyup")
 	},
 	writeLn : function(text){
