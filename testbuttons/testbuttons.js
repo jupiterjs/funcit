@@ -61,6 +61,7 @@ $.Controller("Funcit.Testbuttons", {
 		// get test name
 		var testName = el.data('testName');
 		QUnit.config.filters = [testName];
+		el.addClass('running-test');
 		this.run(this.textarea.val(), this.callback('runtestDone'));
 	},
 	runtestDone: function(){
