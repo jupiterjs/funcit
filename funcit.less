@@ -520,7 +520,7 @@ li {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	
+	margin-left: -115px;
 	margin-top: -27px;
 	img {
 		display: block;
@@ -540,9 +540,43 @@ li {
 	div.sync-message {
 		font-size: 18px;
 		text-align: center;
-		width: 240px;
+		width: 200px;
 		line-height: 53px;
 	}
+}
+.green-button {
+	cursor: pointer;
+	float: left;
+	display: block;
+	border: none;
+	margin-left: 7px;
+	height: 23px;
+	width: 40px;
+	border-top: 1px solid #68ca4a;
+	border-bottom: 1px solid black;
+	-moz-border-radius: 2px;
+	background: -moz-linear-gradient(19% 75% 90deg, #186500, #2AB200);
+	color: white;
+	text-shadow: 0px 1px black;
+	text-transform: uppercase;
+	line-height: 21px;
+	-moz-box-shadow: 0px 1px 0px #434343;
+}
+.green-button:hover {
+	background: -moz-linear-gradient(19% 75% 90deg, #2a6b15, #49bd26);
+}
+.green-button:active {
+	background: -moz-linear-gradient(19% 75% 90deg, #2AB200, #186500);
+}
+.text-input {
+	height: 18px;
+	line-height: 18px;
+	padding: 2px;
+	float: left;
+	display: block;
+	border: none;
+	border-bottom: 1px solid black;
+	-moz-box-shadow: 0px 1px 0px #434343;
 }
 .overlay-open-page {
 	width: 400px;
@@ -555,38 +589,6 @@ li {
 		}
 		input[type="text"] {
 			width: 350px;
-			height: 18px;
-			line-height: 18px;
-			padding: 2px;
-			float: left;
-			display: block;
-			border: none;
-			border-bottom: 1px solid black;
-			-moz-box-shadow: 0px 1px 0px #434343;
-		}
-		input[type="button"] {
-			cursor: pointer;
-			float: left;
-			display: block;
-			border: none;
-			margin-left: 7px;
-			height: 23px;
-			width: 40px;
-			border-top: 1px solid #68ca4a;
-			border-bottom: 1px solid black;
-			-moz-border-radius: 2px;
-			background: -moz-linear-gradient(19% 75% 90deg, #186500, #2AB200);
-			color: white;
-			text-shadow: 0px 1px black;
-			text-transform: uppercase;
-			line-height: 21px;
-			-moz-box-shadow: 0px 1px 0px #434343;
-		}
-		input[type="button"]:hover {
-			background: -moz-linear-gradient(19% 75% 90deg, #2a6b15, #49bd26);
-		}
-		input[type="button"]:active {
-			background: -moz-linear-gradient(19% 75% 90deg, #2AB200, #186500);
 		}
 	}
 }
@@ -604,4 +606,67 @@ li {
 	z-index: 999;
 	line-height: 16px;
 	text-shadow: 0px 1px #000;
+}
+.callout {
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	background: -moz-linear-gradient(19% 75% 90deg, #000, #1a1a1a);
+	border: 1px solid black;
+	font-size: 12px;
+	width: 198px;
+	position: absolute;
+	z-index: 1000;
+	top: 50px;
+	-moz-box-shadow: 0px 3px 5px rgba(0,0,0,0.7);
+	.top {
+		margin: -13px -1px 0;
+		background:url(images/backgrounds/callout.png);
+		background-repeat: no-repeat;
+		color: white;
+		padding: 15px 10px 5px;
+		border-bottom: 1px solid black;
+		font-weight: bold;
+		text-shadow: 0px 1px black;
+		.close {
+			float: right;
+			margin-right: -2px;
+			background: url(images/backgrounds/close.png);
+			background-repeat: no-repeat;
+			background-position: 50% 50%;
+			width: 10px;
+			height: 10px;
+			margin-top: 0px;
+			cursor: pointer;
+			opacity: 0.7;
+		}
+		.close:hover {
+			opacity: 1;
+		}
+	}
+	.callout-content {
+		color: white;
+		border-top: 1px solid #2a2a2a;
+		padding: 5px 10px 10px;
+	}
+	.select-class-content {
+		label {
+			display: block;
+			padding: 3px 10px;
+			margin: 0 -10px;
+			cursor: pointer;
+			input {
+				margin-left: 0;
+			}
+		}
+		label:hover {
+			background: #222;
+		}
+	}
+	.trigger-event-content {
+		height: 20px;
+		input[type="text"] {
+			width: 127px;
+			float: left;
+		}
+	}
 }
