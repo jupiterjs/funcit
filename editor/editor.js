@@ -171,12 +171,20 @@ $.Controller("Funcit.Editor",{
 				sel = $(el).prettySelector();
 		if(options.type == 'attr'){
 			val = $(el).attr(options.value);
-		}
-		if(options.type == 'css'){
+		} else if(options.type == 'css'){
 			val = $(el).curStyles(options.value)[options.value];
+		} else if(options.type == 'hasClass') {
+			val = options.value;
+			var writeLn = '.' + options.type+"('"+options.value+"')";
+		} else {
+			val = $(el)[options.type]();
+			var writeLn = "."+options.type+"() == '" + val + "'"
 		}
-		if(val != null){
+		if(typeof writeLn == 'undefined'){
+
 			this.chainOrWriteLn(sel,"."+options.type+"('"+options.value+"') == '" + val + "'");
+		} else {
+			this.chainOrWriteLn(sel, writeLn);
 		}
 	},
 	addAssert: function(options){
