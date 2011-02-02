@@ -146,7 +146,6 @@ $.Controller("Funcit.Editor",{
 		}
 		
 		var args = $.makeArray(arguments);
-		
 		this["add"+$.String.capitalize(eventType)].apply(this,args.slice(2))
 	},
 	addOpen : function(url){
@@ -167,7 +166,19 @@ $.Controller("Funcit.Editor",{
 		}
 		this.chainOrWriteLn(sel,"."+options.type+"("+val+")");
 	},
-	
+	addGetter: function(options, el){
+		var val = null,
+				sel = $(el).prettySelector();
+		if(options.type == 'attr'){
+			val = $(el).attr(options.value);
+		}
+		if(options.type == 'css'){
+			val = $(el).curStyles(options.value)[options.value];
+		}
+		if(val != null){
+			this.chainOrWriteLn(sel,"."+options.type+"('"+options.value+"') == '" + val + "'");
+		}
+	},
 	addAssert: function(options){
 		var val = options.value||"";
 		if(typeof options.value == "string") {

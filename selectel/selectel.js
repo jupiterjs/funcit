@@ -21,7 +21,7 @@ $.Controller("Funcit.Selectel", {
 		},
 		mask_mousemove: function(ev){
 			// throttle this function a little
-			$("#tooltip-click").hide();
+			setTimeout(function(){$("#tooltip-click").fadeOut()}, 500);
 	        if (new Date().getTime() - this.lastInspecting > 30) {
 				this.mask.hide();
 				this.highlightedEl = this.document.elementFromPoint(ev.clientX, ev.clientY);

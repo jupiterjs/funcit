@@ -1,8 +1,12 @@
 <div class="callout">
-  <div class="top">Select class<div class="close"></div></div>
+  <div class="top"><%= title %><div class="close"></div></div>
   <div class="callout-content select-class-content">
-  	<%for(var i=0; i<options.length; i++){%>
-    	<label><input type="radio" name="select-class" /> <%=options[i]%></label>
-	<%}%>
+    <% if(options.length > 0){%>
+      	<%for(var i=0; i<options.length; i++){%>
+        	<label><input type="radio" name="select-class" /> <%=options[i]%></label>
+    	    <%}%>
+    <%}else{%>
+      <b>No data available</b>
+    <%}%>
   </div>
 </div>

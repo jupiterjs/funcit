@@ -16,6 +16,7 @@ steal
 		'funcit/commands',
 		'funcit/testbuttons',
 		'funcit/runner',
+		'funcit/list_attributes',
 		'jquery/view/ejs')
 	.then(function(){
 	

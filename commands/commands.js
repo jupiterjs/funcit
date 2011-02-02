@@ -59,8 +59,8 @@ $.Controller("Funcit.Commands",
 		},
 		getterSetter: function(el, category){
 			var name = el.prevAll('.name').text();
-			if(this[name]){ // handle special cases
-				return this[name](el, category);
+			if(this[name + 'Handler']){ // handle special cases
+				return this[name + 'Handler'](el, category);
 			}
 			// default behavior
 			$("iframe:first").funcit_selectel(this.callback('selected', category, name));
@@ -73,14 +73,39 @@ $.Controller("Funcit.Commands",
 					value: val
 				}, el]);
 		},
-		hasClass: function(el, category){
+		attrHandler: function(el, category){
+			$("iframe:first").funcit_selectel(this.callback('afterAttr', category));
+		},
+		cssHandler: function(el, category){
+			$("iframe:first").funcit_selectel(this.callback('afterCss', category));
+		},
+		hasClassHandler: function(el, category){
 			$("iframe:first").funcit_selectel(this.callback('afterHasClass', category));
 		},
 		afterHasClass: function(category, el, ev){
 			var $el = $(el);
 			var options = $el.attr('class').split(/\s+/);
 			var callback = this.callback('selected', category, "hasClass", el);
-			$('.funcit_select_menu').funcit_select_menu(ev, options, callback);
+			$('.funcit_select_menu').funcit_select_menu(ev, options, callback, 'Select Class');
+		},
+		afterCss: function(category, el, ev){
+			var $el = $(el), style = $el.attr('style');
+			/* Naive CSS parsing */
+			var styles = style.split(';');
+			var styleNames = [];
+			for(var i = 0, ii = styles.length; i < ii; i++){
+				var declarationName = $.String.strip(styles[i].split(':')[0]);
+				if(declarationName != '') 
+					styleNames.push(declarationName);
+			}
+			var callback = this.callback('selected', category, "css", el);
+			$('.funcit_select_menu').funcit_select_menu(ev, styleNames, callback, 'Select style');
+		},
+		afterAttr: function(category, el, ev){
+			var $el = $(el);
+			var options = $el.listAttributes();
+			var callback = this.callback('selected', category, "attr", el);
+			$('.funcit_select_menu').funcit_select_menu(ev, options, callback, 'Select Attribute');
 		},
 		// only one suggestion at a time
 		// TODO throttle this a little

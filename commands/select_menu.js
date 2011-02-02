@@ -6,8 +6,9 @@ steal.plugins('jquery/controller')
  */
 $.Controller("Funcit.SelectMenu", 
 	{
-		update: function(ev, options, callback){
+		update: function(ev, options, callback, title){
 			this.element.html('//funcit/commands/views/select.ejs', {
+				title: title, 
 				options: options
 			})
 			.offset({
@@ -17,6 +18,9 @@ $.Controller("Funcit.SelectMenu",
 			.show()
 			
 			this.callback = callback;
+		},
+		click : function(el, ev){
+			ev.stopPropagation(); // Sometimes click event can propagate to page below and that causes errors
 		},
 		"input change": function(el, ev){
 			var selection = $.trim(el.closest('label').text());
