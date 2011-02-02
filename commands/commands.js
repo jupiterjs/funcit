@@ -46,6 +46,14 @@ $.Controller("Funcit.Commands",
 			ev.preventDefault();
 			this.loadPrompt('//funcit/commands/views/open.ejs');
 		},
+		'.trigger click': function(el, ev){
+			$("iframe:first").funcit_selectel(this.callback('afterTrigger'));
+		},
+		afterTrigger: function(el, ev){
+			var $el = $(el);
+			var callback = this.callback('selected', el);
+			$('.funcit_dialog').funcit_dialog(ev, callback);
+		},
 		loadPrompt: function(view_url){
 			$("iframe:first").mask().addClass('syncing').html(view_url, {});
 		},
@@ -58,20 +66,20 @@ $.Controller("Funcit.Commands",
 			$("iframe:first").funcit_selectel(this.callback('selected', category, name));
 		},
 		// called after the user selects an option and submits the form on the menu
-		selected: function(category, type, waitEl, val){
-			var val = val || ($(waitEl)[type]? $(waitEl)[type](): null);
+		selected: function(category, type, el, val){
+			var val = val || ($(el)[type]? $(el)[type](): null);
 			$("#app").trigger("addEvent",[category,{
 					type : type,
 					value: val
-				}, waitEl]);
+				}, el]);
 		},
 		hasClass: function(el, category){
-			$("iframe:first").funcit_selectel(this.callback('afterHasClass', category, "hasClass"));
+			$("iframe:first").funcit_selectel(this.callback('afterHasClass', category));
 		},
-		afterHasClass: function(category, type, waitEl, ev){
-			var $el = $(waitEl);
+		afterHasClass: function(category, el, ev){
+			var $el = $(el);
 			var options = $el.attr('class').split(/\s+/);
-			var callback = this.callback('selected', category, type, waitEl);
+			var callback = this.callback('selected', category, "hasClass", el);
 			$('.funcit_select_menu').funcit_select_menu(ev, options, callback);
 		},
 		// only one suggestion at a time

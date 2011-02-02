@@ -11,7 +11,7 @@ $.Controller("Funcit.SelectMenu",
 				options: options
 			})
 			.offset({
-				top: ev.clientY-13,
+				top: ev.clientY-30,
 				left: ev.clientX
 			})
 			.show()
