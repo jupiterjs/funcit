@@ -66,15 +66,13 @@ $.Controller("Funcit.Commands",
 				}, waitEl]);
 		},
 		hasClass: function(el, category){
-			$("iframe:first").funcit_selectel(this.callback('afterHasClass', category, name));
+			$("iframe:first").funcit_selectel(this.callback('afterHasClass', category, "hasClass"));
 		},
-		afterHasClass: function(category, type, waitEl){
+		afterHasClass: function(category, type, waitEl, ev){
 			var $el = $(waitEl);
 			var options = $el.attr('class').split(/\s+/);
-			this.openSelectMenu($el, options, this.callback('selected', category, name, waitEl));
-		},
-		openSelectMenu: function($el, options, cb){
-			$('.funcit_select_menu').funcit_select_menu($el, options, cb);
+			var callback = this.callback('selected', category, type, waitEl);
+			$('.funcit_select_menu').funcit_select_menu(ev, options, callback);
 		},
 		// only one suggestion at a time
 		// TODO throttle this a little

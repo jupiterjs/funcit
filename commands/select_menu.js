@@ -6,18 +6,28 @@ steal.plugins('jquery/controller')
  */
 $.Controller("Funcit.SelectMenu", 
 	{
-		update: function(el, options, callback){
-			var offset = el.offset();
+		update: function(ev, options, callback){
 			this.element.html('//funcit/commands/views/select.ejs', {
 				options: options
 			})
 			.offset({
-				top: offset.top,
-				left: offset.left
+				top: ev.clientY-13,
+				left: ev.clientX
 			})
 			.show()
 			
 			this.callback = callback;
+		},
+		"input change": function(el, ev){
+			var selection = $.trim(el.closest('label').text());
+			this.callback(selection);
+			this.close();
+		},
+		".close click": function(el, ev){
+			this.close();
+		},
+		close: function(){
+			this.element.hide();
 		}
 	})
 

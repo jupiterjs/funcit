@@ -35,7 +35,7 @@ $.Controller("Funcit.Selectel", {
 		mask_mouseup: function(ev){
 			this.removeMask();
 			$(this.highlightedEl).unhighlight();
-			this.callback(this.highlightedEl);
+			this.callback(this.highlightedEl, ev);
 		},
 		destroy: function(){
 			this.mask.remove();
