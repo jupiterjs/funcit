@@ -6,30 +6,6 @@ steal.plugins('jquery/controller',
 	'jquery/dom/cur_styles',
 	'jquery/controller/subscribe',
 	'jquery/lang/json').then(function($){
-var lineLoc = function(str, num, name){
-	var newLine = new RegExp("\n","g"),
-		previous = 0,
-		count = 0,
-		res = {};
-	name = name || 'from';
-	while(newLine.exec(str) && newLine.lastIndex <= num){
-		previous = newLine.lastIndex;
-		count++;
-	}
-	res.line = count+1;
-	res[name] = num - previous+1;
-	return res;
-},
-charLoc = function(str, pos){
-	var newLine = new RegExp("\n","g"),
-		previous = 0,
-		total = 0,
-		lines = pos.line - 1;
-	while(lines && newLine.exec(str) ){
-		lines --;
-	}
-	return newLine.lastIndex+( (pos.from || pos.thru || 1) - 1 )
-}
 /**
  * Manages a test or setup function and the textarea that represents its code.
  * 
@@ -102,7 +78,7 @@ $.Controller("Funcit.Editor",{
 			func = found.last().up().find({ arity: "function" }),
 			end = func[0].end,
 			line = this.line(end.line-1),
-			chr = charLoc(this.val(), {line:  end.line - 1, from: line.length+1});
+			chr = $.fn.rowheight.charLoc(this.val(), {line:  end.line - 1, from: line.length+1});
 		
 		this.selection({start: chr, end: chr});
 		//console.log(chr)
@@ -287,13 +263,13 @@ $.Controller("Funcit.Editor",{
 			start = sel.start
 		}
 		if(typeof start == 'object'){
-			start = charLoc(current, start)
+			start = $.fn.rowheight.charLoc(current, start)
 		}
 		if(end === undefined){
 			end = start;
 		}
 		if(typeof end == 'object'){
-			end = charLoc(current, end)
+			end = $.fn.rowheight.charLoc(current, end)
 		}
 		var before = current.substr(0,start),
 			after = current.substr(end);
@@ -310,7 +286,19 @@ $.Controller("Funcit.Editor",{
 			start : start,
 			end : start
 		});
+		// get the line number
+//		var line = $.fn.rowheight.lineLoc(this.val(), start)
+//		this.scrollToLine(line)
 		this.element.trigger("keyup")
+	},
+	scrollToLine: function(line){
+//		var lastVisibleLine = this.element.height()
+//			- this.
+		// figure out the last visible line
+			// ( containerHeight - height ) / lh + scrollTop / lineHeight
+			
+		// if its less than our line
+			// scrollTop = lineHeight * (line - lastvisibleline)
 	},
 	writeLn : function(text){
 		//only writes statements ...
@@ -374,7 +362,7 @@ $.Controller("Funcit.Editor",{
 		}
 	},
 	selectPos : function(){
-		return  lineLoc(this.val(), this.selection().start)
+		return  $.fn.rowheight.lineLoc(this.val(), this.selection().start)
 	},
 	/**
 	 * 

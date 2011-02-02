@@ -1,4 +1,5 @@
 steal.plugins('jquery/controller/subscribe', 'funcit/selectel')
+	.then('dialog', 'select_menu')
 	.then(function($){
 /**
  * Controls the command tab and inserting waits/getters/asserts into the test.
@@ -41,7 +42,7 @@ $.Controller("Funcit.Commands",
 			}
 			this.getterSetter(el, 'wait');
 		},
-		'#actions #action-open click': function(el, ev){
+		'.open click': function(el, ev){
 			ev.preventDefault();
 			this.loadPrompt('//funcit/commands/views/open.ejs');
 		},
@@ -50,7 +51,30 @@ $.Controller("Funcit.Commands",
 		},
 		getterSetter: function(el, category){
 			var name = el.prevAll('.name').text();
+			if(this[name]){ // handle special cases
+				return this[name](el, category);
+			}
+			// default behavior
 			$("iframe:first").funcit_selectel(this.callback('selected', category, name));
+		},
+		// called after the user selects an option and submits the form on the menu
+		selected: function(category, type, waitEl, val){
+			var val = val || ($(waitEl)[type]? $(waitEl)[type](): null);
+			$("#app").trigger("addEvent",[category,{
+					type : type,
+					value: val
+				}, waitEl]);
+		},
+		hasClass: function(el, category){
+			$("iframe:first").funcit_selectel(this.callback('afterHasClass', category, name));
+		},
+		afterHasClass: function(category, type, waitEl){
+			var $el = $(waitEl);
+			var options = $el.attr('class').split(/\s+/);
+			this.openSelectMenu($el, options, this.callback('selected', category, name, waitEl));
+		},
+		openSelectMenu: function($el, options, cb){
+			$('.funcit_select_menu').funcit_select_menu($el, options, cb);
 		},
 		// only one suggestion at a time
 		// TODO throttle this a little
@@ -65,14 +89,6 @@ $.Controller("Funcit.Commands",
 		suggest: function(){
 			this.find('.suggestion').removeClass('suggestion');
 			this.selected('wait', this.suggestion.type, this.suggestion.el)
-		},
-		// called after the user selects an option and submits the form on the menu
-		selected: function(category, type, waitEl){
-			var val = $(waitEl)[type]? $(waitEl)[type](): null;
-			$("#app").trigger("addEvent",[category,{
-					type : type,
-					value: val
-				}, waitEl])
 		}
 	})
 
