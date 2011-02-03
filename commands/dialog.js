@@ -17,7 +17,8 @@ $.Controller("Funcit.Dialog",
 			this.element.find("input")[0].focus();
 		},
 		submit: function(el, ev){
-			var selection = $.trim(el.closest('label').text());
+			ev.preventDefault();
+			var selection = $.trim(this.find('input:first').val());
 			this.callback(selection);
 			this.close();
 		},

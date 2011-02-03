@@ -50,9 +50,11 @@ $.Controller("Funcit.Commands",
 			$("iframe:first").funcit_selectel(this.callback('afterTrigger'));
 		},
 		afterTrigger: function(el, ev){
-			var $el = $(el);
-			var callback = this.callback('selected', el);
+			var callback = this.callback('writeTrigger', el);
 			$('.funcit_dialog').funcit_dialog(ev, callback);
+		},
+		writeTrigger: function(el, eventName){
+			$("#app").trigger("addEvent",["trigger", eventName, el]);
 		},
 		loadPrompt: function(view_url){
 			$("iframe:first").mask().addClass('syncing').html(view_url, {});
