@@ -155,6 +155,12 @@ $.Controller("Funcit.Editor",{
 	addClick : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(),".click()")
 	},
+	addRightClick : function(options, el){
+		this.chainOrWriteLn($(el).prettySelector(),".rightClick()")
+	},
+	addDoubleClick : function(options, el){
+		this.chainOrWriteLn($(el).prettySelector(),".dblclick()")
+	},
 	addTrigger : function(value, el){
 		this.chainOrWriteLn($(el).prettySelector(),".trigger("+$.toJSON(value)+")")
 	},
