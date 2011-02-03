@@ -306,18 +306,27 @@ $.Controller("Funcit.Editor",{
 			end : start
 		});
 		// get the line number
-//		var line = $.fn.rowheight.lineLoc(this.val(), start)
-//		this.scrollToLine(line)
+		var pos = $.fn.rowheight.lineLoc(this.val(), start)
+		this.scrollToLine(pos.line)
 		this.element.trigger("keyup")
 	},
+	/**
+	 * Scrolls the scrollable element containing the editor to the point where the 
+	 * given line is visible.
+	 * @param {Number} line the line number that we want to scroll to 
+	 */
 	scrollToLine: function(line){
-//		var lastVisibleLine = this.element.height()
-//			- this.
-		// figure out the last visible line
-			// ( containerHeight - height ) / lh + scrollTop / lineHeight
-			
-		// if its less than our line
-			// scrollTop = lineHeight * (line - lastvisibleline)
+		// if there's scrollbars
+		if(this.element.height() > this.element.parent().height()) {
+			var rowHeight = this.element.rowheight(),
+				// if the cursor is not currently visible, scroll the textarea
+				lastVisibleLine = this.element.parent().height()/rowHeight;
+			if(lastVisibleLine < line){
+			     // scroll to current line
+			     var scrollTop = (line - lastVisibleLine) * rowHeight;
+				 this.element.parent().scrollTop(scrollTop);
+			}
+		}
 	},
 	writeLn : function(text){
 		//only writes statements ...
