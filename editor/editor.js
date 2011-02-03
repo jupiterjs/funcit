@@ -5,6 +5,7 @@ steal.plugins('jquery/controller',
 	'funcit/grow',
 	'jquery/dom/cur_styles',
 	'jquery/controller/subscribe',
+	'jquery/lang/json',
 	'jquery/lang/json').then(function($){
 /**
  * Manages a test or setup function and the textarea that represents its code.
@@ -159,39 +160,43 @@ $.Controller("Funcit.Editor",{
 	},
 	// if el is blank, add "target"
 	addWait: function(options, el){
-		var val = options.value||"",
+		var val = $.toJSON(options.value) || "",
 			sel = $(el).prettySelector();
-		if(typeof options.value == "string") {
-			val = "'"+val+"'";
-		}
 		this.chainOrWriteLn(sel,"."+options.type+"("+val+")");
 	},
 	addGetter: function(options, el){
-		var val = null,
-				sel = $(el).prettySelector();
-		if(options.type == 'attr'){
-			val = $(el).attr(options.value);
-		} else if(options.type == 'css'){
-			val = $(el).curStyles(options.value)[options.value];
-		} else if(options.type == 'hasClass') {
-			val = options.value;
-			var writeLn = '.' + options.type+"('"+options.value+"')";
-		} else {
-			val = $(el)[options.type]();
-			var writeLn = "."+options.type+"() == '" + val + "'"
+		var val = $.toJSON(options.value) || "",
+			result = options.result, 
+			sel = $(el).prettySelector(),
+			text = "S('"+sel+"')."+options.type+"(",
+			variableStmt = "var "+options.type+" = "+text+")";
+		
+		//get an empty function or last statement
+		var stmt = this.funcStatement({
+			previous: true
+		});
+		if (stmt[0].arity == 'function') {
+			//we have an empty function, insert in the 'right' place
+			this.writeInFunc(variableStmt, stmt)
 		}
-		if(typeof writeLn == 'undefined'){
-
-			this.chainOrWriteLn(sel,"."+options.type+"('"+options.value+"') == '" + val + "'");
-		} else {
-			this.chainOrWriteLn(sel, writeLn);
+		else {
+			var method = stmt[0].first.value;
+			// if there's an assertion in the previous statment
+			// TODO check if it has arguments, if so don't replace them
+			if (stmt[0].arity == "infix" && Funcit.Commands.asserts[method]) {
+				// insert in the first argument
+				text = text + "), " + val + ", *";
+				this.insert(text, stmt.end() - 1);
+			} else {
+				// otherwise add it as a variable
+				var indent = this.funcIndent(stmt.up()[0]);
+				this.insert("\n"+indent+this.indent()+variableStmt+";",stmt.end()+1);
+			}
 		}
+		this.showCursor();
 	},
 	addAssert: function(options){
-		var val = options.value||"";
-		if(typeof options.value == "string") {
-			val = "'"+val+"'";
-		}
+		var val = $.toJSON(options.value) || "";
 		// * the location where insert will place the cursor
 		var text = options.type+"(*)";
 		
@@ -253,8 +258,7 @@ $.Controller("Funcit.Editor",{
 			}
 			insertTxt += "\n"+indent+indent+text+";";
 			this.insert(insertTxt, end);
-		} else {
-			// create the callback
+		} else { // create the callback
 			// if theres another argument, add a comma
 			if(stmnt.second().length){
 				insertTxt += ", ";

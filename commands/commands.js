@@ -66,11 +66,21 @@ $.Controller("Funcit.Commands",
 			$("iframe:first").funcit_selectel(this.callback('selected', category, name));
 		},
 		// called after the user selects an option and submits the form on the menu
-		selected: function(category, type, el, val){
-			var val = val || ($(el)[type]? $(el)[type](): null);
+		selected: function(category, type, el){
+			var val = $(el)[type]? $(el)[type](): null,
+				result;
+				
+			if(type == 'attr'){
+				result = $(el).attr(val);
+			} else if(type == 'css'){
+				result = $(el).curStyles(val)[val];
+			}
+		
 			$("#app").trigger("addEvent",[category,{
 					type : type,
-					value: val
+					value: val,
+					// result is used for commands that have key value pairs like css and attr
+					result: result
 				}, el]);
 		},
 		attrHandler: function(el, category){
