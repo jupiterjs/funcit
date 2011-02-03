@@ -5,13 +5,12 @@ $.Controller("Funcit.Selectel", {
 		// this.element is an iframe
 		init: function(){
 			this.selecting = false;
-			this.mask = $.fn.mask.el
-				.hide()
-				.mousemove(this.callback('mask_mousemove'))
-				.mouseup(this.callback('mask_mouseup'));
+			$(document.body)
+				.delegate(".controls_overlay", "mousemove", this.callback('mask_mousemove'))
+				.delegate(".controls_overlay", "mouseup", this.callback('mask_mouseup'));
 		},
 		update: function(callback){
-			this.element.mask().show();
+			this.mask = this.element.mask().show();
 			$("#tooltip-click").show();
 			this.document = this.element[0].contentDocument;
 			this.lastInspecting = 0;
