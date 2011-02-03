@@ -33,7 +33,6 @@ steal
 			editor = $('#editor').funcit_editor();
 			$("#test").funcit_testbuttons();
 			$("#commands").funcit_commands();
-			$("<div />").appendTo(document.body).funcit_wait_menu()
 			$("#tabs").mxui_tabs();
 			$("#results").funcit_results();
 			$("iframe:first").funcit_selectel();

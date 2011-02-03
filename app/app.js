@@ -6,7 +6,6 @@ steal
 	.plugins('jquery/controller/subscribe','funcunit/syn', 
 		'funcit/highlight', 'mxui/fittable', 'jquery/dom/form_params', 
 		'jquery/controller/subscribe')
-	.then('wait_menu')
 	.then(function($){
 	var getKey =  function( code ) {
 		for(var key in Syn.keycodes){
