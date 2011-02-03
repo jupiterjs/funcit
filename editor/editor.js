@@ -152,6 +152,11 @@ $.Controller("Funcit.Editor",{
 	addOpen : function(url){
 		this.writeLn("S.open('"+url+"')")
 	},
+	addChar: function(letter, el){
+		if(this.record_mouse && letter == 's'){
+			$("#tooltip-click").fadeOut();
+		}
+	},
 	addClick : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(),".click()")
 	},
@@ -444,6 +449,13 @@ $.Controller("Funcit.Editor",{
 			last = blocks.eq(i);
 		}
 		return blocks.length ? blocks.last() : func;
+	},
+	'funcit.record_mouse subscribe': function(called, params){
+		if(params.recording_mouse) {
+			this.record_mouse = true;
+		} else {
+			this.record_mouse = false;
+		}
 	},
 	"funcit.record subscribe": function(called, params){
 		if(params.recording) {

@@ -73,6 +73,7 @@ $.Controller("Funcit.Testbuttons", {
 	// called by the runner module right before a statement is run
 	// highlights the statement in the textarea as its being run
 	runnerCallback: function(lineCount, stmnt){
+		console.log("run0 "+stmnt.line);
 		// any line that should be highlighted will call the runnerCallback >1x
 		// the first pass should be ignored (the synchronous pass)
 		// the second pass should run the highlight
@@ -100,7 +101,6 @@ $.Controller("Funcit.Testbuttons", {
 			
 		this.textarea.lastselection('updateCursor', cursorLoc);
 		this.textarea.lastselection('highlight', start, end);
-		this.editor.scrollToLine(start.line);
 	},
 	// call the method that adds run buttons
 	"textarea keyup": function(){ 

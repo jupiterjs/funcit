@@ -11,7 +11,7 @@ $.Controller("Funcit.Selectel", {
 		},
 		update: function(callback){
 			this.mask = this.element.mask().show();
-			$("#tooltip-click").show();
+			$("#tooltip-click").text('Click on any HTML element to setup the action').show();
 			this.document = this.element[0].contentDocument;
 			this.lastInspecting = 0;
 			this.callback = callback;
@@ -42,7 +42,7 @@ $.Controller("Funcit.Selectel", {
 			this.selecting = false;
 		},
 		destroy: function(){
-			this.mask.remove();
+			if(typeof(this.mask) != 'undefined') this.mask.remove();
 		}
 	})
 

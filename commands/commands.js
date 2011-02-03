@@ -1,5 +1,5 @@
 steal.plugins('jquery/controller/subscribe', 'funcit/selectel')
-	.then('dialog', 'select_menu')
+	.then('dialog', 'select_menu', 'open_page')
 	.then(function($){
 /**
  * Controls the command tab and inserting waits/getters/asserts into the test.
@@ -44,10 +44,15 @@ $.Controller("Funcit.Commands",
 		},
 		'.open click': function(el, ev){
 			ev.preventDefault();
-			this.loadPrompt('//funcit/commands/views/open.ejs');
+			this.loadPrompt('//funcit/commands/views/open.ejs', 'funcit_open_page');
 		},
 		'.trigger click': function(el, ev){
 			$("iframe:first").funcit_selectel(this.callback('afterTrigger'));
+		},
+		'.move click': function(el, ev){
+			ev.preventDefault();
+			$("#tooltip-click").html('Click anywhere and move mouse.<br />Press <b>S</b> to finish.').show();
+			this.publish('funcit.record_mouse', {recording_mouse: true})
 		},
 		afterTrigger: function(el, ev){
 			var callback = this.callback('writeTrigger', el);
@@ -56,8 +61,9 @@ $.Controller("Funcit.Commands",
 		writeTrigger: function(el, eventName){
 			$("#app").trigger("addEvent",["trigger", eventName, el]);
 		},
-		loadPrompt: function(view_url){
-			$("iframe:first").mask().addClass('syncing').html(view_url, {});
+		loadPrompt: function(view_url, controller){
+			var view = $($.View(view_url))[controller]()
+			$("iframe:first").mask().addClass('syncing').html(view);
 		},
 		getterSetter: function(el, category){
 			var name = el.prevAll('.name').text();
