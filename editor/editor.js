@@ -320,8 +320,9 @@ $.Controller("Funcit.Editor",{
 		if(this.element.height() > this.element.parent().height()) {
 			var rowHeight = this.element.rowheight(),
 				// if the cursor is not currently visible, scroll the textarea
-				lastVisibleLine = this.element.parent().height()/rowHeight;
-			if(lastVisibleLine < line){
+				lastVisibleLine = this.element.parent().height()/rowHeight, 
+				firstVisibleLine = this.element.parent().scrollTop()/rowHeight;
+			if(lastVisibleLine < line || firstVisibleLine > line){
 			     // scroll to current line
 			     var scrollTop = (line - lastVisibleLine) * rowHeight;
 				 this.element.parent().scrollTop(scrollTop);
