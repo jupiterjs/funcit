@@ -1,8 +1,10 @@
 steal.plugins('jquery/controller')
 	.then(function($){
-
+/**
+ * $("iframe:first").mask()
+ */
 $.fn.mask = function(){
-	var el = $("<div class='controls_overlay' />").appendTo(window.document.body),
+	var el = $.fn.mask.el,
 		body = $(this),
 		offset = body.offset(),
 		width = body.width(),
@@ -18,5 +20,9 @@ $.fn.mask = function(){
 		
 	return el;
 }
+
+$(document).ready(function(){
+	$.fn.mask.el = $("<div class='controls_overlay' />").appendTo(window.document.body);
+})
 
 });
