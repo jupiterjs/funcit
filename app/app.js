@@ -33,9 +33,10 @@ steal
 			
 			// if the a test is appended to the URL, load it and skip the form
 			// http://localhost:8000/funcit/funcit.html?url=/funcunit/syn/demo.html
-			var pageURL = location.search && location.search.match(/\?url\=(.*)/);
-			if(pageURL && pageURL.length > 0){
-				this.loadIframe(pageURL[1]);
+			var pageURLMatch = location.search && location.search.match(/\?url\=(.*)/),
+				pageURL = (pageURLMatch && pageURLMatch[1]) || Funcit.url;
+			if(pageURL){
+				this.loadIframe(pageURL);
 				return;
 			}
 			

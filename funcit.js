@@ -20,6 +20,8 @@ steal
 		'jquery/view/ejs')
 	.then(function(){
 	
+	$(document.body).append("//funcit/views/app", {})
+	
 	var editor,
 			first = false;
 	
