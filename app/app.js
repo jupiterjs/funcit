@@ -31,6 +31,8 @@ steal
 			this.hoveredEl = null;
 			this.record = true;
 			
+			$(document).keydown(this.callback('onDocumentKeydown'))
+			
 			// if the a test is appended to the URL, load it and skip the form
 			// http://localhost:8000/funcit/funcit.html?url=/funcunit/syn/demo.html
 			var pageURLMatch = location.search && location.search.match(/\?url\=(.*)/),
@@ -43,6 +45,7 @@ steal
 			this.element.html("<form action=''><input type='text' name='url'/></form>")
 				.find('input').val(this.options.text);
 			this.element.addClass('loading');
+			
 		},
 		"input focusin" : function(el){
 			if(el.val() == this.options.text){
@@ -107,10 +110,15 @@ steal
 				}
 			}
 		},
-		onMousemove : function(){
+		onMousemove : function(e){
+			if(this.record_mouse){
+				console.log(this.record_mouse)
+				this.element.trigger("addEvent", ['mousemove', {x: e.pageX, y: e.pageY}])
+			}
 			this.mousemoves++;
 		},
 		onKeydown : function(ev){
+			this.stopMouseRecording(ev);
 			var key = getKey(ev.keyCode);
 			if(this.keytarget != ev.target){
 				this.current = [];
@@ -175,7 +183,24 @@ steal
 				var el = $("option:eq("+ev.target.selectedIndex+")", ev.target);
 				this.element.trigger("addEvent",["click",undefined, el[0]])
 			}
-		}
+		},
+		onDocumentKeydown: function(ev){
+			this.stopMouseRecording(ev);
+		},
+		stopMouseRecording: function(ev){
+			if(ev.keyCode == 83 && this.record_mouse){
+				console.log('stop')
+				this.publish('funcit.record_mouse', {recording_mouse: false});
+				$("#tooltip-click").fadeOut();
+			}
+		},
+		'funcit.record_mouse subscribe': function(called, params){
+			if(params.recording_mouse) {
+				this.record_mouse = true;
+			} else {
+				this.record_mouse = false;
+			}
+		},
 	})
 	
 });

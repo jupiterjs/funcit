@@ -110,6 +110,7 @@ $.Controller("Funcit.Editor",{
 	// going to set the cursor
 	//   if we are in 'record' mode, get current location, and run test
 	//   
+	// 
 	click : function(){
 		var funcStatement = this.funcStatement(),
 			moduleText = this.module().up().text();
@@ -153,9 +154,6 @@ $.Controller("Funcit.Editor",{
 		this.writeLn("S.open('"+url+"')")
 	},
 	addChar: function(letter, el){
-		if(this.record_mouse && letter == 's'){
-			$("#tooltip-click").fadeOut();
-		}
 	},
 	addClick : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(),".click()")
@@ -171,6 +169,9 @@ $.Controller("Funcit.Editor",{
 	},
 	addDrag : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(),".drag("+$.toJSON(options)+")");
+	},
+	addMousemove: function(options, el){
+		this.chainOrWriteLn('mouse', '.move("' + options['x'] + 'x' + options['y'] +'")');
 	},
 	// if el is blank, add "target"
 	addWait: function(options, el){
@@ -394,19 +395,23 @@ $.Controller("Funcit.Editor",{
 		var stmntOrFunc = this.funcStatement();
 		
 		// if a function
-		if(stmntOrFunc[0].arity == 'function'){
-			//we have an empty function, insert in the 'right' place
-			this.writeInFunc("S('"+selector+"')"+text, stmntOrFunc)
-			
-		}else{
-			var stmnt = stmntOrFunc,
-				indent = this.funcIndent(stmnt.up()[0])
-			if(stmnt.hasSelector(selector)){
-				this.insert("\n"+indent+this.indent()+this.indent()+text, stmnt.ender()+1)
+		// 
+		if(typeof stmntOrFunc[0] != 'undefined'){
+			if(stmntOrFunc[0].arity == 'function'){
+				//we have an empty function, insert in the 'right' place
+				this.writeInFunc("S('"+selector+"')"+text, stmntOrFunc)
+
 			}else{
-				this.insert("\n"+indent+this.indent()+"S('"+selector+"')"+text+";",stmnt.end()+1)
+				var stmnt = stmntOrFunc,
+					indent = this.funcIndent(stmnt.up()[0])
+				if(stmnt.hasSelector(selector)){
+					this.insert("\n"+indent+this.indent()+this.indent()+text, stmnt.ender()+1)
+				}else{
+					this.insert("\n"+indent+this.indent()+"S('"+selector+"')"+text+";",stmnt.end()+1)
+				}
 			}
 		}
+		
 	},
 	selectPos : function(){
 		return  $.fn.rowheight.lineLoc(this.val(), this.selection().start)
