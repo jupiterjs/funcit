@@ -40,9 +40,6 @@ $.Controller("Funcit.Selectel", {
 			$(this.highlightedEl).unhighlight();
 			this.callback(this.highlightedEl, ev);
 			this.selecting = false;
-		},
-		destroy: function(){
-			if(typeof(this.mask) != 'undefined') this.mask.remove();
 		}
 	})
 
