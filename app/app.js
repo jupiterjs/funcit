@@ -142,11 +142,24 @@ steal
 			this.lastX = ev.pageX
 			this.lastY = ev.pageY;
 		},
+		
 		onMouseup : function(ev){
 			if(/option/i.test(ev.target.nodeName)){
 
+			}else if(ev.which == 3){
+				this.element.trigger("addEvent", ['rightClick', undefined, ev.target]);
 			}else if(!this.mousemoves || (this.lastX == ev.pageX && this.lastY == ev.pageY)){
-				this.element.trigger("addEvent",["click",undefined, ev.target]);
+				if(this.clickTimeout){
+					clearTimeout(this.clickTimeout);
+					delete this.clickTimeout;
+					this.element.trigger("addEvent",["doubleClick",undefined, ev.target]);
+				} else {
+					var controller = this;
+					this.clickTimeout = setTimeout(function(){
+						controller.element.trigger("addEvent",["click",undefined, ev.target]);
+						delete controller.clickTimeout;
+					}, 200);
+				}
 			}else if(this.mousemoves > 2 && this.mousedownEl){
 				this.element.trigger("addEvent",["drag",{clientX : ev.clientX,
 					clientY: ev.clientY}, this.mousedownEl])
