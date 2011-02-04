@@ -173,6 +173,10 @@ $.Controller("Funcit.Editor",{
 	addMousemove: function(options, el){
 		this.chainOrWriteLn('mouse', '.move("' + options['x'] + 'x' + options['y'] +'")');
 	},
+	addScroll : function(options, el){
+		this.chainOrWriteLn($(el).prettySelector(), ".scrollLeft(" + options.x + ")");
+		this.chainOrWriteLn($(el).prettySelector(), ".scrollTop(" + options.y + ")");
+	},
 	// if el is blank, add "target"
 	addWait: function(options, el){
 		var val = $.toJSON(options.value) || "",
@@ -476,7 +480,7 @@ $.Controller("Funcit.Editor",{
 	
 });
 var getWindow = function( element ) {
-		return element.ownerDocument.defaultView || element.ownerDocument.parentWindow
+		return element.defaultView || element.ownerDocument.defaultView || element.ownerDocument.parentWindow
 	};
 $.fn.prettySelector= function() {
 	var target = this[0];

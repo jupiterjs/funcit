@@ -49,6 +49,11 @@ $.Controller("Funcit.Commands",
 			ev.preventDefault();
 			this.loadPrompt('//funcit/commands/views/open.ejs', 'funcit_open_page');
 		},
+		'.scroll click' : function(el, ev){
+			ev.preventDefault();
+			$("#tooltip-click").html('Scroll any element.<br />Press <b>S</b> to finish.').show();
+			this.publish('funcit.record_scroll', {recording_scroll: true})
+		},
 		'.trigger click': function(el, ev){
 			ev.preventDefault();
 			$("iframe:first").funcit_selectel(this.callback('afterTrigger'));

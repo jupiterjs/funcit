@@ -68,6 +68,7 @@ steal
 			$("<iframe src='"+url+"'></iframe>").load(this.callback('loaded', url)).appendTo(this.element)
 		},
 		loaded : function(url, ev){
+			var controller = this;
 			this.element.removeClass('loading')
 			//listen to everything on this guy ...
 			this.element.trigger("addEvent",["open",url, ev.target])
@@ -78,6 +79,8 @@ steal
 				.mousemove(this.callback('onMousemove'))
 				.mouseup(this.callback('onMouseup'))
 				.change(this.callback('onChange'))
+				.scroll(this.callback('onScroll'))
+				.find('*').scroll(this.callback('onScroll'))
 //				.bind("DOMAttrModified",this.callback('onModified'))
 //				.bind("DOMNodeInserted",function(ev){
 //					//console.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
@@ -112,7 +115,6 @@ steal
 		},
 		onMousemove : function(e){
 			if(this.record_mouse){
-				console.log(this.record_mouse)
 				this.element.trigger("addEvent", ['mousemove', {x: e.pageX, y: e.pageY}])
 			}
 			this.mousemoves++;
@@ -184,14 +186,29 @@ steal
 				this.element.trigger("addEvent",["click",undefined, el[0]])
 			}
 		},
-		onDocumentKeydown: function(ev){
-			this.stopMouseRecording(ev);
+		onScroll: function(ev){
+			if(this.record_scroll){
+				this.element.trigger("addEvent",["scroll", {x: 0, y: 0}, ev.target]);
+			}
 		},
-		stopMouseRecording: function(ev){
+		onDocumentKeydown: function(ev){
+			this.stopMouseOrScrollRecording(ev);
+		},
+		stopMouseOrScrollRecording: function(ev){
 			if(ev.keyCode == 83 && this.record_mouse){
-				console.log('stop')
 				this.publish('funcit.record_mouse', {recording_mouse: false});
 				$("#tooltip-click").fadeOut();
+			}
+			if(ev.keyCode == 83 && this.record_scroll){
+				this.publish('funcit.record_scroll', {recording_mouse: false});
+				$("#tooltip-click").fadeOut();
+			}
+		},
+		'funcit.record_scroll subscribe': function(called, params){
+			if(params.recording_scroll) {
+				this.record_scroll = true;
+			} else {
+				this.record_scroll = false;
 			}
 		},
 		'funcit.record_mouse subscribe': function(called, params){
