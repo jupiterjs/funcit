@@ -28,15 +28,18 @@ $.Controller("Funcit.Commands",
 			})
 		},
 		"#assert li click": function(el, ev){
+			ev.preventDefault();
 			var name = el.text();
 			$("#app").trigger("addEvent",['assert',{
 					type : name
 				}])
 		},
 		".getter click": function(el, ev){
+			ev.preventDefault();
 			this.getterSetter(el, 'getter');
 		},
 		".wait click": function(el, ev){
+			ev.preventDefault();
 			if(el.closest('.command').hasClass('suggestion')){
 				return this.suggest();
 			}
@@ -47,6 +50,7 @@ $.Controller("Funcit.Commands",
 			this.loadPrompt('//funcit/commands/views/open.ejs', 'funcit_open_page');
 		},
 		'.trigger click': function(el, ev){
+			ev.preventDefault();
 			$("iframe:first").funcit_selectel(this.callback('afterTrigger'));
 		},
 		'.move click': function(el, ev){
