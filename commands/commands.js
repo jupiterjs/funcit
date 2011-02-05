@@ -62,7 +62,7 @@ $.Controller("Funcit.Commands",
 		'.move click': function(el, ev){
 			ev.preventDefault();
 			Funcit.Tooltip.open($.View('//funcit/commands/views/move', {}));
-			this.publish('funcit.record_mouse', {recording_mouse: true})
+			this.publish('funcit.record_mouse')
 		},
 		afterTrigger: function(el, ev){
 			var callback = this.callback('writeTrigger', el);

@@ -170,8 +170,8 @@ $.Controller("Funcit.Editor",{
 	addDrag : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(),".drag("+$.toJSON(options)+")");
 	},
-	addMousemove: function(options, el){
-		this.chainOrWriteLn('mouse', '.move("' + options['x'] + 'x' + options['y'] +'")');
+	addMove: function(from, to){
+		this.chainOrWriteLn(null, '.move({from:"'+from.x+'x'+from.y+'", to:"'+to.x+'x'+to.y+'"})');
 	},
 	addScroll : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(), ".scrollLeft(" + options.x + ")");
@@ -395,6 +395,7 @@ $.Controller("Funcit.Editor",{
 	},
 	// chains on selector or writes a new line
 	chainOrWriteLn : function(selector, text){
+		var selector = selector? $.toJSON(selector): ''; 
 		//get an empty function or last statement
 		var stmntOrFunc = this.funcStatement();
 		
@@ -403,7 +404,7 @@ $.Controller("Funcit.Editor",{
 		if(typeof stmntOrFunc[0] != 'undefined'){
 			if(stmntOrFunc[0].arity == 'function'){
 				//we have an empty function, insert in the 'right' place
-				this.writeInFunc("S('"+selector+"')"+text, stmntOrFunc)
+				this.writeInFunc("S("+selector+")"+text, stmntOrFunc)
 
 			}else{
 				var stmnt = stmntOrFunc,
@@ -411,7 +412,7 @@ $.Controller("Funcit.Editor",{
 				if(stmnt.hasSelector(selector)){
 					this.insert("\n"+indent+this.indent()+this.indent()+text, stmnt.ender()+1)
 				}else{
-					this.insert("\n"+indent+this.indent()+"S('"+selector+"')"+text+";",stmnt.end()+1)
+					this.insert("\n"+indent+this.indent()+"S("+selector+")"+text+";",stmnt.end()+1)
 				}
 			}
 		}
@@ -458,13 +459,6 @@ $.Controller("Funcit.Editor",{
 			last = blocks.eq(i);
 		}
 		return blocks.length ? blocks.last() : func;
-	},
-	'funcit.record_mouse subscribe': function(called, params){
-		if(params.recording_mouse) {
-			this.record_mouse = true;
-		} else {
-			this.record_mouse = false;
-		}
 	},
 	"funcit.record subscribe": function(called, params){
 		if(params.recording) {

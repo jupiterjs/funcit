@@ -115,12 +115,16 @@ steal
 		},
 		onMousemove : function(e){
 			if(this.record_mouse){
-				this.element.trigger("addEvent", ['mousemove', {x: e.pageX, y: e.pageY}])
+				var loc = {x: e.pageX, y: e.pageY};
+				if(!this.mousemove_locations.start){
+					this.mousemove_locations.start = loc;
+				}
+				this.mousemove_locations.end = loc;
 			}
 			this.mousemoves++;
 		},
 		onKeydown : function(ev){
-			this.stopMouseRecording(ev);
+			this.stopMouseOrScrollRecording(ev);
 			var key = getKey(ev.keyCode);
 			if(this.keytarget != ev.target){
 				this.current = [];
@@ -195,9 +199,15 @@ steal
 			this.stopMouseOrScrollRecording(ev);
 		},
 		stopMouseOrScrollRecording: function(ev){
-			if(ev.keyCode == 83 && this.record_mouse){
-				this.publish('funcit.record_mouse', {recording_mouse: false});
+			if(ev.keyCode == 83 /* s */ && this.begin_record_mouse){
+				this.begin_record_mouse = false;
+				this.record_mouse = true;
+			}
+			if (ev.keyCode == 70 /* f */ && this.record_mouse) {
 				Funcit.Tooltip.close();
+				this.record_mouse = false;
+				this.element.trigger("addEvent",["move", 
+					this.mousemove_locations.start, this.mousemove_locations.end]);
 			}
 			if(ev.keyCode == 83 && this.record_scroll){
 				this.publish('funcit.record_scroll', {recording_mouse: false});
@@ -211,12 +221,9 @@ steal
 				this.record_scroll = false;
 			}
 		},
-		'funcit.record_mouse subscribe': function(called, params){
-			if(params.recording_mouse) {
-				this.record_mouse = true;
-			} else {
-				this.record_mouse = false;
-			}
+		'funcit.record_mouse subscribe': function(){
+			this.mousemove_locations = {};
+			this.begin_record_mouse = true;
 		},
 	})
 	
