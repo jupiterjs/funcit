@@ -156,7 +156,7 @@ $.Controller("Funcit.Editor",{
 	addChar: function(letter, el){
 	},
 	addClick : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(),".click()")
+		this.chainOrWriteLn($(el).prettySelector(),".click()");
 	},
 	addRightClick : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(),".rightClick()")
@@ -174,8 +174,19 @@ $.Controller("Funcit.Editor",{
 		this.chainOrWriteLn(null, '.move({from:"'+from.x+'x'+from.y+'", to:"'+to.x+'x'+to.y+'"})');
 	},
 	addScroll : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(), ".scrollLeft(" + options.x + ")");
-		this.chainOrWriteLn($(el).prettySelector(), ".scrollTop(" + options.y + ")");
+		var id = "el-" + $(el).attr($.expando);
+		this.scrollPositions = this.scrollPositions || {};
+		if(typeof this.scrollPositions[id] == 'undefined'){
+			this.scrollPositions[id] = {x: 0, y:0};
+		}
+		if(options.x != this.scrollPositions[id].x){
+			this.chainOrWriteLn($(el).prettySelector(), ".scrollLeft(" + options.x + ")");
+			this.scrollPositions[id].x = options.x;
+		}
+		if(options.y != this.scrollPositions[id].y){
+			this.chainOrWriteLn($(el).prettySelector(), ".scrollTop(" + options.y + ")");
+			this.scrollPositions[id].y = options.y;
+		}
 	},
 	// if el is blank, add "target"
 	addWait: function(options, el){
