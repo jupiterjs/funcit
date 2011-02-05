@@ -79,8 +79,8 @@ steal
 				.mousemove(this.callback('onMousemove'))
 				.mouseup(this.callback('onMouseup'))
 				.change(this.callback('onChange'))
-				.scroll(this.callback('onScroll'))
-				.find('*').scroll(this.callback('onScroll'))
+				.mouseover(this.callback('onMouseenter'))
+				.mouseout(this.callback('onMouseout'))
 //				.bind("DOMAttrModified",this.callback('onModified'))
 //				.bind("DOMNodeInserted",function(ev){
 //					//console.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
@@ -122,6 +122,16 @@ steal
 				this.mousemove_locations.end = loc;
 			}
 			this.mousemoves++;
+		},
+		onMouseenter : function(ev){
+			if(this.record_scroll){
+				$(ev.target).scroll(this.callback('onScroll'));
+			}
+		},
+		onMouseout : function(ev){
+			if(this.record_scroll){
+				$(ev.target).unbind('scroll');
+			}
 		},
 		onKeydown : function(ev){
 			this.stopMouseOrScrollRecording(ev);
@@ -192,7 +202,7 @@ steal
 		},
 		onScroll: function(ev){
 			if(this.record_scroll){
-				this.element.trigger("addEvent",["scroll", {x: 0, y: 0}, ev.target]);
+				this.element.trigger("addEvent",["scroll", {x: ev.currentTarget.scrollLeft, y: ev.currentTarget.scrollTop}, ev.target]);
 			}
 		},
 		onDocumentKeydown: function(ev){
