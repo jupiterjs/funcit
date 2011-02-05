@@ -1,5 +1,5 @@
 steal.plugins('jquery/controller/subscribe', 'funcit/selectel')
-	.then('dialog', 'select_menu', 'open_page')
+	.then('dialog', 'select_menu', 'open_page', 'tooltip','modal')
 	.then(function($){
 /**
  * Controls the command tab and inserting waits/getters/asserts into the test.
@@ -47,32 +47,32 @@ $.Controller("Funcit.Commands",
 		},
 		'.open click': function(el, ev){
 			ev.preventDefault();
-			this.loadPrompt('//funcit/commands/views/open.ejs', 'funcit_open_page');
+			var view = $($.View('//funcit/commands/views/open.ejs')).funcit_open_page()
+			Funcit.Modal.open(view);
 		},
 		'.scroll click' : function(el, ev){
 			ev.preventDefault();
-			$("#tooltip-click").html('Scroll any element.<br />Press <b>S</b> to finish.').show();
+			Funcit.Tooltip.open($.View('//funcit/commands/views/scroll', {}));
 			this.publish('funcit.record_scroll', {recording_scroll: true})
 		},
 		'.trigger click': function(el, ev){
 			ev.preventDefault();
-			$("iframe:first").funcit_selectel(this.callback('afterTrigger'));
+			Funcit.Selectel.select(this.callback('afterTrigger'));
 		},
 		'.move click': function(el, ev){
 			ev.preventDefault();
-			$("#tooltip-click").html('Click anywhere and move mouse.<br />Press <b>S</b> to finish.').show();
+			Funcit.Tooltip.open($.View('//funcit/commands/views/move', {}));
 			this.publish('funcit.record_mouse', {recording_mouse: true})
 		},
 		afterTrigger: function(el, ev){
 			var callback = this.callback('writeTrigger', el);
 			$('.funcit_dialog').funcit_dialog(ev, callback);
 		},
+		writeOpen: function(url){
+			$("#app").trigger("addEvent",["open", url]);
+		},
 		writeTrigger: function(el, eventName){
 			$("#app").trigger("addEvent",["trigger", eventName, el]);
-		},
-		loadPrompt: function(view_url, controller){
-			var view = $($.View(view_url))[controller]()
-			$("iframe:first").mask().addClass('syncing').html(view);
 		},
 		getterSetter: function(el, category){
 			var name = el.prevAll('.name').text();
@@ -80,7 +80,7 @@ $.Controller("Funcit.Commands",
 				return this[name + 'Handler'](el, category);
 			}
 			// default behavior
-			$("iframe:first").funcit_selectel(this.callback('selected', category, name));
+			Funcit.Selectel.select(this.callback('selected', category, name));
 		},
 		// called after the user selects an option and submits the form on the menu
 		selected: function(category, type, el){
@@ -101,13 +101,13 @@ $.Controller("Funcit.Commands",
 				}, el]);
 		},
 		attrHandler: function(el, category){
-			$("iframe:first").funcit_selectel(this.callback('afterAttr', category));
+			Funcit.Selectel.select(this.callback('afterAttr', category));
 		},
 		cssHandler: function(el, category){
-			$("iframe:first").funcit_selectel(this.callback('afterCss', category));
+			Funcit.Selectel.select(this.callback('afterCss', category));
 		},
 		hasClassHandler: function(el, category){
-			$("iframe:first").funcit_selectel(this.callback('afterHasClass', category));
+			Funcit.Selectel.select(this.callback('afterHasClass', category));
 		},
 		afterHasClass: function(category, el, ev){
 			var $el = $(el);

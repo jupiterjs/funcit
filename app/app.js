@@ -197,11 +197,11 @@ steal
 		stopMouseOrScrollRecording: function(ev){
 			if(ev.keyCode == 83 && this.record_mouse){
 				this.publish('funcit.record_mouse', {recording_mouse: false});
-				$("#tooltip-click").fadeOut();
+				Funcit.Tooltip.close();
 			}
 			if(ev.keyCode == 83 && this.record_scroll){
 				this.publish('funcit.record_scroll', {recording_mouse: false});
-				$("#tooltip-click").fadeOut();
+				Funcit.Tooltip.close();
 			}
 		},
 		'funcit.record_scroll subscribe': function(called, params){

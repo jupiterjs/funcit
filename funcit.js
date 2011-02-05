@@ -35,9 +35,9 @@ steal
 			editor = $('#editor').funcit_editor();
 			$("#test").funcit_testbuttons();
 			$("#commands").funcit_commands();
+			$('.controls_overlay').funcit_selectel();
 			$("#tabs").mxui_tabs();
 			$("#results").funcit_results();
-			$("iframe:first").funcit_selectel();
 			
 			editor.funcit_editor('val',"//funcit/views/init.ejs",{
 				module : data,

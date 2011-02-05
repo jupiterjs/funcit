@@ -1,7 +1,7 @@
 steal.plugins('jquery/controller')
 	.then(function($){
 /**
- * $("iframe:first").mask()
+ * this is called on iframes
  */
 $.fn.mask = function(){
 	var el = $.fn.mask.el,

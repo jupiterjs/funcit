@@ -19,7 +19,7 @@ $.Controller("Funcit.OpenPage",
 				}).attr('src', addr); */
 				
 				$('iframe:first').replaceWith($('<iframe src="' + addr + '"></iframe>').load(function(){
-					$('.syncing').fadeOut(function(){ $(this).remove() });
+					Funcit.Modal.close();
 				}));
 				
 				
