@@ -173,20 +173,8 @@ $.Controller("Funcit.Editor",{
 	addMove: function(from, to){
 		this.chainOrWriteLn(null, '.move({from:"'+from.x+'x'+from.y+'", to:"'+to.x+'x'+to.y+'"})');
 	},
-	addScroll : function(options, el){
-		var id = "el-" + $(el).attr($.expando);
-		this.scrollPositions = this.scrollPositions || {};
-		if(typeof this.scrollPositions[id] == 'undefined'){
-			this.scrollPositions[id] = {x: 0, y:0};
-		}
-		if(options.x != this.scrollPositions[id].x){
-			this.chainOrWriteLn($(el).prettySelector(), ".scrollLeft(" + options.x + ")");
-			this.scrollPositions[id].x = options.x;
-		}
-		if(options.y != this.scrollPositions[id].y){
-			this.chainOrWriteLn($(el).prettySelector(), ".scrollTop(" + options.y + ")");
-			this.scrollPositions[id].y = options.y;
-		}
+	addScroll : function(direction, amount, el){
+		this.chainOrWriteLn($(el).prettySelector(), '.scroll('+$.toJSON(direction)+', '+amount+')');
 	},
 	// if el is blank, add "target"
 	addWait: function(options, el){

@@ -202,7 +202,11 @@ steal
 		},
 		onScroll: function(ev){
 			if(this.record_scroll){
-				this.element.trigger("addEvent",["scroll", {x: ev.currentTarget.scrollLeft, y: ev.currentTarget.scrollTop}, ev.target]);
+				this.scroll = {
+					x: ev.currentTarget.scrollLeft, 
+					y: ev.currentTarget.scrollTop, 
+					target: ev.currentTarget
+				};
 			}
 		},
 		onDocumentKeydown: function(ev){
@@ -220,16 +224,20 @@ steal
 					this.mousemove_locations.start, this.mousemove_locations.end]);
 			}
 			if(ev.keyCode == 83 && this.record_scroll){
-				this.publish('funcit.record_scroll', {recording_mouse: false});
+				this.record_scroll = false;
 				Funcit.Tooltip.close();
+				var direction = "top";
+				var amount = this.scroll.y;
+				if(amount == 0){
+					direction = "left";
+					amount = this.scroll.x;
+				}
+				this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
 			}
 		},
-		'funcit.record_scroll subscribe': function(called, params){
-			if(params.recording_scroll) {
-				this.record_scroll = true;
-			} else {
-				this.record_scroll = false;
-			}
+		'funcit.record_scroll subscribe': function(){
+			this.scroll = null;
+			this.record_scroll = true;
 		},
 		'funcit.record_mouse subscribe': function(){
 			this.mousemove_locations = {};
