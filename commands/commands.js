@@ -47,13 +47,12 @@ $.Controller("Funcit.Commands",
 		},
 		'.open click': function(el, ev){
 			ev.preventDefault();
-			var view = $($.View('//funcit/commands/views/open.ejs')).funcit_open_page()
-			Funcit.Modal.open(view);
+			Funcit.Modal.open($.View('//funcit/commands/views/open.ejs'));
 		},
 		'.scroll click' : function(el, ev){
 			ev.preventDefault();
-			Funcit.Tooltip.open($.View('//funcit/commands/views/scroll', {}));
-			this.publish('funcit.record_scroll', {recording_scroll: true})
+			Funcit.Tooltip.open($.View('//funcit/commands/views/scroll'));
+			this.publish('funcit.record_scroll')
 		},
 		'.trigger click': function(el, ev){
 			ev.preventDefault();
@@ -61,7 +60,7 @@ $.Controller("Funcit.Commands",
 		},
 		'.move click': function(el, ev){
 			ev.preventDefault();
-			Funcit.Tooltip.open($.View('//funcit/commands/views/move', {}));
+			Funcit.Tooltip.open($.View('//funcit/commands/views/move'));
 			this.publish('funcit.record_mouse')
 		},
 		afterTrigger: function(el, ev){

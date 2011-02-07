@@ -136,6 +136,7 @@ $.Controller("Funcit.Editor",{
 	addEvent : function(ev, eventType){
 		console.log(eventType)
 		if(this.first && eventType == 'open'){
+			this.first = false;
 			//find the module's setup function, add to the end
 			var found = this.find({type: "(identifier)", value : 'setup'})
 			var loc = found.first().end();

@@ -62,16 +62,31 @@ steal
 			this.element.html("");
 			this.loadIframe(url);
 		},
+		/**
+		 * Called by the open command and starts the app up.  It either creates an iframe or, if one 
+		 * exists, reloads it, calling loaded when its done.
+		 * @param {Object} url The url of the page to load in the iframe
+		 */
 		loadIframe: function(url){
-			//now create an iframe, bind on it, and start sending everyone else messages
-			//we might need to put a mask over it if people are stopPropagation
-			$("<iframe src='"+url+"'></iframe>").load(this.callback('loaded', url)).appendTo(this.element)
+			var iframe = $("iframe"),
+				callback = this.callback('loaded', url);
+			if (!iframe.length) {
+				//now create an iframe, bind on it, and start sending everyone else messages
+				//we might need to put a mask over it if people are stopPropagation
+				$("<iframe src='" + url + "'></iframe>").load(callback).appendTo(this.element)
+			} else {
+				FuncUnit.frame = iframe[0];
+				FuncUnit._open(url);
+				iframe.load(callback)
+			}
+			
 		},
 		loaded : function(url, ev){
+			$(ev.target).unbind('load')
 			var controller = this;
 			this.element.removeClass('loading')
 			//listen to everything on this guy ...
-			this.element.trigger("addEvent",["open",url, ev.target])
+			this.element.trigger("addEvent",["open",url])
 			$(ev.target.contentWindow.document)
 				.keydown(this.callback('onKeydown'))
 				.keyup(this.callback('onKeyup'))
