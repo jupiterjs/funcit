@@ -5,7 +5,6 @@ steal.plugins('jquery/controller',
 	'funcit/grow',
 	'jquery/dom/cur_styles',
 	'jquery/controller/subscribe',
-	'jquery/lang/json',
 	'jquery/lang/json').then(function($){
 /**
  * Manages a test or setup function and the textarea that represents its code.
@@ -19,11 +18,6 @@ $.Controller("Funcit.Editor",{
 		this.first = true;
 		this.modified = true;
 		this.record = true;
-		//this.element[0].contentEditable = true;
-		//this.element.attr('tabindex',0)
-		
-		//this.element.curStyles('borderTopWidth','paddingTop','paddingLeft')
-		
 	},
 	val : function(){
 		return this.element.val.apply(this.element, arguments);

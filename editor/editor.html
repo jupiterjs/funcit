@@ -8,16 +8,38 @@
             .error {border: solid 1px red;}
             .error_text { color: red; font-size: 10px;}
             td {padding: 3px;}
+			textarea {
+				width: 99%;
+				margin: 0px;
+				background: transparent;
+				line-height: 16px;
+			}
+			#editor {
+				margin: 0px;
+				padding: 0px;
+				border: 0px;
+			}
+			.selection-cursor{
+				border-left: solid 2px red;
+			} 
         </style>
 	</head>
 	<body>
-	    <h1>Welcome to JavaScriptMVC 3.0!</h1>
-        <ul>
-            <li>Include plugins and files in <i>funcit/editor/editor.js</i>.</li>
-            <li>Change to production mode by changing <i>development</i> to <i>production</i> in this file.</li>
-        </ul>
+	    <textarea id='editor'></textarea>
 		<script type='text/javascript' 
-                src='../../steal/steal.js?funcit/editor,development'>   
+                src='../../steal/steal.js'>   
         </script>
+		<script type='text/javascript'>
+steal.plugins('funcit/editor','jquery/view/ejs').then(function(){
+	$(document).ready(function(){
+		var editor = $('#editor').funcit_editor();
+		editor.funcit_editor('val',"//funcit/views/init.ejs",{
+			module : "General",
+			test : "change me!"
+		})
+	})
+	
+})
+		</script>
 	</body>
 </html>
