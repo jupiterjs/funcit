@@ -181,30 +181,40 @@ $.Controller("Funcit.Editor",{
 		var val = $.toJSON(options.value) || "",
 			result = options.result, 
 			sel = $(el).prettySelector(),
-			text = "S('"+sel+"')."+options.type+"(",
-			variableStmt = "var "+options.type+" = "+text+")";
+			text = "S('"+sel+"')."+options.type+"(";
+		
+		if(options.type == 'attr'){
+			text = text + '"' + options.value + '"'
+		}	
+			
+		var variableStmt = "var "+this.getVariableName(options.type)+" = "+text+")";
 		
 		//get an empty function or last statement
 		var stmt = this.funcStatement({
 			previous: true
 		});
-		if (stmt[0].arity == 'function') {
-			//we have an empty function, insert in the 'right' place
-			this.writeInFunc(variableStmt, stmt)
-		}
-		else {
-			var method = stmt[0].first.value;
-			// if there's an assertion in the previous statment
-			// TODO check if it has arguments, if so don't replace them
-			if (stmt[0].arity == "infix" && Funcit.Commands.asserts[method]) {
-				// insert in the first argument
-				text = text + "), " + val + ", *";
-				this.insert(text, stmt.end() - 1);
-			} else {
-				// otherwise add it as a variable
-				var indent = this.funcIndent(stmt.up()[0]);
-				this.insert("\n"+indent+this.indent()+variableStmt+";",stmt.end()+1);
+		if(typeof stmt[0] != 'undefined'){
+			if (stmt[0].arity == 'function') {
+				//we have an empty function, insert in the 'right' place
+				this.writeInFunc(variableStmt, stmt)
 			}
+			else {
+				var method = stmt[0].first.value;
+				// if there's an assertion in the previous statment
+				// TODO check if it has arguments, if so don't replace them
+				if (stmt[0].arity == "infix" && Funcit.Commands.asserts[method]) {
+					// insert in the first argument
+					text = text + "), " + val + ", *";
+					this.insert(text, stmt.end() - 1);
+				} else {
+					// otherwise add it as a variable
+					var indent = this.funcIndent(stmt.up()[0]);
+					this.insert("\n"+indent+this.indent()+variableStmt+";",stmt.end()+1);
+				}
+			}
+			
+		} else {
+			this.insert("")
 		}
 		this.showCursor();
 	},
@@ -246,6 +256,12 @@ $.Controller("Funcit.Editor",{
 			 
 		}
 		this.showCursor();
+	},
+	getVariableName : function(varName){
+		this._variableNames = this._variableNames || {};
+		this._variableNames[varName] = this._variableNames[varName] || 0;
+		this._variableNames[varName]++;
+		return varName + "_" + this._variableNames[varName];
 	},
 	showCursor: function(){
 		this.element.controller('lastselection').showCursor()

@@ -183,6 +183,7 @@ steal
 		},
 		
 		onMouseup : function(ev){
+			this.publish('funcit.close_select_menu');
 			if(/option/i.test(ev.target.nodeName)){
 
 			}else if(ev.which == 3){
@@ -241,13 +242,15 @@ steal
 			if(ev.keyCode == 83 && this.record_scroll){
 				this.record_scroll = false;
 				Funcit.Tooltip.close();
-				var direction = "top";
-				var amount = this.scroll.y;
-				if(amount == 0){
-					direction = "left";
-					amount = this.scroll.x;
+				if(this.scroll != null){
+					var direction = "top";
+					var amount = this.scroll.y;
+					if(amount == 0){
+						direction = "left";
+						amount = this.scroll.x;
+					}
+					this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
 				}
-				this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
 			}
 		},
 		'funcit.record_scroll subscribe': function(){

@@ -32,6 +32,9 @@ $.Controller("Funcit.SelectMenu",
 		},
 		close: function(){
 			this.element.hide();
+		},
+		'funcit.close_select_menu subscribe': function(){
+			this.close();
 		}
 	})
 

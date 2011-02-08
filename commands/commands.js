@@ -82,15 +82,20 @@ $.Controller("Funcit.Commands",
 			Funcit.Selectel.select(this.callback('selected', category, name));
 		},
 		// called after the user selects an option and submits the form on the menu
-		selected: function(category, type, el){
-			var val = $(el)[type]? $(el)[type](): null,
-				result;
+		selected: function(category, type, el, selected){
+			var val, result;
+						
+			if(type == 'css'){
+				val = selected;
+				result = $(el).curStyles(val)[val];
+			}else{
+				val = $(el)[type]? $(el)[type](): null;
+			}
 				
 			if(type == 'attr'){
-				result = $(el).attr(val);
-			} else if(type == 'css'){
-				result = $(el).curStyles(val)[val];
-			}
+				val = selected;
+				result = $(el).attr(selected);
+			} 
 		
 			$("#app").trigger("addEvent",[category,{
 					type : type,
@@ -115,17 +120,20 @@ $.Controller("Funcit.Commands",
 			$('.funcit_select_menu').funcit_select_menu(ev, options, callback, 'Select Class');
 		},
 		afterCss: function(category, el, ev){
+			console.log('zove')
 			var $el = $(el), style = $el.attr('style');
-			/* Naive CSS parsing */
-			var styles = style.split(';');
-			var styleNames = [];
-			for(var i = 0, ii = styles.length; i < ii; i++){
-				var declarationName = $.String.strip(styles[i].split(':')[0]);
-				if(declarationName != '') 
-					styleNames.push(declarationName);
+			if(typeof style != 'undefined'){
+				/* Naive CSS parsing */
+				var styles = style.split(';');
+				var styleNames = [];
+				for(var i = 0, ii = styles.length; i < ii; i++){
+					var declarationName = $.String.strip(styles[i].split(':')[0]);
+					if(declarationName != '') 
+						styleNames.push(declarationName);
+				}
+				var callback = this.callback('selected', category, "css", el);
+				$('.funcit_select_menu').funcit_select_menu(ev, styleNames, callback, 'Select style');
 			}
-			var callback = this.callback('selected', category, "css", el);
-			$('.funcit_select_menu').funcit_select_menu(ev, styleNames, callback, 'Select style');
 		},
 		afterAttr: function(category, el, ev){
 			var $el = $(el);
