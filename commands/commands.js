@@ -97,9 +97,15 @@ $.Controller("Funcit.Commands",
 				val = selected;
 				result = $(el).attr(selected);
 			} 
+			
 			if(type == 'hasClass'){
 				val    = selected;
 				result = selected;
+			}
+		
+			if(type == 'position' || type == 'offset'){
+			  val.top = Math.round((val.top || 0) * 10) / 10;
+				val.left = Math.round((val.left || 0) * 10) / 10;
 			}
 		
 			$("#app").trigger("addEvent",[category,{
@@ -109,6 +115,7 @@ $.Controller("Funcit.Commands",
 					result: result
 				}, el]);
 		},
+		
 		attrHandler: function(el, category){
 			Funcit.Selectel.select(this.callback('afterAttr', category));
 		},

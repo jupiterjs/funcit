@@ -196,6 +196,7 @@ $.Controller("Funcit.Editor",{
 	},
 	addGetter: function(options, el){
 		console.log(arguments)
+		
 		var val = $.toJSON(options.value) || "",
 			result = options.result, 
 			sel = $(el).prettySelector(),
@@ -204,7 +205,9 @@ $.Controller("Funcit.Editor",{
 		if(options.type == 'attr' || options.type == 'css'){
 			text = text + '"' + options.value + '"'
 		}	
-			
+		
+		
+		
 		var variableStmt = "var "+this.getVariableName(options.type)+" = "+text+")";
 		
 		//get an empty function or last statement
