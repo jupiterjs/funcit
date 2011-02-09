@@ -71,6 +71,7 @@ $.Controller("Funcit.Testbuttons", {
 	runtestDone: function(){
 		$('.running-test').removeClass('running-test');
 		this.toggleRecord(true);
+		$('#app').funcit_app("bindEventsToIframe");
 	},
 	/**
 	 * Assumes you have only one module.  Grabs that module and returns the string of its text

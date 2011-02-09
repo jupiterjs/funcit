@@ -87,7 +87,12 @@ steal
 			this.element.removeClass('loading')
 			//listen to everything on this guy ...
 			this.element.trigger("addEvent",["open",url])
-			$(ev.target.contentWindow.document)
+			this.bindEventsToIframe(ev.target.contentWindow.document)
+		},
+		bindEventsToIframe: function(target){
+			console.log(target)
+			target = target || $('iframe:first')[0].contentWindow.document;
+			$(target)
 				.keydown(this.callback('onKeydown'))
 				.keyup(this.callback('onKeyup'))
 				.mousedown(this.callback('onMousedown'))
