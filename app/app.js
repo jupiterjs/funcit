@@ -176,6 +176,9 @@ steal
 			},20)
 		},
 		onMousedown : function(ev){
+			if(this.record_mouse){
+				this.stopMouseRecording();
+			}
 			this.mousedownEl = ev.target;
 			this.mousemoves = 0
 			this.lastX = ev.pageX
@@ -232,12 +235,10 @@ steal
 			if(ev.keyCode == 83 /* s */ && this.begin_record_mouse){
 				this.begin_record_mouse = false;
 				this.record_mouse = true;
+				Funcit.Tooltip.open($.View('//funcit/commands/views/move_recording'));
 			}
 			if (ev.keyCode == 70 /* f */ && this.record_mouse) {
-				Funcit.Tooltip.close();
-				this.record_mouse = false;
-				this.element.trigger("addEvent",["move", 
-					this.mousemove_locations.start, this.mousemove_locations.end]);
+				this.stopMouseRecording();
 			}
 			if(ev.keyCode == 83 && this.record_scroll){
 				this.record_scroll = false;
@@ -252,6 +253,12 @@ steal
 					this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
 				}
 			}
+		},
+		stopMouseRecording: function(){
+			Funcit.Tooltip.close();
+			this.record_mouse = false;
+			this.element.trigger("addEvent",["move", 
+				this.mousemove_locations.start, this.mousemove_locations.end]);
 		},
 		'funcit.record_scroll subscribe': function(){
 			this.scroll = null;
