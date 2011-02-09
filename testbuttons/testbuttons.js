@@ -69,6 +69,7 @@ $.Controller("Funcit.Testbuttons", {
 		this.run(this.textarea.val(), this.callback('runtestDone'));
 	},
 	runtestDone: function(){
+		$('.running-test').removeClass('running-test');
 		this.toggleRecord(true);
 	},
 	/**
