@@ -191,8 +191,14 @@ $.Controller("Funcit.Editor",{
 	// if el is blank, add "target"
 	addWait: function(options, el){
 		var val = $.toJSON(options.value) || "",
+			result = options.result, 
 			sel = $(el).prettySelector();
-		this.chainOrWriteLn(sel,"."+options.type+"("+val+")");
+		if(options.type == 'attr' || options.type == 'css'){
+			this.chainOrWriteLn(sel,"."+options.type+"("+val+", '" + result +"')");
+		} else {
+			this.chainOrWriteLn(sel,"."+options.type+"("+val+")");
+		}
+		
 	},
 	addGetter: function(options, el){
 		console.log(arguments)
