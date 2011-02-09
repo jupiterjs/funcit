@@ -125,7 +125,6 @@ $.Controller("Funcit.Commands",
 			$('.funcit_select_menu').funcit_select_menu(ev, options, callback, 'Select Class');
 		},
 		afterCss: function(category, el, ev){
-			console.log('zove')
 			var $el = $(el), style = $el.attr('style');
 			if(typeof style != 'undefined'){
 				/* Naive CSS parsing */

@@ -178,12 +178,13 @@ $.Controller("Funcit.Editor",{
 		this.chainOrWriteLn(sel,"."+options.type+"("+val+")");
 	},
 	addGetter: function(options, el){
+		console.log(arguments)
 		var val = $.toJSON(options.value) || "",
 			result = options.result, 
 			sel = $(el).prettySelector(),
 			text = "S('"+sel+"')."+options.type+"(";
 		
-		if(options.type == 'attr'){
+		if(options.type == 'attr' || options.type == 'css'){
 			text = text + '"' + options.value + '"'
 		}	
 			
