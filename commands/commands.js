@@ -108,6 +108,10 @@ $.Controller("Funcit.Commands",
 				val.left = Math.round((val.left || 0) * 10) / 10;
 			}
 		
+			if($.inArray(type, ['height', 'innerHeight', 'innerWidth', 'outerHeight', 'outerWidth', 'scrollLeft', 'scrollTop', 'width']) > -1){
+				val = Math.round((val || 0) * 10) / 10;
+			}
+		
 			$("#app").trigger("addEvent",[category,{
 					type : type,
 					value: val,
