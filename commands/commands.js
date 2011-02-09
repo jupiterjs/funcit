@@ -83,6 +83,7 @@ $.Controller("Funcit.Commands",
 		},
 		// called after the user selects an option and submits the form on the menu
 		selected: function(category, type, el, selected){
+			
 			var val, result;
 						
 			if(type == 'css'){
@@ -96,6 +97,10 @@ $.Controller("Funcit.Commands",
 				val = selected;
 				result = $(el).attr(selected);
 			} 
+			if(type == 'hasClass'){
+				val    = selected;
+				result = selected;
+			}
 		
 			$("#app").trigger("addEvent",[category,{
 					type : type,
