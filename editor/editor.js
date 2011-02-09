@@ -149,6 +149,23 @@ $.Controller("Funcit.Editor",{
 		this.writeLn("S.open('"+url+"')")
 	},
 	addChar: function(letter, el){
+		var controller = this;
+		
+		this._keyBuffer = this._keyBuffer || "";
+		if(typeof letter != 'undefined'){
+			this._keyBuffer = this._keyBuffer + letter;
+		}
+		
+		if(this.keyTimeout){
+			clearTimeout(this.keyTimeout);
+			delete this.keyTimeout;
+		}
+		
+		this.keyTimeout = setTimeout(function(){
+			controller.chainOrWriteLn($(el).prettySelector(),".type('" + controller._keyBuffer + "')");
+			delete controller.keyTimeout;
+			controller._keyBuffer = "";
+		}, 200);
 	},
 	addClick : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(),".click()");
