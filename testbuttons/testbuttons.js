@@ -18,14 +18,18 @@ $.Controller("Funcit.Testbuttons", {
 		//get an empty function or last statement
 		var stmntOrFunc = this.editor.funcStatement();
 		
-		if(stmntOrFunc[0].arity == 'function'){
-			// handle this
-		}else{ // statement
-			// get test up to current statement
-			var endChar = stmntOrFunc.end(), 
-				test = this.textarea.val().substr(0,endChar)+"\n});";
-				
+		if(typeof stmntOrFunc[0] != 'undefined'){
+			if(stmntOrFunc[0].arity == 'function'){
+				// handle this
+			}else{ // statement
+				// get test up to current statement
+				var endChar = stmntOrFunc.end(), 
+					test = this.textarea.val().substr(0,endChar)+"\n});";
+
+			}
 		}
+		
+		
 		var testName = stmntOrFunc[0].func.parent[0].value;
 		QUnit.config.filters = [testName];
 		
