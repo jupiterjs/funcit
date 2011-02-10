@@ -149,23 +149,18 @@ $.Controller("Funcit.Editor",{
 		this.writeLn("S.open('"+url+"')")
 	},
 	addChar: function(letter, el){
-		var controller = this;
-		
-		this._keyBuffer = this._keyBuffer || "";
-		if(typeof letter != 'undefined'){
-			this._keyBuffer = this._keyBuffer + letter;
+		var stmt = this.funcStatement(true);
+		var text = stmt.text();
+		if(/\.type\(/.test(text)){
+			var line = stmt[0].end.line;
+			var textareaValue = this.val().split("\n");
+			var value = text.substr(0, text.length - 3) + letter + "');";
+			textareaValue[line - 1] = textareaValue[line -1].replace(text, value);
+			this.val(textareaValue.join("\n"));
+			this.element.trigger('keyup')
+		}else{
+			this.chainOrWriteLn($(el).prettySelector(),".type('" + letter + "*')");
 		}
-		
-		if(this.keyTimeout){
-			clearTimeout(this.keyTimeout);
-			delete this.keyTimeout;
-		}
-		
-		this.keyTimeout = setTimeout(function(){
-			controller.chainOrWriteLn($(el).prettySelector(),".type('" + controller._keyBuffer + "')");
-			delete controller.keyTimeout;
-			controller._keyBuffer = "";
-		}, 200);
 	},
 	addClick : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(),".click()");
@@ -201,7 +196,6 @@ $.Controller("Funcit.Editor",{
 		
 	},
 	addGetter: function(options, el){
-		console.log(arguments)
 		
 		var val = $.toJSON(options.value) || "",
 			result = options.result, 
