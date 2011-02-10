@@ -12,7 +12,7 @@ steal.plugins('jquery', 'jquery/view/ejs').then(function(){
 		 * @param {Object} delay a delay in ms before the close happens
 		 */
 		close: function(){
-			$('.syncing').fadeOut(function(){ $(this).hide() });
+			$('.syncing').text('').fadeOut(function(){ $(this).hide().removeClass('syncing') });
 		}
 	}
 })

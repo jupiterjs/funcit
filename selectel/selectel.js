@@ -14,6 +14,7 @@ $.Controller("Funcit.Selectel", {
 			this.document = this.iframe[0].contentDocument;
 		},
 		update: function(callback){
+			this.document = this.iframe[0].contentDocument;
 			this.iframe.mask().show();
 			Funcit.Tooltip.open($.View('//funcit/selectel/views/tooltip', {}))
 			this.lastInspecting = 0;
