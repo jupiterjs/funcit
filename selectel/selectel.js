@@ -19,6 +19,7 @@ $.Controller("Funcit.Selectel", {
 			this.lastInspecting = 0;
 			this.callback = callback;
 			this.selecting = true;
+			$('#select-path').fadeIn().html('');
 		},
 		mousemove: function(el, ev){
 			if(!this.selecting) return;
@@ -28,6 +29,7 @@ $.Controller("Funcit.Selectel", {
 				this.element.hide();
 				this.highlightedEl = this.document.elementFromPoint(ev.clientX, ev.clientY);
 				this.element.show();
+				this.elementPath(this.highlightedEl)
 				if(this.highlightedEl) {
 					$(this.highlightedEl).highlight();
 				}
@@ -40,6 +42,29 @@ $.Controller("Funcit.Selectel", {
 			$(this.highlightedEl).unhighlight();
 			this.callback(this.highlightedEl, ev);
 			this.selecting = false;
+			$('#select-path').fadeOut().html('');
+		},
+		elementPath: function(el){
+			if(this.currentEl != el){
+				this.currentEl = el;
+				var path = [];
+				var parents = $(el).parents().toArray();
+				parents.unshift(el);
+				var i = parents.length - 1;
+				while(i > -1){
+					var elem = parents[i].tagName.toLowerCase();
+					var $el = $(parents[i]);
+					var c = $el.attr('class');
+					var id = $el.attr('id');
+					if(id != "")
+						elem += "#" + id;
+					if(c != "")
+						elem += "." + c.replace(/ /g, '.');
+					path.push(elem);
+					i--;
+				}
+				$('#select-path').html(path.join(' > '));
+			}
 		}
 	})
 

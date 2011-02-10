@@ -187,7 +187,8 @@ iframe {
 	margin: 0px;
 	padding: 2px 0 0 0;
 	overflow: none;
-	background-image: url(images/backgrounds/panel.png)
+	background-image: url(images/backgrounds/panel.png);
+	position: relative;
 }
 .rounded-corners (@radius: 5px) {
   border-radius: @radius;
@@ -675,4 +676,17 @@ li {
 			float: left;
 		}
 	}
+}
+#select-path {
+	display: none;
+	position: absolute;
+	height: 20px;
+	margin-top: -22px;
+	color: white;
+	background: rgba(0,0,0,0.8);
+	padding: 0px 10px;
+	line-height: 20px;
+	font-size: 10px;
+	left: 0px;
+	right: 0px;
 }
