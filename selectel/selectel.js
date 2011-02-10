@@ -24,7 +24,7 @@ $.Controller("Funcit.Selectel", {
 			if(!this.selecting) return;
 			// throttle this function a little
 			Funcit.Tooltip.close(500);
-	        if (new Date().getTime() - this.lastInspecting > 30) {
+			if (new Date().getTime() - this.lastInspecting > 30) {
 				this.element.hide();
 				this.highlightedEl = this.document.elementFromPoint(ev.clientX, ev.clientY);
 				this.element.show();
@@ -32,7 +32,7 @@ $.Controller("Funcit.Selectel", {
 					$(this.highlightedEl).highlight();
 				}
 			}
-            this.lastInspecting = new Date().getTime();
+			this.lastInspecting = new Date().getTime();
 		},
 		mouseup: function(el, ev){
 			if(!this.selecting) return;

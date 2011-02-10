@@ -137,18 +137,19 @@ $.Controller("Funcit.Commands",
 		},
 		afterCss: function(category, el, ev){
 			var $el = $(el), style = $el.attr('style');
+			var styleNames = [];
 			if(typeof style != 'undefined'){
 				/* Naive CSS parsing */
 				var styles = style.split(';');
-				var styleNames = [];
+				
 				for(var i = 0, ii = styles.length; i < ii; i++){
 					var declarationName = $.String.strip(styles[i].split(':')[0]);
 					if(declarationName != '') 
 						styleNames.push(declarationName);
 				}
-				var callback = this.callback('selected', category, "css", el);
-				$('.funcit_select_menu').funcit_select_menu(ev, styleNames, callback, 'Select style');
 			}
+			var callback = this.callback('selected', category, "css", el);
+			$('.funcit_select_menu').funcit_select_menu(ev, styleNames, callback, 'Select style');
 		},
 		afterAttr: function(category, el, ev){
 			var $el = $(el);
