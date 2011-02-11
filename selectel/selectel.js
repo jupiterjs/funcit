@@ -51,8 +51,8 @@ $.Controller("Funcit.Selectel", {
 				var path = [];
 				var parents = $(el).parents().toArray();
 				parents.unshift(el);
-				var i = parents.length - 1;
-				while(i > -1){
+				
+				for(var i = 0, ii = parents.length; i < ii; i++){
 					var elem = parents[i].tagName.toLowerCase();
 					var $el = $(parents[i]);
 					var c = $el.attr('class');
@@ -62,9 +62,8 @@ $.Controller("Funcit.Selectel", {
 					if(c != "")
 						elem += "." + c.replace(/ /g, '.');
 					path.push(elem);
-					i--;
 				}
-				$('#select-path').html(path.join(' > '));
+				$('#select-path').html(path.join(' < '));
 			}
 		}
 	})
