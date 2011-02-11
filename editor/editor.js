@@ -190,6 +190,8 @@ $.Controller("Funcit.Editor",{
 			sel = $(el).prettySelector();
 		if(options.type == 'attr' || options.type == 'css'){
 			this.chainOrWriteLn(sel,"."+options.type+"("+val+", '" + result +"')");
+		} else if($.inArray(options.type, ['exists', 'invisible', 'missing', 'visible']) > -1) {
+			this.chainOrWriteLn(sel,"."+options.type+"()");
 		} else {
 			this.chainOrWriteLn(sel,"."+options.type+"("+val+")");
 		}
