@@ -1,5 +1,5 @@
 steal.plugins('jquery/controller/subscribe', 'funcit/selectel')
-	.then('dialog', 'select_menu', 'open_page', 'tooltip','modal')
+	.then('dialog', 'select_menu', 'tooltip','modal', 'open_page')
 	.then(function($){
 /**
  * Controls the command tab and inserting waits/getters/asserts into the test.

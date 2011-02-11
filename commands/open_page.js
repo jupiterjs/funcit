@@ -24,6 +24,10 @@ $.Controller("Funcit.OpenPage",
 				$('#app').controllers(Funcit.App)[0].loadIframe(addr);
 				Funcit.Modal.close();
 			}
+		},
+		".close click": function(el, ev){
+			ev.preventDefault();
+			Funcit.Modal.close();
 		}
 	})
 
