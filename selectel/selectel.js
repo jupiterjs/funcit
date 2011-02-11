@@ -65,6 +65,13 @@ $.Controller("Funcit.Selectel", {
 				}
 				$('#select-path').html(path.join(' < '));
 			}
+		},
+		"funcit.escape_keydown subscribe": function(){
+			if(!this.selecting) return;
+			this.element.hide();
+			$(this.highlightedEl).unhighlight();
+			this.selecting = false;
+			$('#select-path').fadeOut().html('');
 		}
 	})
 

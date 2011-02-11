@@ -35,6 +35,9 @@ $.Controller("Funcit.SelectMenu",
 		},
 		'funcit.close_select_menu subscribe': function(){
 			this.close();
+		},
+		"funcit.escape_keydown subscribe": function(){
+			this.close();
 		}
 	})
 

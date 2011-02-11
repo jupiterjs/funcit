@@ -28,6 +28,9 @@ $.Controller("Funcit.OpenPage",
 		".close click": function(el, ev){
 			ev.preventDefault();
 			Funcit.Modal.close();
+		},
+		"funcit.escape_keydown subscribe": function(){
+			Funcit.Modal.close();
 		}
 	})
 

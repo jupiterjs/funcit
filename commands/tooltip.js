@@ -5,7 +5,6 @@ steal.plugins('jquery', 'jquery/view/ejs').then(function(){
 		
 	Funcit.Tooltip = {
 		open: function(text){
-			console.log(tooltip)
 			tooltip
 				.html(text)
 				.show()

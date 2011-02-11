@@ -31,7 +31,8 @@ steal
 			this.hoveredEl = null;
 			this.record = true;
 			
-			$(document).keydown(this.callback('onDocumentKeydown'))
+			
+			this.bind(document, 'keydown', this.callback('onDocumentKeydown'))
 			
 			// if the a test is appended to the URL, load it and skip the form
 			// http://localhost:8000/funcit/funcit.html?url=/funcunit/syn/demo.html
@@ -154,6 +155,7 @@ steal
 			}
 		},
 		onKeydown : function(ev){
+			this.handleEscape(ev);
 			this.stopMouseOrScrollRecording(ev);
 			var key = getKey(ev.keyCode);
 			if(this.keytarget != ev.target){
@@ -182,7 +184,7 @@ steal
 		},
 		onMousedown : function(ev){
 			if(this.record_mouse){
-				this.stopMouseRecording();
+				this.stopMouseRecording(true);
 			}
 			this.mousedownEl = ev.target;
 			this.mousemoves = 0
@@ -234,7 +236,15 @@ steal
 			}
 		},
 		onDocumentKeydown: function(ev){
+			this.handleEscape(ev);
 			this.stopMouseOrScrollRecording(ev);
+		},
+		handleEscape: function(ev){
+			if(ev.keyCode == 27){
+				this.stopMouseRecording(false);
+				this.stopScrollRecording(false);
+				this.publish('funcit.escape_keydown')
+			}
 		},
 		stopMouseOrScrollRecording: function(ev){
 			if(ev.keyCode == 83 /* s */ && this.begin_record_mouse){
@@ -243,27 +253,34 @@ steal
 				Funcit.Tooltip.open($.View('//funcit/commands/views/move_recording'));
 			}
 			if (ev.keyCode == 70 /* f */ && this.record_mouse) {
-				this.stopMouseRecording();
+				this.stopMouseRecording(true);
 			}
 			if(ev.keyCode == 83 && this.record_scroll){
-				this.record_scroll = false;
-				Funcit.Tooltip.close();
-				if(this.scroll != null){
-					var direction = "top";
-					var amount = this.scroll.y;
-					if(amount == 0){
-						direction = "left";
-						amount = this.scroll.x;
-					}
+				this.stopScrollRecording(true);
+			}
+		},
+		stopScrollRecording: function(triggerEvent){
+			this.record_scroll = false;
+			Funcit.Tooltip.close();
+			if(this.scroll != null){
+				var direction = "top";
+				var amount = this.scroll.y;
+				if(amount == 0){
+					direction = "left";
+					amount = this.scroll.x;
+				}
+				if(triggerEvent){
 					this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
 				}
 			}
 		},
-		stopMouseRecording: function(){
+		stopMouseRecording: function(triggerEvent){
 			Funcit.Tooltip.close();
 			this.record_mouse = false;
-			this.element.trigger("addEvent",["move", 
-				this.mousemove_locations.start, this.mousemove_locations.end]);
+			if(triggerEvent){
+				this.element.trigger("addEvent",["move", 
+					this.mousemove_locations.start, this.mousemove_locations.end]);
+			}
 		},
 		'funcit.record_scroll subscribe': function(){
 			this.scroll = null;

@@ -27,6 +27,9 @@ $.Controller("Funcit.Dialog",
 		},
 		close: function(){
 			this.element.hide();
+		},
+		"funcit.escape_keydown subscribe": function(){
+			Funcit.Modal.close();
 		}
 	})
 
