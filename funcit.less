@@ -385,6 +385,16 @@ iframe {
 		background: url(images/backgrounds/sync.png);
 		margin: 4px 0 0 5px;
 		cursor: pointer;
+		position: relative;
+		img {
+			display: none;
+			position: absolute;
+			top: 5px;
+			left: 6px;
+		}
+	}
+	.sync-running img {
+		display: block;
 	}
 	.sync:hover {
 		background-position: left -20px;

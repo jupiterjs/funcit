@@ -14,11 +14,13 @@ $.Controller("Funcit.Testbuttons", {
 	// grabs the entire textarea string up to the cursor and passes this testname as a filter to QUnit
 	// since the text isn't modified, the highlighting still works
 	// TODO there has to be a better way to do this
-	".sync click": function(){
+	".sync click": function(el, ev){
 		//get an empty function or last statement
+		
 		var stmntOrFunc = this.editor.funcStatement();
 		
 		if(typeof stmntOrFunc[0] != 'undefined'){
+			
 			if(stmntOrFunc[0].arity == 'function'){
 				// handle this
 			}else{ // statement
@@ -27,17 +29,19 @@ $.Controller("Funcit.Testbuttons", {
 					test = this.textarea.val().substr(0,endChar)+"\n});";
 
 			}
+			var testName = stmntOrFunc[0].func.parent[0].value;
+			QUnit.config.filters = [testName];
 		}
 		
 		
-		var testName = stmntOrFunc[0].func.parent[0].value;
-		QUnit.config.filters = [testName];
+		
 		
 		// add the opaque mask
 		Funcit.Modal.open($.View('//funcit/testbuttons/views/sync', {}))
 		this.run(test, this.callback('syncDone'));
 	},
 	syncDone: function(){
+		$('.sync-running').removeClass('sync-running');
 		this.toggleRecord(true);
 		Funcit.Modal.close();
 	},
@@ -55,6 +59,7 @@ $.Controller("Funcit.Testbuttons", {
 		$("#tabs li:eq(1)").trigger("activate");
 	},
 	run: function(test, doneCb){
+		$('.sync').addClass('sync-running');
 		this.toggleRecord(false);
 		this.lineCounter = {};
 		$("iframe").funcit_runner(test, this.callback('runnerCallback'), doneCb);
