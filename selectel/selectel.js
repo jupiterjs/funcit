@@ -48,7 +48,7 @@ $.Controller("Funcit.Selectel", {
 		elementPath: function(el){
 			if(this.currentEl != el){
 				this.currentEl = el;
-				var path = [];
+				/*var path = [];
 				var parents = $(el).parents().toArray();
 				parents.unshift(el);
 				
@@ -63,7 +63,8 @@ $.Controller("Funcit.Selectel", {
 						elem += "." + c.replace(/ /g, '.');
 					path.push(elem);
 				}
-				$('#select-path').html(path.join(' < '));
+				$('#select-path').html(path.join(' < '));*/
+				$('#select-path').html($(el).prettySelector())
 			}
 		},
 		"funcit.escape_keydown subscribe": function(){

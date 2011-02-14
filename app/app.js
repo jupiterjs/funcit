@@ -145,14 +145,14 @@ steal
 			this.mousemoves++;
 		},
 		onMouseenter : function(ev){
-			if(this.record_scroll){
+			//if(this.record_scroll){
 				$(ev.target).scroll(this.callback('onScroll'));
-			}
+			//}
 		},
 		onMouseout : function(ev){
-			if(this.record_scroll){
+			//if(this.record_scroll){
 				$(ev.target).unbind('scroll');
-			}
+			//}
 		},
 		onKeydown : function(ev){
 			this.handleEscape(ev);
@@ -183,6 +183,7 @@ steal
 			},20)
 		},
 		onMousedown : function(ev){
+			$(ev.target).scroll(this.callback('onScroll'));
 			if(this.record_mouse){
 				this.stopMouseRecording(true);
 			}
@@ -194,30 +195,45 @@ steal
 		
 		onMouseup : function(ev){
 			this.publish('funcit.close_select_menu');
-			if(/option/i.test(ev.target.nodeName)){
-
-			}else if(ev.which == 3){
-				this.element.trigger("addEvent", ['rightClick', undefined, ev.target]);
-			}else if(!this.mousemoves || (this.lastX == ev.pageX && this.lastY == ev.pageY)){
-				if(this.clickTimeout){
-					clearTimeout(this.clickTimeout);
-					delete this.clickTimeout;
-					this.element.trigger("addEvent",["doubleClick",undefined, ev.target]);
-				} else {
-					var controller = this;
-					this.clickTimeout = setTimeout(function(){
-						controller.element.trigger("addEvent",["click",undefined, ev.target]);
-						delete controller.clickTimeout;
-					}, 200);
+			if(this.isScrolling){
+				if(this.scroll != null){
+					var direction = "top";
+					var amount = this.scroll.y;
+					if(amount == 0){
+						direction = "left";
+						amount = this.scroll.x;
+					}
+					this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
 				}
-			}else if(this.mousemoves > 2 && this.mousedownEl){
-				this.element.trigger("addEvent",["drag",{clientX : ev.clientX,
-					clientY: ev.clientY}, this.mousedownEl])
+				
+				this.isScrolling = false;
+			} else {
+				if(/option/i.test(ev.target.nodeName)){
+
+				}else if(ev.which == 3){
+					this.element.trigger("addEvent", ['rightClick', undefined, ev.target]);
+				}else if(!this.mousemoves || (this.lastX == ev.pageX && this.lastY == ev.pageY)){
+					if(this.clickTimeout){
+						clearTimeout(this.clickTimeout);
+						delete this.clickTimeout;
+						this.element.trigger("addEvent",["doubleClick",undefined, ev.target]);
+					} else {
+						var controller = this;
+						this.clickTimeout = setTimeout(function(){
+							controller.element.trigger("addEvent",["click",undefined, ev.target]);
+							delete controller.clickTimeout;
+						}, 200);
+					}
+				}else if(this.mousemoves > 2 && this.mousedownEl){
+					this.element.trigger("addEvent",["drag",{clientX : ev.clientX,
+						clientY: ev.clientY}, this.mousedownEl])
+				}
+
+				this.mousedownEl = null;
+				this.mousemoves = 0;
+				this.lastY = this.lastX = null;
 			}
 			
-			this.mousedownEl = null;
-			this.mousemoves = 0;
-			this.lastY = this.lastX = null;
 		},
 		onChange : function(ev){
 			if(!this.justKey && ev.target.nodeName.toLowerCase() == "select"){
@@ -227,13 +243,12 @@ steal
 			}
 		},
 		onScroll: function(ev){
-			if(this.record_scroll){
-				this.scroll = {
-					x: ev.currentTarget.scrollLeft, 
-					y: ev.currentTarget.scrollTop, 
-					target: ev.currentTarget
-				};
-			}
+			this.isScrolling = true;
+			this.scroll = {
+				x: ev.currentTarget.scrollLeft, 
+				y: ev.currentTarget.scrollTop, 
+				target: ev.currentTarget
+			};
 		},
 		onDocumentKeydown: function(ev){
 			this.handleEscape(ev);

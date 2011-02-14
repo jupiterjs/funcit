@@ -146,7 +146,11 @@ $.Controller("Funcit.Editor",{
 		this["add"+$.String.capitalize(eventType)].apply(this,args.slice(2))
 	},
 	addOpen : function(url){
-		this.writeLn("S.open('"+url+"')")
+		var stmt = this.funcStatement({
+			previous: true
+		});
+		var indent = this.funcIndent(stmt.up()[0]);
+		this.insert("\n"+indent+this.indent()+"S.open('"+url+"')*")
 	},
 	addChar: function(letter, el){
 		var stmt = this.funcStatement(true);
@@ -154,34 +158,40 @@ $.Controller("Funcit.Editor",{
 		if(/\.type\(/.test(text)){
 			var line = stmt[0].end.line;
 			var textareaValue = this.val().split("\n");
-			var value = text.substr(0, text.length - 3) + letter + "');";
+			var value = text.substr(0, text.length - 3) + letter + "*');";
 			textareaValue[line - 1] = textareaValue[line -1].replace(text, value);
-			this.val(textareaValue.join("\n"));
+			var newValue = textareaValue.join("\n");
+			var start = newValue.indexOf('*');
+			this.val(newValue.replace(/\*/,''));
+			this.selection({
+				start : start,
+				end : start
+			});
 			this.element.trigger('keyup')
 		}else{
 			this.chainOrWriteLn($(el).prettySelector(),".type('" + letter + "*')");
 		}
 	},
 	addClick : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(),".click()");
+		this.chainOrWriteLn($(el).prettySelector(),".click()*");
 	},
 	addRightClick : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(),".rightClick()")
+		this.chainOrWriteLn($(el).prettySelector(),".rightClick()*")
 	},
 	addDoubleClick : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(),".dblclick()")
+		this.chainOrWriteLn($(el).prettySelector(),".dblclick()*")
 	},
 	addTrigger : function(value, el){
-		this.chainOrWriteLn($(el).prettySelector(),".trigger("+$.toJSON(value)+")")
+		this.chainOrWriteLn($(el).prettySelector(),".trigger("+$.toJSON(value)+")*")
 	},
 	addDrag : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(),".drag("+$.toJSON(options)+")");
+		this.chainOrWriteLn($(el).prettySelector(),".drag("+$.toJSON(options)+")*");
 	},
 	addMove: function(from, to){
-		this.chainOrWriteLn(null, '.move({from:"'+from.x+'x'+from.y+'", to:"'+to.x+'x'+to.y+'"})');
+		this.chainOrWriteLn(null, '.move({from:"'+from.x+'x'+from.y+'", to:"'+to.x+'x'+to.y+'"})*');
 	},
 	addScroll : function(direction, amount, el){
-		this.chainOrWriteLn($(el).prettySelector(), '.scroll('+$.toJSON(direction)+', '+amount+')');
+		this.chainOrWriteLn($(el).prettySelector(), '.scroll('+$.toJSON(direction)+', '+amount+')*');
 	},
 	// if el is blank, add "target"
 	addWait: function(options, el){
@@ -189,11 +199,11 @@ $.Controller("Funcit.Editor",{
 			result = options.result, 
 			sel = $(el).prettySelector();
 		if(options.type == 'attr' || options.type == 'css'){
-			this.chainOrWriteLn(sel,"."+options.type+"("+val+", '" + result +"')");
+			this.chainOrWriteLn(sel,"."+options.type+"("+val+", '" + result +"')*");
 		} else if($.inArray(options.type, ['exists', 'invisible', 'missing', 'visible']) > -1) {
-			this.chainOrWriteLn(sel,"."+options.type+"()");
+			this.chainOrWriteLn(sel,"."+options.type+"()*");
 		} else {
-			this.chainOrWriteLn(sel,"."+options.type+"("+val+")");
+			this.chainOrWriteLn(sel,"."+options.type+"("+val+")*");
 		}
 		
 	},
