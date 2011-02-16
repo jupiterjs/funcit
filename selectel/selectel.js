@@ -25,7 +25,7 @@ $.Controller("Funcit.Selectel", {
 		mousemove: function(el, ev){
 			if(!this.selecting) return;
 			// throttle this function a little
-			Funcit.Tooltip.close(500);
+			//Funcit.Tooltip.close(500);
 			if (new Date().getTime() - this.lastInspecting > 30) {
 				this.element.hide();
 				this.highlightedEl = this.document.elementFromPoint(ev.clientX, ev.clientY);

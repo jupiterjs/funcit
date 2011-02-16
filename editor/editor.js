@@ -187,8 +187,8 @@ $.Controller("Funcit.Editor",{
 	addDrag : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(),".drag("+$.toJSON(options)+")*");
 	},
-	addMove: function(from, to){
-		this.chainOrWriteLn(null, '.move({from:"'+from.x+'x'+from.y+'", to:"'+to.x+'x'+to.y+'"})*');
+	addMove: function(el, from, to){
+		this.chainOrWriteLn($(el).prettySelector(), '.move({"'+to.x+'x'+to.y+'"})*');
 	},
 	addScroll : function(direction, amount, el){
 		this.chainOrWriteLn($(el).prettySelector(), '.scroll('+$.toJSON(direction)+', '+amount+')*');

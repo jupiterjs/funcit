@@ -185,6 +185,7 @@ steal
 		onMousedown : function(ev){
 			$(ev.target).scroll(this.callback('onScroll'));
 			if(this.record_mouse){
+				console.log('stopiram')
 				this.stopMouseRecording(true);
 			}
 			this.mousedownEl = ev.target;
@@ -262,11 +263,6 @@ steal
 			}
 		},
 		stopMouseOrScrollRecording: function(ev){
-			if(ev.keyCode == 83 /* s */ && this.begin_record_mouse){
-				this.begin_record_mouse = false;
-				this.record_mouse = true;
-				Funcit.Tooltip.open($.View('//funcit/commands/views/move_recording'));
-			}
 			if (ev.keyCode == 70 /* f */ && this.record_mouse) {
 				this.stopMouseRecording(true);
 			}
@@ -293,7 +289,8 @@ steal
 			Funcit.Tooltip.close();
 			this.record_mouse = false;
 			if(triggerEvent){
-				this.element.trigger("addEvent",["move", 
+				console.log(this.mouse_recording_el)
+				this.element.trigger("addEvent",["move", this.mouse_recording_el,
 					this.mousemove_locations.start, this.mousemove_locations.end]);
 			}
 		},
@@ -301,9 +298,11 @@ steal
 			this.scroll = null;
 			this.record_scroll = true;
 		},
-		'funcit.record_mouse subscribe': function(){
+		'funcit.record_mouse subscribe': function(calling, el){
+			console.log(el)
 			this.mousemove_locations = {};
-			this.begin_record_mouse = true;
+			this.record_mouse = true;
+			this.mouse_recording_el = el;
 		},
 	})
 	

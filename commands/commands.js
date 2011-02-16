@@ -60,8 +60,8 @@ $.Controller("Funcit.Commands",
 		},
 		'.move click': function(el, ev){
 			ev.preventDefault();
-			Funcit.Tooltip.open($.View('//funcit/commands/views/move'));
-			this.publish('funcit.record_mouse')
+			//Funcit.Tooltip.open($.View('//funcit/commands/views/move'));
+			Funcit.Selectel.select(this.callback('afterMove'))
 		},
 		afterTrigger: function(el, ev){
 			var callback = this.callback('writeTrigger', el);
@@ -156,6 +156,10 @@ $.Controller("Funcit.Commands",
 			var options = $el.listAttributes();
 			var callback = this.callback('selected', category, "attr", el);
 			$('.funcit_select_menu').funcit_select_menu(ev, options, callback, 'Select Attribute');
+		},
+		afterMove : function(el, ev){
+			this.publish('funcit.record_mouse', el)
+			Funcit.Tooltip.open($.View('//funcit/commands/views/move_recording'));
 		},
 		// only one suggestion at a time
 		// TODO throttle this a little
