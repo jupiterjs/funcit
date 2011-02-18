@@ -157,9 +157,10 @@ $.Controller("Funcit.Editor",{
 		var text = stmt.text();
 		if(/\.type\(/.test(text)){
 			var line = stmt[0].end.line;
+			var textArr = text.split("\n")
 			var textareaValue = this.val().split("\n");
-			var value = text.substr(0, text.length - 3) + letter + "*');";
-			textareaValue[line - 1] = textareaValue[line -1].replace(text, value);
+			var value = textArr[textArr.length - 1].substr(0, textArr[textArr.length - 1].length - 3) + letter + "*');";
+			textareaValue[line - 1] = textareaValue[line -1].replace(textArr[textArr.length - 1], value);
 			var newValue = textareaValue.join("\n");
 			var start = newValue.indexOf('*');
 			this.val(newValue.replace(/\*/,''));
