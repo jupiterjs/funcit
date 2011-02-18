@@ -8,7 +8,12 @@ $.Controller("Funcit.Testbuttons", {
 		this.rowHeight = this.textarea.rowheight();
 	},
 	".rec click": function(el){
+		if(el.hasClass("recording")){
+			$('.sync').addClass('out-of-sync');
+		}
+		
 		this.toggleRecord(!el.hasClass("recording"));
+		
 	},
 	// runs test up to current cursor's statement
 	// grabs the entire textarea string up to the cursor and passes this testname as a filter to QUnit
@@ -17,16 +22,17 @@ $.Controller("Funcit.Testbuttons", {
 	".sync click": function(el, ev){
 		//get an empty function or last statement
 		
-		var stmntOrFunc = this.editor.funcStatement();
-		
+		var stmntOrFunc = this.editor.funcStatement(true);
+		//console.log(this.textarea[0].selectionStart)
 		if(typeof stmntOrFunc[0] != 'undefined'){
 			
 			if(stmntOrFunc[0].arity == 'function'){
 				// handle this
 			}else{ // statement
 				// get test up to current statement
-				var endChar = stmntOrFunc.end(), 
-					test = this.textarea.val().substr(0,endChar)+"\n});";
+				//var endChar = stmntOrFunc.end(), 
+				var endChar = this.textarea.val().indexOf("\n", this.textarea[0].selectionStart);
+				var test = this.textarea.val().substr(0,endChar)+"\n});";
 
 			}
 			var testName = stmntOrFunc[0].func.parent[0].value;
@@ -38,10 +44,12 @@ $.Controller("Funcit.Testbuttons", {
 		
 		// add the opaque mask
 		Funcit.Modal.open($.View('//funcit/testbuttons/views/sync', {}))
+		$('.sync').removeClass('out-of-sync');
 		this.run(test, this.callback('syncDone'));
 	},
 	syncDone: function(){
 		$('.sync-running').removeClass('sync-running');
+		
 		this.toggleRecord(true);
 		Funcit.Modal.close();
 	},
@@ -50,6 +58,7 @@ $.Controller("Funcit.Testbuttons", {
 		if(!record){ // turn off recording
 			el.removeClass("recording")
 			this.publish("funcit.record", {recording: false});
+			
 		} else {
 			el.addClass("recording")
 			this.publish("funcit.record", {recording: true});
@@ -115,8 +124,27 @@ $.Controller("Funcit.Testbuttons", {
 		
 		
 	},
+	setCaret : function(el){
+		this._caretAtLine = el.val().substr(0, el[0].selectionStart).split("\n").length
+	},
+	checkSync: function(el){
+		console.log(this._caretAtLine, el.val().substr(0, el[0].selectionStart).split("\n").length)
+		if(typeof this._caretAtLine != 'undefined'){
+			if(this._caretAtLine != el.val().substr(0, el[0].selectionStart).split("\n").length){
+				$('.sync').addClass('out-of-sync');
+			}
+		}
+			
+	},
+	"textarea mouseup": function(el, ev){
+		this.checkSync(el);
+	},
+	"textarea keydown": function(el, ev){
+		this.setCaret(el);
+	},
 	// call the method that adds run buttons
-	"textarea keyup": function(){ 
+	"textarea keyup": function(el, ev){ 
+		this.checkSync(el);
 		var self = this;
 		if(this.keydownTimeout){
 			clearTimeout(this.keydownTimeout);
