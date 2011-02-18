@@ -442,6 +442,8 @@ $.Controller("Funcit.Editor",{
 		//get an empty function or last statement
 		var stmntOrFunc = this.funcStatement();
 		
+		
+		
 		// if a function
 		// 
 		if(typeof stmntOrFunc[0] != 'undefined'){
@@ -452,7 +454,12 @@ $.Controller("Funcit.Editor",{
 			}else{
 				var stmnt = stmntOrFunc,
 					indent = this.funcIndent(stmnt.up()[0])
-				if(stmnt.hasSelector(selector)){
+				
+				var selectors = this.element.val().substr(0,this.element[0].selectionStart).split('S("');
+				var lastSelector = '"' + selectors[selectors.length-1].split('")')[0] + '"';
+					
+				//if(stmnt.hasSelector(selector)){
+				if(lastSelector == selector){
 					this.insert("\n"+indent+this.indent()+this.indent()+text, stmnt.ender()+1)
 				}else{
 					this.insert("\n"+indent+this.indent()+"S("+selector+")"+text+";",stmnt.end()+1)

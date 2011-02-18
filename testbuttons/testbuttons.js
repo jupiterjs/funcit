@@ -128,7 +128,6 @@ $.Controller("Funcit.Testbuttons", {
 		this._caretAtLine = el.val().substr(0, el[0].selectionStart).split("\n").length
 	},
 	checkSync: function(el){
-		console.log(this._caretAtLine, el.val().substr(0, el[0].selectionStart).split("\n").length)
 		if(typeof this._caretAtLine != 'undefined'){
 			if(this._caretAtLine != el.val().substr(0, el[0].selectionStart).split("\n").length){
 				$('.sync').addClass('out-of-sync');
