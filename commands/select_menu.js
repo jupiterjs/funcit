@@ -7,13 +7,18 @@ steal.plugins('jquery/controller')
 $.Controller("Funcit.SelectMenu", 
 	{
 		update: function(ev, options, callback, title){
+			var left = ev.clientX;
+			if((left + 200) > $(window).width()){
+				left = left - 170;
+				this.element.addClass('right-callout');
+			}
 			this.element.html('//funcit/commands/views/select.ejs', {
 				title: title, 
 				options: options
 			})
 			.offset({
 				top: ev.clientY-30,
-				left: ev.clientX
+				left: left
 			})
 			.show()
 			
@@ -31,7 +36,8 @@ $.Controller("Funcit.SelectMenu",
 			this.close();
 		},
 		close: function(){
-			this.element.hide();
+			Funcit.Tooltip.close();
+			this.element.removeClass('right-callout').hide();
 		},
 		'funcit.close_select_menu subscribe': function(){
 			this.close();
