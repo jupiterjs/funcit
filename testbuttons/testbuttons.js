@@ -51,6 +51,7 @@ $.Controller("Funcit.Testbuttons", {
 		$('.sync-running').removeClass('sync-running');
 		
 		this.toggleRecord(true);
+		delete this._caretAtLine
 		Funcit.Modal.close();
 	},
 	toggleRecord: function(record){

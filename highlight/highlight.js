@@ -13,6 +13,7 @@ steal.plugins('jquery')
 			hl.tBorder = $("<div class='highlight tBorder' />").appendTo(document.body);
 			hl.bBorder = $("<div class='highlight bBorder' />").appendTo(document.body);
 		}
+		var top = $(this[0].ownerDocument.defaultView).scrollTop();
 		var offset = this.offset(),
 			width = this.outerWidth(),
 			height = this.outerHeight();
@@ -29,7 +30,7 @@ steal.plugins('jquery')
 		hl.lBorder
 			.offset({
 				left: offset.left,
-				top: offset.top
+				top: offset.top - top
 			})
 			.height(height)
 			.show();
@@ -37,7 +38,7 @@ steal.plugins('jquery')
 		hl.rBorder
 			.offset({
 				left: offset.left + width - 2,
-				top: offset.top 
+				top: offset.top - top
 			})
 			.height(height)
 			.show();
@@ -45,7 +46,7 @@ steal.plugins('jquery')
 		hl.tBorder
 			.offset({
 				left: offset.left,
-				top: offset.top
+				top: offset.top - top
 			})
 			.width(width)
 			.show();
@@ -53,7 +54,7 @@ steal.plugins('jquery')
 		hl.bBorder
 			.offset({
 				left: offset.left,
-				top: offset.top + height - 2
+				top: offset.top + height - 2 - top
 			})
 			.width(width)
 			.show();

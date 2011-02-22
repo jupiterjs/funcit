@@ -102,6 +102,7 @@ steal
 				.change(this.callback('onChange'))
 				.mouseover(this.callback('onMouseenter'))
 				.mouseout(this.callback('onMouseout'))
+			$($('iframe:first')[0].contentWindow).scroll(this.callback('onScroll'))
 //				.bind("DOMAttrModified",this.callback('onModified'))
 //				.bind("DOMNodeInserted",function(ev){
 //					//console.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
@@ -185,7 +186,6 @@ steal
 		onMousedown : function(ev){
 			$(ev.target).scroll(this.callback('onScroll'));
 			if(this.record_mouse){
-				console.log('stopiram')
 				this.stopMouseRecording(true);
 			}
 			this.mousedownEl = ev.target;

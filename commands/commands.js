@@ -6,7 +6,7 @@ steal.plugins('jquery/controller/subscribe', 'funcit/selectel')
  */
 $.Controller("Funcit.Commands", 
 	{
-		moreActions: ['open', 'move', 'trigger', 'scroll'],
+		moreActions: ['open', 'move', 'trigger'],
 		asserts: {
 			'ok': 2, 
 			'equal': 3, 
@@ -83,7 +83,7 @@ $.Controller("Funcit.Commands",
 		},
 		// called after the user selects an option and submits the form on the menu
 		selected: function(category, type, el, selected){
-			
+			Funcit.Tooltip.close();
 			var val, result;
 						
 			if(type == 'css'){

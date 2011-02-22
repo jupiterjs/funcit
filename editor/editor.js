@@ -192,7 +192,15 @@ $.Controller("Funcit.Editor",{
 		this.chainOrWriteLn($(el).prettySelector(), '.move("'+to.x+'x'+to.y+'")*');
 	},
 	addScroll : function(direction, amount, el){
-		this.chainOrWriteLn($(el).prettySelector(), '.scroll('+$.toJSON(direction)+', '+amount+')*');
+		if(el.window == el){
+			if(direction == "top")
+				this.chainOrWriteLn('window', '.scroll('+$.toJSON(direction)+', '+el.scrollY+'*)');
+			else
+				this.chainOrWriteLn('window', '.scroll('+$.toJSON(direction)+', '+el.scrollX+'*)');
+		} else {
+			this.chainOrWriteLn($(el).prettySelector(), '.scroll('+$.toJSON(direction)+', '+amount+')*');
+		}
+		
 	},
 	// if el is blank, add "target"
 	addWait: function(options, el){
@@ -532,6 +540,7 @@ $.fn.prettySelector= function() {
 	if(!target){
 		return null
 	}
+	
 	var selector = target.nodeName.toLowerCase();
 	//always try to get an id
 	if(target.id){
