@@ -318,7 +318,7 @@ steal
 			this.mousemove_locations = {};
 			this.record_mouse = true;
 			this.mouse_recording_el = el;
-		},
+		}
 	})
 	
 });

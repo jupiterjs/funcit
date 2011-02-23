@@ -1,9 +1,9 @@
-steal.plugins('jquery', 'jquery/view/ejs').then(function(){
+steal.plugins('jquery', 'jquery/view/ejs', 'jquery/class').then(function(){
 	
 	$(document.body).append($.View('//funcit/commands/views/tooltip', {}))
 	var tooltip = $("#tooltip-click");
 		
-	Funcit.Tooltip = {
+	$.Class("Funcit.Tooltip",  {
 		open: function(text){
 			tooltip
 				.html(text)
@@ -17,5 +17,5 @@ steal.plugins('jquery', 'jquery/view/ejs').then(function(){
 			delay = delay || 0;
 			setTimeout(function(){tooltip.fadeOut()}, delay);
 		}
-	}
+	}, {});
 })

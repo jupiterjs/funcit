@@ -1,6 +1,6 @@
-steal.plugins('jquery', 'jquery/view/ejs').then(function(){
+steal.plugins('jquery', 'jquery/view/ejs', 'jquery/class').then(function(){
 		
-	Funcit.Modal = {
+	$.Class("Funcit.Modal",{
 		open: function(html){
 			$("iframe:first")
 				.mask()
@@ -14,5 +14,5 @@ steal.plugins('jquery', 'jquery/view/ejs').then(function(){
 		close: function(){
 			$('.syncing').text('').fadeOut(function(){ $(this).hide().removeClass('syncing') });
 		}
-	}
+	}, {})
 })
