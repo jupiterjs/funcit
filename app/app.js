@@ -102,6 +102,7 @@ steal
 				.change(this.callback('onChange'))
 				.mouseover(this.callback('onMouseenter'))
 				.mouseout(this.callback('onMouseout'))
+				.mousewheel(this.callback('onMousewheel'))
 			$($('iframe:first')[0].contentWindow).scroll(this.callback('onScroll'))
 //				.bind("DOMAttrModified",this.callback('onModified'))
 //				.bind("DOMNodeInserted",function(ev){
@@ -235,6 +236,10 @@ steal
 				this.lastY = this.lastX = null;
 			}
 			
+		},
+		onMousewheel : function(ev, delta){
+			console.log('mousewheel')
+			this.element.trigger('addEvent', ["mousewheel", delta])
 		},
 		onChange : function(ev){
 			if(!this.justKey && ev.target.nodeName.toLowerCase() == "select"){

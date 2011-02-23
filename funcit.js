@@ -1,5 +1,6 @@
 steal
 	.plugins('funcunit')
+	
 	.then(function(){
 		// leave this empty to force funcunit
 	})
@@ -18,6 +19,7 @@ steal
 		'funcit/runner',
 		'funcit/list_attributes',
 		'jquery/view/ejs')
+	.resources('jquery.mousewheel.3.0.2/jquery.mousewheel')
 	.then(function(){
 	
 	$(document.body).append("//funcit/views/app", {})

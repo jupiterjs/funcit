@@ -129,6 +129,7 @@ $.Controller("Funcit.Editor",{
 	},
 	addEvent : function(ev, eventType){
 		console.log(eventType)
+		this.element.trigger('blur')
 		if(this.first && eventType == 'open'){
 			this.first = false;
 			//find the module's setup function, add to the end
@@ -201,6 +202,9 @@ $.Controller("Funcit.Editor",{
 			this.chainOrWriteLn($(el).prettySelector(), '.scroll('+$.toJSON(direction)+', '+amount+')*');
 		}
 		
+	},
+	addMousewheel : function(delta){
+		this.chainOrWriteLn('body', '.mousewheel("' + delta + '")');
 	},
 	// if el is blank, add "target"
 	addWait: function(options, el){
@@ -452,7 +456,7 @@ $.Controller("Funcit.Editor",{
 		var stmntOrFunc = this.funcStatement();
 		
 		
-		
+		console.log(stmntOrFunc)
 		// if a function
 		// 
 		if(typeof stmntOrFunc[0] != 'undefined'){
