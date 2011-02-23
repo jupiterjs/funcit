@@ -17,7 +17,7 @@ $.Controller("Funcit.Commands",
 			'notStrictEqual': 3, 
 			'raises': 2
 		},
-		waits: ["attr", "css", "exists", "hasClass", "height", "html", "innerHeight", "innerWidth", "invisible", "missing", "offset", "outerHeight", "outerWidth", "position", "scrollLeft", "scrollTop", "size", "text", "val", "visible", "width"],
+		waits: ["attr", "css", "exists", "hasClass", "height", "html", "innerHeight", "innerWidth", "invisible", "missing", "offset", "outerHeight", "outerWidth", "position", "scrollLeft", "scrollTop", "size", "text", "val", "visible", "width"]
 	},
 	{
 		init: function(){
