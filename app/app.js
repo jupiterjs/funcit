@@ -237,9 +237,19 @@ steal
 			}
 			
 		},
-		onMousewheel : function(ev, delta){
-			console.log('mousewheel')
-			this.element.trigger('addEvent', ["mousewheel", delta])
+		onMousewheel : function(ev, delta, deltaX, deltaY){
+			console.log(this.scroll)
+			var el   = $($('iframe:first')[0].contentWindow);
+			var el = $(ev.currentTarget)
+			var ammount = {
+											top: el.scrollTop(),
+											left: el.scrollLeft()
+										};
+			var direction = 'left';
+			if(deltaX == 0){
+				direction = 'top';
+			}
+			this.element.trigger("addEvent",["scroll", direction, ammount[direction], ev.target]);
 		},
 		onChange : function(ev){
 			if(!this.justKey && ev.target.nodeName.toLowerCase() == "select"){

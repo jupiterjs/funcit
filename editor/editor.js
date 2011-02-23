@@ -456,7 +456,7 @@ $.Controller("Funcit.Editor",{
 		var stmntOrFunc = this.funcStatement();
 		
 		
-		console.log(stmntOrFunc)
+		//console.log(stmntOrFunc)
 		// if a function
 		// 
 		if(typeof stmntOrFunc[0] != 'undefined'){
