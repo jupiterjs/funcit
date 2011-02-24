@@ -18,7 +18,7 @@ steal
 		'funcit/runner',
 		'funcit/list_attributes',
 		'jquery/view/ejs')
-	.resources('jquery.mousewheel.3.0.2/jquery.mousewheel')
+	.resources('jquery.mousewheel.3.0.2/jquery.mousewheel', 'jquery.has_scrollbar')
 	.then(function(){
 	$(document).ready(function(){
 		$(document.body).append("//funcit/views/app", {})

@@ -150,14 +150,10 @@ steal
 			this.mousemoves++;
 		},
 		onMouseenter : function(ev){
-			//if(this.record_scroll){
-				$(ev.target).scroll(this.callback('onScroll'));
-			//}
+			$(ev.target).scroll(this.callback('onScroll'));
 		},
 		onMouseout : function(ev){
-			//if(this.record_scroll){
-				$(ev.target).unbind('scroll');
-			//}
+			$(ev.target).unbind('scroll');
 		},
 		onKeydown : function(ev){
 			this.handleEscape(ev);
@@ -250,9 +246,17 @@ steal
 			
 		},
 		onMousewheel : function(ev, delta, deltaX, deltaY){
-			console.log(this.scroll)
+			//console.log(this.scroll)
 			var el   = $($('iframe:first')[0].contentWindow);
-			var el = $(ev.currentTarget)
+			/*var elements = $(ev.target).parents().toArray();
+			elements.unshift($(ev.target)[0]);
+			var el = null;
+			for(var i = 0; i < elements.length; i++){
+				if($(elements[i]).hasScrollBar()){
+					el = elements[i];
+				}
+			}
+			console.log(el)
 			var ammount = {
 											top: el.scrollTop(),
 											left: el.scrollLeft()
@@ -261,7 +265,7 @@ steal
 			if(deltaX == 0){
 				direction = 'top';
 			}
-			this.element.trigger("addEvent",["scroll", direction, ammount[direction], ev.target]);
+			this.element.trigger("addEvent",["scroll", direction, ammount[direction], el]);*/
 		},
 		onChange : function(ev){
 			if(!this.justKey && ev.target.nodeName.toLowerCase() == "select"){
