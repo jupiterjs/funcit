@@ -13,6 +13,10 @@ steal
 			}
 		}
 	}
+	var specialKeys = [
+		'up', 'down', 'right', 'left', 'escape', 'page-up', 'page-down', 'home', 'end', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12'
+	];
+	
 	/**
 	 * addDrag, addChar, addClick
 	 */
@@ -161,6 +165,8 @@ steal
 			var key = getKey(ev.keyCode);
 			if(ev.keyCode == 13){
 				key = '\\r';
+			} else if(Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1){
+				key = "[" + key + "]";
 			}
 			
 			if(this.keytarget != ev.target){
@@ -179,8 +185,8 @@ steal
 			if(ev.keyCode == 13){
 				key = '\\r';
 			}
-			if(Syn.key.isSpecial(ev.keyCode)){
-				this.element.trigger("addEvent",["char",key+"-up", ev.target])
+			if(Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1){
+				this.element.trigger("addEvent",["char","[" +key+"-up]", ev.target])
 			}
 			
 			var location = $.inArray(key, this.downKeys);
