@@ -1,11 +1,10 @@
 steal
-	.plugins('steal/less')
-	.then(function($){
-		//steal.less('app')
-	})
-	.plugins('jquery/controller/subscribe','funcunit/syn', 
-		'funcit/highlight', 'mxui/fittable', 'jquery/dom/form_params', 
-		'jquery/controller/subscribe')
+	.plugins(
+		'jquery/controller/subscribe',
+		'funcunit/syn', 
+		'funcit/highlight', 
+		'mxui/fittable', 
+		'jquery/dom/form_params')
 	.then(function($){
 	var getKey =  function( code ) {
 		for(var key in Syn.keycodes){

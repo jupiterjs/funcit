@@ -174,4 +174,5 @@ $.Controller("Funcit.Testbuttons", {
 	}
 })
 
-});
+})
+.views('sync.ejs');

@@ -76,4 +76,5 @@ $.Controller("Funcit.Selectel", {
 		}
 	})
 
-});
+})
+.views('tooltip.ejs');

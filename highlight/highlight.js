@@ -1,6 +1,6 @@
 steal.plugins('jquery')
-	//.then('firebug-lite-debug')
-	.css('highlight')
+// TODO add this back (right now it breaks the build)
+//	.css('highlight')
 	.then(function($){
 	
 	// highlights an element

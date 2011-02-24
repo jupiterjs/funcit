@@ -177,4 +177,15 @@ $.Controller("Funcit.Commands",
 		}
 	})
 
-});
+})
+.views(
+	'dialog.ejs',
+	'move_recording.ejs',
+	'move.ejs',
+	'open.ejs',
+	'scroll.ejs',
+	'select.ejs',
+	'select.ejs',
+	'sidebar.ejs',
+	'tooltip.ejs'
+);

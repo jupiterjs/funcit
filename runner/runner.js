@@ -36,4 +36,5 @@ steal.plugins('jquery','funcunit','funcit/parse')
 		QUnit.load();
 	}
 	
-});
+})
+.views('assert.ejs', 'done.ejs', 'test.ejs');
