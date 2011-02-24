@@ -76,7 +76,7 @@ $.Controller("Funcit.Editor",{
 			chr = $.fn.rowheight.charLoc(this.val(), {line:  end.line - 1, from: line.length+1});
 		
 		this.selection({start: chr, end: chr});
-		//console.log(chr)
+		//steal.dev.log(chr)
 	},
 	openFunc : function(func){
 		if(func.line == func.end.line){
@@ -110,7 +110,7 @@ $.Controller("Funcit.Editor",{
 			moduleText = this.module().up().text();
 			
 
-		//console.log(funcStatement, moduleText)
+		//steal.dev.log(funcStatement, moduleText)
 		//find out what we clicked on ...
 		
 		//if an element, show in the page
@@ -122,13 +122,13 @@ $.Controller("Funcit.Editor",{
 		//
 		//var found = this.find({type: "(identifier)", value : 'test'}),
 		//	func = found.last().up().find({ arity: "function" })
-		//console.log(this.selectPos(), func);
+		//steal.dev.log(this.selectPos(), func);
 		
-		//console.log(this.funcStatement())
+		//steal.dev.log(this.funcStatement())
 		//this.trigger("run", this.val())
 	},
 	addEvent : function(ev, eventType){
-		console.log(eventType)
+		steal.dev.log(eventType)
 		this.element.trigger('blur')
 		if(this.first && eventType == 'open'){
 			this.first = false;
@@ -420,10 +420,10 @@ $.Controller("Funcit.Editor",{
 		
 		//go through the current function's statements, find the 'last' one.  Add after its end.
 		func.block().each(function(i, stmnt){
-			//console.log(stmnt)
+			//steal.dev.log(stmnt)
 		})
 		if(last){
-			//console.log('implement')
+			//steal.dev.log('implement')
 		}else{
 			// no statement, this is the only thing in the function.
 			this.insert(this.indent()+text+";\n"+this.indent())
@@ -456,7 +456,7 @@ $.Controller("Funcit.Editor",{
 		var stmntOrFunc = this.funcStatement();
 		
 		
-		//console.log(stmntOrFunc)
+		//steal.dev.log(stmntOrFunc)
 		// if a function
 		// 
 		if(typeof stmntOrFunc[0] != 'undefined'){

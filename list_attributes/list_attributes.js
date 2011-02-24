@@ -12,7 +12,7 @@ $.fn.listAttributes = function(prefix) {
 	var list = [];
 	$(this).each(function() {
 		var attributes = [];
-		console.log(this.attributes)
+		steal.dev.log(this.attributes)
 		for(var key in this.attributes) {
 			if(!isNaN(key)) {
 				if(!prefix || this.attributes[key].name.substr(0,prefix.length) == prefix) {

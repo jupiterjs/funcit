@@ -11,7 +11,7 @@ Funcit.Parse = function(str, context){
 		return new arguments.callee(str);
 	}
 	if(typeof str == 'string'){
-		//console.log(str)
+		//steal.dev.log(str)
 		this._context = str;
 		JSLINT(str,{devel: true, forin: true, browser: true, windows: true, rhino: true, predefined : true, indent:  1})
 		str =  JSLINT.tree;
@@ -20,7 +20,7 @@ Funcit.Parse = function(str, context){
 		this._context = context;
 	}
 	if(context && typeof context != 'string'){
-		console.log(context)
+		steal.dev.log(context)
 	}
 	if(!str) return;
 	if(str._parse === me){
@@ -39,7 +39,7 @@ count = 100000;
 bisect = function(tree, func, parent, fnc){
 	count--;
 	if(count <= 0){
-		console.log('outa here')
+		steal.dev.log('outa here')
 		return false;
 	}
 	var res;
@@ -125,7 +125,7 @@ $.extend( Funcit.Parse.prototype, {
 		}
 		var self = this;
 		bisect(this.tree || this, function(tree){
-			//console.log(tree, tree.line , tree.from)
+			//steal.dev.log(tree, tree.line , tree.from)
 //			if (tree.end) {
 //				var last = tree.end;
 //				if (tree.line <= line && line <= last.line &&
@@ -269,7 +269,7 @@ $.extend( Funcit.Parse.prototype, {
 		var str = "";
 		bisect(this, function(tree){
 			if(typeof tree.second == "string")
-				console.log(tree, tree.value, tree.second)
+				steal.dev.log(tree, tree.value, tree.second)
 			str += tree.value + (typeof tree.second == 'string' ? tree.second : "" )
 			
 		})

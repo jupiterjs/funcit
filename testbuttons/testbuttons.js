@@ -23,7 +23,7 @@ $.Controller("Funcit.Testbuttons", {
 		//get an empty function or last statement
 		
 		var stmntOrFunc = this.editor.funcStatement(true);
-		//console.log(this.textarea[0].selectionStart)
+		//steal.dev.log(this.textarea[0].selectionStart)
 		if(typeof stmntOrFunc[0] != 'undefined'){
 			
 			if(stmntOrFunc[0].arity == 'function'){
@@ -174,5 +174,4 @@ $.Controller("Funcit.Testbuttons", {
 	}
 })
 
-})
-.views('sync.ejs');
+});

@@ -1976,7 +1976,7 @@ var QUnit = {
 		if ( window.setTimeout ) {
 			clearTimeout(config.doneTimer);
 			config.doneTimer = window.setTimeout(function(){
-				//console.log("doing stuff ...", config.queue.length)
+				//steal.dev.log("doing stuff ...", config.queue.length)
 				if ( !config.queue.length ) {
 					done();
 				} else {
@@ -20651,7 +20651,7 @@ steal
 			this.bindEventsToIframe(ev.target.contentWindow.document)
 		},
 		bindEventsToIframe: function(target){
-			console.log(target)
+			steal.dev.log(target)
 			target = target || $('iframe:first')[0].contentWindow.document;
 			$(target)
 				.keydown(this.callback('onKeydown'))
@@ -20666,16 +20666,16 @@ steal
 			$($('iframe:first')[0].contentWindow).scroll(this.callback('onScroll'))
 //				.bind("DOMAttrModified",this.callback('onModified'))
 //				.bind("DOMNodeInserted",function(ev){
-//					//console.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
+//					//steal.dev.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
 //				})
 //				.bind("DOMNodeRemoved",function(ev){
-//					//console.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
+//					//steal.dev.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
 //				})
 		},
 		onModified: function(ev){
 			var newVal = ev.originalEvent.newValue,
 				prop = ev.originalEvent.attrName;
-			//console.log(prop, newVal, ev.target);
+			//steal.dev.log(prop, newVal, ev.target);
 			if(prop == 'style'){
 				var attrArr = newVal.split(":"),
 					attr = attrArr[0],
@@ -20798,7 +20798,7 @@ steal
 			
 		},
 		onMousewheel : function(ev, delta){
-			console.log('mousewheel')
+			steal.dev.log('mousewheel')
 			this.element.trigger('addEvent', ["mousewheel", delta])
 		},
 		onChange : function(ev){
@@ -20854,7 +20854,7 @@ steal
 			Funcit.Tooltip.close();
 			this.record_mouse = false;
 			if(triggerEvent){
-				console.log(this.mouse_recording_el)
+				steal.dev.log(this.mouse_recording_el)
 				this.element.trigger("addEvent",["move", this.mouse_recording_el,
 					this.mousemove_locations.start, this.mousemove_locations.end]);
 			}
@@ -20864,7 +20864,7 @@ steal
 			this.record_scroll = true;
 		},
 		'funcit.record_mouse subscribe': function(calling, el){
-			console.log(el)
+			steal.dev.log(el)
 			this.mousemove_locations = {};
 			this.record_mouse = true;
 			this.mouse_recording_el = el;
@@ -20951,7 +20951,7 @@ $.Controller("Funcit.Editor",{
 			chr = $.fn.rowheight.charLoc(this.val(), {line:  end.line - 1, from: line.length+1});
 		
 		this.selection({start: chr, end: chr});
-		//console.log(chr)
+		//steal.dev.log(chr)
 	},
 	openFunc : function(func){
 		if(func.line == func.end.line){
@@ -20985,7 +20985,7 @@ $.Controller("Funcit.Editor",{
 			moduleText = this.module().up().text();
 			
 
-		//console.log(funcStatement, moduleText)
+		//steal.dev.log(funcStatement, moduleText)
 		//find out what we clicked on ...
 		
 		//if an element, show in the page
@@ -20997,13 +20997,13 @@ $.Controller("Funcit.Editor",{
 		//
 		//var found = this.find({type: "(identifier)", value : 'test'}),
 		//	func = found.last().up().find({ arity: "function" })
-		//console.log(this.selectPos(), func);
+		//steal.dev.log(this.selectPos(), func);
 		
-		//console.log(this.funcStatement())
+		//steal.dev.log(this.funcStatement())
 		//this.trigger("run", this.val())
 	},
 	addEvent : function(ev, eventType){
-		console.log(eventType)
+		steal.dev.log(eventType)
 		this.element.trigger('blur')
 		if(this.first && eventType == 'open'){
 			this.first = false;
@@ -21295,10 +21295,10 @@ $.Controller("Funcit.Editor",{
 		
 		//go through the current function's statements, find the 'last' one.  Add after its end.
 		func.block().each(function(i, stmnt){
-			//console.log(stmnt)
+			//steal.dev.log(stmnt)
 		})
 		if(last){
-			//console.log('implement')
+			//steal.dev.log('implement')
 		}else{
 			// no statement, this is the only thing in the function.
 			this.insert(this.indent()+text+";\n"+this.indent())
@@ -21331,7 +21331,7 @@ $.Controller("Funcit.Editor",{
 		var stmntOrFunc = this.funcStatement();
 		
 		
-		console.log(stmntOrFunc)
+		steal.dev.log(stmntOrFunc)
 		// if a function
 		// 
 		if(typeof stmntOrFunc[0] != 'undefined'){
@@ -21703,7 +21703,7 @@ $.Controller("Funcit.Testbuttons", {
 		//get an empty function or last statement
 		
 		var stmntOrFunc = this.editor.funcStatement(true);
-		//console.log(this.textarea[0].selectionStart)
+		//steal.dev.log(this.textarea[0].selectionStart)
 		if(typeof stmntOrFunc[0] != 'undefined'){
 			
 			if(stmntOrFunc[0].arity == 'function'){
@@ -21912,7 +21912,7 @@ $.fn.listAttributes = function(prefix) {
 	var list = [];
 	$(this).each(function() {
 		var attributes = [];
-		console.log(this.attributes)
+		steal.dev.log(this.attributes)
 		for(var key in this.attributes) {
 			if(!isNaN(key)) {
 				if(!prefix || this.attributes[key].name.substr(0,prefix.length) == prefix) {
@@ -25844,7 +25844,7 @@ Funcit.Parse = function(str, context){
 		return new arguments.callee(str);
 	}
 	if(typeof str == 'string'){
-		//console.log(str)
+		//steal.dev.log(str)
 		this._context = str;
 		JSLINT(str,{devel: true, forin: true, browser: true, windows: true, rhino: true, predefined : true, indent:  1})
 		str =  JSLINT.tree;
@@ -25853,7 +25853,7 @@ Funcit.Parse = function(str, context){
 		this._context = context;
 	}
 	if(context && typeof context != 'string'){
-		console.log(context)
+		steal.dev.log(context)
 	}
 	if(!str) return;
 	if(str._parse === me){
@@ -25872,7 +25872,7 @@ count = 100000;
 bisect = function(tree, func, parent, fnc){
 	count--;
 	if(count <= 0){
-		console.log('outa here')
+		steal.dev.log('outa here')
 		return false;
 	}
 	var res;
@@ -25958,7 +25958,7 @@ $.extend( Funcit.Parse.prototype, {
 		}
 		var self = this;
 		bisect(this.tree || this, function(tree){
-			//console.log(tree, tree.line , tree.from)
+			//steal.dev.log(tree, tree.line , tree.from)
 //			if (tree.end) {
 //				var last = tree.end;
 //				if (tree.line <= line && line <= last.line &&
@@ -26102,7 +26102,7 @@ $.extend( Funcit.Parse.prototype, {
 		var str = "";
 		bisect(this, function(tree){
 			if(typeof tree.second == "string")
-				console.log(tree, tree.value, tree.second)
+				steal.dev.log(tree, tree.value, tree.second)
 			str += tree.value + (typeof tree.second == 'string' ? tree.second : "" )
 			
 		})

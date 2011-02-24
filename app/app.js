@@ -94,7 +94,7 @@ steal
 			this.bindEventsToIframe(ev.target.contentWindow.document)
 		},
 		bindEventsToIframe: function(target){
-			console.log(target)
+			steal.dev.log(target)
 			target = target || $('iframe:first')[0].contentWindow.document;
 			$(target)
 				.keydown(this.callback('onKeydown'))
@@ -109,16 +109,16 @@ steal
 			$($('iframe:first')[0].contentWindow).scroll(this.callback('onScroll'))
 //				.bind("DOMAttrModified",this.callback('onModified'))
 //				.bind("DOMNodeInserted",function(ev){
-//					//console.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
+//					//steal.dev.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
 //				})
 //				.bind("DOMNodeRemoved",function(ev){
-//					//console.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
+//					//steal.dev.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
 //				})
 		},
 		onModified: function(ev){
 			var newVal = ev.originalEvent.newValue,
 				prop = ev.originalEvent.attrName;
-			//console.log(prop, newVal, ev.target);
+			//steal.dev.log(prop, newVal, ev.target);
 			if(prop == 'style'){
 				var attrArr = newVal.split(":"),
 					attr = attrArr[0],
@@ -246,7 +246,7 @@ steal
 			
 		},
 		onMousewheel : function(ev, delta, deltaX, deltaY){
-			//console.log(this.scroll)
+			//steal.dev.log(this.scroll)
 			var el   = $($('iframe:first')[0].contentWindow);
 			/*var elements = $(ev.target).parents().toArray();
 			elements.unshift($(ev.target)[0]);
@@ -256,7 +256,7 @@ steal
 					el = elements[i];
 				}
 			}
-			console.log(el)
+			steal.dev.log(el)
 			var ammount = {
 											top: el.scrollTop(),
 											left: el.scrollLeft()
@@ -320,7 +320,7 @@ steal
 			Funcit.Tooltip.close();
 			this.record_mouse = false;
 			if(triggerEvent){
-				console.log(this.mouse_recording_el)
+				steal.dev.log(this.mouse_recording_el)
 				this.element.trigger("addEvent",["move", this.mouse_recording_el,
 					this.mousemove_locations.start, this.mousemove_locations.end]);
 			}
@@ -330,7 +330,7 @@ steal
 			this.record_scroll = true;
 		},
 		'funcit.record_mouse subscribe': function(calling, el){
-			console.log(el)
+			steal.dev.log(el)
 			this.mousemove_locations = {};
 			this.record_mouse = true;
 			this.mouse_recording_el = el;

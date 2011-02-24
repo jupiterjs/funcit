@@ -68,9 +68,9 @@ steal.plugins('funcit/runner', 'funcit/lastselection').then(function(){
 						start = {line: $st[0].line, from: $st[0].thru}
 						end = {line: $st[0].line, from: $st[0].thru+$st[0].second.length};
 						
-					console.log($st[0], end, count, i)
+					steal.dev.log($st[0], end, count, i)
 					$("#code").lastselection('highlight', start, end);
-					console.log('running', i, stmnt );
+					steal.dev.log('running', i, stmnt );
 				}, 0)
 			});
 			

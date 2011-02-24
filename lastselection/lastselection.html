@@ -20,7 +20,7 @@
 		<script type='text/javascript'>
 			steal.plugins('funcit/lastselection').then(function(){
 				$('#foo').lastselection().blur(function(){
-					console.log('last',$('#foo').controller().val());
+					steal.dev.log('last',$('#foo').controller().val());
 				});
 
 			})

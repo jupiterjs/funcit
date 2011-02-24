@@ -51,7 +51,7 @@
 				}
 				$('#parse').click(function(){
 					var p = new Funcit.Parse($('#code').val());
-					console.log(p)
+					steal.dev.log(p)
 				})
 				$('#refresh').click(function(){
 					$.get(steal.root.join("funcit/parse/test/tabs_test.js"), function(tabsTest){
@@ -68,19 +68,19 @@
 					var sel = $(this).selection(),
 						lines = line(code, sel.start);
 					LAST = p;
-					console.log("cursor",sel.start);
+					steal.dev.log("cursor",sel.start);
 					
 					p.get(lines.line+1,lines.character+1, function(val){
 						var $val = new Funcit.Parse(val);
 						var statement = $val.statement();
-						console.log("got statement",typeof statement[0].second == 'string' ?
+						steal.dev.log("got statement",typeof statement[0].second == 'string' ?
 							statement[0].second : statement[0].value, "from",statement[0].from,"thru", statement[0].thru, statement)
 						
 						statement.find({
 							type: "(identifier)",
 							value : "S"
 						}, function(val){
-							console.log("S code",val.from, val.thru)
+							steal.dev.log("S code",val.from, val.thru)
 							var $val = new Funcit.Parse(val);
 							var first = $val.args()[0]
 							
@@ -92,7 +92,7 @@
 									line: first.line -1,
 									character : first.thru-1
 								})
-							console.log(start,end)
+							steal.dev.log(start,end)
 							$("#code").selection(start, end);
 							return false;
 						})
