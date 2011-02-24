@@ -103,7 +103,7 @@ steal
 				.mousemove(this.callback('onMousemove'))
 				.mouseup(this.callback('onMouseup'))
 				.change(this.callback('onChange'))
-				.mouseover(this.callback('onMouseenter'))
+				.mouseenter(this.callback('onMouseenter'))
 				.mouseout(this.callback('onMouseout'))
 				.mousewheel(this.callback('onMousewheel'))
 			$($('iframe:first')[0].contentWindow).scroll(this.callback('onScroll'))
@@ -153,7 +153,7 @@ steal
 			$(ev.target).scroll(this.callback('onScroll'));
 		},
 		onMouseout : function(ev){
-			$(ev.target).unbind('scroll');
+			//$(ev.target).unbind('scroll');
 		},
 		onKeydown : function(ev){
 			this.handleEscape(ev);
@@ -246,8 +246,17 @@ steal
 			
 		},
 		onMousewheel : function(ev, delta, deltaX, deltaY){
+			if(this.scroll != null){
+				var direction = "top";
+				var amount = this.scroll.y;
+				if(amount == 0){
+					direction = "left";
+					amount = this.scroll.x;
+				}
+				this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
+			}
 			//steal.dev.log(this.scroll)
-			var el   = $($('iframe:first')[0].contentWindow);
+			//var el   = $($('iframe:first')[0].contentWindow);
 			/*var elements = $(ev.target).parents().toArray();
 			elements.unshift($(ev.target)[0]);
 			var el = null;
@@ -275,6 +284,7 @@ steal
 			}
 		},
 		onScroll: function(ev){
+			console.log(ev.currentTarget)
 			this.isScrolling = true;
 			this.scroll = {
 				x: ev.currentTarget.scrollLeft, 
