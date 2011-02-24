@@ -159,6 +159,10 @@ steal
 			this.handleEscape(ev);
 			this.stopMouseOrScrollRecording(ev);
 			var key = getKey(ev.keyCode);
+			if(ev.keyCode == 13){
+				key = '\\r';
+			}
+			
 			if(this.keytarget != ev.target){
 				this.current = [];
 				this.keytarget = ev.target;
@@ -172,6 +176,9 @@ steal
 		onKeyup : function(ev){
 			var key = getKey(ev.keyCode),
 				self = this;
+			if(ev.keyCode == 13){
+				key = '\\r';
+			}
 			if(Syn.key.isSpecial(ev.keyCode)){
 				this.element.trigger("addEvent",["char",key+"-up", ev.target])
 			}
