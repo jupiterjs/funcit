@@ -275,6 +275,17 @@ $.extend( Funcit.Parse.prototype, {
 		})
 		return str;
 	},
+	chainedCalls : function(){
+		var str = [];
+		bisect(this, function(tree){
+			if(typeof tree.second == "string")
+				steal.dev.log(tree, tree.value, tree.second)
+			if(tree.arity == 'infix' && tree.value == '.')
+				str.push(tree.value + (typeof tree.second == 'string' ? tree.second : "" ))
+			
+		})
+		return str;
+	},
 	posSort : function(a, b){
 		 if(a.line > b.line){
 			return 1;

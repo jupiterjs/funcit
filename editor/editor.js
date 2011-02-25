@@ -151,12 +151,16 @@ $.Controller("Funcit.Editor",{
 			previous: true
 		});
 		var indent = this.funcIndent(stmt.up()[0]);
-		this.insert("\n"+indent+this.indent()+"S.open('"+url+"')*")
+		this.insert("\n"+indent+this.indent()+"S.open('"+url+"')*\n"+indent)
 	},
 	addChar: function(letter, el){
-		var stmt = this.funcStatement(true);
+		var stmt = this.funcStatement({
+			previous: true
+		});
+		
 		var text = stmt.text();
-		if(/\.type\(/.test(text)){
+		var chainedCalls = stmt.chainedCalls();
+		if(chainedCalls[chainedCalls.length - 1] == '.type'){
 			var line = stmt[0].end.line;
 			var textArr = text.split("\n")
 			var textareaValue = this.val().split("\n");

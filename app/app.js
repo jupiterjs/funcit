@@ -163,6 +163,8 @@ steal
 				key = '\\r';
 			} else if(ev.keyCode == 8){
 				key = '\\b';
+			} else if(ev.keyCode == 9){
+				key = '\\t';
 			}else if(Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1){
 				key = "[" + key + "]";
 			}
