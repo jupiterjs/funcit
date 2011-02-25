@@ -153,7 +153,7 @@ steal
 			$(ev.target).scroll(this.callback('onScroll'));
 		},
 		onMouseout : function(ev){
-			//$(ev.target).unbind('scroll');
+			$(ev.target).unbind('scroll');
 		},
 		onKeydown : function(ev){
 			this.handleEscape(ev);
@@ -161,7 +161,9 @@ steal
 			var key = getKey(ev.keyCode);
 			if(ev.keyCode == 13){
 				key = '\\r';
-			} else if(Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1){
+			} else if(ev.keyCode == 8){
+				key = '\\b';
+			}else if(Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1){
 				key = "[" + key + "]";
 			}
 			
@@ -284,7 +286,6 @@ steal
 			}
 		},
 		onScroll: function(ev){
-			console.log(ev.currentTarget)
 			this.isScrolling = true;
 			this.scroll = {
 				x: ev.currentTarget.scrollLeft, 
