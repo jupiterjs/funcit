@@ -147,11 +147,14 @@ $.Controller("Funcit.Editor",{
 		this["add"+$.String.capitalize(eventType)].apply(this,args.slice(2))
 	},
 	addOpen : function(url){
-		var stmt = this.funcStatement({
-			previous: true
-		});
-		var indent = this.funcIndent(stmt.up()[0]);
-		this.insert("\n"+indent+this.indent()+"S.open('"+url+"')*\n"+indent)
+		var stmnt = this.funcStatement();
+		console.log(stmnt[0])
+		if(typeof stmnt[0] != 'undefined' && stmnt[0].arity == 'infix'){
+			var indent = this.funcIndent(stmnt.up()[0]);
+			this.insert("\n"+indent+this.indent()+"S.open('"+url+"')"+";",stmnt.end()+1);
+		} else {
+			this.writeLn("S.open('"+url+"')");
+		}
 	},
 	addChar: function(letter, el){
 		var stmt = this.funcStatement({
