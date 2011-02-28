@@ -7,11 +7,12 @@ steal.plugins('jquery')
 	$.fn.highlight = function(){
 		var hl = $.fn.highlight;
 		//Firebug.Inspector.drawOutline(this[0])
-		if(!hl.lBorder) {
-			hl.lBorder = $("<div class='highlight lBorder' />").appendTo(document.body);
-			hl.rBorder = $("<div class='highlight rBorder' />").appendTo(document.body);
-			hl.tBorder = $("<div class='highlight tBorder' />").appendTo(document.body);
-			hl.bBorder = $("<div class='highlight bBorder' />").appendTo(document.body);
+		// 
+		var borders = ['l', 'r', 't', 'b'];
+		for(var i = 0; i < borders.length; i++){
+			if(!hl[borders[i] + 'Border']){
+				hl[borders[i] + 'Border'] = $("<div class='highlight " + borders[i] + "Border' />").appendTo(document.body);
+			}
 		}
 		var top = $(this[0].ownerDocument.defaultView).scrollTop();
 		var offset = this.offset(),
@@ -63,9 +64,11 @@ steal.plugins('jquery')
 	$.fn.unhighlight = function(){
 		//Firebug.Inspector.drawOutline(this[0])
 		var hl = $.fn.highlight;
-		hl.lBorder.hide();
-		hl.rBorder.hide();
-		hl.tBorder.hide();
-		hl.bBorder.hide();
+		var borders = ['l', 'r', 't', 'b'];
+		for(var i = 0; i < borders.length; i++){
+			if(hl[borders[i] + 'Border']){
+				hl[borders[i] + 'Border'].hide();
+			}
+		}
 	}
 });

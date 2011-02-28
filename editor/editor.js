@@ -274,7 +274,7 @@ $.Controller("Funcit.Editor",{
 	addAssert: function(options){
 		var val = $.toJSON(options.value) || "";
 		// * the location where insert will place the cursor
-		var text = options.type+"(*)";
+		var text = options.type+"()*";
 		
 		// Add the statement inside a callback function, either:
 		// 	- cursor is in a callback, add it here

@@ -22,30 +22,57 @@ $.Controller("Funcit.Testbuttons", {
 	".sync click": function(el, ev){
 		//get an empty function or last statement
 		
-		var stmntOrFunc = this.editor.funcStatement(true);
+		var stmntOrFunc = this.editor.funcStatement({
+			//previous: true
+		});
 		//steal.dev.log(this.textarea[0].selectionStart)
 		if(typeof stmntOrFunc[0] != 'undefined'){
 			
-			if(stmntOrFunc[0].arity == 'function'){
+			/*if(stmntOrFunc[0].arity == 'function'){
+				console.log('oooooooo')
 				// handle this
-			}else{ // statement
+			}else{ // statement*/
 				// get test up to current statement
-				//var endChar = stmntOrFunc.end(), 
+				//var endChar = stmntOrFunc.end()
 				var endChar = this.textarea.val().indexOf("\n", this.textarea[0].selectionStart);
-				var test = this.textarea.val().substr(0,endChar)+"\n});";
+				var testCode = this.textarea.val().substr(0,endChar);
+				var test = this.prepareCodeForSync(testCode);
+				
+				/*if(test == ""){
+					test = this.prepareCodeForSync(testCode);
+				}*/
+				//var test = this.textarea.val().substr(0,endChar)+"\n});";
 
-			}
+			//}
 			var testName = stmntOrFunc[0].func.parent[0].value;
+			if(testName == 'function'){
+				var codeArray = test.split('test(');
+				var testCode  = $.String.strip(codeArray[codeArray.length - 1]);
+				testName      = testCode.split(testCode.charAt(0))[1]
+			}
 			QUnit.config.filters = [testName];
+			// add the opaque mask
+			Funcit.Modal.open($.View('//funcit/testbuttons/views/sync', {}))
+			$('.sync').removeClass('out-of-sync');
+			this.run(test, this.callback('syncDone'));
 		}
-		
-		
-		
-		
-		// add the opaque mask
-		Funcit.Modal.open($.View('//funcit/testbuttons/views/sync', {}))
-		$('.sync').removeClass('out-of-sync');
-		this.run(test, this.callback('syncDone'));
+	},
+	prepareCodeForSync : function(code){
+		var length = code.length;
+		var buffer = [];
+		var openBrackets = [];
+		var pairings = {'{': '}', '(': ')'};
+		for(var i = 0; i < length; i++){
+			var letter = code.charAt(i);
+			if(letter == '{' || letter == "("){
+				openBrackets.push(pairings[letter]);
+			}
+			if(letter == '}' || letter == ')'){
+				letter = openBrackets.pop();
+			}
+			buffer.push(letter)
+		}
+		return buffer.join("") + "\n" + openBrackets.reverse().join("\n");
 	},
 	syncDone: function(){
 		$('.sync-running').removeClass('sync-running');
@@ -57,11 +84,11 @@ $.Controller("Funcit.Testbuttons", {
 	toggleRecord: function(record){
 		var el = this.find(".rec");
 		if(!record){ // turn off recording
-			el.removeClass("recording")
+			//el.removeClass("recording")
 			this.publish("funcit.record", {recording: false});
 			
 		} else {
-			el.addClass("recording")
+			//el.addClass("recording")
 			this.publish("funcit.record", {recording: true});
 		}
 	},
@@ -69,9 +96,10 @@ $.Controller("Funcit.Testbuttons", {
 		$("#tabs li:eq(1)").trigger("activate");
 	},
 	run: function(test, doneCb){
-		$('.sync').addClass('sync-running');
+		//$('.sync').addClass('sync-running');
 		this.toggleRecord(false);
 		this.lineCounter = {};
+		
 		$("iframe").funcit_runner(test, this.callback('runnerCallback'), doneCb);
 	},
 	// start running a test because someone clicked the run button
@@ -105,9 +133,9 @@ $.Controller("Funcit.Testbuttons", {
 		this.lineCounter[lineCount.toString()] = count+1;
 		
 		// skip the first statement, because it will always be the synchronous statement
-		if (count == 0) {
+		/*if (count == 0) {
 			return;
-		}
+		}*/
 		
 		// places cursor at the end of the given statement
 		var chains = (new Funcit.Parse(stmnt)).statement().chains(),
