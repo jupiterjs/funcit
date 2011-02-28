@@ -225,8 +225,10 @@ $.extend( Funcit.Parse.prototype, {
 		return p(this[0].first, this._context)
 	},
 	up : function(){
-		var first = this[0] 
-		return p(first.parent || first.definedIn || first.func, this._context)
+		var first = this[0];
+		if(typeof first != 'undefined'){
+			return p(first.parent || first.definedIn || first.func, this._context)
+		}
 	},
 	block : function(){
 		return p(this[0].block, this._context)
@@ -263,7 +265,7 @@ $.extend( Funcit.Parse.prototype, {
 	},
 	hasSelector : function(selector){
 		var s =  this.S();
-		return s.length && s.args().length && s.args()[0].value == selector
+		return s.length && s.args().length && $.toJSON(s.args()[0].value) == selector
 	},
 	toString : function(){
 		var str = "";

@@ -410,7 +410,9 @@ $.Controller("Funcit.Editor",{
 				firstVisibleLine = this.element.parent().scrollTop()/rowHeight;
 			if(lastVisibleLine < line || firstVisibleLine > line){
 			     // scroll to current line
-			     var scrollTop = (line - lastVisibleLine) * rowHeight;
+			
+			     var scrollTop = (line - lastVisibleLine + 1) * rowHeight;
+				console.log(scrollTop)
 				 this.element.parent().scrollTop(scrollTop);
 			}
 		}
@@ -474,12 +476,7 @@ $.Controller("Funcit.Editor",{
 			}else{
 				var stmnt = stmntOrFunc,
 					indent = this.funcIndent(stmnt.up()[0])
-				
-				var selectors = this.element.val().substr(0,this.element[0].selectionStart).split('S("');
-				var lastSelector = '"' + selectors[selectors.length-1].split('")')[0] + '"';
-					
-				//if(stmnt.hasSelector(selector)){
-				if(lastSelector == selector){
+				if(stmnt.hasSelector(selector)){
 					this.insert("\n"+indent+this.indent()+this.indent()+text, stmnt.ender()+1)
 				}else{
 					this.insert("\n"+indent+this.indent()+"S("+selector+")"+text+";",stmnt.end()+1)

@@ -14,8 +14,9 @@ steal
 		}
 	}
 	var specialKeys = [
-		'up', 'down', 'right', 'left', 'escape', 'page-up', 'page-down', 'home', 'end', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12'
+		'up', 'down', 'right', 'left', 'escape', 'page-up', 'page-down', 'home', 'end', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'num0', 'num1', 'num2', 'num3', 'num4', 'num5', 'num6', 'num7', 'num8', 'num9', 'delete'
 	];
+	
 	
 	/**
 	 * addDrag, addChar, addClick
@@ -185,7 +186,7 @@ steal
 			if(ev.keyCode == 13){
 				key = '\\r';
 			}
-			if(Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1){
+			if(Syn.key.isSpecial(ev.keyCode)){
 				this.element.trigger("addEvent",["char","[" +key+"-up]", ev.target])
 			}
 			
