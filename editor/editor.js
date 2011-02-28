@@ -402,6 +402,7 @@ $.Controller("Funcit.Editor",{
 	 * @param {Number} line the line number that we want to scroll to 
 	 */
 	scrollToLine: function(line){
+		line = line + 3;
 		// if there's scrollbars
 		if(this.element.height() > this.element.parent().height()) {
 			var rowHeight = this.element.rowheight(),
@@ -411,8 +412,7 @@ $.Controller("Funcit.Editor",{
 			if(lastVisibleLine < line || firstVisibleLine > line){
 			     // scroll to current line
 			
-			     var scrollTop = (line - lastVisibleLine + 1) * rowHeight;
-				console.log(scrollTop)
+			   var scrollTop = (line - lastVisibleLine) * rowHeight;
 				 this.element.parent().scrollTop(scrollTop);
 			}
 		}

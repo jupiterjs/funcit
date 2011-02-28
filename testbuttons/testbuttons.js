@@ -28,8 +28,7 @@ $.Controller("Funcit.Testbuttons", {
 		//steal.dev.log(this.textarea[0].selectionStart)
 		if(typeof stmntOrFunc[0] != 'undefined'){
 			
-			/*if(stmntOrFunc[0].arity == 'function'){
-				console.log('oooooooo')
+			if(stmntOrFunc[0].arity == 'function'){
 				// handle this
 			}else{ // statement*/
 				// get test up to current statement
@@ -43,8 +42,9 @@ $.Controller("Funcit.Testbuttons", {
 				}*/
 				//var test = this.textarea.val().substr(0,endChar)+"\n});";
 
-			//}
+			}
 			var testName = stmntOrFunc[0].func.parent[0].value;
+			// TODO find better way to extract test name when cursor is inside of callback function
 			if(testName == 'function'){
 				var codeArray = test.split('test(');
 				var testCode  = $.String.strip(codeArray[codeArray.length - 1]);
@@ -80,6 +80,7 @@ $.Controller("Funcit.Testbuttons", {
 		this.toggleRecord(true);
 		delete this._caretAtLine
 		Funcit.Modal.close();
+		$('#app').funcit_app("bindEventsToIframe");
 	},
 	toggleRecord: function(record){
 		var el = this.find(".rec");
