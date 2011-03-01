@@ -113,6 +113,7 @@ $.Controller("Funcit.Testbuttons", {
 		this.run(this.textarea.val(), this.callback('runtestDone'));
 	},
 	runtestDone: function(){
+		$('.out-of-sync').removeClass('out-of-sync');
 		$('.running-test').removeClass('running-test');
 		this.toggleRecord(true);
 		$('#app').funcit_app("bindEventsToIframe");
