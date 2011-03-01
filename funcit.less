@@ -380,34 +380,44 @@ iframe {
 		content: url(images/backgrounds/recording_spinner_light.gif);
 	}
 	.sync{
-		width:79px;
+		width:49px;
 		float:left;
-		height:20px;
-		background: url(images/backgrounds/sync.png);
-		margin: 4px 0 0 53px;
+		height:27px;
+		background: url(images/backgrounds/sync_new.png);
+		margin: 1px 0 0 3px;
 		cursor: pointer;
 		position: relative;
+		font-size: 11px;
+		font-weight: bold;
+		text-shadow: 0px 1px #FFF;
+		text-align: center;
+		line-height: 26px;
+		color: #333;
+		background-position: 0 -27px;
 		img {
 			display: none;
-			position: absolute;
-			top: 5px;
-			left: 6px;
 		}
 	}
 	.sync-running img {
 		display: block;
+		position: absolute;
+		top: 8px;
+		left: 19px;
+	}
+	.sync-running span {
+		display: none;
 	}
 	.sync:hover {
-		background-position: left -20px;
+		background-position: left -54px;
 	}
 	.sync:active {
-		background-position: left -40px;
+		background-position: left -81px;
 	}
 	.inactive-sync {
 		opacity: 0.4;
 	}
 	.out-of-sync {
-		background-position: left -60px;
+		background-position: left 0px;
 	}
 	.wrapper{
 		margin-top: 31px;

@@ -26,7 +26,7 @@ $.Controller("Funcit.Testbuttons", {
 			//previous: true
 		});
 		//steal.dev.log(this.textarea[0].selectionStart)
-		if(typeof stmntOrFunc[0] != 'undefined'){
+		if(typeof stmntOrFunc[0] != 'undefined' && typeof stmntOrFunc[0].func != 'undefined'){
 			
 			if(stmntOrFunc[0].arity == 'function'){
 				// handle this
@@ -53,7 +53,7 @@ $.Controller("Funcit.Testbuttons", {
 			QUnit.config.filters = [testName];
 			// add the opaque mask
 			Funcit.Modal.open($.View('//funcit/testbuttons/views/sync', {}))
-			$('.sync').removeClass('out-of-sync');
+			$('.sync').removeClass('out-of-sync').addClass('sync-running');
 			this.run(test, this.callback('syncDone'));
 		}
 	},
@@ -164,6 +164,9 @@ $.Controller("Funcit.Testbuttons", {
 			}
 		}
 			
+	},
+	"textarea mousedown" : function(el, ev){
+		this.setCaret(el);
 	},
 	"textarea mouseup": function(el, ev){
 		this.checkSync(el);
