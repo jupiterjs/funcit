@@ -14,7 +14,7 @@
 	"		Funcit = {url: location.pathname};",
 	"	</script>",
 	"	<script language='javascript' type='text/javascript'", 
-	"		src='http://localhost:8000/steal/steal.js?funcit,production'>",
+	"		src='http://localhost:8000/steal/steal.js?funcit'>",
 	"	</script>",
 	"</body>",
 	"</html>"

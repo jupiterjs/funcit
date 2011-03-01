@@ -182,7 +182,11 @@ $.Controller("Funcit.Editor",{
 		}
 	},
 	addClick : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(),".click()*");
+		var prettySelector = el;
+		if(typeof el !== "string"){ // assume we were passed a prettySelector if its a string
+			prettySelector = $(el).prettySelector();
+		}
+		this.chainOrWriteLn(prettySelector,".click()*");
 	},
 	addRightClick : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(),".rightClick()*")
@@ -540,40 +544,5 @@ $.Controller("Funcit.Editor",{
 	}
 	
 });
-var getWindow = function( element ) {
-		return element.defaultView || element.ownerDocument.defaultView || element.ownerDocument.parentWindow
-	};
-$.fn.prettySelector= function() {
-	var target = this[0];
-	if(!target){
-		return null
-	}
-	
-	var selector = target.nodeName.toLowerCase();
-	//always try to get an id
-	if(target.id){
-		return "#"+target.id;
-	}else{
-		var parent = target.parentNode;
-		while(parent){
-			if(parent.id){
-				selector = "#"+parent.id+" "+selector;
-				break;
-			}else{
-				parent = parent.parentNode
-			}
-		}
-	}
-	if(target.className){
-		selector += "."+target.className.split(" ")[0]
-	}
-	var others = $(selector, getWindow(target).document); //jquery should take care of the #foo if there
-	
-	if(others.length > 1){
-		return selector+":eq("+others.index(target)+")";
-	}else{
-		return selector;
-	}
-};
 
 });

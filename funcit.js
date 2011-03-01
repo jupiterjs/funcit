@@ -17,6 +17,7 @@ steal
 		'funcit/testbuttons',
 		'funcit/runner',
 		'funcit/list_attributes',
+		'funcit/pretty_selector',
 		'jquery/view/ejs')
 	.resources('jquery.mousewheel.3.0.2/jquery.mousewheel', 'jquery.has_scrollbar')
 	.then(function(){

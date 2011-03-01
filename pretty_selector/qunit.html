@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../funcunit/qunit/qunit.css" />
+        <title>editor QUnit Test</title>
+		<script type='text/javascript'>
+			steal = {ignoreControllers: true}
+		</script>
+        <style type='text/css'>
+            body {font-family: verdana}
+            .error {border: solid 1px red;}
+            .error_text { color: red; font-size: 10px;}
+            td {padding: 3px;}
+			textarea {
+				width: 99%;
+				margin: 0px;
+				background: transparent;
+				line-height: 16px;
+			}
+			#editor {
+				margin: 0px;
+				padding: 0px;
+				border: 0px;
+			}
+			.selection-cursor{
+				border-left: solid 2px red;
+			} 
+        </style>
+		<script type='text/javascript' src='../../steal/steal.js?funcit/pretty_selector/test/qunit'></script>
+    </head>
+    <body>
+		<div id='wrapper'></div>
+	    <textarea id='editor'></textarea>
+        <h1 id="qunit-header">editor Test Suite</h1>
+    	<h2 id="qunit-banner"></h2>
+    	<div id="qunit-testrunner-toolbar"></div>
+    	<h2 id="qunit-userAgent"></h2>
+		<div id="test-content"></div>
+        <ol id="qunit-tests"></ol>
+		<div id="qunit-test-area"></div>
+    </body>
+</html>
