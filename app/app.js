@@ -233,9 +233,11 @@ steal
 						delete this.clickTimeout;
 						this.element.trigger("addEvent",["doubleClick",undefined, ev.target]);
 					} else {
-						var controller = this;
+						var controller = this,
+							target = ev.target,
+							prettySel = $(target).prettySelector();
 						this.clickTimeout = setTimeout(function(){
-							controller.element.trigger("addEvent",["click",undefined, ev.target]);
+							controller.element.trigger("addEvent",["click",undefined, prettySel]);
 							delete controller.clickTimeout;
 						}, 200);
 					}
