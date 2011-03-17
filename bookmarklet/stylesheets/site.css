@@ -1,0 +1,150 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+body { line-height: 1; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before {
+  content: '';
+  content: none;
+}
+blockquote:after {
+  content: '';
+  content: none;
+}
+q:before {
+  content: '';
+  content: none;
+}
+q:after {
+  content: '';
+  content: none;
+}
+ins { text-decoration: none; }
+del { text-decoration: line-through; }
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+@font-face {
+  font-family: 'MuseoSlab500';
+  src: url('../fonts/museo_slab_500-webfont.eot');
+  src: local('☺'), url('museo_slab_500-webfont.woff') format('woff'), url('museo_slab_500-webfont.ttf') format('truetype'), url('museo_slab_500-webfont.svg#webfonth7ZuKjlS') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+body {
+  margin: 0;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+  font-size: 13px;
+  text-align: center;
+  background-image: url(../images/backgrounds/body.jpg);
+}
+#wrapper {
+  background: url(../images/backgrounds/body_top.jpg);
+  background-repeat: repeat-x;
+}
+#bottom-bar {
+  margin-top: 20px;
+  background-image: url(../images/backgrounds/bottom.png);
+  height: 30px;
+  color: white;
+  line-height: 30px;
+  text-align: center;
+  border-top: 1px solid white;
+  font-size: 10px;
+}
+#bottom-bar a { color: #c3dce2; text-decoration: none;}
+#bottom-bar a:hover { text-decoration: underline;}
+#container {
+  width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+#header-wrapper {
+  height: 120px;
+  background-image: url(../images/header.jpg);
+  background-position: 50% top;
+  background-repeat: no-repeat;
+  position: relative;
+}
+#header-wrapper #header {
+  height: 230px;
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+#header-wrapper #header a#jupiter-product {
+  display: block;
+  position: absolute;
+  left: 52px;
+  top: 10px;
+}
+.step {
+  border-bottom: 1px dotted #333333;
+  position: relative;
+  margin: 20px 0 0 40px;
+  padding-bottom: 20px;
+  font-size: 14px;
+  color: #363636;
+  text-shadow: 0px 1px white;
+}
+.step a { color: #363636; }
+.step a:hover { text-decoration: none; }
+.step #funcit-link {
+  display: inline-block;
+  right: 50px;
+  color: white;
+  padding: 0 10px;
+  background: #414141;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid #242424;
+  text-shadow: 0px 1px black;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+}
+.step img {
+  display: block;
+  margin-top: 10px;
+  margin-left: -3px;
+}
+.step #arrow {
+  position: absolute;
+  right: 0;
+  margin-top: -63px;
+  margin-left: 0;
+}
+.step .number {
+  position: absolute;
+  margin: -7px 0 0 -40px;
+  height: 29px;
+  width: 28px;
+  line-height: 29px;
+  color: white;
+  text-shadow: 0px 1px #364c18;
+  text-align: center;
+  font-size: 18px;
+  background: url(../images/number.png);
+}
+.last-step {
+  padding-bottom: 0;
+  border-bottom: none;
+}

@@ -1,20 +1,43 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-            "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en">
-	<head>
-		<title>funcit</title>
-	</head>
-	<body>
-		<ol>
-			<li>Drag this link into your bookmarks bar (in Firefox).
-			<br />
-			<a href="javascript:(function(){var head=document.getElementsByTagName('head')[0],script=document.createElement('script');script.type='text/javascript';script.src='http://localhost:8000/funcit/bookmarklet/bookmarklet.js';head.appendChild(script);})(); void 0">Funcit</a>
-			<!--<br />
-			<a href="javascript:(function(){var head=document.getElementsByTagName('head')[0],script=document.createElement('script');script.type='text/javascript';script.src='http://localhost:8000/funcit/bookmarklet/bookmarklet.js?' + Math.floor(Math.random()*99999);head.appendChild(script);})(); void 0">Funcit</a>-->
-			</li>
-			<li>Open another web page (like <a href='http://google.com'>Google</a>).
-			<li>Click the bookmarklet.</li>
-			<li>Use Funcit to write and run tests for that web page.</li>
-		</ol>
-	</body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>FuncIt - The FuncUnit IDE</title>
+    <link href="stylesheets/site.css" media="all" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div id='wrapper'>
+      <div id='header-wrapper'>
+        <div id='header'>
+          <a href="http://www.jupiterit.com" id="jupiter-product"><img alt="Another Jupiter product" src="images/jupiter_product.png"/></a>
+        </div>
+      </div>
+      <div id='container'>
+        <div class='step'>
+          <div class='number'>1</div>
+          Drag the following link into your bookmarks bar (in Firefox):
+          <a href="javascript:(function(){var head=document.getElementsByTagName('head')[0],script=document.createElement('script');script.type='text/javascript';script.src='http://localhost:8000/funcit/bookmarklet/bookmarklet.js';head.appendChild(script);})(); void 0" id="funcit-link">FuncIt</a>
+          <img alt="Arrow" id="arrow" src="images/arrow.png"/>
+          <img alt="1" src="images/steps/1.png"/>
+        </div>
+        <div class='step'>
+          <div class='number'>2</div>
+          Open another web page (like Google).
+          <img alt="2" src="images/steps/2.png"/>
+        </div>
+        <div class='step'>
+          <div class='number'>3</div>
+          Click the bookmarklet.
+          <img alt="3" src="images/steps/3.png"/>
+        </div>
+        <div class='step last-step'>
+          <div class='number'>4</div>
+          Use Funcit to write and run tests for that web page.
+          <img alt="4" src="images/steps/4.png"/>
+        </div>
+      </div>
+    </div>
+    <div id='bottom-bar'>
+      <a href="http://jupiterit.com">&copy; Jupiter IT - JavaScriptMVC Training and Support</a>
+    </div>
+  </body>
 </html>
