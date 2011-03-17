@@ -4,6 +4,10 @@ module("editor test", {
 	}
 });
 
-test("Copy Test", function(){
-	equals(S("h1").text(), "Welcome to JavaScriptMVC 3.0!","welcome text");
+test("Initialization works", function(){
+	/*var editor = $('#editor');
+	var regex = /^\s*test\s*\(/;
+	editor.trigger('focus')
+	console.log($('#editor'))
+	ok(regex.test(editor.val()), 'Editor is initialized correctly')*/
 });

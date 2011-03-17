@@ -1,3 +1,3 @@
 steal
- .plugins("funcunit")
+ .plugins("funcunit", "funcunit/qunit")
  .then("editor_test");
