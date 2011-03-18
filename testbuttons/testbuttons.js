@@ -164,7 +164,6 @@ $.Controller("Funcit.Testbuttons", {
 				$('.sync').addClass('out-of-sync');
 			}
 		}
-			
 	},
 	"textarea mousedown" : function(el, ev){
 		this.setCaret(el);

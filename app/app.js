@@ -35,7 +35,6 @@ steal
 			this.hoveredEl = null;
 			this.record = true;
 			
-			
 			this.bind(document, 'keydown', this.callback('onDocumentKeydown'))
 			
 			// if the a test is appended to the URL, load it and skip the form

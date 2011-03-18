@@ -750,14 +750,30 @@ li {
 	margin:0px;
 }
 
-#file-reader {
-	position: absolute;
-	right: 5px;
-	top: 0;
+#file-reader, #file-writer {
+	float: right;
 	color: #454545;
 	font-size: 11px;
 	font-weight: bold;
 	text-shadow: 0px 1px white;
+	height: 22px;
+	line-height: 22px;
+	margin: 1px 0 0;
+	padding: 0px 10px;
+	cursor: pointer;
+}
+
+#file-reader {
+	border-left: 1px solid #fcfcfc;
+}
+
+#file-writer {
+	border-right: 1px solid #9c9c9c;
+}
+
+#file-reader input {
+	display: none;
+	margin-left: 5px;
 }
 
 #loader-error {
@@ -775,4 +791,8 @@ li {
 	z-index: 10000;
 	margin-top: 20px;
 	display: none;
+}
+#forged-by {
+	position: absolute;
+	margin-left: -154px;
 }

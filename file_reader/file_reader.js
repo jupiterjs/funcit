@@ -5,6 +5,11 @@ $.Controller("Funcit.FileReader", {
 	init : function(){
 		
 	},
+	'span click' : function(el, ev){
+		ev.preventDefault();
+		ev.stopPropagation();
+		this.element.find('input').toggle();
+	},
 	'input change' : function(el, ev){
 		clearTimeout(this.removeError);
 		$('#loader-error').fadeOut();

@@ -18,6 +18,7 @@ steal
 		'funcit/runner',
 		'funcit/list_attributes',
 		'funcit/file_reader',
+		'funcit/file_writer',
 		'funcit/pretty_selector',
 		'jquery/view/ejs')
 	.resources('jquery.mousewheel.3.0.2/jquery.mousewheel', 'jquery.has_scrollbar')
@@ -42,6 +43,7 @@ steal
 				$("#tabs").mxui_tabs();
 				$("#results").funcit_results();
 				$('#file-reader').funcit_file_reader();
+				$('#file-writer').funcit_file_writer();
 				
 				editor.funcit_editor('val',"//funcit/views/init.ejs",{
 					module : data,
