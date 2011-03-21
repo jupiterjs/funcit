@@ -2,9 +2,6 @@ steal.plugins('jquery/controller', 'jquery/controller/subscribe')
 	.then(function($){
 
 $.Controller("Funcit.FileReader", {
-	init : function(){
-		
-	},
 	'span click' : function(el, ev){
 		ev.preventDefault();
 		ev.stopPropagation();
@@ -17,13 +14,13 @@ $.Controller("Funcit.FileReader", {
     for (var i = 0, f; f = files[i]; i++) {
 			if(f.type == "application/x-javascript"){
 				var code = f.getAsText('');
-				var regex = /^\s*test\s*\(/;
+				var regex = /^\s*test\s*\(/m;
 				if(regex.test(code)){
-					$('#editor').funcit_editor().val(code)
+					$('#editor').val(code).funcit_editor().trigger('keyup');
+					this.element.find('input').hide();
 				} else {
 					this.error();
 				}
-				
 			} else {
 				this.error();
 			}

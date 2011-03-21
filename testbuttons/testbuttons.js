@@ -192,16 +192,18 @@ $.Controller("Funcit.Testbuttons", {
 			lineheight = this.rowHeight,
 			wrapper = this.find(".wrapper"), 
 			buttonTop, testName;
-			
 		// TODO implement caching for this, so you're not removing/creating these buttons every time
 		this.find(".runtest").remove();
 		tests.each(function(i, val){
-			buttonTop = (val.line-1)*lineheight-4;
-			testName = val.parent.second[0].value;
-			$("<div class='runtest'></div>")
-				.appendTo(wrapper)
-				.data('testName', testName)
-				.css('top', buttonTop);
+			if(typeof val.parent.second != 'undefined'){
+				buttonTop = (val.line-1)*lineheight-4;
+				testName = val.parent.second[0].value;
+
+				$("<div class='runtest'></div>")
+					.appendTo(wrapper)
+					.data('testName', testName)
+					.css('top', buttonTop);
+			}
 		})
 	}
 })
