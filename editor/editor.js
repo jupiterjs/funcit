@@ -127,6 +127,12 @@ $.Controller("Funcit.Editor",{
 		//steal.dev.log(this.funcStatement())
 		//this.trigger("run", this.val())
 	},
+	change : function(){
+		this.saveToLocalStorage();
+	},
+	keyup : function(){
+		this.saveToLocalStorage();
+	},
 	addEvent : function(ev, eventType){
 		steal.dev.log(eventType)
 		this.element.trigger('blur')
@@ -148,13 +154,13 @@ $.Controller("Funcit.Editor",{
 	},
 	addOpen : function(url){
 		var stmnt = this.funcStatement();
-		console.log(stmnt[0])
 		if(typeof stmnt[0] != 'undefined' && stmnt[0].arity == 'infix'){
 			var indent = this.funcIndent(stmnt.up()[0]);
 			this.insert("\n"+indent+this.indent()+"S.open('"+url+"')"+";",stmnt.end()+1);
 		} else {
 			this.writeLn("S.open('"+url+"')");
 		}
+		this.saveToLocalStorage();
 	},
 	addChar: function(letter, el){
 		var stmt = this.funcStatement({
@@ -180,6 +186,7 @@ $.Controller("Funcit.Editor",{
 		}else{
 			this.chainOrWriteLn($(el).prettySelector(),".type('" + letter + "*')");
 		}
+		this.saveToLocalStorage();
 	},
 	addClick : function(options, el){
 		var prettySelector = el;
@@ -187,21 +194,27 @@ $.Controller("Funcit.Editor",{
 			prettySelector = $(el).prettySelector();
 		}
 		this.chainOrWriteLn(prettySelector,".click()*");
+		this.saveToLocalStorage();
 	},
 	addRightClick : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(),".rightClick()*")
+		this.chainOrWriteLn($(el).prettySelector(),".rightClick()*");
+		this.saveToLocalStorage();
 	},
 	addDoubleClick : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(),".dblclick()*")
+		this.chainOrWriteLn($(el).prettySelector(),".dblclick()*");
+		this.saveToLocalStorage();
 	},
 	addTrigger : function(value, el){
-		this.chainOrWriteLn($(el).prettySelector(),".trigger("+$.toJSON(value)+")*")
+		this.chainOrWriteLn($(el).prettySelector(),".trigger("+$.toJSON(value)+")*");
+		this.saveToLocalStorage();
 	},
 	addDrag : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(),".drag("+$.toJSON(options)+")*");
+		this.saveToLocalStorage();
 	},
 	addMove: function(el, from, to){
 		this.chainOrWriteLn($(el).prettySelector(), '.move("'+to.x+'x'+to.y+'")*');
+		this.saveToLocalStorage();
 	},
 	addScroll : function(direction, amount, el){
 		if(el.window == el){
@@ -212,10 +225,11 @@ $.Controller("Funcit.Editor",{
 		} else {
 			this.chainOrWriteLn($(el).prettySelector(), '.scroll('+$.toJSON(direction)+', '+amount+')*');
 		}
-		
+		this.saveToLocalStorage();
 	},
 	addMousewheel : function(delta){
 		this.chainOrWriteLn('body', '.mousewheel("' + delta + '")');
+		this.saveToLocalStorage();
 	},
 	// if el is blank, add "target"
 	addWait: function(options, el){
@@ -229,7 +243,7 @@ $.Controller("Funcit.Editor",{
 		} else {
 			this.chainOrWriteLn(sel,"."+options.type+"("+val+")*");
 		}
-		
+		this.saveToLocalStorage();
 	},
 	addGetter: function(options, el){
 		
@@ -274,6 +288,7 @@ $.Controller("Funcit.Editor",{
 			this.insert("")
 		}
 		this.showCursor();
+		this.saveToLocalStorage();
 	},
 	addAssert: function(options){
 		var val = $.toJSON(options.value) || "";
@@ -313,12 +328,20 @@ $.Controller("Funcit.Editor",{
 			 
 		}
 		this.showCursor();
+		this.saveToLocalStorage();
 	},
 	getVariableName : function(varName){
 		this._variableNames = this._variableNames || {};
 		this._variableNames[varName] = this._variableNames[varName] || 0;
 		this._variableNames[varName]++;
 		return varName + "_" + this._variableNames[varName];
+	},
+	saveToLocalStorage : function(){
+		if(hasLocalStorage()){
+			var pageURLMatch = location.search && location.search.match(/\?url\=(.*)/),
+					pageURL = (pageURLMatch && pageURLMatch[1]);
+			localStorage[localStorageKey()] = this.element.val().replace(new RegExp("\\s*S\\.open\\('"+pageURL+"'\\);"), '');
+		}
 	},
 	showCursor: function(){
 		this.element.controller('lastselection').showCursor()
@@ -352,6 +375,7 @@ $.Controller("Funcit.Editor",{
 			insertTxt += "function(val){\n"+indent+indent+text+";\n"+indent+"}";
 			this.insert(insertTxt, stmnt.end()-1);
 		}
+		this.saveToLocalStorage();
 	},
 	/**
 	 * Inserts text into the textarea from start to end.

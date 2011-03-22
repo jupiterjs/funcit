@@ -21,9 +21,12 @@ steal
 		'funcit/file_writer',
 		'funcit/pretty_selector',
 		'jquery/view/ejs')
-	.resources('jquery.mousewheel.3.0.2/jquery.mousewheel', 'jquery.has_scrollbar')
+	.resources('jquery.mousewheel.3.0.2/jquery.mousewheel', 'jquery.has_scrollbar', 'hasLocalStorage', 'md5')
 	.then(function(){
 	$(document).ready(function(){
+		localStorageKey = function(){
+			return MD5(window.location.href);
+		}
 		$(document.body).append("//funcit/views/app", {})
 		
 		var editor,
@@ -44,11 +47,15 @@ steal
 				$("#results").funcit_results();
 				$('#file-reader').funcit_file_reader();
 				$('#file-writer').funcit_file_writer();
+				if(hasLocalStorage() && localStorage[localStorageKey()] != null && localStorage[localStorageKey()] != ""){
+					editor.funcit_editor('val', localStorage[localStorageKey()]);
+				}else{
+					editor.funcit_editor('val',"//funcit/views/init.ejs",{
+						module : data,
+						test : "change me!"
+					})
+				}
 				
-				editor.funcit_editor('val',"//funcit/views/init.ejs",{
-					module : data,
-					test : "change me!"
-				})
 				
 				editor.trigger("keyup")
 				$(window).trigger("resize");
