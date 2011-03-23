@@ -97,7 +97,7 @@ $.Controller("Funcit.Testbuttons", {
 		$("#tabs li:eq(1)").trigger("activate");
 	},
 	run: function(test, doneCb){
-		$('.sync').addClass('sync-running');
+		//$('.sync').addClass('sync-running');
 		this.toggleRecord(false);
 		this.lineCounter = {};
 		
