@@ -106,14 +106,17 @@ steal
 				.mouseenter(this.callback('onMouseenter'))
 				.mouseout(this.callback('onMouseout'))
 				.mousewheel(this.callback('onMousewheel'))
+				.bind("DOMAttrModified",function(ev){
+					steal.dev.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
+				})
+				.bind("DOMNodeInserted",function(ev){
+					steal.dev.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
+				})
+				.bind("DOMNodeRemoved",function(ev){
+					steal.dev.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
+				})
 			$($('iframe:first')[0].contentWindow).scroll(this.callback('onScroll'))
-//				.bind("DOMAttrModified",this.callback('onModified'))
-//				.bind("DOMNodeInserted",function(ev){
-//					//steal.dev.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
-//				})
-//				.bind("DOMNodeRemoved",function(ev){
-//					//steal.dev.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
-//				})
+
 		},
 		onModified: function(ev){
 			var newVal = ev.originalEvent.newValue,

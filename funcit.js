@@ -21,11 +21,11 @@ steal
 		'funcit/file_writer',
 		'funcit/pretty_selector',
 		'jquery/view/ejs')
-	.resources('jquery.mousewheel.3.0.2/jquery.mousewheel', 'jquery.has_scrollbar', 'hasLocalStorage', 'md5')
+	.resources('jquery.mousewheel.3.0.2/jquery.mousewheel', 'jquery.has_scrollbar', 'hasLocalStorage')
 	.then(function(){
 	$(document).ready(function(){
 		localStorageKey = function(){
-			return MD5(window.location.href);
+			return window.location.href;
 		}
 		$(document.body).append("//funcit/views/app", {})
 		
