@@ -85,11 +85,11 @@ $.Controller("Funcit.Testbuttons", {
 	toggleRecord: function(record){
 		var el = this.find(".rec");
 		if(!record){ // turn off recording
-			//el.removeClass("recording")
+			el.removeClass("recording")
 			this.publish("funcit.record", {recording: false});
 			
 		} else {
-			//el.addClass("recording")
+			el.addClass("recording")
 			this.publish("funcit.record", {recording: true});
 		}
 	},
@@ -97,7 +97,7 @@ $.Controller("Funcit.Testbuttons", {
 		$("#tabs li:eq(1)").trigger("activate");
 	},
 	run: function(test, doneCb){
-		//$('.sync').addClass('sync-running');
+		$('.sync').addClass('sync-running');
 		this.toggleRecord(false);
 		this.lineCounter = {};
 		
