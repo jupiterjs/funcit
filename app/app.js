@@ -106,41 +106,52 @@ steal
 				.mouseenter(this.callback('onMouseenter'))
 				.mouseout(this.callback('onMouseout'))
 				.mousewheel(this.callback('onMousewheel'))
-				.bind("DOMAttrModified",function(ev){
-					steal.dev.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
-				})
-				.bind("DOMNodeInserted",function(ev){
-					steal.dev.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
-				})
-				.bind("DOMNodeRemoved",function(ev){
-					steal.dev.log(ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
-				})
+				.bind("DOMAttrModified", this.callback('onModified'))
+				.bind("DOMNodeInserted", this.callback('onModified'))
+				.bind("DOMNodeRemoved", this.callback('onModified'))
 			$($('iframe:first')[0].contentWindow).scroll(this.callback('onScroll'))
 
 		},
 		onModified: function(ev){
-			var newVal = ev.originalEvent.newValue,
-				prop = ev.originalEvent.attrName;
-			//steal.dev.log(prop, newVal, ev.target);
-			if(prop == 'style'){
-				var attrArr = newVal.split(":"),
-					attr = attrArr[0],
-					val = attrArr[1];
-				if(attr == 'display'){
-					if (/block/.test(val)) {
-						this.publish('funcit.suggestion',{
-							el: ev.target,
-							type: 'visible'
-						})
-					}
-					else if (/none/.test(val)) {
-						this.publish('funcit.suggestion',{
-							el: ev.target,
-							type: 'invisible'
-						})
+			if(ev.type == 'DOMNodeRemoved'){
+				console.log(ev, ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
+			}
+			if(ev.type == 'DOMNodeRemoved'){
+				this.publish('funcit.suggestion',{
+					el: ev.target,
+					type: 'missing'
+				})
+				
+			} else if(ev.type == 'DOMNodeInserted'){
+				this.publish('funcit.suggestion',{
+					el: ev.target,
+					type: 'exists'
+				})
+			} else {
+				var newVal = ev.originalEvent.newValue,
+					prop = ev.originalEvent.attrName;
+				//steal.dev.log(prop, newVal, ev.target);
+				if(prop == 'style'){
+					var attrArr = newVal.split(":"),
+						attr = attrArr[0],
+						val = attrArr[1];
+					if(attr == 'display'){
+						if (/block/.test(val)) {
+							this.publish('funcit.suggestion',{
+								el: ev.target,
+								type: 'visible'
+							})
+						}
+						else if (/none/.test(val)) {
+							this.publish('funcit.suggestion',{
+								el: ev.target,
+								type: 'invisible'
+							})
+						}
 					}
 				}
 			}
+			
 		},
 		onMousemove : function(e){
 			if(this.record_mouse){
