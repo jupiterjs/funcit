@@ -14,11 +14,11 @@
 	"		Funcit = {url: location.pathname};",
 	"	</script>",
 	"	<script language='javascript' type='text/javascript'", 
-	"		src='http://localhost:8000/steal/steal.js?funcit'>",
+	"		src='http://localhost:8080/funcit/javascriptmvc/steal/steal.js?funcit,production'>",
 	"	</script>",
 	"</body>",
 	"</html>"
 	];
-    newWin.document.write(html.join(''));
+  newWin.document.write(html.join(''));
 	newWin.document.close();
 })()

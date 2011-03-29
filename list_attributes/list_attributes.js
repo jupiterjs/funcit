@@ -1,3 +1,5 @@
+steal.plugins('jquery').then(function($){
+
 /*!
  * listAttributes jQuery Plugin v1.1.0
  *
@@ -39,3 +41,5 @@ $.fn.mapAttributes = function(prefix) {
 	});
 	return (maps.length > 1 ? maps : maps[0]);
 }
+
+});
