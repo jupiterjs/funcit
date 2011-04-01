@@ -20,6 +20,18 @@ $.Controller("Funcit.Testbuttons", {
 	// grabs the entire textarea string up to the cursor and passes this testname as a filter to QUnit
 	// since the text isn't modified, the highlighting still works
 	// TODO there has to be a better way to do this
+	'#new-file click' : function(el, ev){
+		var pageURLMatch = location.search && location.search.match(/\?url\=(.*)/),
+			  pageURL = (pageURLMatch && pageURLMatch[1]) || Funcit.url;
+		    editor = editor = $('#editor').funcit_editor();
+		editor.funcit_editor('val',"//funcit/views/init.ejs",{
+			module : pageURL,
+			test : "change me!"
+		});
+		editor.trigger('keyup')
+		this.textarea.lastselection('updateCursor', 1);
+		//$('#app').trigger("addEvent",["open",pageURL]);
+	},
 	".sync click": function(el, ev){
 		//get an empty function or last statement
 		

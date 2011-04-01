@@ -98,6 +98,7 @@ steal
 			target = target || $('iframe:first')[0].contentWindow.document;
 			$(target)
 				.keydown(this.callback('onKeydown'))
+				.keypress(this.callback('onKeypress'))
 				.keyup(this.callback('onKeyup'))
 				.mousedown(this.callback('onMousedown'))
 				.mousemove(this.callback('onMousemove'))
@@ -113,9 +114,6 @@ steal
 
 		},
 		onModified: function(ev){
-			if(ev.type == 'DOMNodeRemoved'){
-				console.log(ev, ev.originalEvent.attrName, ev.target, ev.originalEvent.newValue)
-			}
 			if(ev.type == 'DOMNodeRemoved'){
 				this.publish('funcit.suggestion',{
 					el: ev.target,
@@ -182,16 +180,30 @@ steal
 			}else if(Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1){
 				key = "[" + key + "]";
 			}
-			
+			var controller = this;
+			this.keyDownTimeout = setTimeout(function(){
+				if(controller.keytarget != ev.target){
+					controller.current = [];
+					controller.keytarget = ev.target;
+				}
+				if($.inArray(key, controller.downKeys) == -1){
+					controller.downKeys.push(key);
+					//h.showChar(key, ev.target);
+					controller.element.trigger("addEvent",["char",key, ev.target])
+				}
+			}, 20);
+		},
+		onKeypress : function(ev){
+			console.log(ev)
+			var key = getKey(ev.charCode);
+			console.log(key)
+			clearTimeout(this.keyDownTimeout);
 			if(this.keytarget != ev.target){
 				this.current = [];
 				this.keytarget = ev.target;
 			}
-			if($.inArray(key, this.downKeys) == -1){
-				this.downKeys.push(key);
-				//h.showChar(key, ev.target);
-				this.element.trigger("addEvent",["char",key, ev.target])
-			}
+			this.element.trigger("addEvent",["char",key, ev.target])
+			
 		},
 		onKeyup : function(ev){
 			var key = getKey(ev.keyCode),
