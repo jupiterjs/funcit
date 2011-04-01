@@ -24,13 +24,23 @@ $.Controller("Funcit.Testbuttons", {
 		var pageURLMatch = location.search && location.search.match(/\?url\=(.*)/),
 			  pageURL = (pageURLMatch && pageURLMatch[1]) || Funcit.url;
 		    editor = editor = $('#editor').funcit_editor();
-		editor.funcit_editor('val',"//funcit/views/init.ejs",{
-			module : pageURL,
-			test : "change me!"
+				val = $.View("//funcit/views/init.ejs",{
+					module : pageURL,
+					test : "change me!"
+				})
+		var caretPos = val.indexOf('setup :') + 19;
+		editor.funcit_editor('val', val);
+		editor.funcit_editor('selection',{
+			start : caretPos,
+			end : caretPos
 		});
 		editor.trigger('keyup')
-		this.textarea.lastselection('updateCursor', 1);
-		//$('#app').trigger("addEvent",["open",pageURL]);
+		$('#app').trigger("addEvent",["open",pageURL]);
+		caretPos = editor.val().indexOf('test(') + 31;
+		editor.funcit_editor('selection',{
+			start : caretPos,
+			end : caretPos
+		});
 	},
 	".sync click": function(el, ev){
 		//get an empty function or last statement
