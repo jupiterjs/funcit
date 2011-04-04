@@ -8,8 +8,8 @@ steal
 		steal.less('funcit')
 	})
 	.plugins(
-		'mxui/filler',
-		'mxui/tabs',
+		'mxui/layout/fill',
+		'mxui/nav/tabs',
 		'funcit/app',
 		'funcit/editor',
 		'funcit/grow',
@@ -32,7 +32,7 @@ steal
 		var editor,
 				first = false;
 		
-		$('#app').mxui_filler({parent: document.body})
+		$('#app').mxui_layout_fill({parent: document.body})
 			.funcit_app().bind("addEvent", function(ev, type, data, el){
 				
 			// run this here so we can include the URL in the module name
@@ -43,7 +43,7 @@ steal
 				$("#test").funcit_testbuttons();
 				$("#commands").funcit_commands();
 				$('.controls_overlay').funcit_selectel();
-				$("#tabs").mxui_tabs();
+				$("#tabs").mxui_nav_tabs();
 				$("#results").funcit_results();
 				$('#file-reader').funcit_file_reader();
 				$('#file-writer').funcit_file_writer();

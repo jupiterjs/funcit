@@ -3,7 +3,7 @@ steal
 		'jquery/controller/subscribe',
 		'funcunit/syn', 
 		'funcit/highlight', 
-		'mxui/fittable', 
+		'mxui/layout/fit', 
 		'jquery/dom/form_params')
 	.then(function($){
 	var getKey =  function( code ) {
