@@ -173,7 +173,7 @@ steal
 			$(ev.target).unbind('scroll');
 		},
 		onKeydown : function(ev){
-		  console.log(ev.originalEvent.keyIdentifier)
+		  console.log(ev.keyCode)
 			this.handleEscape(ev);
 			this.stopMouseOrScrollRecording(ev);
 			var key = getKey(ev.keyCode);
@@ -200,15 +200,14 @@ steal
 			}, 20);
 		},
 		onKeypress : function(ev){
-			/*console.log(ev)
-			var key = getKey(ev.charCode);
-			console.log(key)
+			console.log(ev)
+			var key = String.fromCharCode(ev.charCode);
 			clearTimeout(this.keyDownTimeout);
 			if(this.keytarget != ev.target){
 				this.current = [];
 				this.keytarget = ev.target;
 			}
-			this.element.trigger("addEvent",["char",key, ev.target])*/
+			this.element.trigger("addEvent",["char",key, ev.target])
 			
 		},
 		onKeyup : function(ev){
