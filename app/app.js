@@ -200,7 +200,7 @@ steal
 			}, 20);
 		},
 		onKeypress : function(ev){
-			console.log(ev)
+			/*console.log(ev)
 			var key = getKey(ev.charCode);
 			console.log(key)
 			clearTimeout(this.keyDownTimeout);
@@ -208,7 +208,7 @@ steal
 				this.current = [];
 				this.keytarget = ev.target;
 			}
-			this.element.trigger("addEvent",["char",key, ev.target])
+			this.element.trigger("addEvent",["char",key, ev.target])*/
 			
 		},
 		onKeyup : function(ev){
