@@ -94,6 +94,7 @@ steal
 			this.bindEventsToIframe(ev.target.contentWindow.document)
 		},
 		bindEventsToIframe: function(target){
+		  var self = this;
 			steal.dev.log(target)
 			target = target || $('iframe:first')[0].contentWindow.document;
 			$(target)
@@ -111,6 +112,10 @@ steal
 				.bind("DOMNodeInserted", this.callback('onModified'))
 				.bind("DOMNodeRemoved", this.callback('onModified'))
 			$($('iframe:first')[0].contentWindow).scroll(this.callback('onScroll'))
+			$('iframe:first').load(function(ev){
+			  
+			  self.bindEventsToIframe();
+			})
 
 		},
 		onModified: function(ev){
@@ -168,6 +173,7 @@ steal
 			$(ev.target).unbind('scroll');
 		},
 		onKeydown : function(ev){
+		  console.log(ev.originalEvent.keyIdentifier)
 			this.handleEscape(ev);
 			this.stopMouseOrScrollRecording(ev);
 			var key = getKey(ev.keyCode);
