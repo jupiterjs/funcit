@@ -22,7 +22,7 @@ $.Controller("Funcit.Testbuttons", {
 	// TODO there has to be a better way to do this
 	'#new-file click' : function(el, ev){
 	  if(confirm('Are you sure? You will lose all changes.')){
-	  	$('iframe:first').attr('src', $('iframe:first').attr('src'));
+	  	$('iframe:first')[0].contentWindow.location.reload();
 	    var pageURLMatch = location.search && location.search.match(/\?url\=(.*)/),
   			  pageURL = (pageURLMatch && pageURLMatch[1]) || Funcit.url;
   		    editor = editor = $('#editor').funcit_editor();
