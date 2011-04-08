@@ -18,6 +18,7 @@ $.Controller("Funcit.Editor",{
 		this.first = true;
 		this.modified = true;
 		this.record = true;
+		this.lastScroll = {};
 	},
 	val : function(){
 		return this.element.val.apply(this.element, arguments);
@@ -219,13 +220,26 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addScroll : function(direction, amount, el){
+	  var self = this;
+	  var selector = "";
+	  var val = "";
 		if(el.window == el){
+		  selector = "window";
 			if(direction == "top")
-				this.chainOrWriteLn('window', '.scroll('+$.toJSON(direction)+', '+el.scrollY+'*)');
-			else
-				this.chainOrWriteLn('window', '.scroll('+$.toJSON(direction)+', '+el.scrollX+'*)');
+			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollY+'*)';
+			else{
+			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollX+'*)';
+			}
 		} else {
-			this.chainOrWriteLn($(el).prettySelector(), '.scroll('+$.toJSON(direction)+', '+amount+')*');
+		  selector = $(el).prettySelector();
+		  val = '.scroll('+$.toJSON(direction)+', '+amount+')*';
+		}
+		if(this.lastScroll[selector] != val){
+		  this.scrollTimeout && clearTimeout(this.scrollTimeout);
+		  this.scrollTimeout = setTimeout(function(){
+		    self.chainOrWriteLn(selector, val);
+  		  self.lastScroll[selector] = val;
+		  }, 50)
 		}
 		this.saveToLocalStorage();
 	},
