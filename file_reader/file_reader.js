@@ -11,7 +11,7 @@ $.Controller("Funcit.FileReader", {
 		clearTimeout(this.removeError);
 		$('#loader-error').fadeOut();
 		var files = ev.target.files;
-    for (var i = 0, f; f = files[i]; i++) {
+		for (var i = 0, f; f = files[i]; i++) {
 			if(f.type == "application/x-javascript"){
 				var code = f.getAsText('');
 				var regex = /^\s*test\s*\(/m;
@@ -24,7 +24,7 @@ $.Controller("Funcit.FileReader", {
 			} else {
 				this.error();
 			}
-    }
+		}
 	},
 	error : function(){
 		$('#loader-error').show();

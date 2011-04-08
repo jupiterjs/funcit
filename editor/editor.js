@@ -134,23 +134,25 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addEvent : function(ev, eventType){
-		steal.dev.log(eventType)
-		this.element.trigger('blur')
-		if(this.first && eventType == 'open'){
-			this.first = false;
-			//find the module's setup function, add to the end
-			var found = this.find({type: "(identifier)", value : 'setup'})
-			var loc = found.first().end();
-			
-			this.selection({
-				start : loc,
-				end : loc
-			});
-			setTimeout(this.callback('moveToLastTest'),13)
-		}
-		
-		var args = $.makeArray(arguments);
-		this["add"+$.String.capitalize(eventType)].apply(this,args.slice(2))
+	  if(this.record){
+	    steal.dev.log(eventType)
+  		this.element.trigger('blur')
+  		if(this.first && eventType == 'open'){
+  			this.first = false;
+  			//find the module's setup function, add to the end
+  			var found = this.find({type: "(identifier)", value : 'setup'})
+  			var loc = found.first().end();
+
+  			this.selection({
+  				start : loc,
+  				end : loc
+  			});
+  			setTimeout(this.callback('moveToLastTest'),13)
+  		}
+
+  		var args = $.makeArray(arguments);
+  		this["add"+$.String.capitalize(eventType)].apply(this,args.slice(2))
+	  }
 	},
 	addOpen : function(url){
 		var stmnt = this.funcStatement();
