@@ -97,7 +97,21 @@ steal
 		  var self = this;
 			steal.dev.log(target)
 			target = target || $('iframe:first')[0].contentWindow.document;
+			
 			$(target)
+				.unbind('keydown')
+				.unbind('keypress')
+				.unbind('keyup')
+				.unbind('mousedown')
+				.unbind('mousemove')
+				.unbind('mouseup')
+				.unbind('change')
+				.unbind('mouseenter')
+				.unbind('mouseout')
+				.unbind('mousewheel')
+				.unbind('DOMAttrModified')
+				.unbind('DOMNodeInserted')
+				.unbind('DOMNodeRemoved')
 				.keydown(this.callback('onKeydown'))
 				.keypress(this.callback('onKeypress'))
 				.keyup(this.callback('onKeyup'))
@@ -111,12 +125,14 @@ steal
 				.bind("DOMAttrModified", this.callback('onModified'))
 				.bind("DOMNodeInserted", this.callback('onModified'))
 				.bind("DOMNodeRemoved", this.callback('onModified'))
-			$($('iframe:first')[0].contentWindow).scroll(this.callback('onScroll'))
-			$('iframe:first').load(function(ev){
-			  
-			  self.bindEventsToIframe();
-			})
-
+			$($('iframe:first')[0].contentWindow)
+			  .unbind('scroll')
+			  .scroll(this.callback('onScroll'))
+			$('iframe:first')
+			  .unbind('load')
+			  .load(function(ev){
+			    self.bindEventsToIframe();
+			  })
 		},
 		onModified: function(ev){
 			if(ev.type == 'DOMNodeRemoved'){
@@ -177,30 +193,39 @@ steal
 			this.handleEscape(ev);
 			this.stopMouseOrScrollRecording(ev);
 			var key = getKey(ev.keyCode);
+			var addImmediately = false;
 			if(ev.keyCode == 13){
 				key = '\\r';
+				addImmediately = true;
 			} else if(ev.keyCode == 8){
 				key = '\\b';
+				addImmediately = true;
 			} else if(ev.keyCode == 9){
 				key = '\\t';
+				addImmediately = true;
 			}else if(Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1){
 				key = "[" + key + "]";
+				addImmediately = true;
+			if(addImmediately){
+				this.element.trigger("addEvent",["char",key, ev.target]);
+			} else {
+			  var controller = this;
+  			this.keyDownTimeout = setTimeout(function(){
+  				if(controller.keytarget != ev.target){
+  					controller.current = [];
+  					controller.keytarget = ev.target;
+  				}
+  				if($.inArray(key, controller.downKeys) == -1){
+  					controller.downKeys.push(key);
+  					//h.showChar(key, ev.target);
+  					controller.element.trigger("addEvent",["char",key, ev.target])
+  				}
+  			}, 20);
 			}
-			var controller = this;
-			this.keyDownTimeout = setTimeout(function(){
-				if(controller.keytarget != ev.target){
-					controller.current = [];
-					controller.keytarget = ev.target;
-				}
-				if($.inArray(key, controller.downKeys) == -1){
-					controller.downKeys.push(key);
-					//h.showChar(key, ev.target);
-					controller.element.trigger("addEvent",["char",key, ev.target])
-				}
-			}, 20);
+			
 		},
 		onKeypress : function(ev){
-			console.log(ev)
+		  console.log('has keypress')
 			var key = String.fromCharCode(ev.charCode);
 			clearTimeout(this.keyDownTimeout);
 			if(this.keytarget != ev.target){
