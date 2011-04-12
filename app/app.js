@@ -189,11 +189,11 @@ steal
 			$(ev.target).unbind('scroll');
 		},
 		onKeydown : function(ev){
-		  console.log(ev.keyCode)
 			this.handleEscape(ev);
 			this.stopMouseOrScrollRecording(ev);
 			var key = getKey(ev.keyCode);
 			var addImmediately = false;
+			if(typeof key == 'undefined') return;
 			if(ev.keyCode == 13){
 				key = '\\r';
 				addImmediately = true;
@@ -206,6 +206,7 @@ steal
 			}else if(Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1){
 				key = "[" + key + "]";
 				addImmediately = true;
+			}
 			if(addImmediately){
 				this.element.trigger("addEvent",["char",key, ev.target]);
 			} else {
