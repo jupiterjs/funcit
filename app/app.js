@@ -340,10 +340,10 @@ steal
 			this.element.trigger("addEvent",["scroll", direction, ammount[direction], el]);*/
 		},
 		onChange : function(ev){
-			if(!this.justKey && ev.target.nodeName.toLowerCase() == "select"){
+			if(ev.target.nodeName.toLowerCase() == "select"){
 
 				var el = $("option:eq("+ev.target.selectedIndex+")", ev.target);
-				this.element.trigger("addEvent",["click",undefined, el[0]])
+				this.element.trigger("addEvent",["change",undefined, el])
 			}
 		},
 		onScroll: function(ev){

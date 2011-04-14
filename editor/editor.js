@@ -191,6 +191,11 @@ $.Controller("Funcit.Editor",{
 		}
 		this.saveToLocalStorage();
 	},
+	addChange : function(options, el){
+		var select = el.parent();
+		this.chainOrWriteLn($(select).prettySelector(),".val('" + el.val() + "*')");
+		this.saveToLocalStorage();
+	},
 	addClick : function(options, el){
 		var prettySelector = el;
 		if(typeof el !== "string"){ // assume we were passed a prettySelector if its a string
