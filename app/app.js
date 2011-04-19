@@ -225,7 +225,7 @@ steal
 			} else if(ev.keyCode == 9){
 				key = '\\t';
 				addImmediately = true;
-			}else if(Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1 && this.lastSpecialKey != key){
+			}else if((Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1) && this.lastSpecialKey != key){
 				this.lastSpecialKey = key;
 				key = "[" + key + "]";
 				addImmediately = true;

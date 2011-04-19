@@ -71,14 +71,34 @@ test("scroll", 1, function(){
 		Syn.trigger('mouseover', {}, iframe().find("#scrollable")[0])
 		iframe().find("#scrollable").scrollTop(30)
 	})
-	app().bind("addEvent", function(ev, type, direction, ammount){
-		console.log(arguments)
+	app().bind("addEvent", function(ev, type, direction, ammount, selector){
 		if(type == 'scroll'){
-			equals('top30', direction + ammount, 'scroll works')
+			equals('div#scrollable-top30', 'div#' + selector.id + "-" + direction + ammount, 'scroll works')
 			start();
 		}
 	})
 	
 });
+
+test("special keys shouln't be recorded multiple times while they're pressed", 1, function(){
+	stop();
+	open("funcit/app/test/type.html", function(){
+		Syn.trigger('keydown', {keyCode: '16'}, iframe().find("#type")[0]);
+		Syn.trigger('keydown', {keyCode: '16'}, iframe().find("#type")[0]);
+		Syn.trigger('keydown', {keyCode: '16'}, iframe().find("#type")[0]);
+		Syn.trigger('keydown', {keyCode: '16'}, iframe().find("#type")[0]);
+	})
+	app().bind("addEvent", function(ev, type, chr){
+		if(type == 'char'){
+			ok(true, 'shift is recorded only once')
+			
+		}
+		start();
+	})
+
+
+	
+});
+
 
 });
