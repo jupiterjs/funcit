@@ -166,6 +166,7 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addChar: function(letter, el){
+	  console.log(el)
 		var stmt = this.funcStatement({
 			previous: true
 		});
