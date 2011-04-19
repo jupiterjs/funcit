@@ -34,6 +34,7 @@ steal
 			this.mousemoves =0;
 			this.hoveredEl = null;
 			this.record = true;
+			this._boundEvents = {};
 			
 			this.bind(document, 'keydown', this.callback('onDocumentKeydown'))
 			
@@ -101,7 +102,7 @@ steal
 			steal.dev.log(target)
 			target = target || $('iframe:first')[0].contentWindow.document;
 			
-			this._boundEvents = {};
+			
 			var events = "keydown keypress keyup mousedown mousemove mouseup change mouseover mouseout mousewheel".split(' ');
 			//target.addEventListener(keydown,func, true)
 			for(var i = 0, ii = events.length; i < ii; i++){
