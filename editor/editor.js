@@ -226,21 +226,23 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addScroll : function(direction, amount, el){
+	  console.log('zove me ')
 	  var self = this;
 	  var selector = "";
 	  var val = "";
 		if(el.window == el){
 		  selector = "window";
 			if(direction == "top")
-			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollY+'*)';
+			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollY+')*';
 			else{
-			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollX+'*)';
+			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollX+')*';
 			}
 		} else {
 		  selector = $(el).prettySelector();
 		  val = '.scroll('+$.toJSON(direction)+', '+amount+')*';
 		}
 		if(this.lastScroll[selector] != val){
+		  console.log('oooo')
 		  this.scrollTimeout && clearTimeout(this.scrollTimeout);
 		  this.scrollTimeout = setTimeout(function(){
 		    self.chainOrWriteLn(selector, val);
