@@ -102,7 +102,7 @@ steal
 			target = target || $('iframe:first')[0].contentWindow.document;
 			
 			this._boundEvents = {};
-			var events = "keydown keypress keyup mousedown mousemove mouseup change mouseenter mouseout mousewheel".split(' ');
+			var events = "keydown keypress keyup mousedown mousemove mouseup change mouseover mouseout mousewheel".split(' ');
 			//target.addEventListener(keydown,func, true)
 			for(var i = 0, ii = events.length; i < ii; i++){
 			  if(typeof this._boundEvents['on' + $.String.capitalize(events[i])] != 'undefined'){
@@ -202,7 +202,7 @@ steal
 			}
 			this.mousemoves++;
 		},
-		onMouseenter : function(ev){
+		onMouseover : function(ev){
 			$(ev.target).scroll(this.callback('onScroll'));
 		},
 		onMouseout : function(ev){

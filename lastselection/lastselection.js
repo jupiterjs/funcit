@@ -60,18 +60,20 @@ $.Controller("Lastselection",{
 	 */
 	highlight : function(start, end){
 		var off = this.element.offset();
+		var modifier = 0;
+		if((/OS X/).test(navigator.userAgent)) modifier = 6;
 		
 		// single line highlight
 		if(start.line == end.line){
 			var width = (end.from - start.from)*this.dims.width,
 				line = start.line;
 		}
-
+		
 		this.highlightBox.show()
 			.width(width)
 			.offset({
 				top : off.top+this.padding.top+(line- 1)*this.dims.height,
-				left : (off.left+this.padding.left+(start.from - 1)*this.dims.width)
+				left : off.left+this.padding.left+(start.from - 1)*this.dims.width - modifier
 			})
 	},
 	"mouseenter": function(){
