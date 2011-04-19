@@ -7,7 +7,8 @@ steal.plugins('jquery/controller',
  */
 $.Controller("Lastselection",{
 	init : function(){
-		var pre = $("<pre><span>W</span></pre>").appendTo(this.element.parent());
+		var pre = $("<pre><span>M</span></pre>").appendTo(this.element.parent());
+		
 		this.dims = {
 			height: this.element.rowheight(),
 			width : pre.find('span').width()
@@ -49,7 +50,7 @@ $.Controller("Lastselection",{
 		var off = this.element.offset();
 		this.cursor.show().offset({
 			top : off.top+this.padding.top+(loc.line - 1)*this.dims.height,
-			left : off.left+this.padding.left+(loc.from - 1)*this.dims.width
+			left : (off.left+this.padding.left+(loc.from - 1)*this.dims.width)
 		})
 	},
 	/**
@@ -70,7 +71,7 @@ $.Controller("Lastselection",{
 			.width(width)
 			.offset({
 				top : off.top+this.padding.top+(line- 1)*this.dims.height,
-				left : off.left+this.padding.left+(start.from - 1)*this.dims.width
+				left : (off.left+this.padding.left+(start.from - 1)*this.dims.width)
 			})
 	},
 	"mouseenter": function(){

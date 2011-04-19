@@ -13530,7 +13530,7 @@ steal
 			// if the a test is appended to the URL, load it and skip the form
 			// http://localhost:8000/funcit/funcit.html?url=/funcunit/syn/demo.html
 			var pageURLMatch = location.search && location.search.match(/\?url\=(.*)/),
-				pageURL = (pageURLMatch && pageURLMatch[1]) || Funcit.url;
+				pageURL = this.options.url || (pageURLMatch && pageURLMatch[1]) || Funcit.url;
 			if(pageURL){
 				this.loadIframe(pageURL);
 				return;
@@ -13580,8 +13580,11 @@ steal
 			var controller = this;
 			this.element.removeClass('loading')
 			//listen to everything on this guy ...
-			this.element.trigger("addEvent",["open",url])
+			this.element.trigger("addEvent",["open",url]);
+			
 			this.bindEventsToIframe(ev.target.contentWindow.document)
+			
+			this.options.open && this.options.open()
 		},
 		bindEventsToIframe: function(target){
 		  var self = this;
@@ -13696,6 +13699,8 @@ steal
 			$(ev.target).unbind('scroll');
 		},
 		onKeydown : function(ev){
+			this.preventKeypress = false;
+
 			this.handleEscape(ev);
 			this.stopMouseOrScrollRecording(ev);
 			var key = getKey(ev.keyCode);
@@ -13710,38 +13715,42 @@ steal
 			} else if(ev.keyCode == 9){
 				key = '\\t';
 				addImmediately = true;
-			}else if(Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1){
+			}else if(Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1 && this.lastSpecialKey != key){
+				this.lastSpecialKey = key;
 				key = "[" + key + "]";
 				addImmediately = true;
 			}
 			if(addImmediately){
 				this.element.trigger("addEvent",["char",key, ev.target]);
+				this.preventKeypress = true;
 			} else {
-			  var controller = this;
-  			this.keyDownTimeout = setTimeout(function(){
-  				if(controller.keytarget != ev.target){
-  					controller.current = [];
-  					controller.keytarget = ev.target;
-  				}
-  				if($.inArray(key, controller.downKeys) == -1){
-  					controller.downKeys.push(key);
-  					//h.showChar(key, ev.target);
-  					controller.element.trigger("addEvent",["char",key, ev.target])
-  				}
-  			}, 20);
+				var controller = this;
+				this.keyDownTimeout = setTimeout(function(){
+					if(controller.keytarget != ev.target){
+						controller.current = [];
+						controller.keytarget = ev.target;
+					}
+					if($.inArray(key, controller.downKeys) == -1){
+						controller.downKeys.push(key);
+						//h.showChar(key, ev.target);
+						controller.element.trigger("addEvent",["char",key, ev.target])
+					}
+				}, 20);
 			}
 			
 		},
 		onKeypress : function(ev){
-		  console.log('has keypress')
-			var key = String.fromCharCode(ev.charCode);
-			clearTimeout(this.keyDownTimeout);
-			if(this.keytarget != ev.target){
-				this.current = [];
-				this.keytarget = ev.target;
-			}
-			this.element.trigger("addEvent",["char",key, ev.target])
-			
+
+		  if(!this.preventKeypress){
+		    var key = String.fromCharCode(ev.charCode);
+  			clearTimeout(this.keyDownTimeout);
+  			if(this.keytarget != ev.target){
+  				this.current = [];
+  				this.keytarget = ev.target;
+  			}
+  			this.element.trigger("addEvent",["char",key, ev.target])
+		  }	
+
 		},
 		onKeyup : function(ev){
 			var key = getKey(ev.keyCode),
@@ -13750,6 +13759,7 @@ steal
 				key = '\\r';
 			}
 			if(Syn.key.isSpecial(ev.keyCode)){
+				delete this.lastSpecialKey;
 				this.element.trigger("addEvent",["char","[" +key+"-up]", ev.target])
 			}
 			
@@ -13769,10 +13779,12 @@ steal
 			this.mousemoves = 0
 			this.lastX = ev.pageX
 			this.lastY = ev.pageY;
+			this.isMouseDown = true;
 		},
 		
 		onMouseup : function(ev){
 			this.publish('funcit.close_select_menu');
+			this.isMouseDown = false;
 			if(this.isScrolling){
 				if(this.scroll != null){
 					var direction = "top";
@@ -13854,14 +13866,31 @@ steal
 			}
 		},
 		onScroll: function(ev){
+		  var self = this;
 			this.isScrolling = true;
 			this.scroll = {
 				x: ev.currentTarget.scrollLeft, 
 				y: ev.currentTarget.scrollTop, 
 				target: ev.currentTarget
 			};
+			if(!this.isMouseDown){
+				this.scrollTimeout && clearTimeout(this.scrollTimeout);
+				this.scrollTimeout = setTimeout(function(){
+				  if(self.scroll != null){
+						var direction = "top";
+						var amount = self.scroll.y;
+						if(amount == 0){
+							direction = "left";
+							amount = self.scroll.x;
+						}
+						self.element.trigger("addEvent",["scroll", direction, amount, self.scroll.target]);
+						self.isScrolling = false;
+					}
+				}, 50)
+			}
 		},
 		onDocumentKeydown: function(ev){
+			return;
 			this.handleEscape(ev);
 			this.stopMouseOrScrollRecording(ev);
 		},
@@ -14113,8 +14142,9 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addChange : function(options, el){
-		var select = el.parent();
-		this.chainOrWriteLn($(select).prettySelector(),".trigger('focus').val('" + el.val() + "*')");
+		/*var select = el.parent();
+		this.chainOrWriteLn($(select).prettySelector(),".trigger('focus').val('" + el.val() + "*')");*/
+		this.chainOrWriteLn($(el).prettySelector(),".click()*");
 		this.saveToLocalStorage();
 	},
 	addClick : function(options, el){
@@ -14146,21 +14176,23 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addScroll : function(direction, amount, el){
+	  console.log('zove me ')
 	  var self = this;
 	  var selector = "";
 	  var val = "";
 		if(el.window == el){
 		  selector = "window";
 			if(direction == "top")
-			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollY+'*)';
+			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollY+')*';
 			else{
-			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollX+'*)';
+			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollX+')*';
 			}
 		} else {
 		  selector = $(el).prettySelector();
 		  val = '.scroll('+$.toJSON(direction)+', '+amount+')*';
 		}
 		if(this.lastScroll[selector] != val){
+		  console.log('oooo')
 		  this.scrollTimeout && clearTimeout(this.scrollTimeout);
 		  this.scrollTimeout = setTimeout(function(){
 		    self.chainOrWriteLn(selector, val);
@@ -15012,7 +15044,7 @@ steal.plugins('jquery','funcunit','funcit/parse')
 		//console.log(stated)
 		
 		__s = function(statement){
-			console.log(ordered[statement])
+			//console.log(ordered[statement])
 			__s.cur = statement
 			cb(statement, ordered[statement], ordered)
 		}
@@ -15144,7 +15176,10 @@ steal.plugins('jquery')
 			var selector = target.nodeName.toLowerCase();
 			//always try to get an id
 			if(target.id){
-				return "#"+target.id;
+				var id = target.id;
+				if(parseInt("header-123123".match(/[0-9]+/)) > 100 || target.id.length > 15){
+					return "#"+target.id;
+				}
 			}else{
 				var parent = target.parentNode;
 				while(parent){
@@ -28064,7 +28099,8 @@ steal.plugins('jquery/controller',
  */
 $.Controller("Lastselection",{
 	init : function(){
-		var pre = $("<pre><span>W</span></pre>").appendTo(this.element.parent());
+		var pre = $("<pre><span>M</span></pre>").appendTo(this.element.parent());
+		
 		this.dims = {
 			height: this.element.rowheight(),
 			width : pre.find('span').width()
@@ -28106,7 +28142,7 @@ $.Controller("Lastselection",{
 		var off = this.element.offset();
 		this.cursor.show().offset({
 			top : off.top+this.padding.top+(loc.line - 1)*this.dims.height,
-			left : off.left+this.padding.left+(loc.from - 1)*this.dims.width
+			left : (off.left+this.padding.left+(loc.from - 1)*this.dims.width)
 		})
 	},
 	/**
@@ -28127,7 +28163,7 @@ $.Controller("Lastselection",{
 			.width(width)
 			.offset({
 				top : off.top+this.padding.top+(line- 1)*this.dims.height,
-				left : off.left+this.padding.left+(start.from - 1)*this.dims.width
+				left : (off.left+this.padding.left+(start.from - 1)*this.dims.width)
 			})
 	},
 	"mouseenter": function(){

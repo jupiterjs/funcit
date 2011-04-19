@@ -225,7 +225,8 @@ steal
 			} else if(ev.keyCode == 9){
 				key = '\\t';
 				addImmediately = true;
-			}else if(Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1){
+			}else if(Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1 && this.lastSpecialKey != key){
+				this.lastSpecialKey = key;
 				key = "[" + key + "]";
 				addImmediately = true;
 			}
@@ -262,13 +263,13 @@ steal
 
 		},
 		onKeyup : function(ev){
-			return;
 			var key = getKey(ev.keyCode),
 				self = this;
 			if(ev.keyCode == 13){
 				key = '\\r';
 			}
 			if(Syn.key.isSpecial(ev.keyCode)){
+				delete this.lastSpecialKey;
 				this.element.trigger("addEvent",["char","[" +key+"-up]", ev.target])
 			}
 			

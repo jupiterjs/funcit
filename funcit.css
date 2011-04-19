@@ -360,6 +360,7 @@ li { list-style: none; }
   padding: 0px;
   border: 0px;
   resize: none;
+  font-family: monospace;
 }
 #results {
   line-height: 14px;

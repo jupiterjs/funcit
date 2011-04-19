@@ -28,7 +28,7 @@ steal.plugins('jquery','funcunit','funcit/parse')
 		//console.log(stated)
 		
 		__s = function(statement){
-			console.log(ordered[statement])
+			//console.log(ordered[statement])
 			__s.cur = statement
 			cb(statement, ordered[statement], ordered)
 		}

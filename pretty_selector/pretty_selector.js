@@ -12,7 +12,10 @@ steal.plugins('jquery')
 			var selector = target.nodeName.toLowerCase();
 			//always try to get an id
 			if(target.id){
-				return "#"+target.id;
+				var id = target.id;
+				if(parseInt("header-123123".match(/[0-9]+/)) > 100 || target.id.length > 15){
+					return "#"+target.id;
+				}
 			}else{
 				var parent = target.parentNode;
 				while(parent){

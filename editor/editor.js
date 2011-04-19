@@ -193,8 +193,9 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addChange : function(options, el){
-		var select = el.parent();
-		this.chainOrWriteLn($(select).prettySelector(),".trigger('focus').val('" + el.val() + "*')");
+		/*var select = el.parent();
+		this.chainOrWriteLn($(select).prettySelector(),".trigger('focus').val('" + el.val() + "*')");*/
+		this.chainOrWriteLn($(el).prettySelector(),".click()*");
 		this.saveToLocalStorage();
 	},
 	addClick : function(options, el){
