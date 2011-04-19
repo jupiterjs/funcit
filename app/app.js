@@ -281,10 +281,12 @@ steal
 			this.mousemoves = 0
 			this.lastX = ev.pageX
 			this.lastY = ev.pageY;
+			this.isMouseDown = true;
 		},
 		
 		onMouseup : function(ev){
 			this.publish('funcit.close_select_menu');
+			this.isMouseDown = false;
 			if(this.isScrolling){
 				if(this.scroll != null){
 					var direction = "top";
@@ -366,12 +368,28 @@ steal
 			}
 		},
 		onScroll: function(ev){
+		  var self = this;
 			this.isScrolling = true;
 			this.scroll = {
 				x: ev.currentTarget.scrollLeft, 
 				y: ev.currentTarget.scrollTop, 
 				target: ev.currentTarget
 			};
+			if(!this.isMouseDown){
+				this.scrollTimeout && clearTimeout(this.scrollTimeout);
+				this.scrollTimeout = setTimeout(function(){
+				  if(self.scroll != null){
+						var direction = "top";
+						var amount = self.scroll.y;
+						if(amount == 0){
+							direction = "left";
+							amount = self.scroll.x;
+						}
+						self.element.trigger("addEvent",["scroll", direction, amount, self.scroll.target]);
+						self.isScrolling = false;
+					}
+				}, 50)
+			}
 		},
 		onDocumentKeydown: function(ev){
 			this.handleEscape(ev);
