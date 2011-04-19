@@ -362,7 +362,7 @@ $.Controller("Funcit.Editor",{
 		if(hasLocalStorage()){
 			var pageURLMatch = location.search && location.search.match(/\?url\=(.*)/),
 					pageURL = (pageURLMatch && pageURLMatch[1]);
-			localStorage[localStorageKey()] = this.element.val().replace(new RegExp("\\s*S\\.open\\('"+pageURL+"'\\);"), '');
+			localStorage[localStorageKey()] = this.element.val().replace(new RegExp("\\s*S\\.open\\('.*'\\);"), '');
 		}
 	},
 	showCursor: function(){

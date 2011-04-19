@@ -13593,20 +13593,18 @@ steal
 			//target.addEventListener(keydown,func, true)
 			for(var i = 0, ii = events.length; i < ii; i++){
 			  if(typeof this._boundEvents['on' + $.String.capitalize(events[i])] != 'undefined'){
-			    target.removeEventListener(events[i], this._boundEvents['on' + $.String.capitalize(events[i])]);
+			    target.removeEventListener(events[i], this._boundEvents['on' + $.String.capitalize(events[i])], true);
 			  }
 			  this._boundEvents['on' + $.String.capitalize(events[i])] = this.callback('on' + $.String.capitalize(events[i]));
 			  target.addEventListener(events[i], this._boundEvents['on' + $.String.capitalize(events[i])], true);
 			}
-			/*var mutationEvents = "DOMAttrModified DOMNodeInserted DOMNodeInserted".split(' ');
+			var mutationEvents = "DOMAttrModified DOMNodeInserted DOMNodeInserted".split(' ');
 			this._boundEvents['onModified'] = this.callback('onModified');
 			
 			for(var i = 0, ii = mutationEvents.length; i < ii; i++){
-  		  target.removeEventListener(mutationEvents[i], this._boundEvents['onModified']);
-  		  
+	      target.removeEventListener(mutationEvents[i], this._boundEvents['onModified'], true);
 			  target.addEventListener(mutationEvents[i], this._boundEvents['onModified'], true);
-			  //target.addEventListener(events[i], this._boundEvents['on' + $.String.capitalize(events[i])], true);
-			}*/
+			}
 			/*$(target)
 				.unbind('keydown')
 				.unbind('keypress')
@@ -13656,8 +13654,8 @@ steal
 					type: 'exists'
 				})
 			} else {
-				var newVal = ev.originalEvent.newValue,
-					prop = ev.originalEvent.attrName;
+				var newVal = ev.newValue,
+					prop = ev.attrName;
 				//;
 				if(prop == 'style'){
 					var attrArr = newVal.split(":"),
@@ -13698,7 +13696,6 @@ steal
 			$(ev.target).unbind('scroll');
 		},
 		onKeydown : function(ev){
-		  console.log(ev.target)
 			this.handleEscape(ev);
 			this.stopMouseOrScrollRecording(ev);
 			var key = getKey(ev.keyCode);
@@ -13769,14 +13766,12 @@ steal
 				this.stopMouseRecording(true);
 			}
 			this.mousedownEl = ev.target;
-			console.log(this.mousedownEl)
 			this.mousemoves = 0
 			this.lastX = ev.pageX
 			this.lastY = ev.pageY;
 		},
 		
 		onMouseup : function(ev){
-		  console.log(ev.target)
 			this.publish('funcit.close_select_menu');
 			if(this.isScrolling){
 				if(this.scroll != null){
@@ -14287,7 +14282,7 @@ $.Controller("Funcit.Editor",{
 		if(hasLocalStorage()){
 			var pageURLMatch = location.search && location.search.match(/\?url\=(.*)/),
 					pageURL = (pageURLMatch && pageURLMatch[1]);
-			localStorage[localStorageKey()] = this.element.val().replace(new RegExp("\\s*S\\.open\\('"+pageURL+"'\\);"), '');
+			localStorage[localStorageKey()] = this.element.val().replace(new RegExp("\\s*S\\.open\\('.*'\\);"), '');
 		}
 	},
 	showCursor: function(){

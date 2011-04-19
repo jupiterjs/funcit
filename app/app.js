@@ -164,8 +164,8 @@ steal
 					type: 'exists'
 				})
 			} else {
-				var newVal = ev.originalEvent.newValue,
-					prop = ev.originalEvent.attrName;
+				var newVal = ev.newValue,
+					prop = ev.attrName;
 				//steal.dev.log(prop, newVal, ev.target);
 				if(prop == 'style'){
 					var attrArr = newVal.split(":"),
@@ -206,7 +206,6 @@ steal
 			$(ev.target).unbind('scroll');
 		},
 		onKeydown : function(ev){
-		  console.log(ev.target)
 			this.handleEscape(ev);
 			this.stopMouseOrScrollRecording(ev);
 			var key = getKey(ev.keyCode);
@@ -277,14 +276,12 @@ steal
 				this.stopMouseRecording(true);
 			}
 			this.mousedownEl = ev.target;
-			console.log(this.mousedownEl)
 			this.mousemoves = 0
 			this.lastX = ev.pageX
 			this.lastY = ev.pageY;
 		},
 		
 		onMouseup : function(ev){
-		  console.log(ev.target)
 			this.publish('funcit.close_select_menu');
 			if(this.isScrolling){
 				if(this.scroll != null){
