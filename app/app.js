@@ -206,6 +206,7 @@ steal
 			$(ev.target).unbind('scroll');
 		},
 		onKeydown : function(ev){
+		  this.preventKeypress = false;
 			this.handleEscape(ev);
 			this.stopMouseOrScrollRecording(ev);
 			var key = getKey(ev.keyCode);
@@ -226,6 +227,7 @@ steal
 			}
 			if(addImmediately){
 				this.element.trigger("addEvent",["char",key, ev.target]);
+				this.preventKeypress = true;
 			} else {
 			  var controller = this;
   			this.keyDownTimeout = setTimeout(function(){
@@ -243,15 +245,15 @@ steal
 			
 		},
 		onKeypress : function(ev){
-		  console.log('has keypress')
-			var key = String.fromCharCode(ev.charCode);
-			clearTimeout(this.keyDownTimeout);
-			if(this.keytarget != ev.target){
-				this.current = [];
-				this.keytarget = ev.target;
-			}
-			this.element.trigger("addEvent",["char",key, ev.target])
-			
+		  if(!this.preventKeypress){
+		    var key = String.fromCharCode(ev.charCode);
+  			clearTimeout(this.keyDownTimeout);
+  			if(this.keytarget != ev.target){
+  				this.current = [];
+  				this.keytarget = ev.target;
+  			}
+  			this.element.trigger("addEvent",["char",key, ev.target])
+		  }	
 		},
 		onKeyup : function(ev){
 			var key = getKey(ev.keyCode),
