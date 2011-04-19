@@ -40,7 +40,7 @@ steal
 			// if the a test is appended to the URL, load it and skip the form
 			// http://localhost:8000/funcit/funcit.html?url=/funcunit/syn/demo.html
 			var pageURLMatch = location.search && location.search.match(/\?url\=(.*)/),
-				pageURL = (pageURLMatch && pageURLMatch[1]) || Funcit.url;
+				pageURL = this.options.url || (pageURLMatch && pageURLMatch[1]) || Funcit.url;
 			if(pageURL){
 				this.loadIframe(pageURL);
 				return;
@@ -90,8 +90,11 @@ steal
 			var controller = this;
 			this.element.removeClass('loading')
 			//listen to everything on this guy ...
-			this.element.trigger("addEvent",["open",url])
+			this.element.trigger("addEvent",["open",url]);
+			
 			this.bindEventsToIframe(ev.target.contentWindow.document)
+			
+			this.options.open && this.options.open()
 		},
 		bindEventsToIframe: function(target){
 		  var self = this;
@@ -206,6 +209,7 @@ steal
 			$(ev.target).unbind('scroll');
 		},
 		onKeydown : function(ev){
+			//return;
 			this.handleEscape(ev);
 			this.stopMouseOrScrollRecording(ev);
 			var key = getKey(ev.keyCode);
@@ -227,22 +231,23 @@ steal
 			if(addImmediately){
 				this.element.trigger("addEvent",["char",key, ev.target]);
 			} else {
-			  var controller = this;
-  			this.keyDownTimeout = setTimeout(function(){
-  				if(controller.keytarget != ev.target){
-  					controller.current = [];
-  					controller.keytarget = ev.target;
-  				}
-  				if($.inArray(key, controller.downKeys) == -1){
-  					controller.downKeys.push(key);
-  					//h.showChar(key, ev.target);
-  					controller.element.trigger("addEvent",["char",key, ev.target])
-  				}
-  			}, 20);
+				var controller = this;
+				this.keyDownTimeout = setTimeout(function(){
+					if(controller.keytarget != ev.target){
+						controller.current = [];
+						controller.keytarget = ev.target;
+					}
+					if($.inArray(key, controller.downKeys) == -1){
+						controller.downKeys.push(key);
+						//h.showChar(key, ev.target);
+						controller.element.trigger("addEvent",["char",key, ev.target])
+					}
+				}, 20);
 			}
 			
 		},
 		onKeypress : function(ev){
+		  
 		  console.log('has keypress')
 			var key = String.fromCharCode(ev.charCode);
 			clearTimeout(this.keyDownTimeout);
@@ -254,6 +259,7 @@ steal
 			
 		},
 		onKeyup : function(ev){
+			return;
 			var key = getKey(ev.keyCode),
 				self = this;
 			if(ev.keyCode == 13){
@@ -372,6 +378,7 @@ steal
 			};
 		},
 		onDocumentKeydown: function(ev){
+			return;
 			this.handleEscape(ev);
 			this.stopMouseOrScrollRecording(ev);
 		},
