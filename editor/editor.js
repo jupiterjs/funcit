@@ -19,6 +19,7 @@ $.Controller("Funcit.Editor",{
 		this.modified = true;
 		this.record = true;
 		this.lastScroll = {};
+		this._lastInserted = false;
 	},
 	val : function(){
 		return this.element.val.apply(this.element, arguments);
@@ -108,6 +109,7 @@ $.Controller("Funcit.Editor",{
 	// 
 	click : function(){
 		var funcStatement = this.funcStatement(),
+
 			moduleText = this.module().up().text();
 			
 
@@ -135,6 +137,7 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addEvent : function(ev, eventType){
+		
 	  if(this.record){
 	    steal.dev.log(eventType)
   		this.element.trigger('blur')
@@ -166,7 +169,6 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addChar: function(letter, el){
-	  console.log(el)
 		var stmt = this.funcStatement({
 			previous: true
 		});
@@ -199,12 +201,28 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addClick : function(options, el){
+		console.log(this._lastInserted)
 		var prettySelector = el;
 		if(typeof el !== "string"){ // assume we were passed a prettySelector if its a string
 			prettySelector = $(el).prettySelector();
 		}
+		
+		this.insertExistsIfNeeded(prettySelector);
+		
 		this.chainOrWriteLn(prettySelector,".click()*");
 		this.saveToLocalStorage();
+	},
+	insertExistsIfNeeded : function(prettySelector){
+		var el =  $($('iframe:first')[0].contentWindow.document).find(prettySelector);
+		var parents = el.parents("[dom-inserted='true']");
+		if(parents.length > 0){
+			this.addWait({type: 'exists'}, prettySelector)
+			//$(parents[0]).removeAttr('dom-inserted')
+		} else if(el.attr('dom-inserted') == 'true'){
+			this.addWait({type: 'exists'}, prettySelector)
+			//el.removeAttr('dom-inserted')
+		}
+		
 	},
 	addRightClick : function(options, el){
 		this.chainOrWriteLn($(el).prettySelector(),".rightClick()*");
@@ -227,7 +245,7 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addScroll : function(direction, amount, el){
-	  console.log('zove me ')
+		console.log('scrolling')
 	  var self = this;
 	  var selector = "";
 	  var val = "";
@@ -239,11 +257,11 @@ $.Controller("Funcit.Editor",{
 			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollX+')*';
 			}
 		} else {
+			amount = (direction == 'top') ? $(el).scrollTop() : $(el).scrollLeft();
 		  selector = $(el).prettySelector();
 		  val = '.scroll('+$.toJSON(direction)+', '+amount+')*';
 		}
 		if(this.lastScroll[selector] != val){
-		  console.log('oooo')
 		  this.scrollTimeout && clearTimeout(this.scrollTimeout);
 		  this.scrollTimeout = setTimeout(function(){
 		    self.chainOrWriteLn(selector, val);
@@ -259,8 +277,8 @@ $.Controller("Funcit.Editor",{
 	// if el is blank, add "target"
 	addWait: function(options, el){
 		var val = $.toJSON(options.value) || "",
-			result = options.result, 
-			sel = $(el).prettySelector();
+			result = options.result
+		var sel = (typeof el == 'string') ? el : $(el).prettySelector();
 		if(options.type == 'attr' || options.type == 'css'){
 			this.chainOrWriteLn(sel,"."+options.type+"("+val+", '" + result +"')*");
 		} else if($.inArray(options.type, ['exists', 'invisible', 'missing', 'visible']) > -1) {
@@ -579,6 +597,9 @@ $.Controller("Funcit.Editor",{
 			last = blocks.eq(i);
 		}
 		return blocks.length ? blocks.last() : func;
+	},
+	'funcit.last_element_added subscribe' : function(called, el){
+		this._lastInserted = el;
 	},
 	"funcit.record subscribe": function(called, params){
 		if(params.recording) {

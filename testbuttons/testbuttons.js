@@ -16,10 +16,7 @@ $.Controller("Funcit.Testbuttons", {
 		this.toggleRecord(!el.hasClass("recording"));
 		
 	},
-	// runs test up to current cursor's statement
-	// grabs the entire textarea string up to the cursor and passes this testname as a filter to QUnit
-	// since the text isn't modified, the highlighting still works
-	// TODO there has to be a better way to do this
+	
 	'#new-file click' : function(el, ev){
 	  if(confirm('Are you sure? You will lose all changes.')){
 	  	$('iframe:first')[0].contentWindow.location.reload();
@@ -45,12 +42,22 @@ $.Controller("Funcit.Testbuttons", {
   		});
 	  }
 	},
+	// runs test up to current cursor's statement
+	// grabs the entire textarea string up to the cursor and passes this testname as a filter to QUnit
+	// since the text isn't modified, the highlighting still works
+	// TODO there has to be a better way to do this
 	".sync click": function(el, ev){
 		//get an empty function or last statement
+		
+		console.log('here')
 		
 		var stmntOrFunc = this.editor.funcStatement({
 			//previous: true
 		});
+		
+		console.log(stmntOrFunc)
+		
+		
 		//steal.dev.log(this.textarea[0].selectionStart)
 		if(typeof stmntOrFunc[0] != 'undefined' && typeof stmntOrFunc[0].func != 'undefined'){
 			
@@ -177,6 +184,7 @@ $.Controller("Funcit.Testbuttons", {
 			end = {line: $st[0].line, from: $st[0].thru+$st[0].second.length},
 			endLoc = this.editor.lastCharOfLine(end.line),
 			cursorLoc = {line: end.line, from: endLoc};
+		
 			
 		this.textarea.lastselection('updateCursor', cursorLoc);
 		this.textarea.lastselection('highlight', start, end);

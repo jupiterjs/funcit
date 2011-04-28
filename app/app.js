@@ -4,7 +4,8 @@ steal
 		'funcunit/syn', 
 		'funcit/highlight', 
 		'mxui/layout/fit', 
-		'jquery/dom/form_params')
+		'jquery/dom/form_params',
+		'jquery/dom/compare')
 	.then(function($){
 	var getKey =  function( code ) {
 		for(var key in Syn.keycodes){
@@ -99,9 +100,8 @@ steal
 		},
 		bindEventsToIframe: function(target){
 		  var self = this;
-			steal.dev.log(target)
 			target = target || $('iframe:first')[0].contentWindow.document;
-			
+			this._currentTarget = target;
 			
 			var events = "keydown keypress keyup mousedown mousemove mouseup change mouseover mouseout mousewheel".split(' ');
 			//target.addEventListener(keydown,func, true)
@@ -163,6 +163,11 @@ steal
 				})
 				
 			} else if(ev.type == 'DOMNodeInserted'){
+				
+				if($(ev.target).parents()[0].ownerDocument == this._currentTarget){
+					$(ev.target).attr('dom-inserted', 'true')
+				}
+				
 				this.publish('funcit.suggestion',{
 					el: ev.target,
 					type: 'exists'
@@ -207,7 +212,10 @@ steal
 			$(ev.target).scroll(this.callback('onScroll'));
 		},
 		onMouseout : function(ev){
-			$(ev.target).unbind('scroll');
+			if($(ev.target).compare($(ev.relatedTarget)) != 20){
+				$(ev.target).unbind('scroll');
+			}
+			
 		},
 		onKeydown : function(ev){
 			this.preventKeypress = false;

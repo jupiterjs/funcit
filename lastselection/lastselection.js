@@ -76,6 +76,7 @@ $.Controller("Lastselection",{
 				left : off.left+this.padding.left+(start.from - 1)*this.dims.width - modifier
 			})
 	},
+	
 	"mouseenter": function(){
 		this.hideHighlight();
 		this.showCursor();
