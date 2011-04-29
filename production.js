@@ -1,4 +1,4 @@
-steal.loading('//funcit/funcit.js','//funcunit/funcunit.js','//funcunit/qunit/qunit.js','//funcunit/qunit/rhino/rhino.js','//funcunit/resources/jquery.js','//funcunit/resources/json.js','//funcunit/resources/selector.js','//funcunit/syn/syn.js','//jquery/jquery.js','//funcunit/syn/synthetic.js','//funcunit/syn/mouse.js','//funcunit/syn/browsers.js','//funcunit/syn/key.js','//funcunit/syn/drag/drag.js','//funcunit/resources/selenium_start.js','//funcunit/drivers/selenium.js','//funcunit/drivers/standard.js','//steal/less/less.js','//mxui/layout/fill/fill.js','//mxui/nav/tabs/tabs.js','//funcit/app/app.js','//funcit/editor/editor.js','//funcit/grow/grow.js','//funcit/commands/commands.js','//funcit/testbuttons/testbuttons.js','//funcit/runner/runner.js','//funcit/list_attributes/list_attributes.js','//funcit/file_reader/file_reader.js','//funcit/file_writer/file_writer.js','//funcit/pretty_selector/pretty_selector.js','//jquery/view/ejs/ejs.js','//funcit/resources/jquery.mousewheel.3.0.2/jquery.mousewheel.js','//funcit/resources/jquery.has_scrollbar.js','//funcit/resources/hasLocalStorage.js','//jquery/dom/dimensions/dimensions.js','//jquery/event/resize/resize.js','//jquery/dom/cur_styles/cur_styles.js','//jquery/dom/dom.js','//jquery/event/event.js','//mxui/nav/menuable/menuable.js','//jquery/controller/controller.js','//jquery/event/default/default.js','//jquery/event/livehack/livehack.js','//jquery/dom/closest/closest.js','//jquery/class/class.js','//jquery/lang/lang.js','//jquery/event/destroyed/destroyed.js','//jquery/controller/subscribe/subscribe.js','//funcit/highlight/highlight.js','//mxui/layout/fit/fit.js','//jquery/dom/form_params/form_params.js','//jquery/lang/openajax/openajax.js','//funcit/parse/parse.js','//jquery/dom/selection/selection.js','//funcit/lastselection/lastselection.js','//jquery/lang/json/json.js','//funcit/parse/resources/jslint.js','//jquery/dom/range/range.js','//jquery/dom/compare/compare.js','//funcit/rowheight/rowheight.js','//funcit/selectel/selectel.js','//funcit/commands/dialog.js','//funcit/commands/select_menu.js','//funcit/commands/tooltip.js','//funcit/commands/modal.js','//funcit/commands/open_page.js','//funcit/mask/mask.js','//funcit/selectel/views/tooltip.ejs','//jquery/view/view.js','//jquery/lang/rsplit/rsplit.js','//funcit/commands/views/dialog.ejs','//funcit/commands/views/move_recording.ejs','//funcit/commands/views/move.ejs','//funcit/commands/views/open.ejs','//funcit/commands/views/scroll.ejs','//funcit/commands/views/select.ejs','//funcit/commands/views/sidebar.ejs','//funcit/commands/views/tooltip.ejs','//funcit/testbuttons/views/sync.ejs','//funcit/runner/results.js','//funcit/runner/views/assert.ejs','//funcit/runner/views/done.ejs','//funcit/runner/views/test.ejs','//funcit/file_writer/resources/downloadify/js/swfobject.js','//funcit/file_writer/resources/downloadify/js/downloadify.min.js','//funcit/views/init.ejs','//funcit/views/app.ejs');
+steal.loading('//funcit/funcit.js','//funcunit/funcunit.js','//funcunit/qunit/qunit.js','//funcunit/qunit/rhino/rhino.js','//funcunit/resources/jquery.js','//funcunit/resources/json.js','//funcunit/resources/selector.js','//funcunit/syn/syn.js','//jquery/jquery.js','//funcunit/syn/synthetic.js','//funcunit/syn/mouse.js','//funcunit/syn/browsers.js','//funcunit/syn/key.js','//funcunit/syn/drag/drag.js','//funcunit/resources/selenium_start.js','//funcunit/drivers/selenium.js','//funcunit/drivers/standard.js','//steal/less/less.js','//mxui/layout/fill/fill.js','//mxui/nav/tabs/tabs.js','//funcit/app/app.js','//funcit/editor/editor.js','//funcit/grow/grow.js','//funcit/commands/commands.js','//funcit/testbuttons/testbuttons.js','//funcit/runner/runner.js','//funcit/list_attributes/list_attributes.js','//funcit/file_reader/file_reader.js','//funcit/file_writer/file_writer.js','//funcit/pretty_selector/pretty_selector.js','//jquery/view/ejs/ejs.js','//funcit/resources/jquery.mousewheel.3.0.2/jquery.mousewheel.js','//funcit/resources/jquery.has_scrollbar.js','//funcit/resources/hasLocalStorage.js','//jquery/dom/dimensions/dimensions.js','//jquery/event/resize/resize.js','//jquery/dom/cur_styles/cur_styles.js','//jquery/dom/dom.js','//jquery/event/event.js','//mxui/nav/menuable/menuable.js','//jquery/controller/controller.js','//jquery/event/default/default.js','//jquery/event/livehack/livehack.js','//jquery/dom/closest/closest.js','//jquery/class/class.js','//jquery/lang/lang.js','//jquery/event/destroyed/destroyed.js','//jquery/controller/subscribe/subscribe.js','//funcit/highlight/highlight.js','//mxui/layout/fit/fit.js','//jquery/dom/form_params/form_params.js','//jquery/dom/compare/compare.js','//jquery/lang/openajax/openajax.js','//funcit/parse/parse.js','//jquery/dom/selection/selection.js','//funcit/lastselection/lastselection.js','//jquery/lang/json/json.js','//funcit/parse/resources/jslint.js','//jquery/dom/range/range.js','//funcit/rowheight/rowheight.js','//funcit/selectel/selectel.js','//funcit/commands/dialog.js','//funcit/commands/select_menu.js','//funcit/commands/tooltip.js','//funcit/commands/modal.js','//funcit/commands/open_page.js','//funcit/mask/mask.js','//funcit/selectel/views/tooltip.ejs','//jquery/view/view.js','//jquery/lang/rsplit/rsplit.js','//funcit/commands/views/dialog.ejs','//funcit/commands/views/move_recording.ejs','//funcit/commands/views/move.ejs','//funcit/commands/views/open.ejs','//funcit/commands/views/scroll.ejs','//funcit/commands/views/select.ejs','//funcit/commands/views/sidebar.ejs','//funcit/commands/views/tooltip.ejs','//funcit/testbuttons/views/sync.ejs','//funcit/runner/results.js','//funcit/runner/views/assert.ejs','//funcit/runner/views/done.ejs','//funcit/runner/views/test.ejs','//funcit/file_writer/resources/downloadify/js/swfobject.js','//funcit/file_writer/resources/downloadify/js/downloadify.min.js','//funcit/views/init.ejs','//funcit/views/app.ejs');
 steal
 	.plugins('funcunit')
 	.then(function(){
@@ -10905,22 +10905,13 @@ jQuery.extend({
 
 	// Evalulates a script in a global context
 	globalEval: function( data ) {
-		if ( data && rnotwhite.test(data) ) {
-			// Inspired by code by Andrea Giammarchi
-			// http://webreflection.blogspot.com/2007/08/global-scope-evaluation-and-dom.html
-			var head = document.head || document.getElementsByTagName( "head" )[0] || document.documentElement,
-				script = document.createElement( "script" );
-
-			if ( jQuery.support.scriptEval() ) {
-				script.appendChild( document.createTextNode( data ) );
-			} else {
-				script.text = data;
-			}
-
-			// Use insertBefore instead of appendChild to circumvent an IE6 bug.
-			// This arises when a base node is used (#2709).
-			head.insertBefore( script, head.firstChild );
-			head.removeChild( script );
+		if ( data && rnotwhite.test( data ) ) {
+			// We use execScript on Internet Explorer
+			// We use an anonymous function so that context is window
+			// rather than jQuery in Firefox
+			( window.execScript || function( data ) {
+				window[ "eval" ].call( window, data );
+			} )( data );
 		}
 	},
 
@@ -21358,6 +21349,7 @@ steal.then(function() {
 	//check for window location change, documentChange, then readyState complete -> fire load if you have one
 	var newDocument = false, 
 		poller = function(){
+			console.log('readystate', FuncUnit._window.document.readyState)
 			if(FuncUnit._window.document  == null){
 				return
 			}
@@ -21808,7 +21800,8 @@ steal
 		'funcunit/syn', 
 		'funcit/highlight', 
 		'mxui/layout/fit', 
-		'jquery/dom/form_params')
+		'jquery/dom/form_params',
+		'jquery/dom/compare')
 	.then(function($){
 	var getKey =  function( code ) {
 		for(var key in Syn.keycodes){
@@ -21968,7 +21961,7 @@ steal
 			} else if(ev.type == 'DOMNodeInserted'){
 				
 				if($(ev.target).parents()[0].ownerDocument == this._currentTarget){
-					$(ev.target).attr('dom-inserted', 'true')
+					$(ev.target).attr('funcit-dom-inserted', true)
 				}
 				
 				this.publish('funcit.suggestion',{
@@ -21985,9 +21978,6 @@ steal
 						val = attrArr[1];
 					if(attr == 'display'){
 						if (/block/.test(val)) {
-							if($(ev.target).parents()[0].ownerDocument == this._currentTarget){
-								$(ev.target).attr('dom-inserted', 'true')
-							}
 							this.publish('funcit.suggestion',{
 								el: ev.target,
 								type: 'visible'
@@ -22018,7 +22008,10 @@ steal
 			$(ev.target).scroll(this.callback('onScroll'));
 		},
 		onMouseout : function(ev){
-			$(ev.target).unbind('scroll');
+			if($(ev.target).compare($(ev.relatedTarget)) != 20){
+				$(ev.target).unbind('scroll');
+			}
+			
 		},
 		onKeydown : function(ev){
 			this.preventKeypress = false;
@@ -22098,6 +22091,7 @@ steal
 				this.stopMouseRecording(true);
 			}
 			this.mousedownEl = ev.target;
+			this._selector = $(ev.target).prettySelector();
 			this.mousemoves = 0
 			this.lastX = ev.pageX
 			this.lastY = ev.pageY;
@@ -22131,10 +22125,10 @@ steal
 						this.element.trigger("addEvent",["doubleClick",undefined, ev.target]);
 					} else {
 						var controller = this,
-							target = ev.target,
-							prettySel = $(target).prettySelector();
+							target = ev.target
+							//prettySel = $(target).prettySelector();
 						this.clickTimeout = setTimeout(function(){
-							controller.element.trigger("addEvent",["click",undefined, prettySel]);
+							controller.element.trigger("addEvent",["click",undefined, target]);
 							delete controller.clickTimeout;
 						}, 200);
 					}
@@ -22254,6 +22248,9 @@ steal
 				this.element.trigger("addEvent",["move", this.mouse_recording_el,
 					this.mousemove_locations.start, this.mousemove_locations.end]);
 			}
+		},
+		getSelector : function(){
+			return this._selector;
 		},
 		'funcit.record_scroll subscribe': function(){
 			this.scroll = null;
@@ -22472,27 +22469,22 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addClick : function(options, el){
-		console.log(this._lastInserted)
 		var prettySelector = el;
 		if(typeof el !== "string"){ // assume we were passed a prettySelector if its a string
 			prettySelector = $(el).prettySelector();
 		}
 		
-		this.insertExistsIfNeeded(prettySelector);
+		this.insertExistsIfNeeded(el);
 		
 		this.chainOrWriteLn(prettySelector,".click()*");
 		this.saveToLocalStorage();
 	},
-	insertExistsIfNeeded : function(prettySelector){
-		var el =  $($('iframe:first')[0].contentWindow.document).find(prettySelector);
-		var parents = el.parents("[dom-inserted='true']");
-		if(parents.length > 0){
-			this.addWait({type: 'exists'}, prettySelector)
-			//$(parents[0]).removeAttr('dom-inserted')
-		} else if(el.attr('dom-inserted') == 'true'){
-			this.addWait({type: 'exists'}, prettySelector)
-			//el.removeAttr('dom-inserted')
+	insertExistsIfNeeded : function(el){
+		if($(el).parents('[funcit-dom-inserted="true"]').length > 0 && typeof $(el).attr('funcit-dom-exists') == 'undefined'){
+			this.addWait({type: 'exists'}, $(el).prettySelector())
+			$(el).attr('funcit-dom-exists', 'true')
 		}
+		
 		
 	},
 	addRightClick : function(options, el){
@@ -22527,6 +22519,7 @@ $.Controller("Funcit.Editor",{
 			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollX+')*';
 			}
 		} else {
+			amount = (direction == 'left') ? $(el).scrollLeft() : $(el).scrollTop();
 		  selector = $(el).prettySelector();
 		  val = '.scroll('+$.toJSON(direction)+', '+amount+')*';
 		}
@@ -23264,10 +23257,14 @@ $.Controller("Funcit.Testbuttons", {
 		this.run(this.textarea.val(), this.callback('runtestDone'));
 	},
 	runtestDone: function(){
-		$('.out-of-sync').removeClass('out-of-sync');
-		$('.running-test').removeClass('running-test');
-		this.toggleRecord(true);
-		$('#app').funcit_app("bindEventsToIframe");
+		var self = this;
+		setTimeout(function(){
+			$('.out-of-sync').removeClass('out-of-sync');
+			$('.running-test').removeClass('running-test');
+			self.toggleRecord(true);
+			$('#app').funcit_app("bindEventsToIframe");
+		}, 100)
+		
 	},
 	/**
 	 * Assumes you have only one module.  Grabs that module and returns the string of its text
@@ -23521,14 +23518,10 @@ steal.plugins('jquery')
 			if(!target){
 				return null
 			}
-			
 			var selector = target.nodeName.toLowerCase();
 			//always try to get an id
-			if(target.id){
-				var id = target.id;
-				if(parseInt("header-123123".match(/[0-9]+/)) > 100 || target.id.length > 15){
-					return "#"+target.id;
-				}
+			if(target.id && (parseInt(target.id.match(/[0-9]+/)) < 100 || target.id.length < 15)){
+				return "#"+target.id;
 			}else{
 				var parent = target.parentNode;
 				while(parent){
@@ -23546,7 +23539,12 @@ steal.plugins('jquery')
 			var others = $(selector, getWindow(target).document); //jquery should take care of the #foo if there
 			
 			if(others.length > 1){
-				return selector+":eq("+others.index(target)+")";
+				var index = others.index($(target));
+				if(index == -1){
+					
+					return $('#app').data('controllers')['funcit_app'].getSelector();
+				}
+				return selector+":eq("+index+")";
 			}else{
 				return selector;
 			}
@@ -27363,6 +27361,74 @@ steal.plugins("jquery/dom").then(function( $ ) {
 
 });;
 steal.loaded('//jquery/dom/form_params/form_params.js');
+/**
+ *  @add jQuery.fn
+ */
+steal.plugins('jquery/dom').then(function($){
+/**
+ * @function compare
+ * @parent dom
+ * @download http://jmvcsite.heroku.com/pluginify?plugins[]=jquery/dom/compare/compare.js 
+ * Compares the position of two nodes and returns a bitmask detailing how they are positioned 
+ * relative to each other.  You can expect it to return the same results as 
+ * [http://www.w3.org/TR/DOM-Level-3-Core/core.html#Node3-compareDocumentPosition | compareDocumentPosition].
+ * Parts of this documentation and source come from [http://ejohn.org/blog/comparing-document-position | John Resig].
+ * <h2>Demo</h2>
+ * @demo jquery/dom/compare/compare.html
+ * @test jquery/dom/compare/qunit.html
+ * @plugin dom/compare
+ * @param {HTMLElement} a the first node
+ * @param {HTMLElement} b the second node
+ * @return {Number} A bitmap with the following digit values:
+ * <table class='options'>
+ *     <tr><th>Bits</th><th>Number</th><th>Meaning</th></tr>
+ *     <tr><td>000000</td><td>0</td><td>Elements are identical.</td></tr>
+ *     <tr><td>000001</td><td>1</td><td>The nodes are in different documents (or one is outside of a document).</td></tr>
+ *     <tr><td>000010</td><td>2</td><td>Node B precedes Node A.</td></tr>
+ *     <tr><td>000100</td><td>4</td><td>Node A precedes Node B.</td></tr>
+ *     <tr><td>001000</td><td>8</td><td>Node B contains Node A.</td></tr>
+ *     <tr><td>010000</td><td>16</td><td>Node A contains Node B.</td></tr>
+ * </table>
+ */
+jQuery.fn.compare = function(b){ //usually 
+	//b is usually a relatedTarget, but b/c it is we have to avoid a few FF errors
+	
+	try{ //FF3 freaks out with XUL
+		b = b.jquery ? b[0] : b;
+	}catch(e){
+		return null;
+	}
+	if (window.HTMLElement) { //make sure we aren't coming from XUL element
+		var s = HTMLElement.prototype.toString.call(b)
+		if (s == '[xpconnect wrapped native prototype]' || s == '[object XULElement]' || s == '[object Window]') return null;
+	}
+	if(this[0].compareDocumentPosition){
+		return this[0].compareDocumentPosition(b);
+	}
+	if(this[0] == document && b != document) return 8;
+	var number = (this[0] !== b && this[0].contains(b) && 16) + (this[0] != b && b.contains(this[0]) && 8),
+		docEl = document.documentElement;
+	if(this[0].sourceIndex){
+		number += (this[0].sourceIndex < b.sourceIndex && 4)
+		number += (this[0].sourceIndex > b.sourceIndex && 2)
+		number += (this[0].ownerDocument !== b.ownerDocument ||
+			(this[0] != docEl && this[0].sourceIndex <= 0 ) ||
+			(b != docEl && b.sourceIndex <= 0 )) && 1
+	}else{
+		var range = document.createRange(), 
+			sourceRange = document.createRange(),
+			compare;
+		range.selectNode(this[0]);
+		sourceRange.selectNode(b);
+		compare = range.compareBoundaryPoints(Range.START_TO_START, sourceRange);
+		
+	}
+
+	return number;
+}
+
+});;
+steal.loaded('//jquery/dom/compare/compare.js');
 //@steal-clean
 /*******************************************************************************
  * OpenAjax.js
@@ -34397,74 +34463,6 @@ $.extend($.Range.prototype,{
 
 });;
 steal.loaded('//jquery/dom/range/range.js');
-/**
- *  @add jQuery.fn
- */
-steal.plugins('jquery/dom').then(function($){
-/**
- * @function compare
- * @parent dom
- * @download http://jmvcsite.heroku.com/pluginify?plugins[]=jquery/dom/compare/compare.js 
- * Compares the position of two nodes and returns a bitmask detailing how they are positioned 
- * relative to each other.  You can expect it to return the same results as 
- * [http://www.w3.org/TR/DOM-Level-3-Core/core.html#Node3-compareDocumentPosition | compareDocumentPosition].
- * Parts of this documentation and source come from [http://ejohn.org/blog/comparing-document-position | John Resig].
- * <h2>Demo</h2>
- * @demo jquery/dom/compare/compare.html
- * @test jquery/dom/compare/qunit.html
- * @plugin dom/compare
- * @param {HTMLElement} a the first node
- * @param {HTMLElement} b the second node
- * @return {Number} A bitmap with the following digit values:
- * <table class='options'>
- *     <tr><th>Bits</th><th>Number</th><th>Meaning</th></tr>
- *     <tr><td>000000</td><td>0</td><td>Elements are identical.</td></tr>
- *     <tr><td>000001</td><td>1</td><td>The nodes are in different documents (or one is outside of a document).</td></tr>
- *     <tr><td>000010</td><td>2</td><td>Node B precedes Node A.</td></tr>
- *     <tr><td>000100</td><td>4</td><td>Node A precedes Node B.</td></tr>
- *     <tr><td>001000</td><td>8</td><td>Node B contains Node A.</td></tr>
- *     <tr><td>010000</td><td>16</td><td>Node A contains Node B.</td></tr>
- * </table>
- */
-jQuery.fn.compare = function(b){ //usually 
-	//b is usually a relatedTarget, but b/c it is we have to avoid a few FF errors
-	
-	try{ //FF3 freaks out with XUL
-		b = b.jquery ? b[0] : b;
-	}catch(e){
-		return null;
-	}
-	if (window.HTMLElement) { //make sure we aren't coming from XUL element
-		var s = HTMLElement.prototype.toString.call(b)
-		if (s == '[xpconnect wrapped native prototype]' || s == '[object XULElement]') return null;
-	}
-	if(this[0].compareDocumentPosition){
-		return this[0].compareDocumentPosition(b);
-	}
-	if(this[0] == document && b != document) return 8;
-	var number = (this[0] !== b && this[0].contains(b) && 16) + (this[0] != b && b.contains(this[0]) && 8),
-		docEl = document.documentElement;
-	if(this[0].sourceIndex){
-		number += (this[0].sourceIndex < b.sourceIndex && 4)
-		number += (this[0].sourceIndex > b.sourceIndex && 2)
-		number += (this[0].ownerDocument !== b.ownerDocument ||
-			(this[0] != docEl && this[0].sourceIndex <= 0 ) ||
-			(b != docEl && b.sourceIndex <= 0 )) && 1
-	}else{
-		var range = document.createRange(), 
-			sourceRange = document.createRange(),
-			compare;
-		range.selectNode(this[0]);
-		sourceRange.selectNode(b);
-		compare = range.compareBoundaryPoints(Range.START_TO_START, sourceRange);
-		
-	}
-
-	return number;
-}
-
-});;
-steal.loaded('//jquery/dom/compare/compare.js');
 steal.plugins('jquery').then(function($){
 	/**
 	 * Returns the row height of a textarea (possibly other widgets eventually)

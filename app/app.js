@@ -165,7 +165,7 @@ steal
 			} else if(ev.type == 'DOMNodeInserted'){
 				
 				if($(ev.target).parents()[0].ownerDocument == this._currentTarget){
-					$(ev.target).attr('dom-inserted', 'true')
+					$(ev.target).attr('funcit-dom-inserted', true)
 				}
 				
 				this.publish('funcit.suggestion',{
@@ -295,6 +295,7 @@ steal
 				this.stopMouseRecording(true);
 			}
 			this.mousedownEl = ev.target;
+			this._selector = $(ev.target).prettySelector();
 			this.mousemoves = 0
 			this.lastX = ev.pageX
 			this.lastY = ev.pageY;
@@ -328,10 +329,10 @@ steal
 						this.element.trigger("addEvent",["doubleClick",undefined, ev.target]);
 					} else {
 						var controller = this,
-							target = ev.target,
-							prettySel = $(target).prettySelector();
+							target = ev.target
+							//prettySel = $(target).prettySelector();
 						this.clickTimeout = setTimeout(function(){
-							controller.element.trigger("addEvent",["click",undefined, prettySel]);
+							controller.element.trigger("addEvent",["click",undefined, target]);
 							delete controller.clickTimeout;
 						}, 200);
 					}
@@ -451,6 +452,9 @@ steal
 				this.element.trigger("addEvent",["move", this.mouse_recording_el,
 					this.mousemove_locations.start, this.mousemove_locations.end]);
 			}
+		},
+		getSelector : function(){
+			return this._selector;
 		},
 		'funcit.record_scroll subscribe': function(){
 			this.scroll = null;

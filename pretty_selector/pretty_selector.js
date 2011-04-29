@@ -8,14 +8,10 @@ steal.plugins('jquery')
 			if(!target){
 				return null
 			}
-			
 			var selector = target.nodeName.toLowerCase();
 			//always try to get an id
-			if(target.id){
-				var id = target.id;
-				if(parseInt("header-123123".match(/[0-9]+/)) > 100 || target.id.length > 15){
-					return "#"+target.id;
-				}
+			if(target.id && (parseInt(target.id.match(/[0-9]+/)) < 100 || target.id.length < 15)){
+				return "#"+target.id;
 			}else{
 				var parent = target.parentNode;
 				while(parent){
@@ -33,7 +29,12 @@ steal.plugins('jquery')
 			var others = $(selector, getWindow(target).document); //jquery should take care of the #foo if there
 			
 			if(others.length > 1){
-				return selector+":eq("+others.index(target)+")";
+				var index = others.index($(target));
+				if(index == -1){
+					
+					return $('#app').data('controllers')['funcit_app'].getSelector();
+				}
+				return selector+":eq("+index+")";
 			}else{
 				return selector;
 			}

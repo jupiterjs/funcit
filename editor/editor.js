@@ -201,27 +201,22 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addClick : function(options, el){
-		console.log(this._lastInserted)
 		var prettySelector = el;
 		if(typeof el !== "string"){ // assume we were passed a prettySelector if its a string
 			prettySelector = $(el).prettySelector();
 		}
 		
-		this.insertExistsIfNeeded(prettySelector);
+		this.insertExistsIfNeeded(el);
 		
 		this.chainOrWriteLn(prettySelector,".click()*");
 		this.saveToLocalStorage();
 	},
-	insertExistsIfNeeded : function(prettySelector){
-		var el =  $($('iframe:first')[0].contentWindow.document).find(prettySelector);
-		var parents = el.parents("[dom-inserted='true']");
-		if(parents.length > 0){
-			this.addWait({type: 'exists'}, prettySelector)
-			//$(parents[0]).removeAttr('dom-inserted')
-		} else if(el.attr('dom-inserted') == 'true'){
-			this.addWait({type: 'exists'}, prettySelector)
-			//el.removeAttr('dom-inserted')
+	insertExistsIfNeeded : function(el){
+		if($(el).parents('[funcit-dom-inserted="true"]').length > 0 && typeof $(el).attr('funcit-dom-exists') == 'undefined'){
+			this.addWait({type: 'exists'}, $(el).prettySelector())
+			$(el).attr('funcit-dom-exists', 'true')
 		}
+		
 		
 	},
 	addRightClick : function(options, el){
@@ -245,7 +240,6 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addScroll : function(direction, amount, el){
-		console.log('scrolling')
 	  var self = this;
 	  var selector = "";
 	  var val = "";
@@ -257,7 +251,7 @@ $.Controller("Funcit.Editor",{
 			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollX+')*';
 			}
 		} else {
-			amount = (direction == 'top') ? $(el).scrollTop() : $(el).scrollLeft();
+			amount = (direction == 'left') ? $(el).scrollLeft() : $(el).scrollTop();
 		  selector = $(el).prettySelector();
 		  val = '.scroll('+$.toJSON(direction)+', '+amount+')*';
 		}

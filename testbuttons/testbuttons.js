@@ -147,10 +147,14 @@ $.Controller("Funcit.Testbuttons", {
 		this.run(this.textarea.val(), this.callback('runtestDone'));
 	},
 	runtestDone: function(){
-		$('.out-of-sync').removeClass('out-of-sync');
-		$('.running-test').removeClass('running-test');
-		this.toggleRecord(true);
-		$('#app').funcit_app("bindEventsToIframe");
+		var self = this;
+		setTimeout(function(){
+			$('.out-of-sync').removeClass('out-of-sync');
+			$('.running-test').removeClass('running-test');
+			self.toggleRecord(true);
+			$('#app').funcit_app("bindEventsToIframe");
+		}, 100)
+		
 	},
 	/**
 	 * Assumes you have only one module.  Grabs that module and returns the string of its text
