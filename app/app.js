@@ -7,6 +7,10 @@ steal
 		'jquery/dom/form_params',
 		'jquery/dom/compare')
 	.then(function($){
+		
+
+	var events = "DOMAttrModified DOMNodeInserted DOMNodeRemoved keydown keypress keyup mousedown mousemove mouseup change mouseover mouseout mousewheel".split(' ');
+	
 	var getKey =  function( code ) {
 		for(var key in Syn.keycodes){
 			if(Syn.keycodes[key] == code){
@@ -35,7 +39,7 @@ steal
 			this.mousemoves =0;
 			this.hoveredEl = null;
 			this.record = true;
-			this._boundEvents = {};
+			this._boundEventHandler;
 			
 			this.bind(document, 'keydown', this.callback('onDocumentKeydown'))
 			
@@ -99,26 +103,27 @@ steal
 			this.options.open && this.options.open()
 		},
 		bindEventsToIframe: function(target){
-		  var self = this;
+		  var self = this,
+		  	  old = this._boundEventHandler;
 			target = target || $('iframe:first')[0].contentWindow.document;
 			this._currentTarget = target;
 			
-			var events = "keydown keypress keyup mousedown mousemove mouseup change mouseover mouseout mousewheel".split(' ');
+			this._boundEventHandler = this.callback('handler');
+			
 			//target.addEventListener(keydown,func, true)
 			for(var i = 0, ii = events.length; i < ii; i++){
-			  if(typeof this._boundEvents['on' + $.String.capitalize(events[i])] != 'undefined'){
-			    target.removeEventListener(events[i], this._boundEvents['on' + $.String.capitalize(events[i])], true);
-			  }
-			  this._boundEvents['on' + $.String.capitalize(events[i])] = this.callback('on' + $.String.capitalize(events[i]));
-			  target.addEventListener(events[i], this._boundEvents['on' + $.String.capitalize(events[i])], true);
+				if(old){
+					target.removeEventListener(events[i],old, true);
+				}
+				target.addEventListener(events[i], this._boundEventHandler, true);
 			}
-			var mutationEvents = "DOMAttrModified DOMNodeInserted DOMNodeInserted".split(' ');
-			this._boundEvents['onModified'] = this.callback('onModified');
+			
+			/*this._boundEvents['onModified'] = this.callback('onModified');
 			
 			for(var i = 0, ii = mutationEvents.length; i < ii; i++){
-	      target.removeEventListener(mutationEvents[i], this._boundEvents['onModified'], true);
-			  target.addEventListener(mutationEvents[i], this._boundEvents['onModified'], true);
-			}
+				target.removeEventListener(mutationEvents[i], this._boundEvents['onModified'], true);
+				target.addEventListener(mutationEvents[i], this._boundEvents['onModified'], true);
+			}*/
 			/*$(target)
 				.unbind('keydown')
 				.unbind('keypress')
@@ -148,14 +153,240 @@ steal
 				.bind("DOMNodeRemoved", this.callback('onModified'))*/
 			$($('iframe:first')[0].contentWindow)
 			  .unbind('scroll')
-			  .scroll(this.callback('onScroll'))
+			  .scroll(this.callback('handler'))
 			$('iframe:first')
 			  .unbind('load')
 			  .load(function(ev){
 			    self.bindEventsToIframe();
 			  })
 		},
-		onModified: function(ev){
+		inFrame : function(target){
+			return target[0].ownerDocument.defaultView == this._currentTarget
+		},
+		handler : function(ev){
+			// understands what a user is doing
+			
+			// triggers addEvent ['event', data, target, prettySelector]
+			
+			var target = $(ev.target);
+			
+			if (!this.inFrame(target)) {
+				return		
+			}
+			
+			switch(ev.type){
+				case "DOMNodeRemoved":
+					//if(this.inFrame(target)){
+						this.element.trigger("addEvent",["removed",undefined, target, target.prettySelector()]);
+					//}
+					/*this.publish('funcit.suggestion',{
+						el: ev.target,
+						type: 'missing'
+					})*/
+					break;
+				case 'DOMNodeInserted':
+					// make sure target was in iframe 
+					//if (this.inFrame(target)) {
+						
+					//}
+					this.element.trigger("addEvent",["added",undefined, target, target.prettySelector()]);
+					break;
+				case 'DOMAttrModified' : 
+					var newVal = ev.newValue,
+						prop = ev.attrName;
+
+					if(prop == 'style'){
+						var attrArr = newVal.split(":"),
+							attr = attrArr[0],
+							val = attrArr[1];
+							
+						if(attr == 'display'){
+							if (/block/i.test(val)) {
+								this.publish('funcit.suggestion',{
+									el: ev.target,
+									type: 'visible'
+								})
+							}
+							else if (/none/i.test(val)) {
+								this.publish('funcit.suggestion',{
+									el: ev.target,
+									type: 'invisible'
+								})
+							}
+						}
+					}
+					break;
+				case 'mousemove' :
+					if(this.record_mouse){
+						var loc = {x: e.pageX, y: e.pageY};
+						if(!this.mousemove_locations.start){
+							this.mousemove_locations.start = loc;
+						}
+						this.mousemove_locations.end = loc;
+					}
+					this.mousemoves++;
+					break;
+				case 'mouseover' : 
+					target.scroll(this.callback('onScroll'));
+					break;
+				case 'mouseout' : 
+					if(target.compare($(ev.relatedTarget)) != 20){
+						target.unbind('scroll');
+					}
+					break;
+				case 'keydown' : 
+					this.preventKeypress = false;
+					this.handleEscape(ev);
+					this.stopMouseOrScrollRecording(ev);
+					var key = getKey(ev.keyCode);
+					var addImmediately = false;
+					if(typeof key == 'undefined') return;
+					if(ev.keyCode == 13){
+						key = '\\r';
+						addImmediately = true;
+					} else if(ev.keyCode == 8){
+						key = '\\b';
+						addImmediately = true;
+					} else if(ev.keyCode == 9){
+						key = '\\t';
+						addImmediately = true;
+					}else if((Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1) && this.lastSpecialKey != key){
+						this.lastSpecialKey = key;
+						key = "[" + key + "]";
+						addImmediately = true;
+					}
+					if(addImmediately){
+						this.element.trigger("addEvent",["char",key, ev.target]);
+						this.preventKeypress = true;
+					} else {
+						var controller = this;
+						this.keyDownTimeout = setTimeout(function(){
+							if(controller.keytarget != ev.target){
+								controller.current = [];
+								controller.keytarget = ev.target;
+							}
+							if($.inArray(key, controller.downKeys) == -1){
+								controller.downKeys.push(key);
+								//h.showChar(key, ev.target);
+								controller.element.trigger("addEvent",["char",key, ev.target])
+							}
+						}, 20);
+					}
+					break;
+				case 'keypress':
+					if(!this.preventKeypress){
+					    var key = String.fromCharCode(ev.charCode);
+						clearTimeout(this.keyDownTimeout);
+						if(this.keytarget != ev.target){
+							this.current = [];
+							this.keytarget = ev.target;
+						}
+						this.element.trigger("addEvent",["char",key, ev.target])
+					}	
+					break;
+				case 'keyup':
+					var key = getKey(ev.keyCode),
+						self = this;
+					if(ev.keyCode == 13){
+						key = '\\r';
+					}
+					if(Syn.key.isSpecial(ev.keyCode)){
+						delete this.lastSpecialKey;
+						this.element.trigger("addEvent",["char","[" +key+"-up]", ev.target])
+					}
+					
+					var location = $.inArray(key, this.downKeys);
+					this.downKeys.splice(location,1);
+					this.justKey = true;
+					setTimeout(function(){
+						self.justKey = false;
+					},20);
+					break;
+				case 'mousedown':
+					$(ev.target).scroll(this.callback('onScroll'));
+					if(this.record_mouse){
+						this.stopMouseRecording(true);
+					}
+					this.mousedownEl = ev.target;
+					this._selector = $(ev.target).prettySelector();
+					this.mousemoves = 0
+					this.lastX = ev.pageX
+					this.lastY = ev.pageY;
+					this.isMouseDown = true;
+					break;
+				case 'mouseup':
+					this.publish('funcit.close_select_menu');
+					this.isMouseDown = false;
+					if(this.isScrolling){
+						if(this.scroll != null){
+							var direction = "top";
+							var amount = this.scroll.y;
+							if(amount == 0){
+								direction = "left";
+								amount = this.scroll.x;
+							}
+							this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target, this._selector]);
+						}
+						
+						this.isScrolling = false;
+					} else {
+						if(/option/i.test(ev.target.nodeName)){
+		
+						}else if(ev.which == 3){
+							this.element.trigger("addEvent", ['rightClick', undefined, ev.target]);
+						}else if(!this.mousemoves || (this.lastX == ev.pageX && this.lastY == ev.pageY)){
+							if(this.clickTimeout){
+								clearTimeout(this.clickTimeout);
+								delete this.clickTimeout;
+								this.element.trigger("addEvent",["doubleClick",undefined, ev.target]);
+							} else {
+								var controller = this,
+									target = ev.target
+									//prettySel = $(target).prettySelector();
+								this.clickTimeout = setTimeout(function(){
+									controller.element.trigger("addEvent",["click",undefined, target, ]);
+									delete controller.clickTimeout;
+								}, 200);
+							}
+						}else if(this.mousemoves > 2 && this.mousedownEl){
+							this.element.trigger("addEvent",["drag",{clientX : ev.clientX,
+								clientY: ev.clientY}, this.mousedownEl])
+						}
+		
+						this.mousedownEl = null;
+						this.mousemoves = 0;
+						this.lastY = this.lastX = null;
+					}
+					break;
+				case 'mousewheel':
+					if(this.scroll != null){
+						var direction = "top";
+						var amount = this.scroll.y;
+						if(amount == 0){
+							direction = "left";
+							amount = this.scroll.x;
+						}
+						this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
+					}
+					break;
+				case 'change':
+					if(ev.target.nodeName.toLowerCase() == "select"){
+		
+						var el = $("option:eq("+ev.target.selectedIndex+")", ev.target);
+						this.element.trigger("addEvent",["change",undefined, el])
+					}
+					break;
+				case 'scroll':
+					if(ev.target.nodeName.toLowerCase() == "select"){
+		
+						var el = $("option:eq("+ev.target.selectedIndex+")", ev.target);
+						this.element.trigger("addEvent",["change",undefined, el])
+					}
+					break;
+				
+			}
+		},
+/*		onModified: function(ev){
 			if(ev.type == 'DOMNodeRemoved'){
 				this.publish('funcit.suggestion',{
 					el: ev.target,
@@ -164,14 +395,7 @@ steal
 				
 			} else if(ev.type == 'DOMNodeInserted'){
 				
-				if($(ev.target).parents()[0].ownerDocument == this._currentTarget){
-					$(ev.target).attr('funcit-dom-inserted', true)
-				}
 				
-				this.publish('funcit.suggestion',{
-					el: ev.target,
-					type: 'exists'
-				})
 			} else {
 				var newVal = ev.newValue,
 					prop = ev.attrName;
@@ -197,7 +421,7 @@ steal
 				}
 			}
 			
-		},
+		},*/
 		onMousemove : function(e){
 			if(this.record_mouse){
 				var loc = {x: e.pageX, y: e.pageY};
@@ -212,9 +436,7 @@ steal
 			$(ev.target).scroll(this.callback('onScroll'));
 		},
 		onMouseout : function(ev){
-			if($(ev.target).compare($(ev.relatedTarget)) != 20){
-				$(ev.target).unbind('scroll');
-			}
+			
 			
 		},
 		onKeydown : function(ev){

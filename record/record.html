@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<style>
+			iframe {width: 800px; height: 600px;}
+		</style>
+	</head>
+	<body>
+		<iframe id='record' src='../../funcunit/syn/demo.html'></iframe>
+		<a href="javascript:(function(){var head=document.getElementsByTagName('head')[0],script=document.createElement('script');script.type='text/javascript';script.src='http://localhost:3002/jmvc31/funcit/record/bookmarklet.js';head.appendChild(script);})(); void 0">RecordIT</a>
+		<a href="javascript:(function(){var head=document.getElementsByTagName('head')[0],script=document.createElement('script');script.type='text/javascript';script.src='http://localhost:3002/jmvc31/funcit/filter/bookmarklet.js';head.appendChild(script);})(); void 0">FilterIT</a>
+		<script type='text/javascript' src='../../steal/steal.js'></script>
+		<script type='text/javascript'>
+			steal.plugins('funcit/record').then(function(){
+
+				$('#record').funcit_record(function(ev){
+					console.log(ev)
+				})
+				
+				
+			});
+			
+		</script>
+	</body>
+</html>
