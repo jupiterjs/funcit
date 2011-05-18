@@ -217,7 +217,7 @@ steal.plugins('jquery','funcit/pretty_selector',
 					if(/option/i.test(ev.target.nodeName)){
 	
 					}else if(ev.which == 3){
-						cb( 'rightClick', undefined, target , target.prettySelector() );
+						cb({type: 'rightClick', target: target, selector: target.prettySelector()});
 					}else if(!this.mousemoves || (this.lastX == ev.pageX && this.lastY == ev.pageY)){
 						// handle dblclick in the filter stuff ...
 						cb({type: "click",
@@ -225,13 +225,13 @@ steal.plugins('jquery','funcit/pretty_selector',
 							selector: target.prettySelector()
 						});
 						
-						/*if(this.clickTimeout){
+					if(this.clickTimeout){
 							clearTimeout(this.clickTimeout);
 							delete this.clickTimeout;
-							cb({type: "doubleClick",
+							/*cb({type: "dblclick",
 								target: target,
 								selector: target.prettySelector()
-							});
+							})*/;
 						} else {
 							var controller = this;
 								//prettySel = $(target).prettySelector();
@@ -239,7 +239,7 @@ steal.plugins('jquery','funcit/pretty_selector',
 								
 								delete controller.clickTimeout;
 							}, 200);
-						}*/
+						}
 					}else if(this.mousemoves > 2 && this.mousedownEl){
 						cb({type: "drag",
 							clientX : ev.clientX,

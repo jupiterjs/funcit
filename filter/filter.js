@@ -95,6 +95,7 @@ steal.plugins('funcit/record').then(function(){
 	 */
 	$.fn.funcit_filter = function(finalCb){
 		var args = $.makeArray(arguments);
+		
 		// if we only get one arg, assume it's the default filters ..
 		if(args.length == 0){
 			args = [function(ev){

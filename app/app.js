@@ -5,7 +5,8 @@ steal
 		'funcit/highlight', 
 		'mxui/layout/fit', 
 		'jquery/dom/form_params',
-		'jquery/dom/compare')
+		'jquery/dom/compare',
+		'funcit/filter')
 	.then(function($){
 		
 
@@ -103,6 +104,7 @@ steal
 			this.options.open && this.options.open()
 		},
 		bindEventsToIframe: function(target){
+			
 		  var self = this,
 		  	  old = this._boundEventHandler;
 			target = target || $('iframe:first')[0].contentWindow.document;
@@ -110,50 +112,16 @@ steal
 			
 			this._boundEventHandler = this.callback('handler');
 			
-			//target.addEventListener(keydown,func, true)
-			for(var i = 0, ii = events.length; i < ii; i++){
-				if(old){
-					target.removeEventListener(events[i],old, true);
-				}
-				target.addEventListener(events[i], this._boundEventHandler, true);
-			}
+			//$('iframe:first').funcit_record(this._boundEventHandler)
+			var calls = []
+			var fs = Funcit.filters;
+			$('iframe:first').funcit_filter(fs.visible,
+				fs.dblclick,
+				fs.similarText,
+				fs.count,
+				fs.lastmodified, this._boundEventHandler)
 			
-			/*this._boundEvents['onModified'] = this.callback('onModified');
 			
-			for(var i = 0, ii = mutationEvents.length; i < ii; i++){
-				target.removeEventListener(mutationEvents[i], this._boundEvents['onModified'], true);
-				target.addEventListener(mutationEvents[i], this._boundEvents['onModified'], true);
-			}*/
-			/*$(target)
-				.unbind('keydown')
-				.unbind('keypress')
-				.unbind('keyup')
-				.unbind('mousedown')
-				.unbind('mousemove')
-				.unbind('mouseup')
-				.unbind('change')
-				.unbind('mouseenter')
-				.unbind('mouseout')
-				.unbind('mousewheel')
-				.unbind('DOMAttrModified')
-				.unbind('DOMNodeInserted')
-				.unbind('DOMNodeRemoved')
-				.keydown(this.callback('onKeydown'))
-				.keypress(this.callback('onKeypress'))
-				.keyup(this.callback('onKeyup'))
-				.mousedown(this.callback('onMousedown'))
-				.mousemove(this.callback('onMousemove'))
-				.mouseup(this.callback('onMouseup'))
-				.change(this.callback('onChange'))
-				.mouseenter(this.callback('onMouseenter'))
-				.mouseout(this.callback('onMouseout'))
-				.mousewheel(this.callback('onMousewheel'))
-				.bind("DOMAttrModified", this.callback('onModified'))
-				.bind("DOMNodeInserted", this.callback('onModified'))
-				.bind("DOMNodeRemoved", this.callback('onModified'))*/
-			$($('iframe:first')[0].contentWindow)
-			  .unbind('scroll')
-			  .scroll(this.callback('handler'))
 			$('iframe:first')
 			  .unbind('load')
 			  .load(function(ev){
@@ -161,475 +129,24 @@ steal
 			  })
 		},
 		inFrame : function(target){
-			return target[0].ownerDocument.defaultView == this._currentTarget
+			return true // TODO: Fix this !!!!
+			return target[0] && target[0].ownerDocument.defaultView == this._currentTarget 
 		},
 		handler : function(ev){
+			/*$(ev.target).funcit_filter(Funcit.filter.dblclick, function(cb){
+				cb()
+				console.log('bleeeeee')
+			})*/
+			
+			console.log(ev)
 			// understands what a user is doing
 			
 			// triggers addEvent ['event', data, target, prettySelector]
 			
-			var target = $(ev.target);
+			this.element.trigger("addEvent", [ev.type, ev]);
 			
-			if (!this.inFrame(target)) {
-				return		
-			}
+			return
 			
-			switch(ev.type){
-				case "DOMNodeRemoved":
-					//if(this.inFrame(target)){
-						this.element.trigger("addEvent",["removed",undefined, target, target.prettySelector()]);
-					//}
-					/*this.publish('funcit.suggestion',{
-						el: ev.target,
-						type: 'missing'
-					})*/
-					break;
-				case 'DOMNodeInserted':
-					// make sure target was in iframe 
-					//if (this.inFrame(target)) {
-						
-					//}
-					this.element.trigger("addEvent",["added",undefined, target, target.prettySelector()]);
-					break;
-				case 'DOMAttrModified' : 
-					var newVal = ev.newValue,
-						prop = ev.attrName;
-
-					if(prop == 'style'){
-						var attrArr = newVal.split(":"),
-							attr = attrArr[0],
-							val = attrArr[1];
-							
-						if(attr == 'display'){
-							if (/block/i.test(val)) {
-								this.publish('funcit.suggestion',{
-									el: ev.target,
-									type: 'visible'
-								})
-							}
-							else if (/none/i.test(val)) {
-								this.publish('funcit.suggestion',{
-									el: ev.target,
-									type: 'invisible'
-								})
-							}
-						}
-					}
-					break;
-				case 'mousemove' :
-					if(this.record_mouse){
-						var loc = {x: e.pageX, y: e.pageY};
-						if(!this.mousemove_locations.start){
-							this.mousemove_locations.start = loc;
-						}
-						this.mousemove_locations.end = loc;
-					}
-					this.mousemoves++;
-					break;
-				case 'mouseover' : 
-					target.scroll(this.callback('onScroll'));
-					break;
-				case 'mouseout' : 
-					if(target.compare($(ev.relatedTarget)) != 20){
-						target.unbind('scroll');
-					}
-					break;
-				case 'keydown' : 
-					this.preventKeypress = false;
-					this.handleEscape(ev);
-					this.stopMouseOrScrollRecording(ev);
-					var key = getKey(ev.keyCode);
-					var addImmediately = false;
-					if(typeof key == 'undefined') return;
-					if(ev.keyCode == 13){
-						key = '\\r';
-						addImmediately = true;
-					} else if(ev.keyCode == 8){
-						key = '\\b';
-						addImmediately = true;
-					} else if(ev.keyCode == 9){
-						key = '\\t';
-						addImmediately = true;
-					}else if((Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1) && this.lastSpecialKey != key){
-						this.lastSpecialKey = key;
-						key = "[" + key + "]";
-						addImmediately = true;
-					}
-					if(addImmediately){
-						this.element.trigger("addEvent",["char",key, ev.target]);
-						this.preventKeypress = true;
-					} else {
-						var controller = this;
-						this.keyDownTimeout = setTimeout(function(){
-							if(controller.keytarget != ev.target){
-								controller.current = [];
-								controller.keytarget = ev.target;
-							}
-							if($.inArray(key, controller.downKeys) == -1){
-								controller.downKeys.push(key);
-								//h.showChar(key, ev.target);
-								controller.element.trigger("addEvent",["char",key, ev.target])
-							}
-						}, 20);
-					}
-					break;
-				case 'keypress':
-					if(!this.preventKeypress){
-					    var key = String.fromCharCode(ev.charCode);
-						clearTimeout(this.keyDownTimeout);
-						if(this.keytarget != ev.target){
-							this.current = [];
-							this.keytarget = ev.target;
-						}
-						this.element.trigger("addEvent",["char",key, ev.target])
-					}	
-					break;
-				case 'keyup':
-					var key = getKey(ev.keyCode),
-						self = this;
-					if(ev.keyCode == 13){
-						key = '\\r';
-					}
-					if(Syn.key.isSpecial(ev.keyCode)){
-						delete this.lastSpecialKey;
-						this.element.trigger("addEvent",["char","[" +key+"-up]", ev.target])
-					}
-					
-					var location = $.inArray(key, this.downKeys);
-					this.downKeys.splice(location,1);
-					this.justKey = true;
-					setTimeout(function(){
-						self.justKey = false;
-					},20);
-					break;
-				case 'mousedown':
-					$(ev.target).scroll(this.callback('onScroll'));
-					if(this.record_mouse){
-						this.stopMouseRecording(true);
-					}
-					this.mousedownEl = ev.target;
-					this._selector = $(ev.target).prettySelector();
-					this.mousemoves = 0
-					this.lastX = ev.pageX
-					this.lastY = ev.pageY;
-					this.isMouseDown = true;
-					break;
-				case 'mouseup':
-					this.publish('funcit.close_select_menu');
-					this.isMouseDown = false;
-					if(this.isScrolling){
-						if(this.scroll != null){
-							var direction = "top";
-							var amount = this.scroll.y;
-							if(amount == 0){
-								direction = "left";
-								amount = this.scroll.x;
-							}
-							this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target, this._selector]);
-						}
-						
-						this.isScrolling = false;
-					} else {
-						if(/option/i.test(ev.target.nodeName)){
-		
-						}else if(ev.which == 3){
-							this.element.trigger("addEvent", ['rightClick', undefined, ev.target]);
-						}else if(!this.mousemoves || (this.lastX == ev.pageX && this.lastY == ev.pageY)){
-							if(this.clickTimeout){
-								clearTimeout(this.clickTimeout);
-								delete this.clickTimeout;
-								this.element.trigger("addEvent",["doubleClick",undefined, ev.target]);
-							} else {
-								var controller = this,
-									target = ev.target
-									//prettySel = $(target).prettySelector();
-								this.clickTimeout = setTimeout(function(){
-									controller.element.trigger("addEvent",["click",undefined, target, ]);
-									delete controller.clickTimeout;
-								}, 200);
-							}
-						}else if(this.mousemoves > 2 && this.mousedownEl){
-							this.element.trigger("addEvent",["drag",{clientX : ev.clientX,
-								clientY: ev.clientY}, this.mousedownEl])
-						}
-		
-						this.mousedownEl = null;
-						this.mousemoves = 0;
-						this.lastY = this.lastX = null;
-					}
-					break;
-				case 'mousewheel':
-					if(this.scroll != null){
-						var direction = "top";
-						var amount = this.scroll.y;
-						if(amount == 0){
-							direction = "left";
-							amount = this.scroll.x;
-						}
-						this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
-					}
-					break;
-				case 'change':
-					if(ev.target.nodeName.toLowerCase() == "select"){
-		
-						var el = $("option:eq("+ev.target.selectedIndex+")", ev.target);
-						this.element.trigger("addEvent",["change",undefined, el])
-					}
-					break;
-				case 'scroll':
-					if(ev.target.nodeName.toLowerCase() == "select"){
-		
-						var el = $("option:eq("+ev.target.selectedIndex+")", ev.target);
-						this.element.trigger("addEvent",["change",undefined, el])
-					}
-					break;
-				
-			}
-		},
-/*		onModified: function(ev){
-			if(ev.type == 'DOMNodeRemoved'){
-				this.publish('funcit.suggestion',{
-					el: ev.target,
-					type: 'missing'
-				})
-				
-			} else if(ev.type == 'DOMNodeInserted'){
-				
-				
-			} else {
-				var newVal = ev.newValue,
-					prop = ev.attrName;
-				//steal.dev.log(prop, newVal, ev.target);
-				if(prop == 'style'){
-					var attrArr = newVal.split(":"),
-						attr = attrArr[0],
-						val = attrArr[1];
-					if(attr == 'display'){
-						if (/block/.test(val)) {
-							this.publish('funcit.suggestion',{
-								el: ev.target,
-								type: 'visible'
-							})
-						}
-						else if (/none/.test(val)) {
-							this.publish('funcit.suggestion',{
-								el: ev.target,
-								type: 'invisible'
-							})
-						}
-					}
-				}
-			}
-			
-		},*/
-		onMousemove : function(e){
-			if(this.record_mouse){
-				var loc = {x: e.pageX, y: e.pageY};
-				if(!this.mousemove_locations.start){
-					this.mousemove_locations.start = loc;
-				}
-				this.mousemove_locations.end = loc;
-			}
-			this.mousemoves++;
-		},
-		onMouseover : function(ev){
-			$(ev.target).scroll(this.callback('onScroll'));
-		},
-		onMouseout : function(ev){
-			
-			
-		},
-		onKeydown : function(ev){
-			this.preventKeypress = false;
-
-			this.handleEscape(ev);
-			this.stopMouseOrScrollRecording(ev);
-			var key = getKey(ev.keyCode);
-			var addImmediately = false;
-			if(typeof key == 'undefined') return;
-			if(ev.keyCode == 13){
-				key = '\\r';
-				addImmediately = true;
-			} else if(ev.keyCode == 8){
-				key = '\\b';
-				addImmediately = true;
-			} else if(ev.keyCode == 9){
-				key = '\\t';
-				addImmediately = true;
-			}else if((Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1) && this.lastSpecialKey != key){
-				this.lastSpecialKey = key;
-				key = "[" + key + "]";
-				addImmediately = true;
-			}
-			if(addImmediately){
-				this.element.trigger("addEvent",["char",key, ev.target]);
-				this.preventKeypress = true;
-			} else {
-				var controller = this;
-				this.keyDownTimeout = setTimeout(function(){
-					if(controller.keytarget != ev.target){
-						controller.current = [];
-						controller.keytarget = ev.target;
-					}
-					if($.inArray(key, controller.downKeys) == -1){
-						controller.downKeys.push(key);
-						//h.showChar(key, ev.target);
-						controller.element.trigger("addEvent",["char",key, ev.target])
-					}
-				}, 20);
-			}
-			
-		},
-		onKeypress : function(ev){
-
-		  if(!this.preventKeypress){
-		    var key = String.fromCharCode(ev.charCode);
-  			clearTimeout(this.keyDownTimeout);
-  			if(this.keytarget != ev.target){
-  				this.current = [];
-  				this.keytarget = ev.target;
-  			}
-  			this.element.trigger("addEvent",["char",key, ev.target])
-		  }	
-
-		},
-		onKeyup : function(ev){
-			var key = getKey(ev.keyCode),
-				self = this;
-			if(ev.keyCode == 13){
-				key = '\\r';
-			}
-			if(Syn.key.isSpecial(ev.keyCode)){
-				delete this.lastSpecialKey;
-				this.element.trigger("addEvent",["char","[" +key+"-up]", ev.target])
-			}
-			
-			var location = $.inArray(key, this.downKeys);
-			this.downKeys.splice(location,1);
-			this.justKey = true;
-			setTimeout(function(){
-				self.justKey = false;
-			},20)
-		},
-		onMousedown : function(ev){
-			$(ev.target).scroll(this.callback('onScroll'));
-			if(this.record_mouse){
-				this.stopMouseRecording(true);
-			}
-			this.mousedownEl = ev.target;
-			this._selector = $(ev.target).prettySelector();
-			this.mousemoves = 0
-			this.lastX = ev.pageX
-			this.lastY = ev.pageY;
-			this.isMouseDown = true;
-		},
-		
-		onMouseup : function(ev){
-			this.publish('funcit.close_select_menu');
-			this.isMouseDown = false;
-			if(this.isScrolling){
-				if(this.scroll != null){
-					var direction = "top";
-					var amount = this.scroll.y;
-					if(amount == 0){
-						direction = "left";
-						amount = this.scroll.x;
-					}
-					this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
-				}
-				
-				this.isScrolling = false;
-			} else {
-				if(/option/i.test(ev.target.nodeName)){
-
-				}else if(ev.which == 3){
-					this.element.trigger("addEvent", ['rightClick', undefined, ev.target]);
-				}else if(!this.mousemoves || (this.lastX == ev.pageX && this.lastY == ev.pageY)){
-					if(this.clickTimeout){
-						clearTimeout(this.clickTimeout);
-						delete this.clickTimeout;
-						this.element.trigger("addEvent",["doubleClick",undefined, ev.target]);
-					} else {
-						var controller = this,
-							target = ev.target
-							//prettySel = $(target).prettySelector();
-						this.clickTimeout = setTimeout(function(){
-							controller.element.trigger("addEvent",["click",undefined, target]);
-							delete controller.clickTimeout;
-						}, 200);
-					}
-				}else if(this.mousemoves > 2 && this.mousedownEl){
-					this.element.trigger("addEvent",["drag",{clientX : ev.clientX,
-						clientY: ev.clientY}, this.mousedownEl])
-				}
-
-				this.mousedownEl = null;
-				this.mousemoves = 0;
-				this.lastY = this.lastX = null;
-			}
-			
-		},
-		onMousewheel : function(ev, delta, deltaX, deltaY){
-			if(this.scroll != null){
-				var direction = "top";
-				var amount = this.scroll.y;
-				if(amount == 0){
-					direction = "left";
-					amount = this.scroll.x;
-				}
-				this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
-			}
-			//steal.dev.log(this.scroll)
-			//var el   = $($('iframe:first')[0].contentWindow);
-			/*var elements = $(ev.target).parents().toArray();
-			elements.unshift($(ev.target)[0]);
-			var el = null;
-			for(var i = 0; i < elements.length; i++){
-				if($(elements[i]).hasScrollBar()){
-					el = elements[i];
-				}
-			}
-			steal.dev.log(el)
-			var ammount = {
-											top: el.scrollTop(),
-											left: el.scrollLeft()
-										};
-			var direction = 'left';
-			if(deltaX == 0){
-				direction = 'top';
-			}
-			this.element.trigger("addEvent",["scroll", direction, ammount[direction], el]);*/
-		},
-		onChange : function(ev){
-			if(ev.target.nodeName.toLowerCase() == "select"){
-
-				var el = $("option:eq("+ev.target.selectedIndex+")", ev.target);
-				this.element.trigger("addEvent",["change",undefined, el])
-			}
-		},
-		onScroll: function(ev){
-		  var self = this;
-			this.isScrolling = true;
-			this.scroll = {
-				x: ev.currentTarget.scrollLeft, 
-				y: ev.currentTarget.scrollTop, 
-				target: ev.currentTarget
-			};
-			if(!this.isMouseDown){
-				this.scrollTimeout && clearTimeout(this.scrollTimeout);
-				this.scrollTimeout = setTimeout(function(){
-				  if(self.scroll != null){
-						var direction = "top";
-						var amount = self.scroll.y;
-						if(amount == 0){
-							direction = "left";
-							amount = self.scroll.x;
-						}
-						self.element.trigger("addEvent",["scroll", direction, amount, self.scroll.target]);
-						self.isScrolling = false;
-					}
-				}, 50)
-			}
 		},
 		onDocumentKeydown: function(ev){
 			return;
@@ -662,7 +179,7 @@ steal
 					amount = this.scroll.x;
 				}
 				if(triggerEvent){
-					this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
+					this.element.trigger("addEvent",["scroll", this.scroll.target, direction, amount]);
 				}
 			}
 		},

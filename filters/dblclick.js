@@ -9,8 +9,9 @@ Funcit.filters.dblclick = function(ev, cb){
 		
 		if(timer){ // we were a double click
 			ev.type = 'dblclick';
-			
-			var call = events.push(ev).slice(0);
+			//console.log(events)
+			events.push(ev)
+			var call = events.slice(0);
 			clearTimeout(timer);
 			events = timer = undefined;
 			
