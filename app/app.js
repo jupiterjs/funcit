@@ -138,7 +138,7 @@ steal
 				console.log('bleeeeee')
 			})*/
 			
-			console.log(ev)
+			console.log('Event: ', ev)
 			// understands what a user is doing
 			
 			// triggers addEvent ['event', data, target, prettySelector]

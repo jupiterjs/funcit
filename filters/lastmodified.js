@@ -7,6 +7,7 @@ steal(function(){
 	find = function(modifiers, target, type){
 		for(var i =0; i < modifiers.length ;i++){
 			var compare = modifiers[i].target.compare(target);
+			console.log(compare, target, type)
 			if( (compare & 0 || compare & 8 || compare & 16) && (type ? type==modifiers[i].type : true) ){
 				return i;
 			}

@@ -257,7 +257,20 @@ $.Controller("Funcit.Editor",{
 		this.chainOrWriteLn('body', '.mousewheel("' + delta + '")');
 		this.saveToLocalStorage();
 	},
+	addVisible : function(ev) {
+		this.chainOrWriteLn(ev.selector,".visible()*");
+	},
+	addInvisible : function(ev) {
+		this.chainOrWriteLn(ev.selector,".invisible()*");
+	},
+	addAdded : function(ev) {
+		this.chainOrWriteLn(ev.selector,".exists()*");
+	},
+	addRemoved : function(ev) {
+		this.chainOrWriteLn(ev.selector,".missing()*");
+	},
 	insertExistsIfNeeded : function(el){
+		console.log('insert exists')
 		if($(el) != null && $(el).parents('[funcit-dom-inserted="true"]').length > 0 && typeof $(el).attr('funcit-dom-exists') == 'undefined'){
 			this.addWait({type: 'exists'}, $(el).prettySelector())
 			$(el).attr('funcit-dom-exists', 'true')

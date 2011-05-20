@@ -74,6 +74,8 @@ steal.plugins('jquery','funcit/pretty_selector',
 				cb({type: "added",
 						target: target,
 						selector: target.prettySelector()})
+				console.log(target)
+				$(target).attr('funcit-dom-inserted', 'true')
 				//this.element.trigger("addEvent",[]);
 				break;
 			case 'DOMAttrModified' : 

@@ -1,4 +1,4 @@
-steal.loading('//funcit/funcit.js','//funcunit/funcunit.js','//funcunit/qunit/qunit.js','//funcunit/qunit/rhino/rhino.js','//funcunit/resources/jquery.js','//funcunit/resources/json.js','//funcunit/resources/selector.js','//funcunit/syn/syn.js','//funcunit/syn/synthetic.js','//funcunit/syn/mouse.js','//funcunit/syn/browsers.js','//funcunit/syn/key.js','//funcunit/syn/drag/drag.js','//funcunit/resources/selenium_start.js','//funcunit/drivers/selenium.js','//funcunit/drivers/standard.js','//steal/less/less.js','//mxui/layout/fill/fill.js','//mxui/nav/tabs/tabs.js','//funcit/app/app.js','//funcit/editor/editor.js','//funcit/grow/grow.js','//funcit/commands/commands.js','//funcit/testbuttons/testbuttons.js','//funcit/runner/runner.js','//funcit/list_attributes/list_attributes.js','//funcit/file_reader/file_reader.js','//funcit/file_writer/file_writer.js','//funcit/pretty_selector/pretty_selector.js','//jquery/view/ejs/ejs.js','//funcit/resources/jquery.mousewheel.3.0.2/jquery.mousewheel.js','//funcit/resources/jquery.has_scrollbar.js','//funcit/resources/hasLocalStorage.js','//jquery/dom/dimensions/dimensions.js','//jquery/event/resize/resize.js','//jquery/dom/cur_styles/cur_styles.js','//jquery/dom/dom.js','//jquery/jquery.js','//jquery/event/event.js','//mxui/nav/menuable/menuable.js','//jquery/controller/controller.js','//jquery/event/default/default.js','//jquery/event/livehack/livehack.js','//jquery/dom/closest/closest.js','//jquery/class/class.js','//jquery/lang/lang.js','//jquery/event/destroyed/destroyed.js','//jquery/controller/subscribe/subscribe.js','//funcit/highlight/highlight.js','//mxui/layout/fit/fit.js','//jquery/dom/form_params/form_params.js','//jquery/dom/compare/compare.js','//jquery/lang/openajax/openajax.js','//funcit/parse/parse.js','//jquery/dom/selection/selection.js','//funcit/lastselection/lastselection.js','//jquery/lang/json/json.js','//funcit/parse/resources/jslint.js','//jquery/dom/range/range.js','//funcit/rowheight/rowheight.js','//funcit/selectel/selectel.js','//funcit/commands/dialog.js','//funcit/commands/select_menu.js','//funcit/commands/tooltip.js','//funcit/commands/modal.js','//funcit/commands/open_page.js','//funcit/mask/mask.js','//funcit/selectel/views/tooltip.ejs','//jquery/view/view.js','//jquery/lang/rsplit/rsplit.js','//funcit/commands/views/dialog.ejs','//funcit/commands/views/move_recording.ejs','//funcit/commands/views/move.ejs','//funcit/commands/views/open.ejs','//funcit/commands/views/scroll.ejs','//funcit/commands/views/select.ejs','//funcit/commands/views/sidebar.ejs','//funcit/commands/views/tooltip.ejs','//funcit/testbuttons/views/sync.ejs','//funcit/runner/results.js','//funcit/runner/views/assert.ejs','//funcit/runner/views/done.ejs','//funcit/runner/views/test.ejs','//funcit/file_writer/resources/downloadify/js/swfobject.js','//funcit/file_writer/resources/downloadify/js/downloadify.min.js','//funcit/views/init.ejs','//funcit/views/app.ejs');
+steal.loading('//funcit/funcit.js','//funcunit/funcunit.js','//funcunit/qunit/qunit.js','//funcunit/qunit/rhino/rhino.js','//funcunit/resources/jquery.js','//funcunit/resources/json.js','//funcunit/resources/selector.js','//funcunit/syn/syn.js','//funcunit/syn/synthetic.js','//funcunit/syn/mouse.js','//funcunit/syn/browsers.js','//funcunit/syn/key.js','//funcunit/syn/drag/drag.js','//funcunit/resources/selenium_start.js','//funcunit/drivers/selenium.js','//funcunit/drivers/standard.js','//steal/less/less.js','//mxui/layout/fill/fill.js','//mxui/nav/tabs/tabs.js','//funcit/app/app.js','//funcit/editor/editor.js','//funcit/grow/grow.js','//funcit/commands/commands.js','//funcit/testbuttons/testbuttons.js','//funcit/runner/runner.js','//funcit/list_attributes/list_attributes.js','//funcit/file_reader/file_reader.js','//funcit/file_writer/file_writer.js','//funcit/pretty_selector/pretty_selector.js','//jquery/view/ejs/ejs.js','//funcit/resources/jquery.mousewheel.3.0.2/jquery.mousewheel.js','//funcit/resources/jquery.has_scrollbar.js','//funcit/resources/hasLocalStorage.js','//jquery/dom/dimensions/dimensions.js','//jquery/event/resize/resize.js','//jquery/dom/cur_styles/cur_styles.js','//jquery/dom/dom.js','//jquery/jquery.js','//jquery/event/event.js','//mxui/nav/menuable/menuable.js','//jquery/controller/controller.js','//jquery/event/default/default.js','//jquery/event/livehack/livehack.js','//jquery/dom/closest/closest.js','//jquery/class/class.js','//jquery/lang/lang.js','//jquery/event/destroyed/destroyed.js','//jquery/controller/subscribe/subscribe.js','//funcit/highlight/highlight.js','//mxui/layout/fit/fit.js','//jquery/dom/form_params/form_params.js','//jquery/dom/compare/compare.js','//funcit/filter/filter.js','//jquery/lang/openajax/openajax.js','//funcit/record/record.js','//funcit/filters/count.js','//funcit/filters/dblclick.js','//funcit/filters/lastmodified.js','//funcit/filters/similartext.js','//funcit/filters/visible.js','//funcit/parse/parse.js','//jquery/dom/selection/selection.js','//funcit/lastselection/lastselection.js','//jquery/lang/json/json.js','//funcit/parse/resources/jslint.js','//jquery/dom/range/range.js','//funcit/rowheight/rowheight.js','//funcit/selectel/selectel.js','//funcit/commands/dialog.js','//funcit/commands/select_menu.js','//funcit/commands/tooltip.js','//funcit/commands/modal.js','//funcit/commands/open_page.js','//funcit/mask/mask.js','//funcit/selectel/views/tooltip.ejs','//jquery/view/view.js','//jquery/lang/rsplit/rsplit.js','//funcit/commands/views/dialog.ejs','//funcit/commands/views/move_recording.ejs','//funcit/commands/views/move.ejs','//funcit/commands/views/open.ejs','//funcit/commands/views/scroll.ejs','//funcit/commands/views/select.ejs','//funcit/commands/views/sidebar.ejs','//funcit/commands/views/tooltip.ejs','//funcit/testbuttons/views/sync.ejs','//funcit/runner/results.js','//funcit/runner/views/assert.ejs','//funcit/runner/views/done.ejs','//funcit/runner/views/test.ejs','//funcit/file_writer/resources/downloadify/js/swfobject.js','//funcit/file_writer/resources/downloadify/js/downloadify.min.js','//funcit/views/init.ejs','//funcit/views/app.ejs');
 steal
 	.plugins('funcunit')
 	.then(function(){
@@ -10319,1136 +10319,1164 @@ steal(
 	'browsers',
 	'key',
 	'drag/drag'
-);;
+);
 steal.loaded('//funcunit/syn/syn.js');
-steal.then(function(){
-(function() {
-	var extend = function( d, s ) {
-		var p;
-		for (p in s) {
-			d[p] = s[p];
-		}
-		return d;
+(function(){
+var extend = function(d, s) { for (var p in s) d[p] = s[p]; return d;},
+	// only uses browser detection for key events
+	browser = {
+		msie:     !!(window.attachEvent && !window.opera),
+		opera:  !!window.opera,
+		webkit : navigator.userAgent.indexOf('AppleWebKit/') > -1,
+		safari: navigator.userAgent.indexOf('AppleWebKit/') > -1 && navigator.userAgent.indexOf('Chrome/') == -1,
+		gecko:  navigator.userAgent.indexOf('Gecko') > -1,
+		mobilesafari: !!navigator.userAgent.match(/Apple.*Mobile.*Safari/),
+		rhino : navigator.userAgent.match(/Rhino/) && true
 	},
-		// only uses browser detection for key events
-		browser = {
-			msie: !! (window.attachEvent && !window.opera),
-			opera: !! window.opera,
-			webkit: navigator.userAgent.indexOf('AppleWebKit/') > -1,
-			safari: navigator.userAgent.indexOf('AppleWebKit/') > -1 && navigator.userAgent.indexOf('Chrome/') === -1,
-			gecko: navigator.userAgent.indexOf('Gecko') > -1,
-			mobilesafari: !! navigator.userAgent.match(/Apple.*Mobile.*Safari/),
-			rhino: navigator.userAgent.match(/Rhino/) && true
-		},
-		createEventObject = function( type, options, element ) {
-			var event = element.ownerDocument.createEventObject();
-			return extend(event, options);
-		},
-		data = {},
-		id = 1,
-		expando = "_synthetic" + new Date().getTime(),
-		bind, unbind, key = /keypress|keyup|keydown/,
-		page = /load|unload|abort|error|select|change|submit|reset|focus|blur|resize|scroll/,
-		//this is maintained so we can click on html and blur the active element
-		activeElement,
+	createEventObject = function(type, options, element){
+		var event = element.ownerDocument.createEventObject();
+		return extend(event, options);
+	},
+	data = {}, 
+	id = 1, 
+	expando = "_synthetic"+(new Date() - 0),
+	bind,
+	unbind,
+	key = /keypress|keyup|keydown/,
+	page = /load|unload|abort|error|select|change|submit|reset|focus|blur|resize|scroll/,
+	//this is maintained so we can click on html and blur the active element
+	activeElement,
 
-		/**
-		 * @class Syn
-		 * @download funcunit/dist/syn.js
-		 * @test funcunit/synthetic/qunit.html
-		 * Syn is used to simulate user actions.  It creates synthetic events and
-		 * performs their default behaviors.
-		 * 
-		 * <h2>Basic Use</h2>
-		 * The following clicks an input element with <code>id='description'</code>
-		 * and then types <code>'Hello World'</code>.
-		 * 
-		 @codestart
-		 Syn.click({},'description')
-		 .type("Hello World")
-		 @codeend
-		 * <h2>User Actions and Events</h2>
-		 * <p>Syn is typically used to simulate user actions as opposed to triggering events. Typing characters
-		 * is an example of a user action.  The keypress that represents an <code>'a'</code>
-		 * character being typed is an example of an event. 
-		 * </p>
-		 * <p>
-		 *   While triggering events is supported, it's much more useful to simulate actual user behavior.  The 
-		 *   following actions are supported by Syn:
-		 * </p>
-		 * <ul>
-		 *   <li><code>[Syn.prototype.click click]</code> - a mousedown, focus, mouseup, and click.</li>
-		 *   <li><code>[Syn.prototype.dblclick dblclick]</code> - two <code>click!</code> events followed by a <code>dblclick</code>.</li>
-		 *   <li><code>[Syn.prototype.key key]</code> - types a single character (keydown, keypress, keyup).</li>
-		 *   <li><code>[Syn.prototype.type type]</code> - types multiple characters into an element.</li>
-		 *   <li><code>[Syn.prototype.move move]</code> - moves the mouse from one position to another (triggering mouseover / mouseouts).</li>
-		 *   <li><code>[Syn.prototype.drag drag]</code> - a mousedown, followed by mousemoves, and a mouseup.</li>
-		 * </ul>
-		 * All actions run asynchronously.  
-		 * Click on the links above for more 
-		 * information on how to use the specific action.
-		 * <h2>Asynchronous Callbacks</h2>
-		 * Actions don't complete immediately. This is almost 
-		 * entirely because <code>focus()</code> 
-		 * doesn't run immediately in IE.
-		 * If you provide a callback function to Syn, it will 
-		 * be called after the action is completed.
-		 * <br/>The following checks that "Hello World" was entered correctly: 
-		 @codestart
-		 Syn.click({},'description')
-		 .type("Hello World", function(){
-		 
-		 ok("Hello World" == document.getElementById('description').value)  
-		 })
-		 @codeend
-		 <h2>Asynchronous Chaining</h2>
-		 <p>You might have noticed the [Syn.prototype.then then] method.  It provides chaining
-		 so you can do a sequence of events with a single (final) callback.
-		 </p><p>
-		 If an element isn't provided to then, it uses the previous Syn's element.
-		 </p>
-		 The following does a lot of stuff before checking the result:
-		 @codestart
-		 Syn.type('ice water','title')
-		 .type('ice and water','description')
-		 .click({},'create')
-		 .drag({to: 'favorites'},'newRecipe',
-		 function(){
-		 ok($('#newRecipe').parents('#favorites').length);
-		 })
-		 @codeend
-		 
-		 <h2>jQuery Helper</h2>
-		 If jQuery is present, Syn adds a triggerSyn helper you can use like:
-		 @codestart
-		 $("#description").triggerSyn("type","Hello World");
-		 @codeend
-		 * <h2>Key Event Recording</h2>
-		 * <p>Every browser has very different rules for dispatching key events.  
-		 * As there is no way to feature detect how a browser handles key events,
-		 * synthetic uses a description of how the browser behaves generated
-		 * by a recording application.  </p>
-		 * <p>
-		 * If you want to support a browser not currently supported, you can
-		 * record that browser's key event description and add it to
-		 * <code>Syn.key.browsers</code> by it's navigator agent.
-		 * </p>
-		 @codestart
-		 Syn.key.browsers["Envjs\ Resig/20070309 PilotFish/1.2.0.10\1.6"] = {
-		 'prevent':
-		 {"keyup":[],"keydown":["char","keypress"],"keypress":["char"]},
-		 'character':
-		 { ... }
-		 }
-		 @codeend
-		 * <h2>Limitations</h2>
-		 * Syn fully supports IE 6+, FF 3+, Chrome, Safari, Opera 10+.
-		 * With FF 1+, drag / move events are only partially supported. They will
-		 * not trigger mouseover / mouseout events.<br/>
-		 * Safari crashes when a mousedown is triggered on a select.  Syn will not 
-		 * create this event.
-		 * <h2>Contributing to Syn</h2>
-		 * Have we missed something? We happily accept patches.  The following are 
-		 * important objects and properties of Syn:
-		 * <ul>
-		 * 	<li><code>Syn.create</code> - contains methods to setup, convert options, and create an event of a specific type.</li>
-		 *  <li><code>Syn.defaults</code> - default behavior by event type (except for keys).</li>
-		 *  <li><code>Syn.key.defaults</code> - default behavior by key.</li>
-		 *  <li><code>Syn.keycodes</code> - supported keys you can type.</li>
-		 * </ul>
-		 * <h2>Roll Your Own Functional Test Framework</h2>
-		 * <p>Syn is really the foundation of JavaScriptMVC's functional testing framework - [FuncUnit].
-		 *   But, we've purposely made Syn work without any dependencies in the hopes that other frameworks or 
-		 *   testing solutions can use it as well.
-		 * </p>
-		 * @constructor 
-		 * Creates a synthetic event on the element.
-		 * @param {Object} type
-		 * @param {Object} options
-		 * @param {Object} element
-		 * @param {Object} callback
-		 * @return Syn
-		 */
-		Syn = function( type, options, element, callback ) {
-			return (new Syn.init(type, options, element, callback));
-		};
+/**
+ * @class Syn
+ * @download funcunit/dist/syn.js
+ * @test funcunit/synthetic/qunit.html
+ * Syn is used to simulate user actions.  It creates synthetic events and
+ * performs their default behaviors.
+ * 
+ * <h2>Basic Use</h2>
+ * The following clicks an input element with <code>id='description'</code>
+ * and then types <code>'Hello World'</code>.
+ * 
+@codestart
+Syn.click({},'description')
+  .type("Hello World")
+@codeend
+ * <h2>User Actions and Events</h2>
+ * <p>Syn is typically used to simulate user actions as opposed to triggering events. Typing characters
+ * is an example of a user action.  The keypress that represents an <code>'a'</code>
+ * character being typed is an example of an event. 
+ * </p>
+ * <p>
+ *   While triggering events is supported, it's much more useful to simulate actual user behavior.  The 
+ *   following actions are supported by Syn:
+ * </p>
+ * <ul>
+ *   <li><code>[Syn.prototype.click click]</code> - a mousedown, focus, mouseup, and click.</li>
+ *   <li><code>[Syn.prototype.dblclick dblclick]</code> - two <code>click!</code> events followed by a <code>dblclick</code>.</li>
+ *   <li><code>[Syn.prototype.key key]</code> - types a single character (keydown, keypress, keyup).</li>
+ *   <li><code>[Syn.prototype.type type]</code> - types multiple characters into an element.</li>
+ *   <li><code>[Syn.prototype.move move]</code> - moves the mouse from one position to another (triggering mouseover / mouseouts).</li>
+ *   <li><code>[Syn.prototype.drag drag]</code> - a mousedown, followed by mousemoves, and a mouseup.</li>
+ * </ul>
+ * All actions run asynchronously.  
+ * Click on the links above for more 
+ * information on how to use the specific action.
+ * <h2>Asynchronous Callbacks</h2>
+ * Actions don't complete immediately. This is almost 
+ * entirely because <code>focus()</code> 
+ * doesn't run immediately in IE.
+ * If you provide a callback function to Syn, it will 
+ * be called after the action is completed.
+ * <br/>The following checks that "Hello World" was entered correctly: 
+@codestart
+Syn.click({},'description')
+  .type("Hello World", function(){
+  
+  ok("Hello World" == document.getElementById('description').value)  
+})
+@codeend
+<h2>Asynchronous Chaining</h2>
+<p>You might have noticed the [Syn.prototype.then then] method.  It provides chaining 
+so you can do a sequence of events with a single (final) callback.  
+</p><p>
+If an element isn't provided to then, it uses the previous Syn's element.
+</p>
+The following does a lot of stuff before checking the result:
+@codestart
+Syn.type('ice water','title')
+  .type('ice and water','description')
+  .click({},'create')
+  .drag({to: 'favorites'},'newRecipe',
+    function(){
+      ok($('#newRecipe').parents('#favorites').length);
+    })
+@codeend
 
-	bind = function( el, ev, f ) {
-		return el.addEventListener ? el.addEventListener(ev, f, false) : el.attachEvent("on" + ev, f);
-	};
-	unbind = function( el, ev, f ) {
-		return el.addEventListener ? el.removeEventListener(ev, f, false) : el.detachEvent("on" + ev, f);
-	};
+<h2>jQuery Helper</h2>
+If jQuery is present, Syn adds a triggerSyn helper you can use like:
+@codestart
+$("#description").triggerSyn("type","Hello World");
+@codeend
+ * <h2>Key Event Recording</h2>
+ * <p>Every browser has very different rules for dispatching key events.  
+ * As there is no way to feature detect how a browser handles key events,
+ * synthetic uses a description of how the browser behaves generated
+ * by a recording application.  </p>
+ * <p>
+ * If you want to support a browser not currently supported, you can
+ * record that browser's key event description and add it to
+ * <code>Syn.key.browsers</code> by it's navigator agent.
+ * </p>
+@codestart
+Syn.key.browsers["Envjs\ Resig/20070309 PilotFish/1.2.0.10\1.6"] = {
+  'prevent':
+    {"keyup":[],"keydown":["char","keypress"],"keypress":["char"]},
+  'character':
+    { ... }
+}
+@codeend
+ * <h2>Limitations</h2>
+ * Syn fully supports IE 6+, FF 3+, Chrome, Safari, Opera 10+.
+ * With FF 1+, drag / move events are only partially supported. They will
+ * not trigger mouseover / mouseout events.<br/>
+ * Safari crashes when a mousedown is triggered on a select.  Syn will not 
+ * create this event.
+ * <h2>Contributing to Syn</h2>
+ * Have we missed something? We happily accept patches.  The following are 
+ * important objects and properties of Syn:
+ * <ul>
+ * 	<li><code>Syn.create</code> - contains methods to setup, convert options, and create an event of a specific type.</li>
+ *  <li><code>Syn.defaults</code> - default behavior by event type (except for keys).</li>
+ *  <li><code>Syn.key.defaults</code> - default behavior by key.</li>
+ *  <li><code>Syn.keycodes</code> - supported keys you can type.</li>
+ * </ul>
+ * <h2>Roll Your Own Functional Test Framework</h2>
+ * <p>Syn is really the foundation of JavaScriptMVC's functional testing framework - [FuncUnit].
+ *   But, we've purposely made Syn work without any dependencies in the hopes that other frameworks or 
+ *   testing solutions can use it as well.
+ * </p>
+ * @constructor 
+ * Creates a synthetic event on the element.
+ * @param {Object} type
+ * @param {Object} options
+ * @param {Object} element
+ * @param {Object} callback
+ * @return Syn
+ */
+Syn = function(type, options, element, callback){		
+	return ( new Syn.init(type, options, element, callback) )
+};
 
+bind = function(el, ev, f){
+	return el.addEventListener ? 
+		el.addEventListener(ev, f, false) : 
+		 el.attachEvent("on"+ev, f) 
+};
+unbind = function(el, ev, f){
+	return el.addEventListener ?
+		el.removeEventListener(ev, f, false) :
+		el.detachEvent("on"+ev, f) 
+};
+
+/**
+ * @Static
+ */	
+extend(Syn,{
 	/**
-	 * @Static
+	 * Creates a new synthetic event instance
+	 * @hide
+	 * @param {Object} type
+	 * @param {Object} options
+	 * @param {Object} element
+	 * @param {Object} callback
 	 */
-	extend(Syn, {
-		/**
-		 * Creates a new synthetic event instance
-		 * @hide
-		 * @param {Object} type
-		 * @param {Object} options
-		 * @param {Object} element
-		 * @param {Object} callback
-		 */
-		init: function( type, options, element, callback ) {
-			var args = Syn.args(options, element, callback),
-				self = this;
-			this.queue = [];
-			this.element = args.element;
-
-			//run event
-			if ( typeof this[type] === "function" ) {
-				this[type](args.options, args.element, function( defaults, el ) {
-					args.callback && args.callback.apply(self, arguments);
-					self.done.apply(self, arguments);
-				});
-			} else {
-				this.result = Syn.trigger(type, args.options, args.element);
-				args.callback && args.callback.call(this, args.element, this.result);
-			}
-		},
-		jquery: function( el, fast ) {
-			if ( window.FuncUnit && window.FuncUnit.jquery ) {
-				return window.FuncUnit.jquery;
-			}
-			if ( el ) {
-				return Syn.helpers.getWindow(el).jQuery || window.jQuery;
-			}
-			else {
-				return window.jQuery;
-			}
-		},
-		/**
-		 * Returns an object with the args for a Syn.
-		 * @hide
-		 * @return {Object}
-		 */
-		args: function() {
-			var res = {},
-				i = 0;
-			for ( ; i < arguments.length; i++ ) {
-				if ( typeof arguments[i] === 'function' ) {
-					res.callback = arguments[i];
-				} else if ( arguments[i] && arguments[i].jquery ) {
-					res.element = arguments[i][0];
-				} else if ( arguments[i] && arguments[i].nodeName ) {
-					res.element = arguments[i];
-				} else if ( res.options && typeof arguments[i] === 'string' ) { //we can get by id
-					res.element = document.getElementById(arguments[i]);
-				}
-				else if ( arguments[i] ) {
-					res.options = arguments[i];
-				}
-			}
-			return res;
-		},
-		click: function( options, element, callback ) {
-			Syn('click!', options, element, callback);
-		},
-		/**
-		 * @attribute defaults
-		 * Default actions for events.  Each default function is called with this as its 
-		 * element.  It should return true if a timeout 
-		 * should happen after it.  If it returns an element, a timeout will happen
-		 * and the next event will happen on that element.
-		 */
-		defaults: {
-			focus: function() {
-				if (!Syn.support.focusChanges ) {
-					var element = this,
-						nodeName = element.nodeName.toLowerCase();
-					Syn.data(element, "syntheticvalue", element.value);
-
-					//TODO, this should be textarea too
-					//and this might be for only text style inputs ... hmmmmm ....
-					if ( nodeName === "input" || nodeName === "textarea" ) {
-						bind(element, "blur", function() {
-							if ( Syn.data(element, "syntheticvalue") != element.value ) {
-
-								Syn.trigger("change", {}, element);
-							}
-							unbind(element, "blur", arguments.callee);
-						});
-
-					}
-				}
-			},
-			submit: function() {
-				Syn.onParents(this, function( el ) {
-					if ( el.nodeName.toLowerCase() === 'form' ) {
-						el.submit();
-						return false;
-					}
-				});
-			}
-		},
-		changeOnBlur: function( element, prop, value ) {
-
-			bind(element, "blur", function() {
-				if ( value !== element[prop] ) {
-					Syn.trigger("change", {}, element);
-				}
-				unbind(element, "blur", arguments.callee);
-			});
-
-		},
-		/**
-		 * Returns the closest element of a particular type.
-		 * @hide
-		 * @param {Object} el
-		 * @param {Object} type
-		 */
-		closest: function( el, type ) {
-			while ( el && el.nodeName.toLowerCase() !== type.toLowerCase() ) {
-				el = el.parentNode;
-			}
-			return el;
-		},
-		/**
-		 * adds jQuery like data (adds an expando) and data exists FOREVER :)
-		 * @hide
-		 * @param {Object} el
-		 * @param {Object} key
-		 * @param {Object} value
-		 */
-		data: function( el, key, value ) {
-			var d;
-			if (!el[expando] ) {
-				el[expando] = id++;
-			}
-			if (!data[el[expando]] ) {
-				data[el[expando]] = {};
-			}
-			d = data[el[expando]];
-			if ( value ) {
-				data[el[expando]][key] = value;
-			} else {
-				return data[el[expando]][key];
-			}
-		},
-		/**
-		 * Calls a function on the element and all parents of the element until the function returns
-		 * false.
-		 * @hide
-		 * @param {Object} el
-		 * @param {Object} func
-		 */
-		onParents: function( el, func ) {
-			var res;
-			while ( el && res !== false ) {
-				res = func(el);
-				el = el.parentNode;
-			}
-			return el;
-		},
-		//regex to match focusable elements
-		focusable: /^(a|area|frame|iframe|label|input|select|textarea|button|html|object)$/i,
-		/**
-		 * Returns if an element is focusable
-		 * @hide
-		 * @param {Object} elem
-		 */
-		isFocusable: function( elem ) {
-			var attributeNode;
-			return (this.focusable.test(elem.nodeName) || 
-				((attributeNode = elem.getAttributeNode("tabIndex")) 
-				&& attributeNode.specified)) && Syn.isVisible(elem);
-		},
-		/**
-		 * Returns if an element is visible or not
-		 * @hide
-		 * @param {Object} elem
-		 */
-		isVisible: function( elem ) {
-			return (elem.offsetWidth && elem.offsetHeight) || (elem.clientWidth && elem.clientHeight);
-		},
-		/**
-		 * Gets the tabIndex as a number or null
-		 * @hide
-		 * @param {Object} elem
-		 */
-		tabIndex: function( elem ) {
-			var attributeNode = elem.getAttributeNode("tabIndex");
-			return attributeNode && attributeNode.specified && (parseInt(elem.getAttribute('tabIndex')) || 0);
-		},
-		bind: bind,
-		unbind: unbind,
-		browser: browser,
-		//some generic helpers
-		helpers: {
-			createEventObject: createEventObject,
-			createBasicStandardEvent: function( type, defaults, doc ) {
-				var event;
-				try {
-					event = doc.createEvent("Events");
-				} catch (e2) {
-					event = doc.createEvent("UIEvents");
-				} finally {
-					event.initEvent(type, true, true);
-					extend(event, defaults);
-				}
-				return event;
-			},
-			inArray: function( item, array ) {
-				var i =0;
-				for ( ; i < array.length; i++ ) {
-					if ( array[i] === item ) {
-						return i;
-					}
-				}
-				return -1;
-			},
-			getWindow: function( element ) {
-				return element.ownerDocument.defaultView || element.ownerDocument.parentWindow;
-			},
-			extend: extend,
-			scrollOffset: function( win , set) {
-				var doc = win.document.documentElement,
-					body = win.document.body;
-				if(set){
-					window.scrollTo(set.left, set.top);
-					
-				} else { 
-					return {
-						left: (doc && doc.scrollLeft || body && body.scrollLeft || 0) + (doc.clientLeft || 0),
-						top: (doc && doc.scrollTop || body && body.scrollTop || 0) + (doc.clientTop || 0)
-					};
-				}
-				
-			},
-			scrollDimensions: function(win){
-				var doc = win.document.documentElement,
-					body = win.document.body,
-					docWidth = doc.clientWidth,
-					docHeight = doc.clientHeight,
-					compat = win.document.compatMode === "CSS1Compat";
-				
-				return {
-					height: compat && docHeight ||
-						body.clientHeight || docHeight,
-					width: compat && docWidth ||
-						body.clientWidth || docWidth
-				};
-			},
-			addOffset: function( options, el ) {
-				var jq = Syn.jquery(el),
-					off;
-				if ( typeof options === 'object' && options.clientX === undefined && options.clientY === undefined && options.pageX === undefined && options.pageY === undefined && jq ) {
-					el = jq(el);
-					off = el.offset();
-					options.pageX = off.left + el.width() / 2;
-					options.pageY = off.top + el.height() / 2;
-				}
-			}
-		},
-		// place for key data
-		key: {
-			ctrlKey: null,
-			altKey: null,
-			shiftKey: null,
-			metaKey: null
-		},
-		//triggers an event on an element, returns true if default events should be run
-		/**
-		 * Dispatches an event and returns true if default events should be run.
-		 * @hide
-		 * @param {Object} event
-		 * @param {Object} element
-		 * @param {Object} type
-		 * @param {Object} autoPrevent
-		 */
-		dispatch: function( event, element, type, autoPrevent ) {
-
-			// dispatchEvent doesn't always work in IE (mostly in a popup)
-			if ( element.dispatchEvent && event ) {
-				var preventDefault = event.preventDefault,
-					prevents = autoPrevent ? -1 : 0;
-
-				//automatically prevents the default behavior for this event
-				//this is to protect agianst nasty browser freezing bug in safari
-				if ( autoPrevent ) {
-					bind(element, type, function( ev ) {
-						ev.preventDefault();
-						unbind(this, type, arguments.callee);
-					});
-				}
-
-
-				event.preventDefault = function() {
-					prevents++;
-					if (++prevents > 0 ) {
-						preventDefault.apply(this, []);
-					}
-				};
-				element.dispatchEvent(event);
-				return prevents <= 0;
-			} else {
-				try {
-					window.event = event;
-				} catch (e) {}
-				//source element makes sure element is still in the document
-				return element.sourceIndex <= 0 || (element.fireEvent && element.fireEvent('on' + type, event));
-			}
-		},
-		/**
-		 * @attribute
-		 * @hide
-		 * An object of eventType -> function that create that event.
-		 */
-		create: {
-			//-------- PAGE EVENTS ---------------------
-			page: {
-				event: function( type, options, element ) {
-					var doc = Syn.helpers.getWindow(element).document || document,
-						event;
-					if ( doc.createEvent ) {
-						event = doc.createEvent("Events");
-
-						event.initEvent(type, true, true);
-						return event;
-					}
-					else {
-						try {
-							event = createEventObject(type, options, element);
-						}
-						catch (e) {}
-						return event;
-					}
-				}
-			},
-			// unique events
-			focus: {
-				event: function( type, options, element ) {
-					Syn.onParents(element, function( el ) {
-						if ( Syn.isFocusable(el) ) {
-							if ( el.nodeName.toLowerCase() !== 'html' ) {
-								el.focus();
-								activeElement = el;
-							}
-							else if ( activeElement ) {
-								// TODO: The HTML element isn't focasable in IE, but it is
-								// in FF.  We should detect this and do a true focus instead
-								// of just a blur
-								var doc = Syn.helpers.getWindow(element).document;
-								if ( doc !== window.document ) {
-									return false;
-								} else if ( doc.activeElement ) {
-									doc.activeElement.blur();
-									activeElement = null;
-								} else {
-									activeElement.blur();
-									activeElement = null;
-								}
-
-
-							}
-							return false;
-						}
-					});
-					return true;
-				}
-			}
-		},
-		/**
-		 * @attribute support
-		 * Feature detected properties of a browser's event system.
-		 * Support has the following properties:
-		 * <ul>
-		 * 	<li><code>clickChanges</code> - clicking on an option element creates a change event.</li>
-		 *  <li><code>clickSubmits</code> - clicking on a form button submits the form.</li>
-		 *  <li><code>mouseupSubmits</code> - a mouseup on a form button submits the form.</li>
-		 *  <li><code>radioClickChanges</code> - clicking a radio button changes the radio.</li>
-		 *  <li><code>focusChanges</code> - focus/blur creates a change event.</li>
-		 *  <li><code>linkHrefJS</code> - An achor's href JavaScript is run.</li>
-		 *  <li><code>mouseDownUpClicks</code> - A mousedown followed by mouseup creates a click event.</li>
-		 *  <li><code>tabKeyTabs</code> - A tab key changes tabs.</li>
-		 *  <li><code>keypressOnAnchorClicks</code> - Keying enter on an anchor triggers a click.</li>
-		 * </ul>
-		 */
-		support: {
-			clickChanges: false,
-			clickSubmits: false,
-			keypressSubmits: false,
-			mouseupSubmits: false,
-			radioClickChanges: false,
-			focusChanges: false,
-			linkHrefJS: false,
-			keyCharacters: false,
-			backspaceWorks: false,
-			mouseDownUpClicks: false,
-			tabKeyTabs: false,
-			keypressOnAnchorClicks: false,
-			optionClickBubbles: false,
-			ready: 0
-		},
-		/**
-		 * Creates a synthetic event and dispatches it on the element.  
-		 * This will run any default actions for the element.
-		 * Typically you want to use Syn, but if you want the return value, use this.
-		 * @param {String} type
-		 * @param {Object} options
-		 * @param {HTMLElement} element
-		 * @return {Boolean} true if default events were run, false if otherwise.
-		 */
-		trigger: function( type, options, element ) {
-			options || (options = {});
-
-			var create = Syn.create,
-				setup = create[type] && create[type].setup,
-				kind = key.test(type) ? 'key' : (page.test(type) ? "page" : "mouse"),
-				createType = create[type] || {},
-				createKind = create[kind],
-				event, ret, autoPrevent, dispatchEl = element;
-
-			//any setup code?
-			Syn.support.ready === 2 && setup && setup(type, options, element);
-
-			autoPrevent = options._autoPrevent;
-			//get kind
-			delete options._autoPrevent;
-
-			if ( createType.event ) {
-				ret = createType.event(type, options, element);
-			} else {
-				//convert options
-				options = createKind.options ? createKind.options(type, options, element) : options;
-
-				if (!Syn.support.changeBubbles && /option/i.test(element.nodeName) ) {
-					dispatchEl = element.parentNode; //jQuery expects clicks on select
-				}
-
-				//create the event
-				event = createKind.event(type, options, dispatchEl);
-
-				//send the event
-				ret = Syn.dispatch(event, dispatchEl, type, autoPrevent);
-			}
-
-			//run default behavior
-			ret && Syn.support.ready === 2 && Syn.defaults[type] && Syn.defaults[type].call(element, options, autoPrevent);
-			return ret;
-		},
-		eventSupported: function( eventName ) {
-			var el = document.createElement("div");
-			eventName = "on" + eventName;
-
-			var isSupported = (eventName in el);
-			if (!isSupported ) {
-				el.setAttribute(eventName, "return;");
-				isSupported = typeof el[eventName] === "function";
-			}
-			el = null;
-
-			return isSupported;
-		}
-
-	});
-	/**
-	 * @Prototype
-	 */
-	extend(Syn.init.prototype, {
-		/**
-		 * @function then
-		 * <p>
-		 * Then is used to chain a sequence of actions to be run one after the other.
-		 * This is useful when many asynchronous actions need to be performed before some
-		 * final check needs to be made.
-		 * </p>
-		 * <p>The following clicks and types into the <code>id='age'</code> element and then checks that only numeric characters can be entered.</p>
-		 * <h3>Example</h3>
-		 * @codestart
-		 * Syn('click',{},'age')
-		 *   .then('type','I am 12',function(){
-		 *   equals($('#age').val(),"12")  
-		 * })
-		 * @codeend
-		 * If the element argument is undefined, then the last element is used.
-		 * 
-		 * @param {String} type The type of event or action to create: "_click", "_dblclick", "_drag", "_type".
-		 * @param {Object} options Optiosn to pass to the event.
-		 * @param {String|HTMLElement} [element] A element's id or an element.  If undefined, defaults to the previous element.
-		 * @param {Function} [callback] A function to callback after the action has run, but before any future chained actions are run.
-		 */
-		then: function( type, options, element, callback ) {
-			if ( Syn.autoDelay ) {
-				this.delay();
-			}
-			var args = Syn.args(options, element, callback),
-				self = this;
-
-
-			//if stack is empty run right away
-			//otherwise ... unshift it
-			this.queue.unshift(function( el, prevented ) {
-
-				if ( typeof this[type] === "function" ) {
-					this.element = args.element || el;
-					this[type](args.options, this.element, function( defaults, el ) {
-						args.callback && args.callback.apply(self, arguments);
-						self.done.apply(self, arguments);
-					});
-				} else {
-					this.result = Syn.trigger(type, args.options, args.element);
-					args.callback && args.callback.call(this, args.element, this.result);
-					return this;
-				}
+	init: function( type, options, element, callback ) {
+		var args = Syn.args(options,element, callback),
+			self = this;
+		this.queue = [];
+		this.element = args.element;
+		
+		//run event
+		if(typeof this[type] == "function") {
+			this[type](args.options, args.element, function(defaults,el ){
+				args.callback && args.callback.apply(self, arguments);
+				self.done.apply(self, arguments)		
 			})
-			return this;
-		},
-		/**
-		 * Delays the next command a set timeout.
-		 * @param {Number} [timeout]
-		 * @param {Function} [callback]
-		 */
-		delay: function( timeout, callback ) {
-			if ( typeof timeout === 'function' ) {
-				callback = timeout;
-				timeout = null;
+		}else{
+			this.result = Syn.trigger(type, args.options, args.element);
+			args.callback && args.callback.call(this, args.element, this.result);
+		}
+	},
+	jquery: function( el, fast ) {
+		if(window.FuncUnit && window.FuncUnit.jquery){
+			return window.FuncUnit.jquery
+		} if (el){
+			return Syn.helpers.getWindow(el).jQuery || window.jQuery	
+		}
+		else{
+			return window.jQuery
+		}
+	},
+	/**
+	 * Returns an object with the args for a Syn.
+	 * @hide
+	 * @return {Object}
+	 */
+	args: function() {
+		var res = {}
+		for(var i=0; i < arguments.length; i++){
+			if(typeof arguments[i] == 'function'){
+				res.callback = arguments[i]
+			}else if(arguments[i] && arguments[i].jquery){
+				res.element = arguments[i][0];
+			}else if(arguments[i] && arguments[i].nodeName){
+				res.element = arguments[i];
+			}else if(res.options && typeof arguments[i] == 'string'){ //we can get by id
+				res.element = document.getElementById(arguments[i])
 			}
-			timeout = timeout || 600;
-			var self = this;
-			this.queue.unshift(function() {
-				setTimeout(function() {
-					callback && callback.apply(self, [])
-					self.done.apply(self, arguments);
-				}, timeout);
-			});
-			return this;
-		},
-		done: function( defaults, el ) {
-			el && (this.element = el);
-			if ( this.queue.length ) {
-				this.queue.pop().call(this, this.element, defaults);
+			else if(arguments[i]){
+				res.options = arguments[i];
 			}
-
-		},
-		/**
-		 * @function click
-		 * Clicks an element by triggering a mousedown, 
-		 * mouseup, 
-		 * and a click event.
-		 * <h3>Example</h3>
-		 * @codestart
-		 * Syn.click({},'create',function(){
-		 *   //check something
-		 * })
-		 * @codeend
-		 * You can also provide the coordinates of the click.  
-		 * If jQuery is present, it will set clientX and clientY
-		 * for you.  Here's how to set it yourself:
-		 * @codestart
-		 * Syn.click(
-		 *     {clientX: 20, clientY: 100},
-		 *     'create',
-		 *     function(){
-		 *       //check something
-		 *     })
-		 * @codeend
-		 * You can also provide pageX and pageY and Syn will convert it for you.
-		 * @param {Object} options
-		 * @param {HTMLElement} element
-		 * @param {Function} callback
-		 */
-		"_click": function( options, element, callback, force ) {
-			Syn.helpers.addOffset(options, element);
-			Syn.trigger("mousedown", options, element);
-
-			//timeout is b/c IE is stupid and won't call focus handlers
-			setTimeout(function() {
-				Syn.trigger("mouseup", options, element);
-				if (!Syn.support.mouseDownUpClicks || force ) {
-					Syn.trigger("click", options, element);
-					callback(true);
-				} else {
-					//we still have to run the default (presumably)
-					Syn.create.click.setup('click', options, element);
-					Syn.defaults.click.call(element);
-					//must give time for callback
-					setTimeout(function() {
-						callback(true);
-					}, 1);
+		}
+		return res;
+	},
+	click: function( options, element, callback ) {
+		Syn('click!',options,element, callback);
+	},
+	/**
+	 * @attribute defaults
+	 * Default actions for events.  Each default function is called with this as its 
+	 * element.  It should return true if a timeout 
+	 * should happen after it.  If it returns an element, a timeout will happen
+	 * and the next event will happen on that element.
+	 */
+	defaults : {
+		focus: function() {
+			if(!Syn.support.focusChanges){
+				var element = this,
+					nodeName = element.nodeName.toLowerCase();
+				Syn.data(element,"syntheticvalue", element.value)
+				
+				//TODO, this should be textarea too
+				//and this might be for only text style inputs ... hmmmmm ....
+				
+				if(nodeName == "input" || nodeName == "textarea"){ 
+					bind(element, "blur", function(){
+						if( Syn.data(element,"syntheticvalue") !=  element.value){
+							
+							Syn.trigger("change", {}, element);
+						}
+						unbind(element,"blur", arguments.callee)
+					})
+					
 				}
-
-			}, 1);
+			}
 		},
-		/**
-		 * Right clicks in browsers that support it (everyone but opera).
-		 * @param {Object} options
-		 * @param {Object} element
-		 * @param {Object} callback
-		 */
-		"_rightClick": function( options, element, callback ) {
-			Syn.helpers.addOffset(options, element);
-			var mouseopts = extend(extend({}, Syn.mouse.browser.right.mouseup), options);
-
-			Syn.trigger("mousedown", mouseopts, element);
-
-			//timeout is b/c IE is stupid and won't call focus handlers
-			setTimeout(function() {
-				Syn.trigger("mouseup", mouseopts, element);
-				if ( Syn.mouse.browser.contextmenu ) {
-					Syn.trigger("contextmenu", extend(extend({}, Syn.mouse.browser.right.contextmenu), options), element);
+		submit: function() {
+			Syn.onParents(this, function(el){
+				if( el.nodeName.toLowerCase() == 'form'){
+					el.submit()
+					return false;
 				}
-				callback(true);
-			}, 1);
-		},
-		/**
-		 * @function dblclick
-		 * Dblclicks an element.  This runs two [Syn.prototype.click click] events followed by
-		 * a dblclick on the element.
-		 * <h3>Example</h3>
-		 * @codestart
-		 * Syn.dblclick({},'open')
-		 * @codeend
-		 * @param {Object} options
-		 * @param {HTMLElement} element
-		 * @param {Function} callback
-		 */
-		"_dblclick": function( options, element, callback ) {
-			Syn.helpers.addOffset(options, element);
-			var self = this;
-			this._click(options, element, function() {
-				setTimeout(function() {
-					self._click(options, element, function() {
-						Syn.trigger("dblclick", options, element);
-						callback(true);
-					}, true);
-				}, 2);
-
 			});
 		}
-	});
-
-	var actions = ["click", "dblclick", "move", "drag", "key", "type", 'rightClick'],
-		makeAction = function( name ) {
-			Syn[name] = function( options, element, callback ) {
-				return Syn("_" + name, options, element, callback);
-			};
-			Syn.init.prototype[name] = function( options, element, callback ) {
-				return this.then("_" + name, options, element, callback);
-			};
-		},
-		i = 0;
-		for ( ; i < actions.length; i++ ) {
-			makeAction(actions[i]);
+	},
+	changeOnBlur: function( element, prop, value ) {
+		
+		bind(element, "blur", function(){		
+			if( value !=  element[prop]){
+				Syn.trigger("change", {}, element);
+			}
+			unbind(element,"blur", arguments.callee)
+		})
+		
+	},
+	/**
+	 * Returns the closest element of a particular type.
+	 * @hide
+	 * @param {Object} el
+	 * @param {Object} type
+	 */
+	closest: function( el, type ) {
+		while(el && el.nodeName.toLowerCase() != type.toLowerCase()){
+			el = el.parentNode
 		}
-		/**
-		 * Used for creating and dispatching synthetic events.
-		 * @codestart
-		 * new MVC.Syn('click').send(MVC.$E('id'))
-		 * @codeend
-		 * @constructor Sets up a synthetic event.
-		 * @param {String} type type of event, ex: 'click'
-		 * @param {optional:Object} options
-		 */
-		if ( window.jQuery || (window.FuncUnit && window.FuncUnit.jquery) ) {
-			((window.FuncUnit && window.FuncUnit.jquery) || window.jQuery).fn.triggerSyn = function( type, options, callback ) {
-				Syn(type, options, this[0], callback);
-				return this;
-			};
+		return el;
+	},
+	/**
+	 * adds jQuery like data (adds an expando) and data exists FOREVER :)
+	 * @hide
+	 * @param {Object} el
+	 * @param {Object} key
+	 * @param {Object} value
+	 */
+	data: function( el, key, value ) {
+		var d;
+		if(!el[expando]){
+			el[expando] = id++;
 		}
-
-		window.Syn = Syn;
-}());
-});
-steal.loaded('//funcunit/syn/synthetic.js');
-steal.then(function(){
-//steal("synthetic").then(function() {
-//handles mosue events
-(function() {
-
-	var h = Syn.helpers,
-		getWin = h.getWindow;
-
-	Syn.mouse = {};
-	h.extend(Syn.defaults, {
-		mousedown: function( options ) {
-			Syn.trigger("focus", {}, this)
-		},
-		click: function() {
-			// prevents the access denied issue in IE if the click causes the element to be destroyed
-			var element = this;
+		if(!data[el[expando]]){
+			data[el[expando]] = {};
+		}
+		d = data[el[expando]]
+		if(value){
+			data[el[expando]][key] = value;
+		}else{
+			return data[el[expando]][key];
+		}
+	},
+	/**
+	 * Calls a function on the element and all parents of the element until the function returns
+	 * false.
+	 * @hide
+	 * @param {Object} el
+	 * @param {Object} func
+	 */
+	onParents: function( el, func ) {
+		var res;
+		while(el && res !== false){
+			res = func(el)
+			el = el.parentNode
+		}
+		return el;
+	},
+	//regex to match focusable elements
+	focusable : /^(a|area|frame|iframe|label|input|select|textarea|button|html|object)$/i,
+	/**
+	 * Returns if an element is focusable
+	 * @hide
+	 * @param {Object} elem
+	 */
+	isFocusable: function( elem ) {
+		var attributeNode;
+		return ( this.focusable.test(elem.nodeName) || (
+			(attributeNode = elem.getAttributeNode( "tabIndex" )) && attributeNode.specified ) )
+			&& Syn.isVisible(elem)
+	},
+	/**
+	 * Returns if an element is visible or not
+	 * @hide
+	 * @param {Object} elem
+	 */
+	isVisible: function( elem ) {
+		return (elem.offsetWidth && elem.offsetHeight) || (elem.clientWidth && elem.clientHeight)
+	},
+	/**
+	 * Gets the tabIndex as a number or null
+	 * @hide
+	 * @param {Object} elem
+	 */
+	tabIndex: function( elem ) {
+		var attributeNode = elem.getAttributeNode( "tabIndex" );
+		return attributeNode && attributeNode.specified && ( parseInt( elem.getAttribute('tabIndex') ) || 0 )
+	},
+	bind : bind,
+	unbind : unbind,
+	browser: browser,
+	//some generic helpers
+	helpers : {
+		createEventObject : createEventObject,
+		createBasicStandardEvent: function( type, defaults , doc) {
+			var event;
 			try {
-				element.nodeType;
-			} catch (e) {
-				return;
+				event = doc.createEvent("Events");
+			} catch(e2) {
+				event = doc.createEvent("UIEvents");
+			} finally {
+				event.initEvent(type, true, true);
+				extend(event, defaults);
 			}
-			//get old values
-			var href, radioChanged = Syn.data(element, "radioChanged"),
-				scope = getWin(element),
-				nodeName = element.nodeName.toLowerCase();
-			
-			//this code was for restoring the href attribute to prevent popup opening
-			//if ((href = Syn.data(element, "href"))) {
-			//	element.setAttribute('href', href)
-			//}
-
-			//run href javascript
-			if (!Syn.support.linkHrefJS && /^\s*javascript:/.test(element.href) ) {
-				//eval js
-				var code = element.href.replace(/^\s*javascript:/, "")
-
-				//try{
-				if ( code != "//" && code.indexOf("void(0)") == -1 ) {
-					if ( window.selenium ) {
-						eval("with(selenium.browserbot.getCurrentWindow()){" + code + "}")
-					} else {
-						eval("with(scope){" + code + "}")
-					}
+			return event;
+		},
+		inArray: function( item, array ) {
+			for(var i =0; i < array.length; i++){
+				if(array[i] == item){
+					return i;
 				}
 			}
-
-			//submit a form
-			if (!(Syn.support.clickSubmits) && (nodeName == "input" && element.type == "submit") || nodeName == 'button' ) {
-
-				var form = Syn.closest(element, "form");
-				if ( form ) {
-					Syn.trigger("submit", {}, form)
-				}
-
+			return -1;
+		},
+		getWindow: function( element ) {
+			return element.ownerDocument.defaultView || element.ownerDocument.parentWindow
+		},
+		extend:  extend,
+		scrollOffset: function( win ) {
+			var doc = win.document.documentElement,
+				body = win.document.body;
+			return {
+				left :  (doc && doc.scrollLeft || body && body.scrollLeft || 0) + (doc.clientLeft || 0),
+				top : (doc && doc.scrollTop || body && body.scrollTop || 0) + (doc.clientTop || 0)
 			}
-			//follow a link, probably needs to check if in an a.
-			if ( nodeName == "a" && element.href && !/^\s*javascript:/.test(element.href) ) {
-
-				scope.location.href = element.href;
-
-			}
-
-			//change a checkbox
-			if ( nodeName == "input" && element.type == "checkbox" ) {
-
-				//if(!Syn.support.clickChecks && !Syn.support.changeChecks){
-				//	element.checked = !element.checked;
-				//}
-				if (!Syn.support.clickChanges ) {
-					Syn.trigger("change", {}, element);
-				}
-			}
-
-			//change a radio button
-			if ( nodeName == "input" && element.type == "radio" ) { // need to uncheck others if not checked
-				if ( radioChanged && !Syn.support.radioClickChanges ) {
-					Syn.trigger("change", {}, element);
-				}
-			}
-			// change options
-			if ( nodeName == "option" && Syn.data(element, "createChange") ) {
-				Syn.trigger("change", {}, element.parentNode); //does not bubble
-				Syn.data(element, "createChange", false)
+				
+		},
+		addOffset: function( options, el ) {
+			var jq = Syn.jquery(el)
+			if(typeof options == 'object' &&
+			   options.clientX === undefined &&
+			   options.clientY === undefined &&
+			   options.pageX   === undefined &&
+			   options.pageY   === undefined && jq){
+				var el = jq(el)
+					off = el.offset();
+				options.pageX = off.left + el.width() /2 ;
+				options.pageY = off.top + el.height() /2 ;
 			}
 		}
-	})
+	},
+	// place for key data
+	key : {
+		ctrlKey : null,
+		altKey : null,
+		shiftKey : null,
+		metaKey : null
+	},
+	//triggers an event on an element, returns true if default events should be run
+	/**
+	 * Dispatches an event and returns true if default events should be run.
+	 * @hide
+	 * @param {Object} event
+	 * @param {Object} element
+	 * @param {Object} type
+	 * @param {Object} autoPrevent
+	 */
+	dispatch : function(event, element, type, autoPrevent){
+		
+		// dispatchEvent doesn't always work in IE (mostly in a popup)
+		if(element.dispatchEvent && event){	
+			var preventDefault = event.preventDefault, 
+				prevents = autoPrevent ? -1 : 0;
+			
+			//automatically prevents the default behavior for this event
+			//this is to protect agianst nasty browser freezing bug in safari
+			if(autoPrevent){
+				bind(element, type, function(ev){
+					ev.preventDefault()
+					unbind(this, type, arguments.callee)
+				})
+			}
+			
+			
+			event.preventDefault = function(){
+				prevents++;
+				if(++prevents > 0){
+					preventDefault.apply(this,[]);
+				}
+			}
+			element.dispatchEvent(event)
+			return prevents <= 0;
+		} else {
+			try {window.event = event;}catch(e) {}
+			//source element makes sure element is still in the document
+			return element.sourceIndex <= 0 || (element.fireEvent && element.fireEvent('on'+type, event))
+		}
+	},
+	/**
+	 * @attribute
+	 * @hide
+	 * An object of eventType -> function that create that event.
+	 */
+	create :  {
+		//-------- PAGE EVENTS ---------------------
+		page : {
+			event: function(type, options, element){
+				var doc = Syn.helpers.getWindow(element).document || document;
+				if (doc.createEvent) {
+					var event = doc.createEvent("Events");
 
-	//add create and setup behavior for mosue events
-	h.extend(Syn.create, {
-		mouse: {
-			options: function( type, options, element ) {
-				var doc = document.documentElement,
-					body = document.body,
-					center = [options.pageX || 0, options.pageY || 0],
-					//browser might not be loaded yet (doing support code)
-					left = Syn.mouse.browser && Syn.mouse.browser.left[type],
-					right = Syn.mouse.browser && Syn.mouse.browser.right[type];
-				return h.extend({
-					bubbles: true,
-					cancelable: true,
-					view: window,
-					detail: 1,
-					screenX: 1,
-					screenY: 1,
-					clientX: options.clientX || center[0] - (doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc.clientLeft || 0),
-					clientY: options.clientY || center[1] - (doc && doc.scrollTop || body && body.scrollTop || 0) - (doc.clientTop || 0),
-					ctrlKey: !! Syn.key.ctrlKey,
-					altKey: !! Syn.key.altKey,
-					shiftKey: !! Syn.key.shiftKey,
-					metaKey: !! Syn.key.metaKey,
-					button: left && left.button != null ? left.button : right && right.button || (type == 'contextmenu' ? 2 : 0),
-					relatedTarget: document.documentElement
-				}, options);
-			},
-			event: function( type, defaults, element ) { //Everyone Else
-				var doc = getWin(element).document || document
-				if ( doc.createEvent ) {
-					var event;
-
-					try {
-						event = doc.createEvent('MouseEvents');
-						event.initMouseEvent(type, defaults.bubbles, defaults.cancelable, defaults.view, defaults.detail, defaults.screenX, defaults.screenY, defaults.clientX, defaults.clientY, defaults.ctrlKey, defaults.altKey, defaults.shiftKey, defaults.metaKey, defaults.button, defaults.relatedTarget);
-					} catch (e) {
-						event = h.createBasicStandardEvent(type, defaults, doc)
-					}
-					event.synthetic = true;
+					event.initEvent(type, true, true);
 					return event;
-				} else {
+				}
+				else {
 					var event;
 					try {
-						event = h.createEventObject(type, defaults, element)
+						event = createEventObject(type, options, element);
 					}
 					catch (e) {}
-
 					return event;
 				}
-
 			}
 		},
-		click: {
-			setup: function( type, options, element ) {
-				var nodeName = element.nodeName.toLowerCase(),
-					type;
-
-				//we need to manually 'check' in browser that can't check
-				//so checked has the right value
-				if (!Syn.support.clickChecks && !Syn.support.changeChecks && nodeName === "input" ) {
-					type = element.type.toLowerCase(); //pretty sure lowercase isn't needed
-					if ( type === 'checkbox' ) {
-						element.checked = !element.checked;
-					}
-					if ( type === "radio" ) {
-						//do the checks manually 
-						if (!element.checked ) { //do nothing, no change
-							try {
-								Syn.data(element, "radioChanged", true);
-							} catch (e) {}
-							element.checked = true;
+		// unique events
+		focus : {
+			event: function( type, options, element ) {
+				Syn.onParents(element, function(el){
+					if( Syn.isFocusable(el)){
+						if(el.nodeName.toLowerCase() != 'html'){
+							el.focus();
+							activeElement = el;
 						}
-					}
-				}
-
-				if ( nodeName == "a" && element.href && !/^\s*javascript:/.test(element.href) ) {
-
-					//save href
-					Syn.data(element, "href", element.href)
-
-					//remove b/c safari/opera will open a new tab instead of changing the page
-					// this has been removed because newer versions don't have this problem
-					//element.setAttribute('href', 'javascript://')
-					//however this breaks scripts using the href
-					//we need to listen to this and prevent the default behavior
-					//and run the default behavior ourselves. Boo!
-				}
-				//if select or option, save old value and mark to change
-				if (/option/i.test(element.nodeName) ) {
-					var child = element.parentNode.firstChild,
-						i = -1;
-					while ( child ) {
-						if ( child.nodeType == 1 ) {
-							i++;
-							if ( child == element ) break;
+						else if(activeElement){
+							// TODO: The HTML element isn't focasable in IE, but it is
+							// in FF.  We should detect this and do a true focus instead
+							// of just a blur
+							var doc = Syn.helpers.getWindow(element).document;
+							if(doc != window.document){
+								return false;
+							}else if(doc.activeElement){
+								doc.activeElement.blur();
+								activeElement = null;
+							}else{
+								activeElement.blur();
+								activeElement = null;
+							}
+							
+							
 						}
-						child = child.nextSibling;
+						return false
 					}
-					if ( i !== element.parentNode.selectedIndex ) {
-						//shouldn't this wait on triggering
-						//change?
-						element.parentNode.selectedIndex = i;
-						Syn.data(element, "createChange", true)
-					}
-				}
-
-			}
-		},
-		mousedown: {
-			setup: function( type, options, element ) {
-				var nn = element.nodeName.toLowerCase();
-				//we have to auto prevent default to prevent freezing error in safari
-				if ( Syn.browser.safari && (nn == "select" || nn == "option") ) {
-					options._autoPrevent = true;
-				}
+				});
+				return true;
 			}
 		}
-	});
-	//do support code
-	(function() {
-		if (!document.body ) {
-			setTimeout(arguments.callee, 1)
+	},
+	/**
+	 * @attribute support
+	 * Feature detected properties of a browser's event system.
+	 * Support has the following properties:
+	 * <ul>
+	 * 	<li><code>clickChanges</code> - clicking on an option element creates a change event.</li>
+	 *  <li><code>clickSubmits</code> - clicking on a form button submits the form.</li>
+	 *  <li><code>mouseupSubmits</code> - a mouseup on a form button submits the form.</li>
+	 *  <li><code>radioClickChanges</code> - clicking a radio button changes the radio.</li>
+	 *  <li><code>focusChanges</code> - focus/blur creates a change event.</li>
+	 *  <li><code>linkHrefJS</code> - An achor's href JavaScript is run.</li>
+	 *  <li><code>mouseDownUpClicks</code> - A mousedown followed by mouseup creates a click event.</li>
+	 *  <li><code>tabKeyTabs</code> - A tab key changes tabs.</li>
+	 *  <li><code>keypressOnAnchorClicks</code> - Keying enter on an anchor triggers a click.</li>
+	 * </ul>
+	 */
+	support : {
+		clickChanges : false,
+		clickSubmits : false,
+		keypressSubmits : false,
+		mouseupSubmits: false,
+		radioClickChanges : false,
+		focusChanges : false,
+		linkHrefJS : false,
+		keyCharacters : false,
+		backspaceWorks : false,
+		mouseDownUpClicks : false,
+		tabKeyTabs : false,
+		keypressOnAnchorClicks : false,
+		optionClickBubbles : false,
+		ready : 0
+	},
+	/**
+	 * Creates a synthetic event and dispatches it on the element.  
+	 * This will run any default actions for the element.
+	 * Typically you want to use Syn, but if you want the return value, use this.
+	 * @param {String} type
+	 * @param {Object} options
+	 * @param {HTMLElement} element
+	 * @return {Boolean} true if default events were run, false if otherwise.
+	 */
+	trigger: function( type, options, element ) {
+		options || (options = {});
+		
+		var create = Syn.create,
+			setup = create[type] && create[type].setup,
+			kind = key.test(type) ? 
+				'key' : 
+				( page.test(type) ?
+					"page" : "mouse" ),
+				createType = create[type] || {},
+				createKind = create[kind],
+				event,
+				ret,
+				autoPrevent,
+				dispatchEl = element;
+		
+		//any setup code?
+		Syn.support.ready == 2 && setup && setup(type, options, element);
+		
+		autoPrevent = options._autoPrevent;
+		//get kind
+		
+		delete options._autoPrevent;
+			
+		if(createType.event){
+			ret = createType.event(type, options, element)
+		}else{
+			//convert options
+			options = createKind.options ? createKind.options(type,options,element) : options;
+			
+			if(!Syn.support.changeBubbles && /option/i.test(element.nodeName)){
+				dispatchEl = element.parentNode; //jQuery expects clicks on select
+			}
+			
+			//create the event
+			event = createKind.event(type,options,dispatchEl)
+			
+			//send the event
+			ret = Syn.dispatch(event, dispatchEl, type, autoPrevent)
+		}
+		
+		//run default behavior
+		ret && Syn.support.ready == 2
+			&& Syn.defaults[type] 
+			&& Syn.defaults[type].call(element, options, autoPrevent);
+		return ret;
+	},
+	eventSupported: function( eventName ) { 
+		var el = document.createElement("div"); 
+		eventName = "on" + eventName; 
+
+		var isSupported = (eventName in el); 
+		if ( !isSupported ) { 
+			el.setAttribute(eventName, "return;"); 
+			isSupported = typeof el[eventName] === "function"; 
+		} 
+		el = null; 
+
+		return isSupported; 
+	}
+	
+});
+	var h = Syn.helpers;
+/**
+ * @Prototype
+ */
+extend(Syn.init.prototype,{
+	/**
+	 * @function then
+	 * <p>
+	 * Then is used to chain a sequence of actions to be run one after the other.
+	 * This is useful when many asynchronous actions need to be performed before some
+	 * final check needs to be made.
+	 * </p>
+	 * <p>The following clicks and types into the <code>id='age'</code> element and then checks that only numeric characters can be entered.</p>
+	 * <h3>Example</h3>
+	 * @codestart
+	 * Syn('click',{},'age')
+	 *   .then('type','I am 12',function(){
+	 *   equals($('#age').val(),"12")  
+	 * })
+	 * @codeend
+	 * If the element argument is undefined, then the last element is used.
+	 * 
+	 * @param {String} type The type of event or action to create: "_click", "_dblclick", "_drag", "_type".
+	 * @param {Object} options Optiosn to pass to the event.
+	 * @param {String|HTMLElement} [element] A element's id or an element.  If undefined, defaults to the previous element.
+	 * @param {Function} [callback] A function to callback after the action has run, but before any future chained actions are run.
+	 */
+	then: function( type, options, element, callback ) {
+		if(Syn.autoDelay){
+			this.delay();
+		}
+		var args = Syn.args(options,element, callback),
+			self = this;
+
+		
+		//if stack is empty run right away
+		
+		//otherwise ... unshift it
+		this.queue.unshift(function(el, prevented){
+			
+			if(typeof this[type] == "function") {
+				this.element = args.element || el;
+				this[type](args.options, this.element, function(defaults, el){
+					args.callback && args.callback.apply(self, arguments);
+					self.done.apply(self, arguments)		
+				})
+			}else{
+				this.result = Syn.trigger(type, args.options, args.element);
+				args.callback && args.callback.call(this, args.element, this.result);
+				return this;
+			}
+		})
+		return this;
+	},
+	/**
+	 * Delays the next command a set timeout.
+	 * @param {Number} [timeout]
+	 * @param {Function} [callback]
+	 */
+	delay: function( timeout, callback ) {
+		if(typeof timeout == 'function'){
+			callback = timeout;
+			timeout = null;
+		}
+		timeout = timeout || 600
+		var self = this;
+		this.queue.unshift(function(){
+			setTimeout(function(){
+				callback && callback.apply(self,[])
+				self.done.apply(self, arguments)
+			},timeout)
+		})
+		return this;
+	},
+	done: function( defaults, el ) {
+		el && (this.element = el);;
+		if(this.queue.length){
+			this.queue.pop().call(this, this.element, defaults);
+		}
+		
+	},
+	/**
+	 * @function click
+	 * Clicks an element by triggering a mousedown, 
+	 * mouseup, 
+	 * and a click event.
+	 * <h3>Example</h3>
+	 * @codestart
+	 * Syn.click({},'create',function(){
+	 *   //check something
+	 * })
+	 * @codeend
+	 * You can also provide the coordinates of the click.  
+	 * If jQuery is present, it will set clientX and clientY
+	 * for you.  Here's how to set it yourself:
+	 * @codestart
+	 * Syn.click(
+	 *     {clientX: 20, clientY: 100},
+	 *     'create',
+	 *     function(){
+	 *       //check something
+	 *     })
+	 * @codeend
+	 * You can also provide pageX and pageY and Syn will convert it for you.
+	 * @param {Object} options
+	 * @param {HTMLElement} element
+	 * @param {Function} callback
+	 */
+	"_click" : function( options, element, callback, force ) {
+		Syn.helpers.addOffset(options, element);
+		Syn.trigger("mousedown", options, element);
+		
+		//timeout is b/c IE is stupid and won't call focus handlers
+		setTimeout(function(){
+			Syn.trigger("mouseup", options, element)
+			if(!Syn.support.mouseDownUpClicks || force){
+				Syn.trigger("click", options, element)
+				callback(true)
+			}else{
+				//we still have to run the default (presumably)
+				Syn.create.click.setup('click',options,element)
+				Syn.defaults.click.call(element)
+				//must give time for callback
+				setTimeout(function(){
+					callback(true)
+				},1)
+			}
+			
+		},1)
+	},
+	/**
+	 * Right clicks in browsers that support it (everyone but opera).
+	 * @param {Object} options
+	 * @param {Object} element
+	 * @param {Object} callback
+	 */
+	"_rightClick" : function( options, element, callback ) {
+		Syn.helpers.addOffset(options, element);
+		var mouseopts =  extend( extend({},Syn.mouse.browser.right.mouseup ), options)
+		
+		Syn.trigger("mousedown", mouseopts, element);
+		
+		//timeout is b/c IE is stupid and won't call focus handlers
+		setTimeout(function(){
+			Syn.trigger("mouseup", mouseopts, element)
+			if (Syn.mouse.browser.contextmenu) {
+				Syn.trigger("contextmenu", 
+					extend( extend({},Syn.mouse.browser.right.contextmenu ), options), 
+					element)
+			}
+			callback(true)
+		},1)
+	},
+	/**
+	 * @function dblclick
+	 * Dblclicks an element.  This runs two [Syn.prototype.click click] events followed by
+	 * a dblclick on the element.
+	 * <h3>Example</h3>
+	 * @codestart
+	 * Syn.dblclick({},'open')
+	 * @codeend
+	 * @param {Object} options
+	 * @param {HTMLElement} element
+	 * @param {Function} callback
+	 */
+	"_dblclick" : function( options, element, callback ) {
+		Syn.helpers.addOffset(options, element);
+		var self = this;
+		this._click(options, element, function(){
+			setTimeout(function(){
+				self._click(options, element, function(){
+					Syn.trigger("dblclick", options, element)
+					callback(true)
+				},true)
+			},2)
+			
+		})
+	}
+})
+
+var actions = ["click","dblclick","move","drag","key","type",'rightClick'],
+	makeAction = function(name){
+		Syn[name] = function(options, element, callback){
+			return Syn("_"+name, options, element, callback)
+		}
+		Syn.init.prototype[name] = function(options, element, callback){
+			return this.then("_"+name, options, element, callback)
+		}
+	}
+for(var i=0; i < actions.length; i++){
+	makeAction(actions[i]);
+}
+/**
+ * Used for creating and dispatching synthetic events.
+ * @codestart
+ * new MVC.Syn('click').send(MVC.$E('id'))
+ * @codeend
+ * @constructor Sets up a synthetic event.
+ * @param {String} type type of event, ex: 'click'
+ * @param {optional:Object} options
+ */
+if (window.jQuery || (window.FuncUnit && window.FuncUnit.jquery)) {
+	((window.FuncUnit && window.FuncUnit.jquery) || window.jQuery  ).fn.triggerSyn = function(type, options, callback){
+		Syn(type, options, this[0], callback)
+		return this;
+	};
+}
+
+window.Syn = Syn;
+}());
+steal.loaded('//funcunit/syn/synthetic.js');
+steal("synthetic").then(function() {
+//handles mosue events
+(function(){
+
+var h = Syn.helpers,
+	getWin = h.getWindow;
+
+Syn.mouse = {};
+h.extend(Syn.defaults,{
+	mousedown: function( options ) {
+		Syn.trigger("focus", {}, this)
+	},
+	click: function() {
+		// prevents the access denied issue in IE if the click causes the element to be destroyed
+		var element = this;
+		try {
+			element.nodeType;
+		} catch(e){
 			return;
 		}
-		var oldSynth = window.__synthTest;
-		window.__synthTest = function() {
-			Syn.support.linkHrefJS = true;
-		}
-		var div = document.createElement("div"),
-			checkbox, submit, form, input, select;
-
-		div.innerHTML = "<form id='outer'>" + "<input name='checkbox' type='checkbox'/>" + "<input name='radio' type='radio' />" + "<input type='submit' name='submitter'/>" + "<input type='input' name='inputter'/>" + "<input name='one'>" + "<input name='two'/>" + "<a href='javascript:__synthTest()' id='synlink'></a>" + "<select><option></option></select>" + "</form>";
-		document.documentElement.appendChild(div);
-		form = div.firstChild
-		checkbox = form.childNodes[0];
-		submit = form.childNodes[2];
-		select = form.getElementsByTagName('select')[0]
-
-		checkbox.checked = false;
-		checkbox.onchange = function() {
-			Syn.support.clickChanges = true;
+		//get old values
+		var href,
+			radioChanged = Syn.data(element,"radioChanged"),
+			scope = getWin(element),
+			nodeName = element.nodeName.toLowerCase();
+		
+		if( (href = Syn.data(element,"href") ) ){
+			element.setAttribute('href',href)
 		}
 
-		Syn.trigger("click", {}, checkbox)
-		Syn.support.clickChecks = checkbox.checked;
-
-		checkbox.checked = false;
-
-		Syn.trigger("change", {}, checkbox);
-
-		Syn.support.changeChecks = checkbox.checked;
-
-		form.onsubmit = function( ev ) {
-			if ( ev.preventDefault ) ev.preventDefault();
-			Syn.support.clickSubmits = true;
-			return false;
+		
+		
+		//run href javascript
+		if(!Syn.support.linkHrefJS 
+			&& /^\s*javascript:/.test(element.href)){
+			//eval js
+			var code = element.href.replace(/^\s*javascript:/,"")
+				
+			//try{
+			if (code != "//" && code.indexOf("void(0)") == -1) {
+				if(window.selenium){
+					eval("with(selenium.browserbot.getCurrentWindow()){"+code+"}")
+				}else{
+					eval("with(scope){"+code+"}")
+				}
+			}
 		}
-		Syn.trigger("click", {}, submit)
-
-
-
-		form.childNodes[1].onchange = function() {
-			Syn.support.radioClickChanges = true;
+		
+		//submit a form
+		if(!(Syn.support.clickSubmits) &&
+			(nodeName == "input" 
+			&& element.type == "submit"  ) ||
+			nodeName  == 'button' ){
+				
+			var form =  Syn.closest(element, "form");
+			if(form){
+				Syn.trigger("submit",{},form)
+			}
+			
 		}
-		Syn.trigger("click", {}, form.childNodes[1])
-
-
-		Syn.bind(div, 'click', function() {
-			Syn.support.optionClickBubbles = true;
-			Syn.unbind(div, 'click', arguments.callee)
-		})
-		Syn.trigger("click", {}, select.firstChild)
-
-
-		Syn.support.changeBubbles = Syn.eventSupported('change');
-
-		//test if mousedown followed by mouseup causes click (opera), make sure there are no clicks after this
-		var clicksCount = 0
-		div.onclick = function() {
-			Syn.support.mouseDownUpClicks = true;
-			//we should use this to check for opera potentially, but would
-			//be difficult to remove element correctly
-			//Syn.support.mouseDownUpRepeatClicks = (2 == (++clicksCount))
+		//follow a link, probably needs to check if in an a.
+		if(nodeName == "a" 
+			&& element.href 
+			&& !/^\s*javascript:/.test(element.href)){
+				
+			scope.location.href = element.href;
+			
 		}
-		Syn.trigger("mousedown", {}, div)
-		Syn.trigger("mouseup", {}, div)
+		
+		//change a checkbox
+		if(nodeName == "input" 
+			&& element.type == "checkbox"){
+			
+			//if(!Syn.support.clickChecks && !Syn.support.changeChecks){
+			//	element.checked = !element.checked;
+			//}
+			if(!Syn.support.clickChanges){
+				Syn.trigger("change",{},  element );
+			}
+		}
+		
+		//change a radio button
+		if(nodeName == "input" && element.type == "radio"){  // need to uncheck others if not checked
+			
+			/*if(!Syn.support.clickChecks && !Syn.support.changeChecks){
+				//do the checks manually 
+				if(!element.checked){ //do nothing, no change
+					element.checked = true;
+				}
+			}*/
+			if(radioChanged && !Syn.support.radioClickChanges){
+				Syn.trigger("change",{},  element );
+			}
+		}
+		// change options
+		if(nodeName == "option" && Syn.data(element,"createChange")){
+			Syn.trigger("change",{}, element.parentNode);//does not bubble
+			Syn.data(element,"createChange",false)
+		}
+	}
+})
+	
 
-		//setTimeout(function(){
-		//	Syn.trigger("mousedown",{},div)
-		//	Syn.trigger("mouseup",{},div)
-		//},1)
+//add create and setup behavior for mosue events
+h.extend(Syn.create,{
+	mouse : {
+		options: function( type, options, element ) {
+			var doc = document.documentElement, body = document.body,
+				center = [options.pageX || 0, options.pageY || 0],
+				//browser might not be loaded yet (doing support code)
+				left = Syn.mouse.browser && Syn.mouse.browser.left[type],
+				right = Syn.mouse.browser && Syn.mouse.browser.right[type];
+			return h.extend({
+				bubbles : true,cancelable : true,
+				view : window,
+				detail : 1,
+				screenX : 1, screenY : 1,
+				clientX : options.clientX || center[0] -(doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc.clientLeft || 0), 
+				clientY : options.clientY || center[1] -(doc && doc.scrollTop || body && body.scrollTop || 0) - (doc.clientTop || 0),
+				ctrlKey : !!Syn.key.ctrlKey, 
+				altKey : !!Syn.key.altKey, 
+				shiftKey : !!Syn.key.shiftKey, 
+				metaKey : !!Syn.key.metaKey,
+				button : left && left.button != null ? 
+					left.button : 
+					right && right.button || (type == 'contextmenu' ? 2 : 0), 
+				relatedTarget : document.documentElement
+			}, options);
+		},
+		event : function(type, defaults, element){  //Everyone Else
+			var doc = getWin(element).document || document
+			if(doc.createEvent){
+				var event;
+			
+				try {
+					event = doc.createEvent('MouseEvents');
+					event.initMouseEvent(type, 
+						defaults.bubbles, defaults.cancelable, 
+						defaults.view, 
+						defaults.detail, 
+						defaults.screenX, defaults.screenY,defaults.clientX,defaults.clientY,
+						defaults.ctrlKey,defaults.altKey,defaults.shiftKey,defaults.metaKey,
+						defaults.button,defaults.relatedTarget);
+				} catch(e) {
+					event = h.createBasicStandardEvent(type,defaults, doc)
+				}
+				event.synthetic = true;
+				return event;
+			}else{
+				var event;
+				try {
+					event = h.createEventObject(type, defaults, element)
+				}
+				catch (e) {}
+				
+				return event;
+			}
+			
+		}
+	},
+	click : {
+		setup: function( type, options, element ) {
+			var nodeName = element.nodeName.toLowerCase(),
+				type; 
+				
+			//we need to manually 'check' in browser that can't check
+			//so checked has the right value
+			if(!Syn.support.clickChecks && !Syn.support.changeChecks && nodeName === "input"){
+				type = element.type.toLowerCase();//pretty sure lowercase isn't needed
+				if(type === 'checkbox'){
+					element.checked = !element.checked;
+				}
+				if(type === "radio"){
+					//do the checks manually 
+					
+					if(!element.checked){ //do nothing, no change
+						try{
+							Syn.data(element,"radioChanged", true);
+						}catch(e){}
+						element.checked = true;
+					}
+				}
+			}
 
-		document.documentElement.removeChild(div);
+			if( 
+				nodeName == "a" 
+				&& element.href  
+				&& !/^\s*javascript:/.test(element.href)){
+				
+				//save href
+				Syn.data(element,"href", element.href)
+				
+				//remove b/c safari/opera will open a new tab instead of changing the page
+				element.setAttribute('href','javascript://')
+				//however this breaks scripts using the href
+				//we need to listen to this and prevent the default behavior
+				//and run the default behavior ourselves. Boo!
+			}
+			//if select or option, save old value and mark to change
+			if(/option/i.test(element.nodeName)){
+				var child = element.parentNode.firstChild,
+				i = -1;
+				while(child){
+					if(child.nodeType ==1){
+						i++;
+						if(child == element) break;
+					}
+					child = child.nextSibling;
+				}
+				if(i !== element.parentNode.selectedIndex){
+					//shouldn't this wait on triggering
+					//change?
+					element.parentNode.selectedIndex = i;
+					Syn.data(element,"createChange",true)
+				}
+			}
+			
+		}
+	},
+	mousedown : {
+		setup: function( type,options, element ) {
+			var nn = element.nodeName.toLowerCase();
+			//we have to auto prevent default to prevent freezing error in safari
+			if(Syn.browser.safari && (nn == "select" || nn == "option" )){
+				options._autoPrevent = true;
+			}
+		}
+	}
+});
+//do support code
+(function(){
+	if(!document.body){
+		setTimeout(arguments.callee,1)
+		return;
+	}
+	var oldSynth = window.__synthTest;
+	window.__synthTest = function(){
+		Syn.support.linkHrefJS = true;
+	}
+	var div = document.createElement("div"), 
+		checkbox, 
+		submit, 
+		form, 
+		input, 
+		select;
+		
+	div.innerHTML = "<form id='outer'>"+
+		"<input name='checkbox' type='checkbox'/>"+
+		"<input name='radio' type='radio' />"+
+		"<input type='submit' name='submitter'/>"+
+		"<input type='input' name='inputter'/>"+
+		"<input name='one'>"+
+		"<input name='two'/>"+
+		"<a href='javascript:__synthTest()' id='synlink'></a>"+
+		"<select><option></option></select>"+
+		"</form>";
+	document.documentElement.appendChild(div);
+	form = div.firstChild
+	checkbox = form.childNodes[0];
+	submit = form.childNodes[2];
+	select = form.getElementsByTagName('select')[0]
+	
+	checkbox.checked = false;
+	checkbox.onchange = function(){
+		Syn.support.clickChanges = true;
+	}
 
-		//check stuff
-		window.__synthTest = oldSynth;
-		Syn.support.ready++;
-	})();
+	Syn.trigger("click", {}, checkbox)
+	Syn.support.clickChecks = checkbox.checked;
+
+	checkbox.checked = false;
+	
+	Syn.trigger("change", {}, checkbox);
+	
+	Syn.support.changeChecks = checkbox.checked;
+	
+	form.onsubmit = function(ev){
+		if (ev.preventDefault) 
+			ev.preventDefault();
+		Syn.support.clickSubmits = true;
+		return false;
+	}
+	Syn.trigger("click", {}, submit)
+
+		
+	
+	form.childNodes[1].onchange = function(){
+		Syn.support.radioClickChanges = true;
+	}
+	Syn.trigger("click", {}, form.childNodes[1])
+	
+	
+	Syn.bind(div, 'click', function(){
+		Syn.support.optionClickBubbles = true;
+		Syn.unbind(div,'click', arguments.callee)
+	})
+	Syn.trigger("click",{},select.firstChild)
+	
+	
+	Syn.support.changeBubbles = Syn.eventSupported('change');
+	
+	//test if mousedown followed by mouseup causes click (opera), make sure there are no clicks after this
+	var clicksCount = 0
+	div.onclick = function(){
+		Syn.support.mouseDownUpClicks = true;
+		//we should use this to check for opera potentially, but would
+		//be difficult to remove element correctly
+		//Syn.support.mouseDownUpRepeatClicks = (2 == (++clicksCount))
+	}
+	Syn.trigger("mousedown",{},div)
+	Syn.trigger("mouseup",{},div)
+	
+	//setTimeout(function(){
+	//	Syn.trigger("mousedown",{},div)
+	//	Syn.trigger("mouseup",{},div)
+	//},1)
+	
+	
+	document.documentElement.removeChild(div);
+	
+	//check stuff
+	window.__synthTest = oldSynth;
+	Syn.support.ready++;
+})();
 
 
 })()
-//});
 });
+;
 steal.loaded('//funcunit/syn/mouse.js');
-steal.then(function(){
-//steal("synthetic")
-//	.then("mouse")
-//	.then(function() {
+steal("synthetic")
+	.then("mouse")
+	.then(function() {
 	Syn.key.browsers = {
 		webkit : {
 			'prevent':
@@ -11597,924 +11625,868 @@ steal.then(function(){
 		}
 		return Syn.mouse.browsers.gecko;
 	})();
-//});
-});
+});;
 steal.loaded('//funcunit/syn/browsers.js');
-steal.then(function(){
-(function() {
-	var h = Syn.helpers,
-		S = Syn,
+steal("synthetic")
+.then("browsers")
+.then(function() {
+(function(){
+var h = Syn.helpers,
+	S = Syn,
 
-		// gets the selection of an input or textarea
-		getSelection = function( el ) {
-			// use selectionStart if we can
-			if ( el.selectionStart !== undefined ) {
-				// this is for opera, so we don't have to focus to type how we think we would
-				if ( document.activeElement && document.activeElement != el && el.selectionStart == el.selectionEnd && el.selectionStart == 0 ) {
-					return {
-						start: el.value.length,
-						end: el.value.length
-					};
-				}
+// gets the selection of an input or textarea
+getSelection = function(el){
+	// use selectionStart if we can
+	if (el.selectionStart !== undefined) {
+		// this is for opera, so we don't have to focus to type how we think we would
+		if(document.activeElement 
+		 	&& document.activeElement != el 
+			&& el.selectionStart == el.selectionEnd 
+			&& el.selectionStart == 0){
+			return {start: el.value.length, end: el.value.length};
+		}
+		return  {start: el.selectionStart, end: el.selectionEnd}
+	}else{
+		//check if we aren't focused
+		//if(document.activeElement && document.activeElement != el){
+			
+			
+		//}
+		try {
+			//try 2 different methods that work differently (IE breaks depending on type)
+			if (el.nodeName.toLowerCase() == 'input') {
+				var real = h.getWindow(el).document.selection.createRange(), r = el.createTextRange();
+				r.setEndPoint("EndToStart", real);
+				
+				var start = r.text.length
 				return {
-					start: el.selectionStart,
-					end: el.selectionEnd
+					start: start,
+					end: start + real.text.length
 				}
-			} else {
-				//check if we aren't focused
-				try {
-					//try 2 different methods that work differently (IE breaks depending on type)
-					if ( el.nodeName.toLowerCase() == 'input' ) {
-						var real = h.getWindow(el).document.selection.createRange(),
-							r = el.createTextRange();
-						r.setEndPoint("EndToStart", real);
-
-						var start = r.text.length
-						return {
-							start: start,
-							end: start + real.text.length
-						}
-					}
-					else {
-						var real = h.getWindow(el).document.selection.createRange(),
-							r = real.duplicate(),
-							r2 = real.duplicate(),
-							r3 = real.duplicate();
-						r2.collapse();
-						r3.collapse(false);
-						r2.moveStart('character', -1)
-						r3.moveStart('character', -1)
-						//select all of our element
-						r.moveToElementText(el)
-						//now move our endpoint to the end of our real range
-						r.setEndPoint('EndToEnd', real);
-						var start = r.text.length - real.text.length,
-							end = r.text.length;
-						if ( start != 0 && r2.text == "" ) {
-							start += 2;
-						}
-						if ( end != 0 && r3.text == "" ) {
-							end += 2;
-						}
-						//if we aren't at the start, but previous is empty, we are at start of newline
-						return {
-							start: start,
-							end: end
-						}
-					}
-				} catch (e) {
-					return {
-						start: el.value.length,
-						end: el.value.length
-					};
-				}
-			}
-		},
-		// gets all focusable elements
-		getFocusable = function( el ) {
-			var document = h.getWindow(el).document,
-				res = [];
-
-			var els = document.getElementsByTagName('*'),
-				len = els.length;
-
-			for ( var i = 0; i < len; i++ ) {
-				Syn.isFocusable(els[i]) && els[i] != document.documentElement && res.push(els[i])
-			}
-			return res;
-
-
-		};
-
-	/**
-	 * @add Syn static
-	 */
-	h.extend(Syn, {
-		/**
-		 * @attribute
-		 * A list of the keys and their keycodes codes you can type.
-		 * You can add type keys with
-		 * @codestart
-		 * Syn('key','delete','title');
-		 * 
-		 * //or 
-		 * 
-		 * Syn('type','One Two Three[left][left][delete]','title')
-		 * @codeend
-		 * 
-		 * The following are a list of keys you can type:
-		 * @codestart text
-		 * \b        - backspace
-		 * \t        - tab
-		 * \r        - enter
-		 * ' '       - space
-		 * a-Z 0-9   - normal characters
-		 * /!@#$*,.? - All other typeable characters
-		 * page-up   - scrolls up
-		 * page-down - scrolls down
-		 * end       - scrolls to bottom
-		 * home      - scrolls to top
-		 * insert    - changes how keys are entered
-		 * delete    - deletes the next character
-		 * left      - moves cursor left
-		 * right     - moves cursor right
-		 * up        - moves the cursor up
-		 * down      - moves the cursor down
-		 * f1-12     - function buttons
-		 * shift, ctrl, alt - special keys
-		 * pause-break      - the pause button
-		 * scroll-lock      - locks scrolling
-		 * caps      - makes caps
-		 * escape    - escape button
-		 * num-lock  - allows numbers on keypad
-		 * print     - screen capture
-		 * @codeend
-		 */
-		keycodes: {
-			//backspace
-			'\b': '8',
-
-			//tab
-			'\t': '9',
-
-			//enter
-			'\r': '13',
-
-			//special
-			'shift': '16',
-			'ctrl': '17',
-			'alt': '18',
-
-			//weird
-			'pause-break': '19',
-			'caps': '20',
-			'escape': '27',
-			'num-lock': '144',
-			'scroll-lock': '145',
-			'print': '44',
-
-			//navigation
-			'page-up': '33',
-			'page-down': '34',
-			'end': '35',
-			'home': '36',
-			'left': '37',
-			'up': '38',
-			'right': '39',
-			'down': '40',
-			'insert': '45',
-			'delete': '46',
-
-			//normal characters
-			' ': '32',
-			'0': '48',
-			'1': '49',
-			'2': '50',
-			'3': '51',
-			'4': '52',
-			'5': '53',
-			'6': '54',
-			'7': '55',
-			'8': '56',
-			'9': '57',
-			'a': '65',
-			'b': '66',
-			'c': '67',
-			'd': '68',
-			'e': '69',
-			'f': '70',
-			'g': '71',
-			'h': '72',
-			'i': '73',
-			'j': '74',
-			'k': '75',
-			'l': '76',
-			'm': '77',
-			'n': '78',
-			'o': '79',
-			'p': '80',
-			'q': '81',
-			'r': '82',
-			's': '83',
-			't': '84',
-			'u': '85',
-			'v': '86',
-			'w': '87',
-			'x': '88',
-			'y': '89',
-			'z': '90',
-			//normal-characters, numpad
-			'num0': '96',
-			'num1': '97',
-			'num2': '98',
-			'num3': '99',
-			'num4': '100',
-			'num5': '101',
-			'num6': '102',
-			'num7': '103',
-			'num8': '104',
-			'num9': '105',
-			'*': '106',
-			'+': '107',
-			'-': '109',
-			'.': '110',
-			//normal-characters, others
-			'/': '111',
-			';': '186',
-			'=': '187',
-			',': '188',
-			'-': '189',
-			'.': '190',
-			'/': '191',
-			'`': '192',
-			'[': '219',
-			'\\': '220',
-			']': '221',
-			"'": '222',
-
-			//ignore these, you shouldn't use them
-			'left window key': '91',
-			'right window key': '92',
-			'select key': '93',
-
-
-			'f1': '112',
-			'f2': '113',
-			'f3': '114',
-			'f4': '115',
-			'f5': '116',
-			'f6': '117',
-			'f7': '118',
-			'f8': '119',
-			'f9': '120',
-			'f10': '121',
-			'f11': '122',
-			'f12': '123'
-		},
-
-		// what we can type in
-		typeable: /input|textarea/i,
-
-		// selects text on an element
-		selectText: function( el, start, end ) {
-			if ( el.setSelectionRange ) {
-				if (!end ) {
-					el.focus();
-					el.setSelectionRange(start, start);
-				} else {
-					el.selectionStart = start;
-					el.selectionEnd = end;
-				}
-			} else if ( el.createTextRange ) {
-				//el.focus();
-				var r = el.createTextRange();
-				r.moveStart('character', start);
-				end = end || start;
-				r.moveEnd('character', end - el.value.length);
-
-				r.select();
-			}
-		},
-		getText: function( el ) {
-			//first check if the el has anything selected ..
-			if ( Syn.typeable.test(el.nodeName) ) {
-				var sel = getSelection(el);
-				return el.value.substring(sel.start, sel.end)
-			}
-			//otherwise get from page
-			var win = Syn.helpers.getWindow(el);
-			if ( win.getSelection ) {
-				return win.getSelection().toString();
-			}
-			else if ( win.document.getSelection ) {
-				return win.document.getSelection().toString()
 			}
 			else {
-				return win.document.selection.createRange().text;
-			}
-		},
-		getSelection: getSelection
-	});
-
-	h.extend(Syn.key, {
-		// retrieves a description of what events for this character should look like
-		data: function( key ) {
-			//check if it is described directly
-			if ( S.key.browser[key] ) {
-				return S.key.browser[key];
-			}
-			for ( var kind in S.key.kinds ) {
-				if ( h.inArray(key, S.key.kinds[kind]) > -1 ) {
-					return S.key.browser[kind]
+				var real = h.getWindow(el).document.selection.createRange(), r = real.duplicate(), r2 = real.duplicate(), r3 = real.duplicate();
+				r2.collapse();
+				r3.collapse(false);
+				r2.moveStart('character', -1)
+				r3.moveStart('character', -1)
+				//select all of our element
+				r.moveToElementText(el)
+				//now move our endpoint to the end of our real range
+				r.setEndPoint('EndToEnd', real);
+				var start = r.text.length - real.text.length, end = r.text.length;
+				if (start != 0 && r2.text == "") {
+					start += 2;
+				}
+				if (end != 0 && r3.text == "") {
+					end += 2;
+				}
+				//if we aren't at the start, but previous is empty, we are at start of newline
+				return {
+					start: start,
+					end: end
 				}
 			}
-			return S.key.browser.character
-		},
+		}catch(e){
+			return {start: el.value.length, end: el.value.length};
+		}
+	} 
+},
+// gets all focusable elements
+getFocusable = function(el){
+	var document = h.getWindow(el).document,
+		res = [];
 
-		//returns the special key if special
-		isSpecial: function( keyCode ) {
-			var specials = S.key.kinds.special;
-			for ( var i = 0; i < specials.length; i++ ) {
-				if ( Syn.keycodes[specials[i]] == keyCode ) {
-					return specials[i];
-				}
-			}
-		},
-		/**
-		 * @hide
-		 * gets the options for a key and event type ...
-		 * @param {Object} key
-		 * @param {Object} event
-		 */
-		options: function( key, event ) {
-			var keyData = Syn.key.data(key);
+	var els = document.getElementsByTagName('*'),
+		len = els.length;
+		
+	for(var i=0;  i< len; i++){
+		Syn.isFocusable(els[i]) && els[i] != document.documentElement && res.push(els[i])
+	}
+	return res;
+	
+	
+};
 
-			if (!keyData[event] ) {
-				//we shouldn't be creating this event
-				return null;
-			}
-
-			var charCode = keyData[event][0],
-				keyCode = keyData[event][1],
-				result = {};
-
-			if ( keyCode == 'key' ) {
-				result.keyCode = Syn.keycodes[key]
-			} else if ( keyCode == 'char' ) {
-				result.keyCode = key.charCodeAt(0)
+/**
+ * @add Syn static
+ */
+h.extend(Syn,{
+	/**
+	 * @attribute
+	 * A list of the keys and their keycodes codes you can type.
+	 * You can add type keys with
+	 * @codestart
+	 * Syn('key','delete','title');
+	 * 
+	 * //or 
+	 * 
+	 * Syn('type','One Two Three[left][left][delete]','title')
+	 * @codeend
+	 * 
+	 * The following are a list of keys you can type:
+	 * @codestart text
+	 * \b        - backspace
+	 * \t        - tab
+	 * \r        - enter
+	 * ' '       - space
+	 * a-Z 0-9   - normal characters
+	 * /!@#$*,.? - All other typeable characters
+	 * page-up   - scrolls up
+	 * page-down - scrolls down
+	 * end       - scrolls to bottom
+	 * home      - scrolls to top
+	 * insert    - changes how keys are entered
+	 * delete    - deletes the next character
+	 * left      - moves cursor left
+	 * right     - moves cursor right
+	 * up        - moves the cursor up
+	 * down      - moves the cursor down
+	 * f1-12     - function buttons
+	 * shift, ctrl, alt - special keys
+	 * pause-break      - the pause button
+	 * scroll-lock      - locks scrolling
+	 * caps      - makes caps
+	 * escape    - escape button
+	 * num-lock  - allows numbers on keypad
+	 * print     - screen capture
+	 * @codeend
+	 */
+	keycodes: {
+		//backspace
+		'\b':'8',
+		
+		//tab
+		'\t':'9',
+		
+		//enter
+		'\r':'13',
+		
+		//special
+		'shift':'16','ctrl':'17','alt':'18',
+		
+		//weird
+		'pause-break':'19',
+		'caps':'20',
+		'escape':'27',
+		'num-lock':'144',
+		'scroll-lock':'145',
+		'print' : '44',
+		
+		//navigation
+		'page-up':'33','page-down':'34','end':'35','home':'36',
+		'left':'37','up':'38','right':'39','down':'40','insert':'45','delete':'46',
+		
+		//normal characters
+		' ':'32',
+		'0':'48','1':'49','2':'50','3':'51','4':'52','5':'53','6':'54','7':'55','8':'56','9':'57',
+		'a':'65','b':'66','c':'67','d':'68','e':'69','f':'70','g':'71','h':'72','i':'73','j':'74','k':'75','l':'76','m':'77',
+		'n':'78','o':'79','p':'80','q':'81','r':'82','s':'83','t':'84','u':'85','v':'86','w':'87','x':'88','y':'89','z':'90',
+		//normal-characters, numpad
+		'num0':'96','num1':'97','num2':'98','num3':'99','num4':'100','num5':'101','num6':'102','num7':'103','num8':'104','num9':'105',
+		'*':'106','+':'107','-':'109','.':'110',
+		//normal-characters, others
+		'/':'111',
+		';':'186',
+		'=':'187',
+		',':'188',
+		'-':'189',
+		'.':'190',
+		'/':'191',
+		'`':'192',
+		'[':'219',
+		'\\':'220',
+		']':'221',
+		"'":'222',
+		
+		//ignore these, you shouldn't use them
+		'left window key':'91','right window key':'92','select key':'93',
+		
+		
+		'f1':'112','f2':'113','f3':'114','f4':'115','f5':'116','f6':'117',
+		'f7':'118','f8':'119','f9':'120','f10':'121','f11':'122','f12':'123'
+	},
+	
+	// what we can type in
+	typeable : /input|textarea/i,
+	
+	// selects text on an element
+	selectText: function( el, start, end ) {
+		if(el.setSelectionRange){
+			if(!end){
+                el.focus();
+                el.setSelectionRange(start, start);
 			} else {
-				result.keyCode = keyCode;
+				el.selectionStart = start;
+				el.selectionEnd = end;
 			}
+		}else if (el.createTextRange) {
+			//el.focus();
+			var r = el.createTextRange();
+			r.moveStart('character', start);
+			end = end || start;
+			r.moveEnd('character', end - el.value.length);
+			
+			r.select();
+		} 
+	},
+	getText: function( el ) {
+		//first check if the el has anything selected ..
+		if(Syn.typeable.test(el.nodeName)){
+			var sel = getSelection(el);
+			return el.value.substring(sel.start, sel.end)
+		}
+		//otherwise get from page
+		var win = Syn.helpers.getWindow(el);
+		if (win.getSelection) {
+			return win.getSelection().toString();
+		}
+		else  if (win.document.getSelection) {
+			return win.document.getSelection().toString()
+		}
+		else {
+			return win.document.selection.createRange().text;
+		}
+	},
+	getSelection : getSelection
+});
 
-			if ( charCode == 'char' ) {
-				result.charCode = key.charCodeAt(0)
-			} else if ( charCode !== null ) {
-				result.charCode = charCode;
+h.extend(Syn.key,{
+	// retrieves a description of what events for this character should look like
+	data: function( key ) {
+		//check if it is described directly
+		if(S.key.browser[key]){
+			return S.key.browser[key];
+		}
+		for(var kind in S.key.kinds){
+			if(h.inArray(key, S.key.kinds[kind] ) > -1){
+				return S.key.browser[kind]
 			}
-
-
-			return result
+		}
+		return S.key.browser.character
+	},
+	
+	//returns the special key if special
+	isSpecial: function( keyCode ) {
+		var specials = S.key.kinds.special;
+		for(var i=0; i < specials.length; i++){
+			if(Syn.keycodes[ specials[i] ] == keyCode){
+				return specials[i];
+			}
+		}
+	},
+	/**
+	 * @hide
+	 * gets the options for a key and event type ...
+	 * @param {Object} key
+	 * @param {Object} event
+	 */
+	options: function( key, event ) {
+		var keyData = Syn.key.data(key);
+		
+		if(!keyData[event]){
+			//we shouldn't be creating this event
+			return null;
+		}
+			
+		var	charCode = keyData[event][0],
+			keyCode = keyData[event][1],
+			result = {};
+			
+		if(keyCode == 'key'){
+			result.keyCode = Syn.keycodes[key]
+		} else if (keyCode == 'char'){
+			result.keyCode = key.charCodeAt(0)
+		}else{
+			result.keyCode = keyCode;
+		}
+		
+		if(charCode == 'char'){
+			result.charCode = key.charCodeAt(0)
+		}else if(charCode !== null){
+			result.charCode = charCode;
+		}
+		
+		
+		return result
+	},
+	//types of event keys
+	kinds : {
+		special : ["shift",'ctrl','alt','caps'],
+		specialChars : ["\b"],
+		navigation: ["page-up",'page-down','end','home','left','up','right','down','insert','delete'],
+		'function' : ['f1','f2','f3','f4','f5','f6','f7','f8','f9','f10','f11','f12']
+	},
+	//returns the default function
+	getDefault: function( key ) {
+		//check if it is described directly
+		if(Syn.key.defaults[key]){
+			return Syn.key.defaults[key];
+		}
+		for(var kind in Syn.key.kinds){
+			if(h.inArray(key, Syn.key.kinds[kind])> -1 && Syn.key.defaults[kind]  ){
+				return Syn.key.defaults[kind];
+			}
+		}
+		return Syn.key.defaults.character
+	},
+	// default behavior when typing
+	defaults : 	{
+		'character' : function( options, scope, key, force, sel ) {
+			if(/num\d+/.test(key)){
+				key = key.match(/\d+/)[0]
+			}
+			
+			if(force || (!S.support.keyCharacters && Syn.typeable.test(this.nodeName))){
+				var current = this.value,
+					before = current.substr(0,sel.start),
+					after = current.substr(sel.end),
+					character = key;
+				
+				console.log("setting",this.value,before, character, after)
+				this.value = before+character+after;
+				//handle IE inserting \r\n
+				var charLength = character == "\n" && S.support.textareaCarriage ? 2 : character.length;
+				Syn.selectText(this, before.length + charLength)
+			}		
 		},
-		//types of event keys
-		kinds: {
-			special: ["shift", 'ctrl', 'alt', 'caps'],
-			specialChars: ["\b"],
-			navigation: ["page-up", 'page-down', 'end', 'home', 'left', 'up', 'right', 'down', 'insert', 'delete'],
-			'function': ['f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12']
-		},
-		//returns the default function
-		getDefault: function( key ) {
-			//check if it is described directly
-			if ( Syn.key.defaults[key] ) {
-				return Syn.key.defaults[key];
+		'c' : function( options, scope, key, force, sel ) {
+			if(Syn.key.ctrlKey){
+				Syn.key.clipboard = Syn.getText(this)
+			}else{
+				Syn.key.defaults.character.apply(this, arguments);
 			}
-			for ( var kind in Syn.key.kinds ) {
-				if ( h.inArray(key, Syn.key.kinds[kind]) > -1 && Syn.key.defaults[kind] ) {
-					return Syn.key.defaults[kind];
-				}
-			}
-			return Syn.key.defaults.character
 		},
-		// default behavior when typing
-		defaults: {
-			'character': function( options, scope, key, force, sel ) {
-				if (/num\d+/.test(key) ) {
-					key = key.match(/\d+/)[0]
+		'v' : function( options, scope, key, force, sel ) {
+			if(Syn.key.ctrlKey){
+				Syn.key.defaults.character.call(this, options,scope, Syn.key.clipboard, true,sel);
+			}else{
+				Syn.key.defaults.character.apply(this, arguments);
+			}
+		},
+		'a' : function( options, scope, key, force, sel ) {
+			if(Syn.key.ctrlKey){
+				Syn.selectText(this, 0, this.value.length)
+			}else{
+				Syn.key.defaults.character.apply(this, arguments);
+			}
+		},
+		'home' : function() {
+			Syn.onParents(this, function(el){
+				if(el.scrollHeight != el.clientHeight){
+					el.scrollTop = 0;
+					return false;
 				}
-
-				if ( force || (!S.support.keyCharacters && Syn.typeable.test(this.nodeName)) ) {
-					var current = this.value,
-						before = current.substr(0, sel.start),
-						after = current.substr(sel.end),
-						character = key;
-
-					this.value = before + character + after;
-					//handle IE inserting \r\n
-					var charLength = character == "\n" && S.support.textareaCarriage ? 2 : character.length;
-					Syn.selectText(this, before.length + charLength)
+			})
+		},
+		'end' : function() {
+			Syn.onParents(this, function(el){
+				if(el.scrollHeight != el.clientHeight){
+					el.scrollTop = el.scrollHeight;
+					return false;
 				}
-			},
-			'c': function( options, scope, key, force, sel ) {
-				if ( Syn.key.ctrlKey ) {
-					Syn.key.clipboard = Syn.getText(this)
-				} else {
-					Syn.key.defaults.character.apply(this, arguments);
+			})
+		},
+		'page-down' : function() {
+			//find the first parent we can scroll
+			Syn.onParents(this, function(el){
+				if(el.scrollHeight != el.clientHeight){
+					var ch = el.clientHeight
+					el.scrollTop += ch;
+					return false;
 				}
-			},
-			'v': function( options, scope, key, force, sel ) {
-				if ( Syn.key.ctrlKey ) {
-					Syn.key.defaults.character.call(this, options, scope, Syn.key.clipboard, true, sel);
-				} else {
-					Syn.key.defaults.character.apply(this, arguments);
+			})
+		},
+		'page-up' : function() {
+			Syn.onParents(this, function(el){
+				if(el.scrollHeight != el.clientHeight){
+					var ch = el.clientHeight
+					el.scrollTop -= ch;
+					return false;
 				}
-			},
-			'a': function( options, scope, key, force, sel ) {
-				if ( Syn.key.ctrlKey ) {
-					Syn.selectText(this, 0, this.value.length)
-				} else {
-					Syn.key.defaults.character.apply(this, arguments);
-				}
-			},
-			'home': function() {
-				Syn.onParents(this, function( el ) {
-					if ( el.scrollHeight != el.clientHeight ) {
-						el.scrollTop = 0;
-						return false;
-					}
-				})
-			},
-			'end': function() {
-				Syn.onParents(this, function( el ) {
-					if ( el.scrollHeight != el.clientHeight ) {
-						el.scrollTop = el.scrollHeight;
-						return false;
-					}
-				})
-			},
-			'page-down': function() {
-				//find the first parent we can scroll
-				Syn.onParents(this, function( el ) {
-					if ( el.scrollHeight != el.clientHeight ) {
-						var ch = el.clientHeight
-						el.scrollTop += ch;
-						return false;
-					}
-				})
-			},
-			'page-up': function() {
-				Syn.onParents(this, function( el ) {
-					if ( el.scrollHeight != el.clientHeight ) {
-						var ch = el.clientHeight
-						el.scrollTop -= ch;
-						return false;
-					}
-				})
-			},
-			'\b': function( options, scope, key, force, sel ) {
-				//this assumes we are deleting from the end
-				if (!S.support.backspaceWorks && Syn.typeable.test(this.nodeName) ) {
-					var current = this.value,
-						before = current.substr(0, sel.start),
-						after = current.substr(sel.end);
-
-					if ( sel.start == sel.end && sel.start > 0 ) {
-						//remove a character
-						this.value = before.substring(0, before.length - 1) + after
-						Syn.selectText(this, sel.start - 1)
-					} else {
-						this.value = before + after;
-						Syn.selectText(this, sel.start)
-					}
-
-					//set back the selection
-				}
-			},
-			'delete': function( options, scope, key, force, sel ) {
-				if (!S.support.backspaceWorks && Syn.typeable.test(this.nodeName) ) {
-					var current = this.value,
-						before = current.substr(0, sel.start),
-						after = current.substr(sel.end);
-					if ( sel.start == sel.end && sel.start <= this.value.length - 1 ) {
-						this.value = before + after.substring(1)
-					} else {
-						this.value = before + after;
-
-					}
+			})
+		},
+		'\b' : function( options, scope, key, force, sel ) {
+			//this assumes we are deleting from the end
+			if(!S.support.backspaceWorks && Syn.typeable.test(this.nodeName)){
+				var current = this.value,
+					before = current.substr(0,sel.start),
+					after = current.substr(sel.end);
+					
+				if(sel.start == sel.end && sel.start > 0){
+					//remove a character
+					this.value = before.substring(0, before.length - 1)+after
+					Syn.selectText(this, sel.start-1)
+				}else{
+					this.value = before+after;
 					Syn.selectText(this, sel.start)
 				}
-			},
-			'\r': function( options, scope, key, force, sel ) {
-
-				var nodeName = this.nodeName.toLowerCase()
-				// submit a form
-				if (!S.support.keypressSubmits && nodeName == 'input' ) {
-					var form = Syn.closest(this, "form");
-					if ( form ) {
-						Syn.trigger("submit", {}, form);
-					}
-
+				
+				//set back the selection
+			}	
+		},
+		'delete' : function( options, scope, key, force, sel ) {
+			if(!S.support.backspaceWorks && Syn.typeable.test(this.nodeName)){
+				var current = this.value,
+					before = current.substr(0,sel.start),
+					after = current.substr(sel.end);
+				if(sel.start == sel.end && sel.start <= this.value.length - 1){
+					this.value = before+after.substring(1)
+				}else{
+					this.value = before+after;
+					
 				}
-				//newline in textarea
-				if (!S.support.keyCharacters && nodeName == 'textarea' ) {
-					Syn.key.defaults.character.call(this, options, scope, "\n", undefined, sel)
+				Syn.selectText(this, sel.start)
+			}		
+		},
+		'\r' : function( options, scope, key, force, sel ) {
+			
+			var nodeName = this.nodeName.toLowerCase()
+			// submit a form
+			if(!S.support.keypressSubmits && nodeName == 'input'){
+				var form = Syn.closest(this, "form");
+				if(form){
+					Syn.trigger("submit", {}, form);
 				}
-				// 'click' hyperlinks
-				if (!S.support.keypressOnAnchorClicks && nodeName == 'a' ) {
-					Syn.trigger("click", {}, this);
-				}
-			},
-			// 
-			// Gets all focusable elements.  If the element (this)
-			// doesn't have a tabindex, finds the next element after.
-			// If the element (this) has a tabindex finds the element 
-			// with the next higher tabindex OR the element with the same
-			// tabindex after it in the document.
-			// @return the next element
-			// 
-			'\t': function( options, scope ) {
+					
+			}
+			//newline in textarea
+			if(!S.support.keyCharacters && nodeName == 'textarea'){
+				Syn.key.defaults.character.call(this, options, scope, "\n", undefined, sel)
+			}
+			// 'click' hyperlinks
+			if(!S.support.keypressOnAnchorClicks && nodeName == 'a'){
+				Syn.trigger("click", {}, this);
+			}
+		},
+		// 
+		// Gets all focusable elements.  If the element (this)
+		// doesn't have a tabindex, finds the next element after.
+		// If the element (this) has a tabindex finds the element 
+		// with the next higher tabindex OR the element with the same
+		// tabindex after it in the document.
+		// @return the next element
+		// 
+		'\t' : function( options, scope ) {
 				// focusable elements
-				var focusEls = getFocusable(this),
-					// the current element's tabindex
-					tabIndex = Syn.tabIndex(this),
-					// will be set to our guess for the next element
-					current = null,
-					// the next index we care about
-					currentIndex = 1000000000,
-					// set to true once we found 'this' element
-					found = false,
-					i = 0,
-					el,
-					//the tabindex of the tabable element we are looking at
-					elIndex, firstNotIndexed, prev;
+			var focusEls = getFocusable(this),
+				// the current element's tabindex
+				tabIndex = Syn.tabIndex(this),
+				// will be set to our guess for the next element
+				current = null,
+				// the next index we care about
+				currentIndex = 1000000000,
+				// set to true once we found 'this' element
+				found = false,
+				i = 0,
+				el, 
+				//the tabindex of the tabable element we are looking at
+				elIndex,
+				firstNotIndexed,
+				prev;
 				orders = [];
-				for (; i < focusEls.length; i++ ) {
-					orders.push([focusEls[i], i]);
+			for(; i< focusEls.length; i++){
+				orders.push([focusEls[i], i]);
+			}
+			var sort = function(order1, order2){
+				var el1 = order1[0],
+					el2 = order2[0],
+					tab1 = Syn.tabIndex(el1) || 0,
+					tab2 = Syn.tabIndex(el2) || 0;
+				if(tab1 == tab2){
+					return order1[1] - order2[1]
+				}else{
+					if(tab1 == 0){
+						return 1;
+					}else if(tab2 == 0){
+						return -1;
+					}else{
+						return tab1-tab2;
+					}
 				}
-				var sort = function( order1, order2 ) {
-					var el1 = order1[0],
-						el2 = order2[0],
-						tab1 = Syn.tabIndex(el1) || 0,
-						tab2 = Syn.tabIndex(el2) || 0;
-					if ( tab1 == tab2 ) {
-						return order1[1] - order2[1]
-					} else {
-						if ( tab1 == 0 ) {
-							return 1;
-						} else if ( tab2 == 0 ) {
-							return -1;
-						} else {
-							return tab1 - tab2;
+			}
+			orders.sort(sort);
+			//now find current
+			for(i=0; i< orders.length; i++){
+				el = orders[i][0];
+				if(this== el ){
+					if(!Syn.key.shiftKey){
+						current = orders[i+1][0];
+						if(!current){
+							current = orders[0][0]
+						}
+					}else{
+						current = orders[i-1][0];
+						if(!current){
+							current = orders[focusEls.length-1][0]
 						}
 					}
+					
 				}
-				orders.sort(sort);
-				//now find current
-				for ( i = 0; i < orders.length; i++ ) {
-					el = orders[i][0];
-					if ( this == el ) {
-						if (!Syn.key.shiftKey ) {
-							current = orders[i + 1][0];
-							if (!current ) {
-								current = orders[0][0]
-							}
-						} else {
-							current = orders[i - 1][0];
-							if (!current ) {
-								current = orders[focusEls.length - 1][0]
-							}
-						}
-
-					}
-				}
-
-				//restart if we didn't find anything
-				if (!current ) {
-					current = firstNotIndexed;
-				}
-				current && current.focus();
-				return current;
-			},
-			'left': function( options, scope, key, force, sel ) {
-				if ( Syn.typeable.test(this.nodeName) ) {
-					if ( Syn.key.shiftKey ) {
-						Syn.selectText(this, sel.start == 0 ? 0 : sel.start - 1, sel.end)
-					} else {
-						Syn.selectText(this, sel.start == 0 ? 0 : sel.start - 1)
-					}
-				}
-			},
-			'right': function( options, scope, key, force, sel ) {
-				if ( Syn.typeable.test(this.nodeName) ) {
-					if ( Syn.key.shiftKey ) {
-						Syn.selectText(this, sel.start, sel.end + 1 > this.value.length ? this.value.length : sel.end + 1)
-					} else {
-						Syn.selectText(this, sel.end + 1 > this.value.length ? this.value.length : sel.end + 1)
-					}
-				}
-			},
-			'up': function() {
-				if (/select/i.test(this.nodeName) ) {
-
-					this.selectedIndex = this.selectedIndex ? this.selectedIndex - 1 : 0;
-					//set this to change on blur?
-				}
-			},
-			'down': function() {
-				if (/select/i.test(this.nodeName) ) {
-					Syn.changeOnBlur(this, "selectedIndex", this.selectedIndex)
-					this.selectedIndex = this.selectedIndex + 1;
-					//set this to change on blur?
-				}
-			},
-			'shift': function() {
-				return null;
 			}
+			
+			//restart if we didn't find anything
+			if(!current){
+				current = firstNotIndexed;
+			}
+			current && current.focus();
+			return current;
+		},
+		'left' : function( options, scope, key, force, sel ) {
+			if( Syn.typeable.test(this.nodeName) ){
+				if(Syn.key.shiftKey){
+					Syn.selectText(this, sel.start == 0 ? 0 : sel.start - 1, sel.end)
+				}else{
+					Syn.selectText(this, sel.start == 0 ? 0 : sel.start - 1)
+				}
+			}
+		},
+		'right' : function( options, scope, key, force, sel ) {
+			if( Syn.typeable.test(this.nodeName) ){
+				if(Syn.key.shiftKey){
+					Syn.selectText(this, sel.start, sel.end+1 > this.value.length ? this.value.length  : sel.end+1)
+				}else{
+					Syn.selectText(this, sel.end+1 > this.value.length ? this.value.length  : sel.end+1)
+				}
+			}	
+		},
+		'up' : function() {
+			if(/select/i.test(this.nodeName)){
+				
+				this.selectedIndex = this.selectedIndex ? this.selectedIndex-1 : 0;
+				//set this to change on blur?
+			}
+		},
+		'down' : function() {
+			if(/select/i.test(this.nodeName)){
+				Syn.changeOnBlur(this, "selectedIndex", this.selectedIndex)
+				this.selectedIndex = this.selectedIndex+1;
+				//set this to change on blur?
+			}
+		},
+		'shift' : function() {
+			return null;
 		}
-	});
-
-
-	h.extend(Syn.create, {
-		keydown: {
-			setup: function( type, options, element ) {
-				if ( h.inArray(options, Syn.key.kinds.special) != -1 ) {
-					Syn.key[options + "Key"] = element;
-				}
-			}
-		},
-		keypress: {
-			setup: function( type, options, element ) {
-				// if this browsers supports writing keys on events
-				// but doesn't write them if the element isn't focused
-				// focus on the element (ignored if already focused)
-				if ( S.support.keyCharacters && !S.support.keysOnNotFocused ) {
-					element.focus()
-				}
-			}
-		},
-		keyup: {
-			setup: function( type, options, element ) {
-				if ( h.inArray(options, Syn.key.kinds.special) != -1 ) {
-					Syn.key[options + "Key"] = null;
-				}
-			}
-		},
-		key: {
-			// return the options for a key event
-			options: function( type, options, element ) {
-				//check if options is character or has character
-				options = typeof options != "object" ? {
-					character: options
-				} : options;
-
-				//don't change the orignial
-				options = h.extend({}, options)
-				if ( options.character ) {
-					h.extend(options, S.key.options(options.character, type));
-					delete options.character;
-				}
-
-				options = h.extend({
-					ctrlKey: !! Syn.key.ctrlKey,
-					altKey: !! Syn.key.altKey,
-					shiftKey: !! Syn.key.shiftKey,
-					metaKey: !! Syn.key.metaKey
-				}, options)
-
-				return options;
-			},
-			// creates a key event
-			event: function( type, options, element ) { //Everyone Else
-				var doc = h.getWindow(element).document || document;
-				if ( doc.createEvent ) {
-					var event;
-
-					try {
-
-						event = doc.createEvent("KeyEvents");
-						event.initKeyEvent(type, true, true, window, options.ctrlKey, options.altKey, options.shiftKey, options.metaKey, options.keyCode, options.charCode);
-					}
-					catch (e) {
-						event = h.createBasicStandardEvent(type, options, doc);
-					}
-					event.synthetic = true;
-					return event;
-				}
-				else {
-					var event;
-					try {
-						event = h.createEventObject.apply(this, arguments);
-						h.extend(event, options)
-					}
-					catch (e) {}
-
-					return event;
-				}
-			}
-		}
-	});
-
-	var convert = {
-		"enter": "\r",
-		"backspace": "\b",
-		"tab": "\t",
-		"space": " "
 	}
+});
 
-	/**
-	 * @add Syn prototype
-	 */
-	h.extend(Syn.init.prototype, {
-		/**
-		 * @function key
-		 * Types a single key.  The key should be
-		 * a string that matches a 
-		 * [Syn.static.keycodes].
-		 * 
-		 * The following sends a carridge return
-		 * to the 'name' element.
-		 * @codestart
-		 * Syn.key('\r','name')
-		 * @codeend
-		 * For each character, a keydown, keypress, and keyup is triggered if
-		 * appropriate.
-		 * @param {String} options
-		 * @param {HTMLElement} [element]
-		 * @param {Function} [callback]
-		 * @return {HTMLElement} the element currently focused.
-		 */
-		_key: function( options, element, callback ) {
-			//first check if it is a special up
-			if (/-up$/.test(options) && h.inArray(options.replace("-up", ""), Syn.key.kinds.special) != -1 ) {
-				Syn.trigger('keyup', options.replace("-up", ""), element)
-				callback(true, element);
-				return;
+
+h.extend(Syn.create,{
+	keydown : {
+		setup: function( type, options, element ) {
+			if(h.inArray(options,Syn.key.kinds.special ) != -1){
+				Syn.key[options+"Key"] = element;
 			}
-
-
-			var caret = Syn.typeable.test(element.nodeName) && getSelection(element),
-				key = convert[options] || options,
-				// should we run default events
-				runDefaults = Syn.trigger('keydown', key, element),
-
-				// a function that gets the default behavior for a key
-				getDefault = Syn.key.getDefault,
-
-				// how this browser handles preventing default events
-				prevent = Syn.key.browser.prevent,
-
-				// the result of the default event
-				defaultResult,
-
-				// options for keypress
-				keypressOptions = Syn.key.options(key, 'keypress')
-
-
-				if ( runDefaults ) {
-					//if the browser doesn't create keypresses for this key, run default
-					if (!keypressOptions ) {
-						defaultResult = getDefault(key).call(element, keypressOptions, h.getWindow(element), key, undefined, caret)
-					} else {
-						//do keypress
-						runDefaults = Syn.trigger('keypress', keypressOptions, element)
-						if ( runDefaults ) {
-							defaultResult = getDefault(key).call(element, keypressOptions, h.getWindow(element), key, undefined, caret)
-						}
-					}
-				} else {
-					//canceled ... possibly don't run keypress
-					if ( keypressOptions && h.inArray('keypress', prevent.keydown) == -1 ) {
-						Syn.trigger('keypress', keypressOptions, element)
-					}
-				}
-				if ( defaultResult && defaultResult.nodeName ) {
-					element = defaultResult
-				}
-
-				if ( defaultResult !== null ) {
-					setTimeout(function() {
-						Syn.trigger('keyup', Syn.key.options(key, 'keyup'), element)
-						callback(runDefaults, element)
-					}, 1)
-				} else {
-					callback(runDefaults, element)
-				}
-
-
-				//do mouseup
-				return element;
-			// is there a keypress? .. if not , run default
-			// yes -> did we prevent it?, if not run ...
-		},
-		/**
-		 * @function type
-		 * Types sequence of [Syn.key key actions].  Each
-		 * character is typed, one at a type.
-		 * Multi-character keys like 'left' should be
-		 * enclosed in square brackents.
-		 * 
-		 * The following types 'JavaScript MVC' then deletes the space.
-		 * @codestart
-		 * Syn.type('JavaScript MVC[left][left][left]\b','name')
-		 * @codeend
-		 * 
-		 * Type is able to handle (and move with) tabs (\t).  
-		 * The following simulates tabing and entering values in a form and 
-		 * eventually submitting the form.
-		 * @codestart
-		 * Syn.type("Justin\tMeyer\t27\tjustinbmeyer@gmail.com\r")
-		 * @codeend
-		 * @param {String} options the text to type
-		 * @param {HTMLElement} [element] an element or an id of an element
-		 * @param {Function} [callback] a function to callback
-		 */
-		_type: function( options, element, callback ) {
-			//break it up into parts ...
-			//go through each type and run
-			var parts = options.match(/(\[[^\]]+\])|([^\[])/g),
-				self = this,
-				runNextPart = function( runDefaults, el ) {
-					var part = parts.shift();
-					if (!part ) {
-						callback(runDefaults, el);
-						return;
-					}
-					el = el || element;
-					if ( part.length > 1 ) {
-						part = part.substr(1, part.length - 2)
-					}
-					self._key(part, el, runNextPart)
-				}
-
-				runNextPart();
-
 		}
-	});
+	},
+	keypress : {
+		setup : function(type, options, element){
+			// if this browsers supports writing keys on events
+			// but doesn't write them if the element isn't focused
+			// focus on the element (ignored if already focused)
+			if(S.support.keyCharacters && !S.support.keysOnNotFocused){
+				element.focus()
+			}
+		}
+	},
+	keyup : {
+		setup: function( type, options, element ) {
+			if(h.inArray(options,Syn.key.kinds.special )!= -1){
+				Syn.key[options+"Key"] = null;
+			}
+		}
+		},
+	key: {
+		// return the options for a key event
+		options: function(type, options, element){
+			//check if options is character or has character
+			options = typeof options != "object" ? {
+				character: options
+			} : options;
+			
+			//don't change the orignial
+			options = h.extend({}, options)
+			if (options.character) {
+				h.extend(options, S.key.options(options.character, type));
+				delete options.character;
+			}
+			
+			options = h.extend({
+				ctrlKey: !!Syn.key.ctrlKey,
+				altKey: !!Syn.key.altKey,
+				shiftKey: !!Syn.key.shiftKey,
+				metaKey: !!Syn.key.metaKey
+			}, options)
+			
+			return options;
+		},
+		// creates a key event
+		event: function(type, options, element){ //Everyone Else
+		
+			var doc = h.getWindow(element).document || document;
+			if (doc.createEvent) {
+				var event;
+				
+				try {
+				
+					event = doc.createEvent("KeyEvents");
+					event.initKeyEvent(type, true, true, window, options.ctrlKey, options.altKey, options.shiftKey, options.metaKey, options.keyCode, options.charCode);
+				} 
+				catch (e) {
+					event = h.createBasicStandardEvent(type, options, doc);
+				}
+				event.synthetic = true;
+				return event;
+			}
+			else {
+				var event;
+				try {
+					event = h.createEventObject.apply(this, arguments);
+					h.extend(event, options)
+				}
+				catch (e) {}
+				
+				return event;
+			}
+		}
+	}
+});
 
+var convert = {
+			"enter" : "\r",
+			"backspace" : "\b",
+			"tab" : "\t",
+			"space" : " "
+		}
 
-	//do support code
-	(function() {
-		if (!document.body ) {
-			setTimeout(arguments.callee, 1)
+/**
+ * @add Syn prototype
+ */
+h.extend(Syn.init.prototype,
+{
+	/**
+	 * @function key
+	 * Types a single key.  The key should be
+	 * a string that matches a 
+	 * [Syn.static.keycodes].
+	 * 
+	 * The following sends a carridge return
+	 * to the 'name' element.
+	 * @codestart
+	 * Syn.key('\r','name')
+	 * @codeend
+	 * For each character, a keydown, keypress, and keyup is triggered if
+	 * appropriate.
+	 * @param {String} options
+	 * @param {HTMLElement} [element]
+	 * @param {Function} [callback]
+	 * @return {HTMLElement} the element currently focused.
+	 */
+	_key: function( options, element, callback ) {
+		//first check if it is a special up
+		if(/-up$/.test(options) 
+			&& h.inArray(options.replace("-up",""),Syn.key.kinds.special )!= -1){
+			Syn.trigger('keyup',options.replace("-up",""), element )
+			callback(true, element);
 			return;
 		}
-
-		var div = document.createElement("div"),
-			checkbox, submit, form, input, submitted = false,
-			anchor, textarea, inputter;
-
-		div.innerHTML = "<form id='outer'>" + 
-						"<input name='checkbox' type='checkbox'/>" + 
-						"<input name='radio' type='radio' />" + 
-						"<input type='submit' name='submitter'/>" + 
-						"<input type='input' name='inputter'/>" + 
-						"<input name='one'>" + 
-						"<input name='two'/>" + 
-						"<a href='#abc'></a>" + 
-						"<textarea>1\n2</textarea>" +
-						"</form>";
-
-		document.documentElement.appendChild(div);
-		form = div.firstChild;
-		checkbox = form.childNodes[0];
-		submit = form.childNodes[2];
-		anchor = form.getElementsByTagName("a")[0];
-		textarea = form.getElementsByTagName("textarea")[0];
-		inputter = form.childNodes[3];
-
-		form.onsubmit = function( ev ) {
-			if ( ev.preventDefault ) ev.preventDefault();
-			S.support.keypressSubmits = true;
-			ev.returnValue = false;
-			return false;
-		};
-		// Firefox 4 won't write key events if the element isn't focused
-		inputter.focus();
-		Syn.trigger("keypress", "\r", inputter);
-
-
-		Syn.trigger("keypress", "a", inputter);
-		S.support.keyCharacters = inputter.value == "a";
-
-
-		inputter.value = "a";
-		Syn.trigger("keypress", "\b", inputter);
-		S.support.backspaceWorks = inputter.value == "";
-
-
-
-		inputter.onchange = function() {
-			S.support.focusChanges = true;
+		
+		
+		var caret = Syn.typeable.test(element.nodeName) && getSelection(element),
+			key = convert[options] || options,
+			// should we run default events
+			runDefaults = Syn.trigger('keydown',key, element ),
+			
+			// a function that gets the default behavior for a key
+			getDefault = Syn.key.getDefault,
+			
+			// how this browser handles preventing default events
+			prevent = Syn.key.browser.prevent,
+			
+			// the result of the default event
+			defaultResult,
+			
+			// options for keypress
+			keypressOptions = Syn.key.options(key, 'keypress')
+		
+		
+		if(runDefaults){
+			//if the browser doesn't create keypresses for this key, run default
+			if(!keypressOptions){
+				defaultResult = getDefault(key).call(element, keypressOptions, h.getWindow(element), key, undefined, caret)
+			}else{
+				//do keypress
+				runDefaults = Syn.trigger('keypress',keypressOptions, element )
+				if(runDefaults){
+					defaultResult = getDefault(key).call(element, keypressOptions, h.getWindow(element), key, undefined, caret)
+				}
+			}
+		}else{
+			//canceled ... possibly don't run keypress
+			if(keypressOptions && h.inArray('keypress',prevent.keydown) == -1 ){
+				Syn.trigger('keypress',keypressOptions, element )
+			}
 		}
-		inputter.focus();
-		Syn.trigger("keypress", "a", inputter);
-		form.childNodes[5].focus(); // this will throw a change event
-		Syn.trigger("keypress", "b", inputter);
-		S.support.keysOnNotFocused = inputter.value == "ab";
-
-		//test keypress \r on anchor submits
-		S.bind(anchor, "click", function( ev ) {
-			if ( ev.preventDefault ) ev.preventDefault();
-			S.support.keypressOnAnchorClicks = true;
-			ev.returnValue = false;
-			return false;
-		})
-		Syn.trigger("keypress", "\r", anchor);
-
-		S.support.textareaCarriage = textarea.value.length == 4
-		document.documentElement.removeChild(div);
-
-		S.support.ready++;
-	})();
-}());
+		if(defaultResult && defaultResult.nodeName){
+			element = defaultResult
+		}
+		
+		if(defaultResult !== null){
+			setTimeout(function(){
+				Syn.trigger('keyup',Syn.key.options(key, 'keyup'), element )
+				callback(runDefaults, element)
+			},1)
+		}else{
+			callback(runDefaults, element)
+		}
+		
+		
+		//do mouseup
+		
+		return element;
+		// is there a keypress? .. if not , run default
+		// yes -> did we prevent it?, if not run ...
+		
+	},
+	/**
+	 * @function type
+	 * Types sequence of [Syn.key key actions].  Each
+	 * character is typed, one at a type.
+	 * Multi-character keys like 'left' should be
+	 * enclosed in square brackents.
+	 * 
+	 * The following types 'JavaScript MVC' then deletes the space.
+	 * @codestart
+	 * Syn.type('JavaScript MVC[left][left][left]\b','name')
+	 * @codeend
+	 * 
+	 * Type is able to handle (and move with) tabs (\t).  
+	 * The following simulates tabing and entering values in a form and 
+	 * eventually submitting the form.
+	 * @codestart
+	 * Syn.type("Justin\tMeyer\t27\tjustinbmeyer@gmail.com\r")
+	 * @codeend
+	 * @param {String} options the text to type
+	 * @param {HTMLElement} [element] an element or an id of an element
+	 * @param {Function} [callback] a function to callback
+	 */
+	_type: function( options, element, callback ) {
+		//break it up into parts ...
+		//go through each type and run
+		var parts = options.match(/(\[[^\]]+\])|([^\[])/g),
+			self  = this,
+			runNextPart = function(runDefaults, el){
+				var part = parts.shift();
+				if(!part){
+					callback(runDefaults, el);
+					return;
+				}
+				el = el || element;
+				if(part.length > 1){
+					part = part.substr(1,part.length - 2)
+				}
+				self._key(part, el, runNextPart)
+			}
+		
+		runNextPart();
+		
+	}
 });
-steal.loaded('//funcunit/syn/key.js');
-(function() {
-	
-	// check if elementFromPageExists
-	(function() {
 
-		// document body has to exists for this test
-		if (!document.body ) {
+
+//do support code
+(function(){
+	if(!document.body){
+		setTimeout(arguments.callee,1)
+		return;
+	}
+
+	var div = document.createElement("div"), 
+		checkbox, 
+		submit, 
+		form, 
+		input, 
+		submitted = false,
+		anchor,
+		textarea,
+		inputter;
+		
+	div.innerHTML = "<form id='outer'>"+
+		"<input name='checkbox' type='checkbox'/>"+
+		"<input name='radio' type='radio' />"+
+		"<input type='submit' name='submitter'/>"+
+		"<input type='input' name='inputter'/>"+
+		"<input name='one'>"+
+		"<input name='two'/>"+
+		"<a href='#abc'></a>"+
+		"<textarea>1\n2</textarea>"
+		"</form>";
+		
+	document.documentElement.appendChild(div);
+	form = div.firstChild;
+	checkbox = form.childNodes[0];
+	submit = form.childNodes[2];
+	anchor = form.getElementsByTagName("a")[0];
+	textarea = form.getElementsByTagName("textarea")[0];
+	inputter = form.childNodes[3];
+	
+	form.onsubmit = function(ev){
+		if (ev.preventDefault) 
+			ev.preventDefault();
+		S.support.keypressSubmits = true;
+		ev.returnValue = false;
+		return false;
+	};
+	// Firefox 4 won't write key events if the element isn't focused
+	inputter.focus();
+	Syn.trigger("keypress", "\r", inputter);
+	
+	
+	Syn.trigger("keypress", "a", inputter);
+	S.support.keyCharacters = inputter.value == "a";
+	
+	
+	inputter.value = "a";
+	Syn.trigger("keypress", "\b", inputter);
+	S.support.backspaceWorks = inputter.value == "";
+	
+		
+	
+	inputter.onchange = function(){
+		S.support.focusChanges = true;
+	}
+	inputter.focus();
+	Syn.trigger("keypress", "a", inputter);
+	form.childNodes[5].focus(); // this will throw a change event
+	
+	Syn.trigger("keypress", "b", inputter);
+	S.support.keysOnNotFocused = inputter.value == "ab"; 
+	
+	//test keypress \r on anchor submits
+	S.bind(anchor,"click",function(ev){
+		if (ev.preventDefault) 
+			ev.preventDefault();
+		S.support.keypressOnAnchorClicks = true;
+		ev.returnValue = false;
+		return false;
+	})
+	Syn.trigger("keypress", "\r", anchor);
+	
+	S.support.textareaCarriage = textarea.value.length == 4
+	document.documentElement.removeChild(div);
+	
+	S.support.ready++;
+})();
+}())
+});
+;
+steal.loaded('//funcunit/syn/key.js');
+steal("../synthetic").then(function() {
+(function(){
+	// document body has to exists for this test
+
+	(function(){
+		if (!document.body) {
 			setTimeout(arguments.callee, 1)
 			return;
 		}
@@ -12530,11 +12502,11 @@ steal.loaded('//funcunit/syn/key.js');
 			zIndex: 19999
 		});
 		document.body.scrollTop = 11;
-		if (!document.elementFromPoint ) {
+		if(!document.elementFromPoint){
 			return;
 		}
 		var el = document.elementFromPoint(3, 1)
-		if ( el == div ) {
+		if (el == div) {
 			Syn.support.elementFromClient = true;
 		}
 		else {
@@ -12543,293 +12515,248 @@ steal.loaded('//funcunit/syn/key.js');
 		document.body.removeChild(div);
 		document.body.scrollTop = 0;
 	})();
-
-
+	
+	
 	//gets an element from a point
-	var elementFromPoint = function( point, element ) {
-		var clientX = point.clientX,
-			clientY = point.clientY,
+	var elementFromPoint = function(point, element){
+		var clientX = point.clientX, 
+			clientY = point.clientY, 
 			win = Syn.helpers.getWindow(element),
 			el;
-
-
-
-		if ( Syn.support.elementFromPage ) {
+		
+		if (Syn.support.elementFromPage) {
 			var off = Syn.helpers.scrollOffset(win);
 			clientX = clientX + off.left; //convert to pageX
 			clientY = clientY + off.top; //convert to pageY
 		}
 		el = win.document.elementFromPoint ? win.document.elementFromPoint(clientX, clientY) : element;
-		if ( el === win.document.documentElement && (point.clientY < 0 || point.clientX < 0) ) {
+		if(el === win.document.documentElement && (point.clientY < 0 || point.clientX < 0 ) ){
 			return element;
-		} else {
+		}else{
 			return el;
+		}
+	}, //creates an event at a certain point
+	createEventAtPoint = function(event, point, element){
+		var el = elementFromPoint(point, element)
+		Syn.trigger(event, point, el || element)
+		return el;
+	}, // creates a mousemove event, but first triggering mouseout / mouseover if appropriate
+	mouseMove = function(point, element, last){
+		var el = elementFromPoint(point, element)
+		if (last != el && el && last) {
+			var options = Syn.helpers.extend({},point);
+			options.relatedTarget = el;
+			Syn.trigger("mouseout", options, last);
+			options.relatedTarget = last;
+			Syn.trigger("mouseover", options, el);
+		}
+		
+		Syn.trigger("mousemove", point, el || element)
+		return el;
+	}, // start and end are in clientX, clientY
+	startMove = function(start, end, duration, element, callback){
+		var startTime = new Date(), 
+			distX = end.clientX - start.clientX, 
+			distY = end.clientY - start.clientY, 
+			win = Syn.helpers.getWindow(element), 
+			current = elementFromPoint(start, element), 
+			cursor = win.document.createElement('div'),
+			calls = 0;
+		move = function(){
+			//get what fraction we are at
+			var now = new Date(), 
+				scrollOffset = Syn.helpers.scrollOffset(win), 
+				fraction = ( calls == 0 ? 0 : now - startTime) / duration, 
+				options = {
+					clientX: distX * fraction + start.clientX,
+					clientY: distY * fraction + start.clientY
+				};
+			calls++;
+			if (fraction < 1) {
+				Syn.helpers.extend(cursor.style, {
+					left: (options.clientX + scrollOffset.left + 2) + "px",
+					top: (options.clientY + scrollOffset.top + 2) + "px"
+				})
+				current = mouseMove(options, element, current)
+				setTimeout(arguments.callee, 15)
+			}
+			else {
+				current = mouseMove(end, element, current);
+				win.document.body.removeChild(cursor)
+				callback();
+			}
+		}
+		Syn.helpers.extend(cursor.style, {
+			height: "5px",
+			width: "5px",
+			backgroundColor: "red",
+			position: "absolute",
+			zIndex: 19999,
+			fontSize: "1px"
+		})
+		win.document.body.appendChild(cursor)
+		move();
+	}, 
+	startDrag = function(start, end, duration, element, callback){
+		createEventAtPoint("mousedown", start, element);
+		startMove(start, end, duration, element, function(){
+			createEventAtPoint("mouseup", end, element);
+			callback();
+		})
+	},
+	center = function(el){
+		var j = Syn.jquery()(el),
+		o = j.offset();
+		return{
+			pageX: o.left + (j.width() / 2),
+			pageY: o.top + (j.height() / 2)
 		}
 	},
-		//creates an event at a certain point
-		createEventAtPoint = function( event, point, element ) {
-			var el = elementFromPoint(point, element)
-			Syn.trigger(event, point, el || element)
-			return el;
-		},
-		// creates a mousemove event, but first triggering mouseout / mouseover if appropriate
-		mouseMove = function( point, element, last ) {
-			var el = elementFromPoint(point, element)
-			if ( last != el && el && last ) {
-				var options = Syn.helpers.extend({}, point);
-				options.relatedTarget = el;
-				Syn.trigger("mouseout", options, last);
-				options.relatedTarget = last;
-				Syn.trigger("mouseover", options, el);
-			}
-
-			Syn.trigger("mousemove", point, el || element)
-			return el;
-		},
-		// start and end are in clientX, clientY
-		startMove = function( start, end, duration, element, callback ) {
-			var startTime = new Date(),
-				distX = end.clientX - start.clientX,
-				distY = end.clientY - start.clientY,
-				win = Syn.helpers.getWindow(element),
-				current = elementFromPoint(start, element),
-				cursor = win.document.createElement('div'),
-				calls = 0;
-			move = function() {
-				//get what fraction we are at
-				var now = new Date(),
-					scrollOffset = Syn.helpers.scrollOffset(win),
-					fraction = (calls == 0 ? 0 : now - startTime) / duration,
-					options = {
-						clientX: distX * fraction + start.clientX,
-						clientY: distY * fraction + start.clientY
-					};
-				calls++;
-				if ( fraction < 1 ) {
-					Syn.helpers.extend(cursor.style, {
-						left: (options.clientX + scrollOffset.left + 2) + "px",
-						top: (options.clientY + scrollOffset.top + 2) + "px"
-					})
-					current = mouseMove(options, element, current)
-					setTimeout(arguments.callee, 15)
-				}
-				else {
-					current = mouseMove(end, element, current);
-					win.document.body.removeChild(cursor)
-					callback();
-				}
-			}
-			Syn.helpers.extend(cursor.style, {
-				height: "5px",
-				width: "5px",
-				backgroundColor: "red",
-				position: "absolute",
-				zIndex: 19999,
-				fontSize: "1px"
-			})
-			win.document.body.appendChild(cursor)
-			move();
-		},
-		startDrag = function( start, end, duration, element, callback ) {
-			createEventAtPoint("mousedown", start, element);
-			startMove(start, end, duration, element, function() {
-				createEventAtPoint("mouseup", end, element);
-				callback();
-			})
-		},
-		center = function( el ) {
-			var j = Syn.jquery()(el),
-				o = j.offset();
-			return {
-				pageX: o.left + (j.width() / 2),
-				pageY: o.top + (j.height() / 2)
-			}
-		},
-		convertOption = function( option, win, from ) {
-			var page = /(\d+)[x ](\d+)/,
-				client = /(\d+)X(\d+)/,
-				relative = /([+-]\d+)[xX ]([+-]\d+)/
-				//check relative "+22x-44"
-				if ( typeof option == 'string' && relative.test(option) && from ) {
-					var cent = center(from),
-						parts = option.match(relative);
-					option = {
-						pageX: cent.pageX + parseInt(parts[1]),
-						pageY: cent.pageY + parseInt(parts[2])
-					}
-				}
-				if ( typeof option == 'string' && page.test(option) ) {
-					var parts = option.match(page)
-					option = {
-						pageX: parseInt(parts[1]),
-						pageY: parseInt(parts[2])
-					}
-				}
-				if ( typeof option == 'string' && client.test(option) ) {
-					var parts = option.match(client)
-					option = {
-						clientX: parseInt(parts[1]),
-						clientY: parseInt(parts[2])
-					}
-				}
-				if ( typeof option == 'string' ) {
-					option = Syn.jquery()(option, win.document)[0];
-				}
-				if ( option.nodeName ) {
-					option = center(option)
-				}
-				if ( option.pageX ) {
-					var off = Syn.helpers.scrollOffset(win);
-					option = {
-						clientX: option.pageX - off.left,
-						clientY: option.pageY - off.top
-					}
-				}
-				return option;
-		},
-		// if the client chords are not going to be visible ... scroll the page so they will be ...
-		adjust = function(from, to, win){
-			if(from.clientY < 0){
-				var off = Syn.helpers.scrollOffset(win);
-				var dimensions = Syn.helpers.scrollDimensions(win),
-					top = off.top + (from.clientY) - 100,
-					diff = top - off.top
-				
-				// first, lets see if we can scroll 100 px
-				if( top > 0){
-					
-				} else {
-					top =0;
-					diff = -off.top;
-				}
-				console.log("moving", from.clientY,from.clientY - diff, off.top, top )
-				from.clientY = from.clientY - diff;
-				to.clientY = to.clientY - diff;
-				Syn.helpers.scrollOffset(win,{top: top, left: off.left});
-				
-				//throw "out of bounds!"
+	convertOption = function(option, win, from){
+		var page = /(\d+)[x ](\d+)/,
+			client = /(\d+)X(\d+)/,
+			relative = /([+-]\d+)[xX ]([+-]\d+)/
+		//check relative "+22x-44"
+		if (typeof option == 'string' && relative.test(option) && from) {
+			var cent = center(from),
+				parts = option.match(relative);
+			option = {
+				pageX: cent.pageX + parseInt(parts[1]),
+				pageY: cent.pageY +parseInt(parts[2])
 			}
 		}
-		/**
-		 * @add Syn prototype
-		 */
-		Syn.helpers.extend(Syn.init.prototype, {
-			/**
-			 * @function move
-			 * Moves the cursor from one point to another.  
-			 * 
-			 * ### Quick Example
-			 * 
-			 * The following moves the cursor from (0,0) in
-			 * the window to (100,100) in 1 second.
-			 * 
-			 *     Syn.move(
-			 *          {
-			 *            from: {clientX: 0, clientY: 0},
-			 *            to: {clientX: 100, clientY: 100},
-			 *            duration: 1000
-			 *          },
-			 *          document.document)
-			 * 
-			 * ## Options
-			 * 
-			 * There are many ways to configure the endpoints of the move.
-			 * 
-			 * ### PageX and PageY
-			 * 
-			 * If you pass pageX or pageY, these will get converted
-			 * to client coordinates.
-			 * 
-			 *     Syn.move(
-			 *          {
-			 *            from: {pageX: 0, pageY: 0},
-			 *            to: {pageX: 100, pageY: 100}
-			 *          },
-			 *          document.document)
-			 * 
-			 * ### String Coordinates
-			 * 
-			 * You can set the pageX and pageY as strings like:
-			 * 
-			 *     Syn.move(
-			 *          {
-			 *            from: "0x0",
-			 *            to: "100x100"
-			 *          },
-			 *          document.document)
-			 * 
-			 * ### Element Coordinates
-			 * 
-			 * If jQuery is present, you can pass an element as the from or to option
-			 * and the coordinate will be set as the center of the element.
-			 
-			 *     Syn.move(
-			 *          {
-			 *            from: $(".recipe")[0],
-			 *            to: $("#trash")[0]
-			 *          },
-			 *          document.document)
-			 * 
-			 * ### Query Strings
-			 * 
-			 * If jQuery is present, you can pass a query string as the from or to option.
-			 * 
-			 * Syn.move(
-			 *      {
-			 *        from: ".recipe",
-			 *        to: "#trash"
-			 *      },
-			 *      document.document)
-			 *    
-			 * ### No From
-			 * 
-			 * If you don't provide a from, the element argument passed to Syn is used.
-			 * 
-			 *     Syn.move(
-			 *          { to: "#trash" },
-			 *          'myrecipe')
-			 * 
-			 * ### Relative
-			 * 
-			 * You can move the drag relative to the center of the from element.
-			 * 
-			 *     Syn.move("+20 +30", "myrecipe");
-			 * 
-			 * @param {Object} options options to configure the drag
-			 * @param {HTMLElement} from the element to move
-			 * @param {Function} callback a callback that happens after the drag motion has completed
-			 */
-			_move: function( options, from, callback ) {
-				//need to convert if elements
-				var win = Syn.helpers.getWindow(from),
-					fro = convertOption(options.from || from, win, from),
-					to = convertOption(options.to || options, win, from);
-				
-				options.adjust !== false && adjust(fro, to, win);
-				startMove(fro, to, options.duration || 500, from, callback);
-
-			},
-			/**
-			 * @function drag
-			 * Creates a mousedown and drags from one point to another.  
-			 * Check out [Syn.prototype.move move] for API details.
-			 * 
-			 * @param {Object} options
-			 * @param {Object} from
-			 * @param {Object} callback
-			 */
-			_drag: function( options, from, callback ) {
-				//need to convert if elements
-				var win = Syn.helpers.getWindow(from),
-					fro = convertOption(options.from || from, win, from),
-					to = convertOption(options.to || options, win, from);
-
-				options.adjust !== false && adjust(fro, to, win);
-				startDrag(fro, to, options.duration || 500, from, callback);
-
+		if (typeof option == 'string' && page.test(option)) {
+			var parts = option.match(page)
+			option = {
+				pageX: parseInt(parts[1]),
+				pageY: parseInt(parts[2])
 			}
-		})
-}());;
+		}
+		if (typeof option == 'string' && client.test(option)) {
+			var parts = option.match(client)
+			option = {
+				clientX: parseInt(parts[1]),
+				clientY: parseInt(parts[2])
+			}
+		}
+		if (typeof option == 'string') {
+			option = Syn.jquery()(option, win.document)[0];
+		}
+		if (option.nodeName) {
+			option = center(option)
+		}
+		if (option.pageX) {
+			var off = Syn.helpers.scrollOffset(win);
+			option = {
+				clientX: option.pageX - off.left,
+				clientY: option.pageY - off.top
+			}
+		}
+		return option;
+	}
+/**
+ * @add Syn prototype
+ */	
+Syn.helpers.extend(Syn.init.prototype,{
+	/**
+	 * @function move
+	 * Moves the cursor from one point to another.  
+	 * <h3>Quick Example</h3>
+	 * The following moves the cursor from (0,0) in
+	 * the window to (100,100) in 1 second.
+	 * @codestart
+	 * Syn.move(
+	 *      {
+	 *        from: {clientX: 0, clientY: 0},
+	 *        to: {clientX: 100, clientY: 100},
+	 *        duration: 1000
+	 *      },
+	 *      document.document)
+	 * @codeend
+	 * <h2>Options</h2>
+	 * There are many ways to configure the endpoints of the move.
+	 * 
+	 * <h3>PageX and PageY</h3>
+	 * If you pass pageX or pageY, these will get converted
+	 * to client coordinates.
+	 * @codestart
+	 * Syn.move(
+	 *      {
+	 *        from: {pageX: 0, pageY: 0},
+	 *        to: {pageX: 100, pageY: 100}
+	 *      },
+	 *      document.document)
+	 * @codeend
+	 * <h3>String Coordinates</h3>
+	 * You can set the pageX and pageY as strings like:
+	 * @codestart
+	 * Syn.move(
+	 *      {
+	 *        from: "0x0",
+	 *        to: "100x100"
+	 *      },
+	 *      document.document)
+	 * @codeend
+	 * <h3>Element Coordinates</h3>
+	 * If jQuery is present, you can pass an element as the from or to option
+	 * and the coordinate will be set as the center of the element.
+	 * @codestart
+	 * Syn.move(
+	 *      {
+	 *        from: $(".recipe")[0],
+	 *        to: $("#trash")[0]
+	 *      },
+	 *      document.document)
+	 * @codeend
+	 * <h3>Query Strings</h3>
+	 * If jQuery is present, you can pass a query string as the from or to option.
+	 * @codestart
+	 * Syn.move(
+	 *      {
+	 *        from: ".recipe",
+	 *        to: "#trash"
+	 *      },
+	 *      document.document)
+	 * @codeend   
+	 * <h3>No From</h3>
+	 * If you don't provide a from, the element argument passed to Syn is used.
+	 * @codestart
+	 * Syn.move(
+	 *      { to: "#trash" },
+	 *      'myrecipe')
+	 * @codeend  
+	 * @param {Object} options
+	 * @param {HTMLElement} from
+	 * @param {Function} callback
+	 */
+	_move: function( options, from, callback ) {
+		//need to convert if elements
+		var win = Syn.helpers.getWindow(from), 
+			fro = convertOption(options.from || from, win), 
+			to = convertOption(options.to || options, win);
+		
+		startMove(fro, to, options.duration || 500, from, callback);
+	},
+	/**
+	 * @function drag
+	 * Creates a mousedown and drags from one point to another.  
+	 * Check out [Syn.prototype.move move] for API details.
+	 * 
+	 * @param {Object} options
+	 * @param {Object} from
+	 * @param {Object} callback
+	 */
+	_drag: function( options, from, callback ) {
+		//need to convert if elements
+		var win = Syn.helpers.getWindow(from), 
+			fro = convertOption(options.from || from, win, from), 
+			to = convertOption(options.to || options, win, from);
+		
+		startDrag(fro, to, options.duration || 500, from, callback);
+	}
+})
+}())
+});;
 steal.loaded('//funcunit/syn/drag/drag.js');
 steal(function(){
 
@@ -13565,7 +13492,8 @@ steal
 		'funcit/highlight', 
 		'mxui/layout/fit', 
 		'jquery/dom/form_params',
-		'jquery/dom/compare')
+		'jquery/dom/compare',
+		'funcit/filter')
 	.then(function($){
 		
 
@@ -13663,6 +13591,7 @@ steal
 			this.options.open && this.options.open()
 		},
 		bindEventsToIframe: function(target){
+			
 		  var self = this,
 		  	  old = this._boundEventHandler;
 			target = target || $('iframe:first')[0].contentWindow.document;
@@ -13670,50 +13599,16 @@ steal
 			
 			this._boundEventHandler = this.callback('handler');
 			
-			//target.addEventListener(keydown,func, true)
-			for(var i = 0, ii = events.length; i < ii; i++){
-				if(old){
-					target.removeEventListener(events[i],old, true);
-				}
-				target.addEventListener(events[i], this._boundEventHandler, true);
-			}
+			//$('iframe:first').funcit_record(this._boundEventHandler)
+			var calls = []
+			var fs = Funcit.filters;
+			$('iframe:first').funcit_filter(fs.visible,
+				fs.dblclick,
+				fs.similarText,
+				fs.count,
+				fs.lastmodified, this._boundEventHandler)
 			
-			/*this._boundEvents['onModified'] = this.callback('onModified');
 			
-			for(var i = 0, ii = mutationEvents.length; i < ii; i++){
-				target.removeEventListener(mutationEvents[i], this._boundEvents['onModified'], true);
-				target.addEventListener(mutationEvents[i], this._boundEvents['onModified'], true);
-			}*/
-			/*$(target)
-				.unbind('keydown')
-				.unbind('keypress')
-				.unbind('keyup')
-				.unbind('mousedown')
-				.unbind('mousemove')
-				.unbind('mouseup')
-				.unbind('change')
-				.unbind('mouseenter')
-				.unbind('mouseout')
-				.unbind('mousewheel')
-				.unbind('DOMAttrModified')
-				.unbind('DOMNodeInserted')
-				.unbind('DOMNodeRemoved')
-				.keydown(this.callback('onKeydown'))
-				.keypress(this.callback('onKeypress'))
-				.keyup(this.callback('onKeyup'))
-				.mousedown(this.callback('onMousedown'))
-				.mousemove(this.callback('onMousemove'))
-				.mouseup(this.callback('onMouseup'))
-				.change(this.callback('onChange'))
-				.mouseenter(this.callback('onMouseenter'))
-				.mouseout(this.callback('onMouseout'))
-				.mousewheel(this.callback('onMousewheel'))
-				.bind("DOMAttrModified", this.callback('onModified'))
-				.bind("DOMNodeInserted", this.callback('onModified'))
-				.bind("DOMNodeRemoved", this.callback('onModified'))*/
-			$($('iframe:first')[0].contentWindow)
-			  .unbind('scroll')
-			  .scroll(this.callback('handler'))
 			$('iframe:first')
 			  .unbind('load')
 			  .load(function(ev){
@@ -13721,475 +13616,24 @@ steal
 			  })
 		},
 		inFrame : function(target){
-			return target[0].ownerDocument.defaultView == this._currentTarget
+			return true // TODO: Fix this !!!!
+			return target[0] && target[0].ownerDocument.defaultView == this._currentTarget 
 		},
 		handler : function(ev){
+			/*$(ev.target).funcit_filter(Funcit.filter.dblclick, function(cb){
+				cb()
+				console.log('bleeeeee')
+			})*/
+			
+			console.log('Event: ', ev)
 			// understands what a user is doing
 			
 			// triggers addEvent ['event', data, target, prettySelector]
 			
-			var target = $(ev.target);
+			this.element.trigger("addEvent", [ev.type, ev]);
 			
-			if (!this.inFrame(target)) {
-				return		
-			}
+			return
 			
-			switch(ev.type){
-				case "DOMNodeRemoved":
-					//if(this.inFrame(target)){
-						this.element.trigger("addEvent",["removed",undefined, target, target.prettySelector()]);
-					//}
-					/*this.publish('funcit.suggestion',{
-						el: ev.target,
-						type: 'missing'
-					})*/
-					break;
-				case 'DOMNodeInserted':
-					// make sure target was in iframe 
-					//if (this.inFrame(target)) {
-						
-					//}
-					this.element.trigger("addEvent",["added",undefined, target, target.prettySelector()]);
-					break;
-				case 'DOMAttrModified' : 
-					var newVal = ev.newValue,
-						prop = ev.attrName;
-
-					if(prop == 'style'){
-						var attrArr = newVal.split(":"),
-							attr = attrArr[0],
-							val = attrArr[1];
-							
-						if(attr == 'display'){
-							if (/block/i.test(val)) {
-								this.publish('funcit.suggestion',{
-									el: ev.target,
-									type: 'visible'
-								})
-							}
-							else if (/none/i.test(val)) {
-								this.publish('funcit.suggestion',{
-									el: ev.target,
-									type: 'invisible'
-								})
-							}
-						}
-					}
-					break;
-				case 'mousemove' :
-					if(this.record_mouse){
-						var loc = {x: e.pageX, y: e.pageY};
-						if(!this.mousemove_locations.start){
-							this.mousemove_locations.start = loc;
-						}
-						this.mousemove_locations.end = loc;
-					}
-					this.mousemoves++;
-					break;
-				case 'mouseover' : 
-					target.scroll(this.callback('onScroll'));
-					break;
-				case 'mouseout' : 
-					if(target.compare($(ev.relatedTarget)) != 20){
-						target.unbind('scroll');
-					}
-					break;
-				case 'keydown' : 
-					this.preventKeypress = false;
-					this.handleEscape(ev);
-					this.stopMouseOrScrollRecording(ev);
-					var key = getKey(ev.keyCode);
-					var addImmediately = false;
-					if(typeof key == 'undefined') return;
-					if(ev.keyCode == 13){
-						key = '\\r';
-						addImmediately = true;
-					} else if(ev.keyCode == 8){
-						key = '\\b';
-						addImmediately = true;
-					} else if(ev.keyCode == 9){
-						key = '\\t';
-						addImmediately = true;
-					}else if((Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1) && this.lastSpecialKey != key){
-						this.lastSpecialKey = key;
-						key = "[" + key + "]";
-						addImmediately = true;
-					}
-					if(addImmediately){
-						this.element.trigger("addEvent",["char",key, ev.target]);
-						this.preventKeypress = true;
-					} else {
-						var controller = this;
-						this.keyDownTimeout = setTimeout(function(){
-							if(controller.keytarget != ev.target){
-								controller.current = [];
-								controller.keytarget = ev.target;
-							}
-							if($.inArray(key, controller.downKeys) == -1){
-								controller.downKeys.push(key);
-								//h.showChar(key, ev.target);
-								controller.element.trigger("addEvent",["char",key, ev.target])
-							}
-						}, 20);
-					}
-					break;
-				case 'keypress':
-					if(!this.preventKeypress){
-					    var key = String.fromCharCode(ev.charCode);
-						clearTimeout(this.keyDownTimeout);
-						if(this.keytarget != ev.target){
-							this.current = [];
-							this.keytarget = ev.target;
-						}
-						this.element.trigger("addEvent",["char",key, ev.target])
-					}	
-					break;
-				case 'keyup':
-					var key = getKey(ev.keyCode),
-						self = this;
-					if(ev.keyCode == 13){
-						key = '\\r';
-					}
-					if(Syn.key.isSpecial(ev.keyCode)){
-						delete this.lastSpecialKey;
-						this.element.trigger("addEvent",["char","[" +key+"-up]", ev.target])
-					}
-					
-					var location = $.inArray(key, this.downKeys);
-					this.downKeys.splice(location,1);
-					this.justKey = true;
-					setTimeout(function(){
-						self.justKey = false;
-					},20);
-					break;
-				case 'mousedown':
-					$(ev.target).scroll(this.callback('onScroll'));
-					if(this.record_mouse){
-						this.stopMouseRecording(true);
-					}
-					this.mousedownEl = ev.target;
-					this._selector = $(ev.target).prettySelector();
-					this.mousemoves = 0
-					this.lastX = ev.pageX
-					this.lastY = ev.pageY;
-					this.isMouseDown = true;
-					break;
-				case 'mouseup':
-					this.publish('funcit.close_select_menu');
-					this.isMouseDown = false;
-					if(this.isScrolling){
-						if(this.scroll != null){
-							var direction = "top";
-							var amount = this.scroll.y;
-							if(amount == 0){
-								direction = "left";
-								amount = this.scroll.x;
-							}
-							this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target, this._selector]);
-						}
-						
-						this.isScrolling = false;
-					} else {
-						if(/option/i.test(ev.target.nodeName)){
-		
-						}else if(ev.which == 3){
-							this.element.trigger("addEvent", ['rightClick', undefined, ev.target]);
-						}else if(!this.mousemoves || (this.lastX == ev.pageX && this.lastY == ev.pageY)){
-							if(this.clickTimeout){
-								clearTimeout(this.clickTimeout);
-								delete this.clickTimeout;
-								this.element.trigger("addEvent",["doubleClick",undefined, ev.target]);
-							} else {
-								var controller = this,
-									target = ev.target
-									//prettySel = $(target).prettySelector();
-								this.clickTimeout = setTimeout(function(){
-									controller.element.trigger("addEvent",["click",undefined, target, ]);
-									delete controller.clickTimeout;
-								}, 200);
-							}
-						}else if(this.mousemoves > 2 && this.mousedownEl){
-							this.element.trigger("addEvent",["drag",{clientX : ev.clientX,
-								clientY: ev.clientY}, this.mousedownEl])
-						}
-		
-						this.mousedownEl = null;
-						this.mousemoves = 0;
-						this.lastY = this.lastX = null;
-					}
-					break;
-				case 'mousewheel':
-					if(this.scroll != null){
-						var direction = "top";
-						var amount = this.scroll.y;
-						if(amount == 0){
-							direction = "left";
-							amount = this.scroll.x;
-						}
-						this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
-					}
-					break;
-				case 'change':
-					if(ev.target.nodeName.toLowerCase() == "select"){
-		
-						var el = $("option:eq("+ev.target.selectedIndex+")", ev.target);
-						this.element.trigger("addEvent",["change",undefined, el])
-					}
-					break;
-				case 'scroll':
-					if(ev.target.nodeName.toLowerCase() == "select"){
-		
-						var el = $("option:eq("+ev.target.selectedIndex+")", ev.target);
-						this.element.trigger("addEvent",["change",undefined, el])
-					}
-					break;
-				
-			}
-		},
-/*		onModified: function(ev){
-			if(ev.type == 'DOMNodeRemoved'){
-				this.publish('funcit.suggestion',{
-					el: ev.target,
-					type: 'missing'
-				})
-				
-			} else if(ev.type == 'DOMNodeInserted'){
-				
-				
-			} else {
-				var newVal = ev.newValue,
-					prop = ev.attrName;
-				//;
-				if(prop == 'style'){
-					var attrArr = newVal.split(":"),
-						attr = attrArr[0],
-						val = attrArr[1];
-					if(attr == 'display'){
-						if (/block/.test(val)) {
-							this.publish('funcit.suggestion',{
-								el: ev.target,
-								type: 'visible'
-							})
-						}
-						else if (/none/.test(val)) {
-							this.publish('funcit.suggestion',{
-								el: ev.target,
-								type: 'invisible'
-							})
-						}
-					}
-				}
-			}
-			
-		},*/
-		onMousemove : function(e){
-			if(this.record_mouse){
-				var loc = {x: e.pageX, y: e.pageY};
-				if(!this.mousemove_locations.start){
-					this.mousemove_locations.start = loc;
-				}
-				this.mousemove_locations.end = loc;
-			}
-			this.mousemoves++;
-		},
-		onMouseover : function(ev){
-			$(ev.target).scroll(this.callback('onScroll'));
-		},
-		onMouseout : function(ev){
-			
-			
-		},
-		onKeydown : function(ev){
-			this.preventKeypress = false;
-
-			this.handleEscape(ev);
-			this.stopMouseOrScrollRecording(ev);
-			var key = getKey(ev.keyCode);
-			var addImmediately = false;
-			if(typeof key == 'undefined') return;
-			if(ev.keyCode == 13){
-				key = '\\r';
-				addImmediately = true;
-			} else if(ev.keyCode == 8){
-				key = '\\b';
-				addImmediately = true;
-			} else if(ev.keyCode == 9){
-				key = '\\t';
-				addImmediately = true;
-			}else if((Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1) && this.lastSpecialKey != key){
-				this.lastSpecialKey = key;
-				key = "[" + key + "]";
-				addImmediately = true;
-			}
-			if(addImmediately){
-				this.element.trigger("addEvent",["char",key, ev.target]);
-				this.preventKeypress = true;
-			} else {
-				var controller = this;
-				this.keyDownTimeout = setTimeout(function(){
-					if(controller.keytarget != ev.target){
-						controller.current = [];
-						controller.keytarget = ev.target;
-					}
-					if($.inArray(key, controller.downKeys) == -1){
-						controller.downKeys.push(key);
-						//h.showChar(key, ev.target);
-						controller.element.trigger("addEvent",["char",key, ev.target])
-					}
-				}, 20);
-			}
-			
-		},
-		onKeypress : function(ev){
-
-		  if(!this.preventKeypress){
-		    var key = String.fromCharCode(ev.charCode);
-  			clearTimeout(this.keyDownTimeout);
-  			if(this.keytarget != ev.target){
-  				this.current = [];
-  				this.keytarget = ev.target;
-  			}
-  			this.element.trigger("addEvent",["char",key, ev.target])
-		  }	
-
-		},
-		onKeyup : function(ev){
-			var key = getKey(ev.keyCode),
-				self = this;
-			if(ev.keyCode == 13){
-				key = '\\r';
-			}
-			if(Syn.key.isSpecial(ev.keyCode)){
-				delete this.lastSpecialKey;
-				this.element.trigger("addEvent",["char","[" +key+"-up]", ev.target])
-			}
-			
-			var location = $.inArray(key, this.downKeys);
-			this.downKeys.splice(location,1);
-			this.justKey = true;
-			setTimeout(function(){
-				self.justKey = false;
-			},20)
-		},
-		onMousedown : function(ev){
-			$(ev.target).scroll(this.callback('onScroll'));
-			if(this.record_mouse){
-				this.stopMouseRecording(true);
-			}
-			this.mousedownEl = ev.target;
-			this._selector = $(ev.target).prettySelector();
-			this.mousemoves = 0
-			this.lastX = ev.pageX
-			this.lastY = ev.pageY;
-			this.isMouseDown = true;
-		},
-		
-		onMouseup : function(ev){
-			this.publish('funcit.close_select_menu');
-			this.isMouseDown = false;
-			if(this.isScrolling){
-				if(this.scroll != null){
-					var direction = "top";
-					var amount = this.scroll.y;
-					if(amount == 0){
-						direction = "left";
-						amount = this.scroll.x;
-					}
-					this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
-				}
-				
-				this.isScrolling = false;
-			} else {
-				if(/option/i.test(ev.target.nodeName)){
-
-				}else if(ev.which == 3){
-					this.element.trigger("addEvent", ['rightClick', undefined, ev.target]);
-				}else if(!this.mousemoves || (this.lastX == ev.pageX && this.lastY == ev.pageY)){
-					if(this.clickTimeout){
-						clearTimeout(this.clickTimeout);
-						delete this.clickTimeout;
-						this.element.trigger("addEvent",["doubleClick",undefined, ev.target]);
-					} else {
-						var controller = this,
-							target = ev.target
-							//prettySel = $(target).prettySelector();
-						this.clickTimeout = setTimeout(function(){
-							controller.element.trigger("addEvent",["click",undefined, target]);
-							delete controller.clickTimeout;
-						}, 200);
-					}
-				}else if(this.mousemoves > 2 && this.mousedownEl){
-					this.element.trigger("addEvent",["drag",{clientX : ev.clientX,
-						clientY: ev.clientY}, this.mousedownEl])
-				}
-
-				this.mousedownEl = null;
-				this.mousemoves = 0;
-				this.lastY = this.lastX = null;
-			}
-			
-		},
-		onMousewheel : function(ev, delta, deltaX, deltaY){
-			if(this.scroll != null){
-				var direction = "top";
-				var amount = this.scroll.y;
-				if(amount == 0){
-					direction = "left";
-					amount = this.scroll.x;
-				}
-				this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
-			}
-			//
-			//var el   = $($('iframe:first')[0].contentWindow);
-			/*var elements = $(ev.target).parents().toArray();
-			elements.unshift($(ev.target)[0]);
-			var el = null;
-			for(var i = 0; i < elements.length; i++){
-				if($(elements[i]).hasScrollBar()){
-					el = elements[i];
-				}
-			}
-			
-			var ammount = {
-											top: el.scrollTop(),
-											left: el.scrollLeft()
-										};
-			var direction = 'left';
-			if(deltaX == 0){
-				direction = 'top';
-			}
-			this.element.trigger("addEvent",["scroll", direction, ammount[direction], el]);*/
-		},
-		onChange : function(ev){
-			if(ev.target.nodeName.toLowerCase() == "select"){
-
-				var el = $("option:eq("+ev.target.selectedIndex+")", ev.target);
-				this.element.trigger("addEvent",["change",undefined, el])
-			}
-		},
-		onScroll: function(ev){
-		  var self = this;
-			this.isScrolling = true;
-			this.scroll = {
-				x: ev.currentTarget.scrollLeft, 
-				y: ev.currentTarget.scrollTop, 
-				target: ev.currentTarget
-			};
-			if(!this.isMouseDown){
-				this.scrollTimeout && clearTimeout(this.scrollTimeout);
-				this.scrollTimeout = setTimeout(function(){
-				  if(self.scroll != null){
-						var direction = "top";
-						var amount = self.scroll.y;
-						if(amount == 0){
-							direction = "left";
-							amount = self.scroll.x;
-						}
-						self.element.trigger("addEvent",["scroll", direction, amount, self.scroll.target]);
-						self.isScrolling = false;
-					}
-				}, 50)
-			}
 		},
 		onDocumentKeydown: function(ev){
 			return;
@@ -14222,7 +13666,7 @@ steal
 					amount = this.scroll.x;
 				}
 				if(triggerEvent){
-					this.element.trigger("addEvent",["scroll", direction, amount, this.scroll.target]);
+					this.element.trigger("addEvent",["scroll", this.scroll.target, direction, amount]);
 				}
 			}
 		},
@@ -14407,7 +13851,10 @@ $.Controller("Funcit.Editor",{
   			setTimeout(this.callback('moveToLastTest'),13)
   		}
 
-  		var args = $.makeArray(arguments);
+  		if(eventType != 'open') this.insertExistsIfNeeded(arguments[2]);
+
+			var args = $.makeArray(arguments);
+			console.log("add"+$.String.capitalize(eventType))
   		this["add"+$.String.capitalize(eventType)].apply(this,args.slice(2))
 	  }
 	},
@@ -14421,11 +13868,12 @@ $.Controller("Funcit.Editor",{
 		}
 		this.saveToLocalStorage();
 	},
-	addChar: function(letter, el){
+	addChar: function(ev){
 		var stmt = this.funcStatement({
 			previous: true
 		});
-		
+		var el = ev.target;
+		var letter = ev.key;
 		var text = stmt.text();
 		var chainedCalls = stmt.chainedCalls();
 		if(chainedCalls[chainedCalls.length - 1] == '.type'){
@@ -14443,70 +13891,56 @@ $.Controller("Funcit.Editor",{
 			});
 			this.element.trigger('keyup')
 		}else{
-			this.chainOrWriteLn($(el).prettySelector(),".type('" + letter + "*')");
+			this.chainOrWriteLn(ev.selector,".type('" + letter + "*')");
 		}
 		this.saveToLocalStorage();
 	},
-	addChange : function(options, el){
+	addChange : function(ev){
 		/*var select = el.parent();
 		this.chainOrWriteLn($(select).prettySelector(),".trigger('focus').val('" + el.val() + "*')");*/
-		this.chainOrWriteLn($(el).prettySelector(),".click()*");
+		this.chainOrWriteLn(ev.selector, ".click()*");
 		this.saveToLocalStorage();
 	},
-	addClick : function(options, el){
-		var prettySelector = el;
-		if(typeof el !== "string"){ // assume we were passed a prettySelector if its a string
-			prettySelector = $(el).prettySelector();
-		}
-		
-		this.insertExistsIfNeeded(el);
-		
-		this.chainOrWriteLn(prettySelector,".click()*");
+	addClick : function(ev){
+		this.chainOrWriteLn(ev.selector, ".click()*");
 		this.saveToLocalStorage();
 	},
-	insertExistsIfNeeded : function(el){
-		if($(el).parents('[funcit-dom-inserted="true"]').length > 0 && typeof $(el).attr('funcit-dom-exists') == 'undefined'){
-			this.addWait({type: 'exists'}, $(el).prettySelector())
-			$(el).attr('funcit-dom-exists', 'true')
-		}
-		
-		
-	},
-	addRightClick : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(),".rightClick()*");
+	addRightClick : function(ev){
+		this.chainOrWriteLn(ev.selector, ".rightClick()*");
 		this.saveToLocalStorage();
 	},
-	addDoubleClick : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(),".dblclick()*");
+	addDblclick : function(ev){
+		this.chainOrWriteLn(ev.selector,".dblclick()*");
 		this.saveToLocalStorage();
 	},
-	addTrigger : function(value, el){
+	addTrigger : function(el, value){
 		this.chainOrWriteLn($(el).prettySelector(),".trigger("+$.toJSON(value)+")*");
 		this.saveToLocalStorage();
 	},
-	addDrag : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(),".drag("+$.toJSON(options)+")*");
+	addDrag : function(ev){
+		this.chainOrWriteLn(ev.selector,".drag("+$.toJSON({clientX: ev.clientX, clientY: ev.clientY})+")*");
 		this.saveToLocalStorage();
 	},
 	addMove: function(el, from, to){
 		this.chainOrWriteLn($(el).prettySelector(), '.move("'+to.x+'x'+to.y+'")*');
 		this.saveToLocalStorage();
 	},
-	addScroll : function(direction, amount, el){
+	addScroll : function(ev){
+		console.log(ev)
 	  var self = this;
 	  var selector = "";
 	  var val = "";
-		if(el.window == el){
+		if(ev.target.window == ev.target){
 		  selector = "window";
 			if(direction == "top")
-			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollY+')*';
+			  val = '.scroll('+$.toJSON(ev.direction)+', '+ev.target.scrollY+')*';
 			else{
-			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollX+')*';
+			  val = '.scroll('+$.toJSON(ev.direction)+', '+ev.target.scrollX+')*';
 			}
 		} else {
-			amount = (direction == 'left') ? $(el).scrollLeft() : $(el).scrollTop();
-		  selector = $(el).prettySelector();
-		  val = '.scroll('+$.toJSON(direction)+', '+amount+')*';
+			amount = (ev.direction == 'left') ? $(ev.target).scrollLeft() : $(ev.target).scrollTop();
+		  selector = ev.selector;
+		  val = '.scroll('+$.toJSON(ev.direction)+', '+amount+')*';
 		}
 		if(this.lastScroll[selector] != val){
 		  this.scrollTimeout && clearTimeout(this.scrollTimeout);
@@ -14521,6 +13955,26 @@ $.Controller("Funcit.Editor",{
 		this.chainOrWriteLn('body', '.mousewheel("' + delta + '")');
 		this.saveToLocalStorage();
 	},
+	addVisible : function(ev) {
+		this.chainOrWriteLn(ev.selector,".visible()*");
+	},
+	addInvisible : function(ev) {
+		this.chainOrWriteLn(ev.selector,".invisible()*");
+	},
+	addAdded : function(ev) {
+		this.chainOrWriteLn(ev.selector,".exists()*");
+	},
+	addRemoved : function(ev) {
+		this.chainOrWriteLn(ev.selector,".missing()*");
+	},
+	insertExistsIfNeeded : function(el){
+		console.log('insert exists')
+		if($(el) != null && $(el).parents('[funcit-dom-inserted="true"]').length > 0 && typeof $(el).attr('funcit-dom-exists') == 'undefined'){
+			this.addWait({type: 'exists'}, $(el).prettySelector())
+			$(el).attr('funcit-dom-exists', 'true')
+		}
+	},
+	
 	// if el is blank, add "target"
 	addWait: function(options, el){
 		var val = $.toJSON(options.value) || "",
@@ -14545,8 +13999,6 @@ $.Controller("Funcit.Editor",{
 		if(options.type == 'attr' || options.type == 'css'){
 			text = text + '"' + options.value + '"'
 		}	
-		
-		
 		
 		var variableStmt = "var "+this.getVariableName(options.type)+" = "+text+")";
 		
@@ -27737,6 +27189,135 @@ jQuery.fn.compare = function(b){ //usually
 
 });;
 steal.loaded('//jquery/dom/compare/compare.js');
+steal.plugins('funcit/record').then(function(){
+	var cbs = [];
+	
+	window.Funcit || (window.Funcit = {});
+	/**
+	 * Takes a list of filter functions that get called with the event ...
+	 * They are expected to callback with the event or events to pass to the next filter function
+	 * @param {Object} feed
+	 */
+	Funcit.filter = function(feed){
+		var filters = $.makeArray(arguments),
+			feed = filters.shift();
+		feed(function(ev){
+			// we got an event from the feed ...
+			
+			// call filter with event
+			
+			// when 
+			
+			var filterNum = 0,
+			eventNum = 0,
+			current = [ev],
+			passNext = function(events){
+				if(events === false){
+					current.splice(eventNum, 1);
+				} else if(events){
+					if( !$.isArray(events) ){
+						events = [events];
+					}
+					// add the new events to be proccessed
+					var len = events.length;
+					events.unshift(eventNum, 1); //only remove the current one
+					current.splice.apply(current, events );
+					
+					eventNum = len + eventNum;
+				} else {
+					eventNum++;
+				}
+				
+				
+				if(eventNum >= current.length){ // if we have processed all events for this filter ...
+					//call the next filter
+					++filterNum;
+					// reset the eventNum
+					eventNum = 0;
+				}
+				
+				var filter = filters[filterNum];
+				if(filter && current[eventNum]){
+					
+					var res = filter(current[eventNum], passNext);
+					if(res === false){
+						current.splice(eventNum, 1);
+						passNext();
+					} else if(res !== true){
+						if( !$.isArray(res) ){
+							res = [res || current[eventNum]];
+						}
+						passNext(res)
+					}
+				}
+				
+			};
+			
+			var filter = filters[filterNum];
+			if(filter){
+				var res = filter(ev, passNext);
+				if(res === false){
+					passNext(false);
+				} else if(res !== true){
+					if( !$.isArray(res) ){
+						res = [res || ev];
+					}
+					passNext(res)
+				}
+			}
+		})
+	}
+
+	
+	// finds similar text in an element you typed in
+	
+	Funcit.filters = {};
+}).then('//funcit/filters/count',
+		'//funcit/filters/dblclick',
+        '//funcit/filters/lastmodified',
+		'//funcit/filters/similartext',
+		'//funcit/filters/visible',function(){
+	
+	var fs = Funcit.filters;
+	
+	/**
+	 * Listens on an element for events (produced by recorder).  You can pass in optional filters.
+	 * @param {Object} finalCb
+	 */
+	$.fn.funcit_filter = function(finalCb){
+		var args = $.makeArray(arguments);
+		
+		// if we only get one arg, assume it's the default filters ..
+		if(args.length == 0){
+			args = [function(ev){
+				console.log(ev)
+			}];
+		}
+		
+		if(args.length == 1){
+			args.unshift(fs.visible,
+				fs.dblclick,
+				fs.similarText,
+				fs.count,
+				fs.lastmodified)
+		}
+		
+		var el = this;
+		
+		args.unshift(function(cb){
+			el.funcit_record(cb)
+		})
+		
+		Funcit.filter.apply(Funcit, args);
+	}
+	
+});
+
+
+// this should make waits based on type -> click
+
+;
+steal.loaded('//funcit/filter/filter.js');
 //@steal-clean
 /*******************************************************************************
  * OpenAjax.js
@@ -27940,6 +27521,566 @@ if(!window["OpenAjax"]){
 OpenAjax.hub.registerLibrary("JavaScriptMVC", "http://JavaScriptMVC.com", "3.0", {});
 });;
 steal.loaded('//jquery/lang/openajax/openajax.js');
+steal.plugins('jquery','funcit/pretty_selector',
+'funcunit/syn', 
+		'funcit/highlight', 
+		'mxui/layout/fit', 
+		'jquery/dom/form_params',
+		'jquery/dom/compare').then(function(){
+	var events = "DOMAttrModified DOMNodeInserted DOMNodeRemoved keydown keypress keyup mousedown mousemove mouseup change mouseover mouseout mousewheel".split(' ');
+	
+	
+	var getKey =  function( code ) {
+		for(var key in Syn.keycodes){
+			if(Syn.keycodes[key] == code){
+				return key
+			}
+		}
+	}
+	var specialKeys = [
+		'up', 'down', 'right', 'left', 'escape', 'page-up', 'page-down', 'home', 'end', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12', 'num0', 'num1', 'num2', 'num3', 'num4', 'num5', 'num6', 'num7', 'num8', 'num9', 'delete'
+	];
+	
+	$.fn.funcit_record = function(cb){
+		
+		var el = this[0],
+			isFrame = el.nodeName.toLowerCase() === 'iframe',
+			win = !isFrame ? el.ownerDocument.defaultView : this[0].contentWindow,
+			target = !isFrame ? el : win.document,
+			old = $.data(this[0],"handle"),
+			data = {},
+			eventHandler = function(ev){
+				HANDLER.call(data, ev, cb, win);
+			};
+		
+		$.data(this[0],"handle", eventHandler);
+		$.each(events, function(){
+			if(old){
+				target.removeEventListener(""+this,old, true);
+			}
+			target.addEventListener(""+this, eventHandler, true);
+		});
+		
+		
+	};
+	
+	// set to true to prevent the next keypress from sending an event
+	var preventKeypress,
+		lastSpecialKey,
+		keyDownTimeout,
+		downKeys = [],
+		keytarget,
+		current,
+		isScrolling;
+	
+	
+	function HANDLER(ev, cb, win){
+		// understands what a user is doing
+		
+		// triggers addEvent ['event', data, target, prettySelector]
+		
+		var target = $(ev.target);
+		
+		if (target[0].ownerDocument.defaultView !== win || /firebug/i.test( target[0].className)) {
+			return;		
+		}
+		
+		
+		//console.log(ev)
+		switch(ev.type){
+			case "DOMNodeRemoved":
+				cb({type: "removed",
+						target: target,
+						selector: target.prettySelector()})
+				break;
+			case 'DOMNodeInserted':
+				cb({type: "added",
+						target: target,
+						selector: target.prettySelector()})
+				console.log(target)
+				$(target).attr('funcit-dom-inserted', 'true')
+				//this.element.trigger("addEvent",[]);
+				break;
+			case 'DOMAttrModified' : 
+				cb(ev);
+				break;
+			case 'mousemove' :
+				if(this.record_mouse){
+					var loc = {x: e.pageX, y: e.pageY};
+					if(!this.mousemove_locations.start){
+						this.mousemove_locations.start = loc;
+					}
+					this.mousemove_locations.end = loc;
+				}
+				this.mousemoves++;
+				break;
+			case 'mouseover' : //listen for scrolling ...
+				
+				target.scroll($.proxy(onScroll, this));
+				break;
+			case 'mouseout' : 
+				if(target.compare($(ev.relatedTarget)) != 20){
+					target.unbind('scroll');
+				}
+				break;
+			case 'keydown' : 
+			
+				// 
+				
+				var key = getKey(ev.keyCode),
+					addImmediately = false;
+				
+				preventKeypress = false;
+				
+				if(ev.keyCode == 13){
+					key = '\\r';
+					addImmediately = true;
+				} else if(ev.keyCode == 8){
+					key = '\\b';
+					addImmediately = true;
+				} else if(ev.keyCode == 9){
+					key = '\\t';
+					addImmediately = true;
+				}else if((Syn.key.isSpecial(ev.keyCode) || $.inArray(key, specialKeys) > -1) && lastSpecialKey != key){
+					lastSpecialKey = key;
+					key = "[" + key + "]";
+					addImmediately = true;
+				}
+				if(addImmediately){
+					cb({type: "char",
+						key: key,
+						target: target,
+						selector: target.prettySelector()
+					});
+					preventKeypress = true;
+				} else {
+					keyDownTimeout = setTimeout(function(){
+						if(keytarget != ev.target){
+							current = [];
+							keytarget = ev.target;
+						}
+						if($.inArray(key, downKeys) == -1){
+							downKeys.push(key);
+	
+							cb({type: "char",
+								key: key,
+								target: target,
+								selector: target.prettySelector()
+							} )
+						}
+					}, 20);
+				}
+				break;
+			case 'keypress':
+				if(!preventKeypress){
+				    var key = String.fromCharCode(ev.charCode);
+					clearTimeout(keyDownTimeout);
+					if(keytarget != ev.target){
+						current = [];
+						keytarget = ev.target;
+					}
+					cb({type: "char",
+						key: key,
+						target: target,
+						selector: target.prettySelector()
+					})
+				}	
+				break;
+			case 'keyup':
+				var key = getKey(ev.keyCode),
+					self = this;
+				if(ev.keyCode == 13){
+					key = '\\r';
+				}
+				if(Syn.key.isSpecial(ev.keyCode)){
+					lastSpecialKey = undefined;
+					cb({type: "char",
+						key: "[" +key+"-up]",
+						target: target,
+						selector: target.prettySelector()
+					})
+				}
+				
+				var location = $.inArray(key, downKeys);
+				downKeys.splice(location,1);
+				
+				//this.justKey = true;
+				//setTimeout(function(){
+				//	self.justKey = false;
+				//},20);
+				break;
+			case 'mousedown':
+				target.scroll($.proxy(onScroll, this));
+
+				this.mousedownEl =target;
+				this._selector = $(ev.target).prettySelector();
+				this.mousemoves = 0
+				this.lastX = ev.pageX
+				this.lastY = ev.pageY;
+				this.isMouseDown = true;
+				break;
+			case 'mouseup':
+				this.isMouseDown = false;
+
+				if(isScrolling){
+					if(this.scroll != null){
+						var direction = "top";
+						var amount = this.scroll.y;
+						if(amount == 0){
+							direction = "left";
+							amount = this.scroll.x;
+						}
+						cb({type: "scroll",
+							direction: direction,
+							amount: amount,
+							selector: this._selector
+						});
+					}
+					
+					isScrolling = false;
+				} else {
+					if(/option/i.test(ev.target.nodeName)){
+	
+					}else if(ev.which == 3){
+						cb({type: 'rightClick', target: target, selector: target.prettySelector()});
+					}else if(!this.mousemoves || (this.lastX == ev.pageX && this.lastY == ev.pageY)){
+						// handle dblclick in the filter stuff ...
+						cb({type: "click",
+							target: target,
+							selector: target.prettySelector()
+						});
+						
+					if(this.clickTimeout){
+							clearTimeout(this.clickTimeout);
+							delete this.clickTimeout;
+							/*cb({type: "dblclick",
+								target: target,
+								selector: target.prettySelector()
+							})*/;
+						} else {
+							var controller = this;
+								//prettySel = $(target).prettySelector();
+							this.clickTimeout = setTimeout(function(){
+								
+								delete controller.clickTimeout;
+							}, 200);
+						}
+					}else if(this.mousemoves > 2 && this.mousedownEl){
+						cb({type: "drag",
+							clientX : ev.clientX,
+							clientY: ev.clientY,
+							target: this.mousedownEl,
+							selector: this._selector
+						});
+
+					}
+	
+					this.mousedownEl = null;
+					this.mousemoves = 0;
+					this.lastY = this.lastX = null;
+				}
+				break;
+			case 'mousewheel':
+				if(this.scroll != null){
+					var direction = "top";
+					var amount = this.scroll.y;
+					if(amount == 0){
+						direction = "left";
+						amount = this.scroll.x;
+					}
+					cb({type: "scroll",
+							direction : direction,
+							amount: amount,
+							target:this.scroll.target,
+							selector: this.scroll.target.prettySelector()
+					});
+				}
+				break;
+			case 'change':
+				if(ev.target.nodeName.toLowerCase() == "select"){
+	
+					var el = $("option:eq("+ev.target.selectedIndex+")", ev.target);
+					
+					cb({type: "change",
+							target:el,
+							selector: el.prettySelector()
+					});
+				}
+				break;
+			case 'scroll':
+				if(ev.target.nodeName.toLowerCase() == "select"){
+	
+					var el = $("option:eq("+ev.target.selectedIndex+")", ev.target);
+					cb({type: "change",
+							target:el,
+							selector: el.prettySelector()
+					});
+				}
+				break;
+			
+		}
+		
+		
+		function onScroll(ev){
+			isScrolling = true;
+			this.scroll = {
+				x: ev.currentTarget.scrollLeft, 
+				y: ev.currentTarget.scrollTop, 
+				target:$(ev.currentTarget) 
+			};
+			if(!this.isMouseDown){
+				this.scrollTimeout && clearTimeout(this.scrollTimeout);
+				this.scrollTimeout = setTimeout(function(){
+				  if(self.scroll != null){
+						var direction = "top";
+						var amount = self.scroll.y;
+						if(amount == 0){
+							direction = "left";
+							amount = self.scroll.x;
+						}
+						cb(  {
+							type: "scroll",
+							direction: direction,
+							amount: amount,
+							target: self.scorll,
+							selector: self.scroll.prettySelector()
+						} );
+						isScrolling = false;
+					}
+				}, 50)
+			}
+		}
+	};
+	
+	
+	 
+})
+;
+steal.loaded('//funcit/record/record.js');
+steal(function(){
+
+	//adds a count (how many times something has been modified) 
+	var throbs = [],
+		text,
+		index = function(selector){
+			// also checks they are in the page and removes if they are not
+			for(var i =0; i < throbs.length; i++){
+				
+				if(throbs[i].selector === selector){
+					return i;
+				}
+			}
+			return -1;
+		},
+		modifiers = ['invisible','visible','added','removed'];
+			
+			
+	Funcit.filters.count = function(ev){
+	
+		
+		if($.inArray(ev.type, modifiers) > -1){
+			// record how many times this selector has been changed ...
+			var i = index(ev.selector);
+			if(i > -1){
+				var throb = throbs.splice(i, 1)[0]
+			} else{
+				throb = {selector: ev.selector, count: 0}
+			}
+			throb.count++;
+			throbs.unshift(throb);
+			ev.count = throb.count;
+			console.log(throb.count)
+			if(throbs.length > 100){
+				throbs.pop();
+			}
+		}
+	}
+	
+});
+steal.loaded('//funcit/filters/count.js');
+steal(function(){
+
+var events,
+	timer;
+
+// after a click collect all events until a timeout passes ... then it was a click or not
+Funcit.filters.dblclick = function(ev, cb){
+	if(ev.type == 'click'){
+		
+		if(timer){ // we were a double click
+			ev.type = 'dblclick';
+			//console.log(events)
+			events.push(ev)
+			var call = events.slice(0);
+			clearTimeout(timer);
+			events = timer = undefined;
+			
+			
+			
+			return call;
+		} else {
+			events = [ev];
+			timer = setTimeout(function(){
+				var call = events.slice(0);
+				//console.log("click", call)
+				timer = events = undefined;
+				cb(call);
+			},200)
+			return true;
+		}
+		
+	} else if(events){
+		events.push(ev);
+		return true;
+	}
+}
+	
+})
+;
+steal.loaded('//funcit/filters/dblclick.js');
+steal(function(){
+	
+	var lastAction = [],
+		modifiers = [],
+		
+	
+	find = function(modifiers, target, type){
+		for(var i =0; i < modifiers.length ;i++){
+			var compare = modifiers[i].target.compare(target);
+			console.log(compare, target, type)
+			if( (compare & 0 || compare & 8 || compare & 16) && (type ? type==modifiers[i].type : true) ){
+				return i;
+			}
+		}
+	},
+	getSuggestion = function(modifiers, previousEvent, nextEvent){
+		// priority ...
+		//  - something added that contains or is, what we do in the next event
+		//  - something added with similar text
+		//  - something added 
+		
+		
+		
+		// something added to what we just touched
+		var lastAround = find(modifiers, nextEvent.target);
+		if( lastAround > -1){
+			for(var i =0; i < modifiers.length; i++){
+				if(modifiers[i].similarText){
+					return modifiers[i];
+				}
+			}
+		}
+		return modifiers[0];
+	}
+	Funcit.filters.lastmodified = function(ev){
+	
+		if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
+			
+			modifiers.unshift(ev);
+			return true;
+		} else {
+			
+			var suggestion = getSuggestion(modifiers, lastAction, ev);
+			lastAction = ev;
+			modifiers = [];
+			
+			return [suggestion, ev]
+		}
+	};
+	
+})
+;
+steal.loaded('//funcit/filters/lastmodified.js');
+steal(function(){
+	
+	//adds a similar text flag to modifiers that are 'similar'
+	
+	var recent,
+		text,
+		modifiers = ['invisible','visible','added','removed'];
+			
+	Funcit.filters.similarText = function(event){
+		if(event.type == 'char'){
+			// we are typing something
+			text = event.target.val();
+		}
+		
+		if(text && text.length > 4 && $.inArray(event.type, modifiers) > -1){
+			if( event.target.is(':contains('+text+')') ){
+				event.similarText = true;
+				event.selector = event.target.prettySelector(text);
+			} else {
+				var has = event.target.find(':contains('+text+')');
+				if(has.length){
+					console.log("YES?")
+					return [event,{
+						type: ev.type,
+						target: has.eq(0),
+						selector: has.prettySelector(text),
+						similarText : true
+					}]
+				}
+			}
+		}
+	};
+
+	
+})
+;
+steal.loaded('//funcit/filters/similartext.js');
+steal.plugins('jquery/lang').then(function(){
+	
+	var props = function(val){
+		var vals = {};
+		$.each(val.split(';'), function(i, pair){
+			var parts = pair.split(":");
+			if(parts.length == 2){
+				vals[ $.String.strip(parts[0]) ] = $.String.strip(parts[1]).toLowerCase();
+			}
+			
+		});
+		return vals;
+	}
+	
+	//adds a similar text flag to modifiers that are 'similar'
+	
+			
+	Funcit.filters.visible = function(ev){
+		if(ev.type == 'DOMAttrModified'){
+			// we are typing something
+			if(ev.attrName == 'style'){
+				
+				var before = props(ev.prevValue)
+					now = props(ev.newValue);
+				
+				//  only send an event
+				if(now.display === 'block' && before.display !== 'block'){
+					return {
+						type: "visible",
+						target: $(ev.target),
+						selector: $(ev.target).prettySelector()
+					};
+				}
+				
+				if(now.display === 'none' && before.display !== 'none'){
+					return {
+						type: "invisible",
+						target: $(ev.target),
+						selector: $(ev.target).prettySelector()
+					};
+				}
+			}
+			// get rid of these ...
+			return false;
+		}
+		
+		
+	};
+
+	
+})
+;
+steal.loaded('//funcit/filters/visible.js');
 steal.plugins('jquery').then('resources/jslint',function($){
 var isArray = Array.isArray || function( obj ) {
 		return jQuery.type(obj) === "array";
