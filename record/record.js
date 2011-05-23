@@ -74,8 +74,6 @@ steal.plugins('jquery','funcit/pretty_selector',
 				cb({type: "added",
 						target: target,
 						selector: target.prettySelector()})
-				console.log(target)
-				$(target).attr('funcit-dom-inserted', 'true')
 				//this.element.trigger("addEvent",[]);
 				break;
 			case 'DOMAttrModified' : 
@@ -199,7 +197,7 @@ steal.plugins('jquery','funcit/pretty_selector',
 			case 'mouseup':
 				this.isMouseDown = false;
 
-				if(isScrolling){
+				if(false && isScrolling){ // block scrolling recording for now
 					if(this.scroll != null){
 						var direction = "top";
 						var amount = this.scroll.y;
@@ -224,7 +222,9 @@ steal.plugins('jquery','funcit/pretty_selector',
 						// handle dblclick in the filter stuff ...
 						cb({type: "click",
 							target: target,
-							selector: target.prettySelector()
+							selector: target.prettySelector(),
+							pageX : ev.pageX,
+							pageY : ev.pageY
 						});
 						
 					if(this.clickTimeout){

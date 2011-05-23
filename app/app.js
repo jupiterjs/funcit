@@ -116,7 +116,7 @@ steal
 			var calls = []
 			var fs = Funcit.filters;
 			$('iframe:first').funcit_filter(fs.visible,
-				fs.dblclick,
+				/*fs.dblclick,*/
 				fs.similarText,
 				fs.count,
 				fs.lastmodified, this._boundEventHandler)

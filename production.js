@@ -13603,7 +13603,7 @@ steal
 			var calls = []
 			var fs = Funcit.filters;
 			$('iframe:first').funcit_filter(fs.visible,
-				fs.dblclick,
+				/*fs.dblclick,*/
 				fs.similarText,
 				fs.count,
 				fs.lastmodified, this._boundEventHandler)
@@ -13851,10 +13851,10 @@ $.Controller("Funcit.Editor",{
   			setTimeout(this.callback('moveToLastTest'),13)
   		}
 
-  		if(eventType != 'open') this.insertExistsIfNeeded(arguments[2]);
+  		//if(eventType != 'open') this.insertExistsIfNeeded(arguments[2]);
 
 			var args = $.makeArray(arguments);
-			console.log("add"+$.String.capitalize(eventType))
+			//console.log("add"+$.String.capitalize(eventType))
   		this["add"+$.String.capitalize(eventType)].apply(this,args.slice(2))
 	  }
 	},
@@ -13902,7 +13902,7 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addClick : function(ev){
-		this.chainOrWriteLn(ev.selector, ".click()*");
+		this.chainOrWriteLn(ev.selector, ".click({pageX: " + ev.pageX + ", pageY: " + ev.pageY + "})*");
 		this.saveToLocalStorage();
 	},
 	addRightClick : function(ev){
@@ -13968,7 +13968,7 @@ $.Controller("Funcit.Editor",{
 		this.chainOrWriteLn(ev.selector,".missing()*");
 	},
 	insertExistsIfNeeded : function(el){
-		console.log('insert exists')
+		//console.log('insert exists')
 		if($(el) != null && $(el).parents('[funcit-dom-inserted="true"]').length > 0 && typeof $(el).attr('funcit-dom-exists') == 'undefined'){
 			this.addWait({type: 'exists'}, $(el).prettySelector())
 			$(el).attr('funcit-dom-exists', 'true')
@@ -14995,11 +14995,11 @@ steal.plugins('jquery')
 				
 				var index = others.index($(target));
 				if(index !== 0){
-					return current+":eq("+index+")"
+					return (current+":eq("+index+")").replace(/undefined/g, '');
 				}
 
 			} 
-			return current;
+			return current.replace(/undefined/g, '');
 		};
 	})
 ;
@@ -27212,6 +27212,7 @@ steal.plugins('funcit/record').then(function(){
 			eventNum = 0,
 			current = [ev],
 			passNext = function(events){
+				//console.log(events)
 				if(events === false){
 					current.splice(eventNum, 1);
 				} else if(events){
@@ -27597,8 +27598,6 @@ steal.plugins('jquery','funcit/pretty_selector',
 				cb({type: "added",
 						target: target,
 						selector: target.prettySelector()})
-				console.log(target)
-				$(target).attr('funcit-dom-inserted', 'true')
 				//this.element.trigger("addEvent",[]);
 				break;
 			case 'DOMAttrModified' : 
@@ -27722,7 +27721,7 @@ steal.plugins('jquery','funcit/pretty_selector',
 			case 'mouseup':
 				this.isMouseDown = false;
 
-				if(isScrolling){
+				if(false && isScrolling){ // block scrolling recording for now
 					if(this.scroll != null){
 						var direction = "top";
 						var amount = this.scroll.y;
@@ -27747,7 +27746,9 @@ steal.plugins('jquery','funcit/pretty_selector',
 						// handle dblclick in the filter stuff ...
 						cb({type: "click",
 							target: target,
-							selector: target.prettySelector()
+							selector: target.prettySelector(),
+							pageX : ev.pageX,
+							pageY : ev.pageY
 						});
 						
 					if(this.clickTimeout){
@@ -27889,7 +27890,7 @@ steal(function(){
 			throb.count++;
 			throbs.unshift(throb);
 			ev.count = throb.count;
-			console.log(throb.count)
+			//console.log(throb.count)
 			if(throbs.length > 100){
 				throbs.pop();
 			}
@@ -27947,11 +27948,12 @@ steal(function(){
 	find = function(modifiers, target, type){
 		for(var i =0; i < modifiers.length ;i++){
 			var compare = modifiers[i].target.compare(target);
-			console.log(compare, target, type)
+			//console.log(compare, target, type)
 			if( (compare & 0 || compare & 8 || compare & 16) && (type ? type==modifiers[i].type : true) ){
 				return i;
 			}
 		}
+		return -1;
 	},
 	getSuggestion = function(modifiers, previousEvent, nextEvent){
 		// priority ...
@@ -27959,7 +27961,18 @@ steal(function(){
 		//  - something added with similar text
 		//  - something added 
 		
+
+		// target contains or is the element we interact with
+
 		
+
+
+		for(var i = 0; i < modifiers.length; i++){
+			var modifier = modifiers[i];
+			if($.inArray(nextEvent.target.parents(), modifier.target) > -1 || nextEvent.target === modifier.target){
+				return modifier;
+			}
+		}
 		
 		// something added to what we just touched
 		var lastAround = find(modifiers, nextEvent.target);
@@ -27970,21 +27983,30 @@ steal(function(){
 				}
 			}
 		}
+		
+		//return false;
+		
 		return modifiers[0];
 	}
 	Funcit.filters.lastmodified = function(ev){
-	
 		if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
 			
 			modifiers.unshift(ev);
 			return true;
 		} else {
 			
+			
+			if(ev.type == 'char') return ev;
+			
 			var suggestion = getSuggestion(modifiers, lastAction, ev);
 			lastAction = ev;
 			modifiers = [];
 			
-			return [suggestion, ev]
+			console.log(suggestion)
+			
+			if(suggestion)
+				return [suggestion, ev];
+			return ev;
 		}
 	};
 	

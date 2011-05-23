@@ -153,10 +153,10 @@ $.Controller("Funcit.Editor",{
   			setTimeout(this.callback('moveToLastTest'),13)
   		}
 
-  		if(eventType != 'open') this.insertExistsIfNeeded(arguments[2]);
+  		//if(eventType != 'open') this.insertExistsIfNeeded(arguments[2]);
 
 			var args = $.makeArray(arguments);
-			console.log("add"+$.String.capitalize(eventType))
+			//console.log("add"+$.String.capitalize(eventType))
   		this["add"+$.String.capitalize(eventType)].apply(this,args.slice(2))
 	  }
 	},
@@ -204,7 +204,7 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addClick : function(ev){
-		this.chainOrWriteLn(ev.selector, ".click()*");
+		this.chainOrWriteLn(ev.selector, ".click({pageX: " + ev.pageX + ", pageY: " + ev.pageY + "})*");
 		this.saveToLocalStorage();
 	},
 	addRightClick : function(ev){
@@ -270,7 +270,7 @@ $.Controller("Funcit.Editor",{
 		this.chainOrWriteLn(ev.selector,".missing()*");
 	},
 	insertExistsIfNeeded : function(el){
-		console.log('insert exists')
+		//console.log('insert exists')
 		if($(el) != null && $(el).parents('[funcit-dom-inserted="true"]').length > 0 && typeof $(el).attr('funcit-dom-exists') == 'undefined'){
 			this.addWait({type: 'exists'}, $(el).prettySelector())
 			$(el).attr('funcit-dom-exists', 'true')

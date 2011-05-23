@@ -21,6 +21,7 @@ steal.plugins('funcit/record').then(function(){
 			eventNum = 0,
 			current = [ev],
 			passNext = function(events){
+				//console.log(events)
 				if(events === false){
 					current.splice(eventNum, 1);
 				} else if(events){

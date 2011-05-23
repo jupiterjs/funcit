@@ -48,10 +48,10 @@ steal.plugins('jquery')
 				
 				var index = others.index($(target));
 				if(index !== 0){
-					return current+":eq("+index+")"
+					return (current+":eq("+index+")").replace(/undefined/g, '');
 				}
 
 			} 
-			return current;
+			return current.replace(/undefined/g, '');
 		};
 	})

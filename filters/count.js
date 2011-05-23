@@ -30,7 +30,7 @@ steal(function(){
 			throb.count++;
 			throbs.unshift(throb);
 			ev.count = throb.count;
-			console.log(throb.count)
+			//console.log(throb.count)
 			if(throbs.length > 100){
 				throbs.pop();
 			}
