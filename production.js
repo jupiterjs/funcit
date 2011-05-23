@@ -13603,7 +13603,7 @@ steal
 			var calls = []
 			var fs = Funcit.filters;
 			$('iframe:first').funcit_filter(fs.visible,
-				/*fs.dblclick,*/
+				fs.dblclick,
 				fs.similarText,
 				fs.count,
 				fs.lastmodified, this._boundEventHandler)
@@ -13918,7 +13918,7 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addDrag : function(ev){
-		this.chainOrWriteLn(ev.selector,".drag("+$.toJSON({clientX: ev.clientX, clientY: ev.clientY})+")*");
+		this.chainOrWriteLn(ev.selector,".drag("+$.toJSON({pageX: ev.pageX, pageY: ev.pageY})+")*");
 		this.saveToLocalStorage();
 	},
 	addMove: function(el, from, to){
@@ -27768,8 +27768,8 @@ steal.plugins('jquery','funcit/pretty_selector',
 						}
 					}else if(this.mousemoves > 2 && this.mousedownEl){
 						cb({type: "drag",
-							clientX : ev.clientX,
-							clientY: ev.clientY,
+							pageX : ev.pageX,
+							pageY: ev.pageY,
 							target: this.mousedownEl,
 							selector: this._selector
 						});
@@ -27920,10 +27920,10 @@ Funcit.filters.dblclick = function(ev, cb){
 			
 			return call;
 		} else {
+			
 			events = [ev];
 			timer = setTimeout(function(){
 				var call = events.slice(0);
-				//console.log("click", call)
 				timer = events = undefined;
 				cb(call);
 			},200)
@@ -27984,7 +27984,7 @@ steal(function(){
 			}
 		}
 		
-		//return false;
+		return false;
 		
 		return modifiers[0];
 	}

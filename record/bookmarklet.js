@@ -15,7 +15,7 @@
 	"		Funcit = {url: location.pathname};",
 	"	</script>",
 	"	<script language='javascript' type='text/javascript'", 
-	"		src='http://localhost:3002/jmvc31/steal/steal.js'>",
+	"		src='http://localhost:8888/javascriptmvc/steal/steal.js'>",
 	"	</script><script type='text/javascript'>steal.plugins('funcit/record').then(function(){",
 	"			$('#record').funcit_record(function(eventType, data, target, selector){",
 	"				console.log(eventType, data, target, selector)",

@@ -1,4 +1,4 @@
-steal.plugins('funcunit/qunit','funcit/filter').then(function(){
+steal.plugins('funcunit/qunit', 'funcunit', 'funcunit/syn', 'funcit/filter').then(function(){
 	
 module('funcit/filter');
 
@@ -142,6 +142,23 @@ test("visible filter", function(){
 	equals(calls.length, 2);
 	
 	
+	
+});
+
+test("dblclick filter", function(){
+	FuncUnit._window = window;
+	stop();
+	var calls = [];
+	
+	var div = $('<div id="hellodiv">hello</div>').appendTo( $('#qunit-test-area') );
+	
+	div.funcit_filter( Funcit.filters.visible, function(ev){
+		calls.push(ev);
+		equals(calls.length, 1);
+		start();
+	})
+
+	S('#hellodiv').click();
 	
 });
 

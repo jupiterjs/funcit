@@ -220,7 +220,7 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addDrag : function(ev){
-		this.chainOrWriteLn(ev.selector,".drag("+$.toJSON({clientX: ev.clientX, clientY: ev.clientY})+")*");
+		this.chainOrWriteLn(ev.selector,".drag("+$.toJSON({pageX: ev.pageX, pageY: ev.pageY})+")*");
 		this.saveToLocalStorage();
 	},
 	addMove: function(el, from, to){

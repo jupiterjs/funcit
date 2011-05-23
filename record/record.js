@@ -244,8 +244,8 @@ steal.plugins('jquery','funcit/pretty_selector',
 						}
 					}else if(this.mousemoves > 2 && this.mousedownEl){
 						cb({type: "drag",
-							clientX : ev.clientX,
-							clientY: ev.clientY,
+							pageX : ev.pageX,
+							pageY: ev.pageY,
 							target: this.mousedownEl,
 							selector: this._selector
 						});
