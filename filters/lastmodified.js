@@ -23,12 +23,11 @@ steal(function(){
 
 		// target contains or is the element we interact with
 
-		
-
+		//return previousEvent
 
 		for(var i = 0; i < modifiers.length; i++){
 			var modifier = modifiers[i];
-			if($.inArray(nextEvent.target.parents(), modifier.target) > -1 || nextEvent.target === modifier.target){
+			if($.isFunction(nextEvent.target.parents) && ($.inArray(nextEvent.target.parents(), modifier.target) > -1 || nextEvent.target === modifier.target)){
 				return modifier;
 			}
 		}
@@ -44,10 +43,12 @@ steal(function(){
 		}
 		
 		//return false;
-		
 		return modifiers[0];
 	}
 	Funcit.filters.lastmodified = function(ev){
+		console.log('lastmodified', ev)
+		//return ev;
+		//console.log('Lastmodified: ', ev)
 		if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
 			
 			modifiers.unshift(ev);
@@ -61,11 +62,11 @@ steal(function(){
 			lastAction = ev;
 			modifiers = [];
 			
-			console.log(suggestion)
+			//console.log('lm2:', ev, suggestion)
 			
 			if(suggestion)
 				return [suggestion, ev];
-			return ev;
+			return [ev];
 		}
 	};
 	

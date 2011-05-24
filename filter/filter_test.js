@@ -1,4 +1,4 @@
-steal.plugins('funcunit/qunit', 'funcunit', 'funcunit/syn', 'funcit/filter').then(function(){
+steal.plugins('funcunit/qunit', 'funcunit/syn', 'funcit/filter').then(function(){
 	
 module('funcit/filter');
 
@@ -146,22 +146,41 @@ test("visible filter", function(){
 });
 
 test("dblclick filter", function(){
-	FuncUnit._window = window;
+	//FuncUnit._window = window;
 	stop();
 	var calls = [];
 	
+	$('#qunit-test-area').html('')
+	
 	var div = $('<div id="hellodiv">hello</div>').appendTo( $('#qunit-test-area') );
 	
-	div.funcit_filter( Funcit.filters.visible, function(ev){
+	div.funcit_filter( Funcit.filters.dblclick, function(ev){
 		calls.push(ev);
 		equals(calls.length, 1);
 		start();
 	})
 
-	S('#hellodiv').click();
+	Syn.click(div[0]);
 	
 });
 
+test("dblclick and lastmodified filter", 1, function(){
+	stop();
+	
+	var div = $('<div id="hellodiv2">hello 2</div>').appendTo( $('#qunit-test-area') );
+	
+  div.click(function(){
+		$(this).append('<div>New div</div>') // Comment this line and everything will pass
+	})
+	
+	div.funcit_filter( Funcit.filters.dblclick, Funcit.filters.lastmodified, function(ev){
+		ok(true)
+		start();
+	})
+
+	Syn.click(div[0]);
+	
+});
 
 });
 

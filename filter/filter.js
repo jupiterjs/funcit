@@ -8,6 +8,7 @@ steal.plugins('funcit/record').then(function(){
 	 * @param {Object} feed
 	 */
 	Funcit.filter = function(feed){
+		//console.log(arguments)
 		var filters = $.makeArray(arguments),
 			feed = filters.shift();
 		feed(function(ev){
@@ -21,6 +22,7 @@ steal.plugins('funcit/record').then(function(){
 			eventNum = 0,
 			current = [ev],
 			passNext = function(events){
+				console.log('pass next' ,events)
 				//console.log(events)
 				if(events === false){
 					current.splice(eventNum, 1);
@@ -48,7 +50,7 @@ steal.plugins('funcit/record').then(function(){
 				
 				var filter = filters[filterNum];
 				if(filter && current[eventNum]){
-					
+					//console.log(events)
 					var res = filter(current[eventNum], passNext);
 					if(res === false){
 						current.splice(eventNum, 1);
@@ -60,7 +62,6 @@ steal.plugins('funcit/record').then(function(){
 						passNext(res)
 					}
 				}
-				
 			};
 			
 			var filter = filters[filterNum];
@@ -100,7 +101,7 @@ steal.plugins('funcit/record').then(function(){
 		// if we only get one arg, assume it's the default filters ..
 		if(args.length == 0){
 			args = [function(ev){
-				console.log(ev)
+				console.log('Lastcallback: ', ev)
 			}];
 		}
 		

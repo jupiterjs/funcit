@@ -27199,6 +27199,7 @@ steal.plugins('funcit/record').then(function(){
 	 * @param {Object} feed
 	 */
 	Funcit.filter = function(feed){
+		//console.log(arguments)
 		var filters = $.makeArray(arguments),
 			feed = filters.shift();
 		feed(function(ev){
@@ -27212,6 +27213,7 @@ steal.plugins('funcit/record').then(function(){
 			eventNum = 0,
 			current = [ev],
 			passNext = function(events){
+				console.log('pass next' ,events)
 				//console.log(events)
 				if(events === false){
 					current.splice(eventNum, 1);
@@ -27239,7 +27241,7 @@ steal.plugins('funcit/record').then(function(){
 				
 				var filter = filters[filterNum];
 				if(filter && current[eventNum]){
-					
+					//console.log(events)
 					var res = filter(current[eventNum], passNext);
 					if(res === false){
 						current.splice(eventNum, 1);
@@ -27251,7 +27253,6 @@ steal.plugins('funcit/record').then(function(){
 						passNext(res)
 					}
 				}
-				
 			};
 			
 			var filter = filters[filterNum];
@@ -27291,7 +27292,7 @@ steal.plugins('funcit/record').then(function(){
 		// if we only get one arg, assume it's the default filters ..
 		if(args.length == 0){
 			args = [function(ev){
-				console.log(ev)
+				console.log('Lastcallback: ', ev)
 			}];
 		}
 		
@@ -27906,6 +27907,7 @@ var events,
 
 // after a click collect all events until a timeout passes ... then it was a click or not
 Funcit.filters.dblclick = function(ev, cb){
+
 	if(ev.type == 'click'){
 		
 		if(timer){ // we were a double click
@@ -27916,22 +27918,29 @@ Funcit.filters.dblclick = function(ev, cb){
 			clearTimeout(timer);
 			events = timer = undefined;
 			
-			
-			
 			return call;
 		} else {
 			
 			events = [ev];
 			timer = setTimeout(function(){
 				var call = events.slice(0);
+				//console.log(cb)
+				//call.push(call[0])
+				//var otherEvs = events.slice(1)
+				//console.log('dbl', call)
 				timer = events = undefined;
 				cb(call);
+				/*if(otherEvs.length > 0){
+					cb(otherEvs);
+				}*/
+				
 			},200)
 			return true;
 		}
 		
 	} else if(events){
 		events.push(ev);
+		//events.unshift(ev);
 		return true;
 	}
 }
@@ -27964,12 +27973,11 @@ steal(function(){
 
 		// target contains or is the element we interact with
 
-		
-
+		//return previousEvent
 
 		for(var i = 0; i < modifiers.length; i++){
 			var modifier = modifiers[i];
-			if($.inArray(nextEvent.target.parents(), modifier.target) > -1 || nextEvent.target === modifier.target){
+			if($.isFunction(nextEvent.target.parents) && ($.inArray(nextEvent.target.parents(), modifier.target) > -1 || nextEvent.target === modifier.target)){
 				return modifier;
 			}
 		}
@@ -27984,15 +27992,17 @@ steal(function(){
 			}
 		}
 		
-		return false;
-		
+		//return false;
 		return modifiers[0];
 	}
 	Funcit.filters.lastmodified = function(ev){
+		console.log('lastmodified', ev)
+		//return ev;
+		//console.log('Lastmodified: ', ev)
 		if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
 			
 			modifiers.unshift(ev);
-			return true;
+			return;
 		} else {
 			
 			
@@ -28002,11 +28012,11 @@ steal(function(){
 			lastAction = ev;
 			modifiers = [];
 			
-			console.log(suggestion)
+			//console.log('lm2:', ev, suggestion)
 			
 			if(suggestion)
 				return [suggestion, ev];
-			return ev;
+			return [ev];
 		}
 	};
 	
