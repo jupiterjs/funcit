@@ -27213,7 +27213,8 @@ steal.plugins('funcit/record').then(function(){
 			eventNum = 0,
 			current = [ev],
 			passNext = function(events){
-				console.log('pass next' ,events)
+				//console.log('##########################################################')
+				//console.log('pass next' ,events)
 				//console.log(events)
 				if(events === false){
 					current.splice(eventNum, 1);
@@ -27240,6 +27241,7 @@ steal.plugins('funcit/record').then(function(){
 				}
 				
 				var filter = filters[filterNum];
+				//console.log(filter)
 				if(filter && current[eventNum]){
 					//console.log(events)
 					var res = filter(current[eventNum], passNext);
@@ -27908,13 +27910,39 @@ var events,
 // after a click collect all events until a timeout passes ... then it was a click or not
 Funcit.filters.dblclick = function(ev, cb){
 
+	var filterEvents = function(events, isDoubleClick){
+		var mainEv, cleanEvents, mutationEvents = [];
+		
+		if(events.length == 1) return events[0];
+		if(events.length == 2 && isDoubleClick) return events.slice(-1)[0];
+		
+		if(isDoubleClick){
+			mainEv = events.slice(-1)[0];
+			cleanEvents = events.slice(1,-1)
+		} else {
+			mainEv = events.slice(0,1)[0];
+			cleanEvents = events.slice(1);
+		}
+		for(var i = 0, ii = cleanEvents.length; i < ii; i++){
+			var ev = cleanEvents[i];
+			if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
+				mutationEvents.push(ev);
+			}
+		}
+		
+		mainEv.mutationEvents = mutationEvents;
+		
+		return mainEv;
+	}
+
+
 	if(ev.type == 'click'){
 		
 		if(timer){ // we were a double click
 			ev.type = 'dblclick';
 			//console.log(events)
 			events.push(ev)
-			var call = events.slice(0);
+			var call = filterEvents(events.slice(0), true);
 			clearTimeout(timer);
 			events = timer = undefined;
 			
@@ -27923,7 +27951,7 @@ Funcit.filters.dblclick = function(ev, cb){
 			
 			events = [ev];
 			timer = setTimeout(function(){
-				var call = events.slice(0);
+				var call = filterEvents(events.slice(0), false);
 				//console.log(cb)
 				//call.push(call[0])
 				//var otherEvs = events.slice(1)
@@ -27974,6 +28002,15 @@ steal(function(){
 		// target contains or is the element we interact with
 
 		//return previousEvent
+		// 
+		/*var el = cleanEvents[i].target;
+			
+			if(elDistance < distance){
+				mutationEv = cleanEvents[i];
+				distance = elDistance;
+			}*/
+			
+			console.log('nextevent', nextEvent)
 
 		for(var i = 0; i < modifiers.length; i++){
 			var modifier = modifiers[i];
@@ -27992,17 +28029,31 @@ steal(function(){
 			}
 		}
 		
-		//return false;
-		return modifiers[0];
+		var distance = 1/0;
+		var mod;
+		for(var i = 0; i < modifiers.length; i++){
+			var el = modifiers[i].target;
+			var elDistance = Math.abs(Math.sqrt(Math.pow((nextEvent.target.pageX-el.offset().left),2) + Math.pow((nextEvent.target.pageY-el.offset().top),2)));
+			if(elDistance < distance){
+				mod = modifiers[i];
+				distance = elDistance;
+			}
+		}
+		if(typeof mod == 'undefined'){
+			mod = modifiers[0];
+		}
+		return mod;
 	}
 	Funcit.filters.lastmodified = function(ev){
-		console.log('lastmodified', ev)
+		//console.log('lastmodified', ev)
 		//return ev;
-		//console.log('Lastmodified: ', ev)
+		console.log('Lastmodified: ', ev)
+		
+	
+		
 		if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
-			
 			modifiers.unshift(ev);
-			return;
+			return true;
 		} else {
 			
 			
@@ -28012,9 +28063,17 @@ steal(function(){
 			lastAction = ev;
 			modifiers = [];
 			
+			if(typeof ev.mutationEvents != 'undefined'){
+				console.log('mutation: ', ev.mutationEvents)
+				modifiers = ev.mutationEvents.slice(0);
+				//delete ev.mutationEvents;
+			}
+			
 			//console.log('lm2:', ev, suggestion)
 			
-			if(suggestion)
+			console.log('suggestion', suggestion)
+			
+			if(suggestion !== false && typeof suggestion !== 'undefined')
 				return [suggestion, ev];
 			return [ev];
 		}

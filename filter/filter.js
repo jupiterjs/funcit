@@ -22,7 +22,8 @@ steal.plugins('funcit/record').then(function(){
 			eventNum = 0,
 			current = [ev],
 			passNext = function(events){
-				console.log('pass next' ,events)
+				//console.log('##########################################################')
+				//console.log('pass next' ,events)
 				//console.log(events)
 				if(events === false){
 					current.splice(eventNum, 1);
@@ -49,6 +50,7 @@ steal.plugins('funcit/record').then(function(){
 				}
 				
 				var filter = filters[filterNum];
+				//console.log(filter)
 				if(filter && current[eventNum]){
 					//console.log(events)
 					var res = filter(current[eventNum], passNext);

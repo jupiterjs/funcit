@@ -24,6 +24,15 @@ steal(function(){
 		// target contains or is the element we interact with
 
 		//return previousEvent
+		// 
+		/*var el = cleanEvents[i].target;
+			
+			if(elDistance < distance){
+				mutationEv = cleanEvents[i];
+				distance = elDistance;
+			}*/
+			
+			console.log('nextevent', nextEvent)
 
 		for(var i = 0; i < modifiers.length; i++){
 			var modifier = modifiers[i];
@@ -42,15 +51,29 @@ steal(function(){
 			}
 		}
 		
-		//return false;
-		return modifiers[0];
+		var distance = 1/0;
+		var mod;
+		for(var i = 0; i < modifiers.length; i++){
+			var el = modifiers[i].target;
+			var elDistance = Math.abs(Math.sqrt(Math.pow((nextEvent.target.pageX-el.offset().left),2) + Math.pow((nextEvent.target.pageY-el.offset().top),2)));
+			if(elDistance < distance){
+				mod = modifiers[i];
+				distance = elDistance;
+			}
+		}
+		if(typeof mod == 'undefined'){
+			mod = modifiers[0];
+		}
+		return mod;
 	}
 	Funcit.filters.lastmodified = function(ev){
-		console.log('lastmodified', ev)
+		//console.log('lastmodified', ev)
 		//return ev;
-		//console.log('Lastmodified: ', ev)
+		console.log('Lastmodified: ', ev)
+		
+	
+		
 		if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
-			
 			modifiers.unshift(ev);
 			return true;
 		} else {
@@ -62,9 +85,17 @@ steal(function(){
 			lastAction = ev;
 			modifiers = [];
 			
+			if(typeof ev.mutationEvents != 'undefined'){
+				console.log('mutation: ', ev.mutationEvents)
+				modifiers = ev.mutationEvents.slice(0);
+				//delete ev.mutationEvents;
+			}
+			
 			//console.log('lm2:', ev, suggestion)
 			
-			if(suggestion)
+			console.log('suggestion', suggestion)
+			
+			if(suggestion !== false && typeof suggestion !== 'undefined')
 				return [suggestion, ev];
 			return [ev];
 		}
