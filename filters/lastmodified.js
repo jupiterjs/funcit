@@ -25,14 +25,8 @@ steal(function(){
 
 		//return previousEvent
 		// 
-		/*var el = cleanEvents[i].target;
+
 			
-			if(elDistance < distance){
-				mutationEv = cleanEvents[i];
-				distance = elDistance;
-			}*/
-			
-			console.log('nextevent', nextEvent)
 
 		for(var i = 0; i < modifiers.length; i++){
 			var modifier = modifiers[i];
@@ -52,24 +46,31 @@ steal(function(){
 		}
 		
 		var distance = 1/0;
-		var mod;
+		var mod, x, y;
+		if(typeof nextEvent.pageX != 'undefined' && typeof nextEvent.pageY != 'undefined'){
+			x = nextEvent.pageX;
+			y = nextEvent.pageY;
+		} else {
+			var offset = nextEvent.target.offset();
+			x = offset.left;
+			y = offset.top;
+		}
 		for(var i = 0; i < modifiers.length; i++){
 			var el = modifiers[i].target;
-			var elDistance = Math.abs(Math.sqrt(Math.pow((nextEvent.target.pageX-el.offset().left),2) + Math.pow((nextEvent.target.pageY-el.offset().top),2)));
+			var elDistance = Math.abs(Math.sqrt(Math.pow((x-el.offset().left),2) + Math.pow((y-el.offset().top),2)));
 			if(elDistance < distance){
 				mod = modifiers[i];
 				distance = elDistance;
 			}
 		}
 		if(typeof mod == 'undefined'){
-			mod = modifiers[0];
+			mod = false// modifiers[0];
 		}
 		return mod;
 	}
 	Funcit.filters.lastmodified = function(ev){
-		//console.log('lastmodified', ev)
-		//return ev;
-		console.log('Lastmodified: ', ev)
+		
+		//console.log('Lastmodified: ', ev)
 		
 	
 		
@@ -86,14 +87,13 @@ steal(function(){
 			modifiers = [];
 			
 			if(typeof ev.mutationEvents != 'undefined'){
-				console.log('mutation: ', ev.mutationEvents)
 				modifiers = ev.mutationEvents.slice(0);
-				//delete ev.mutationEvents;
+				delete ev.mutationEvents;
 			}
 			
 			//console.log('lm2:', ev, suggestion)
 			
-			console.log('suggestion', suggestion)
+			//console.log('suggestion', suggestion)
 			
 			if(suggestion !== false && typeof suggestion !== 'undefined')
 				return [suggestion, ev];

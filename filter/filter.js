@@ -23,7 +23,7 @@ steal.plugins('funcit/record').then(function(){
 			current = [ev],
 			passNext = function(events){
 				//console.log('##########################################################')
-				//console.log('pass next' ,events)
+				console.log('pass next' ,events)
 				//console.log(events)
 				if(events === false){
 					current.splice(eventNum, 1);
@@ -60,7 +60,7 @@ steal.plugins('funcit/record').then(function(){
 					} else if(res !== true){
 						if( !$.isArray(res) ){
 							res = [res || current[eventNum]];
-						}
+						} 
 						passNext(res)
 					}
 				}

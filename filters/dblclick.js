@@ -21,7 +21,8 @@ Funcit.filters.dblclick = function(ev, cb){
 		}
 		for(var i = 0, ii = cleanEvents.length; i < ii; i++){
 			var ev = cleanEvents[i];
-			if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
+			//if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
+			if($.inArray(ev.type, ['visible','added']) > -1){
 				mutationEvents.push(ev);
 			}
 		}

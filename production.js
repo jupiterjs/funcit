@@ -27214,7 +27214,7 @@ steal.plugins('funcit/record').then(function(){
 			current = [ev],
 			passNext = function(events){
 				//console.log('##########################################################')
-				//console.log('pass next' ,events)
+				console.log('pass next' ,events)
 				//console.log(events)
 				if(events === false){
 					current.splice(eventNum, 1);
@@ -27251,8 +27251,25 @@ steal.plugins('funcit/record').then(function(){
 					} else if(res !== true){
 						if( !$.isArray(res) ){
 							res = [res || current[eventNum]];
-						}
+						} 
 						passNext(res)
+					} else if(res === true){
+						/*//current.splice(eventNum, 1)
+						filterNum++;
+						filter = filters[filterNum]
+						while(filter && eventNum < current.length){
+							
+							res = filter(current[eventNum])
+							console.log(filter)
+							eventNum++;
+							if(res !== true){
+								console.log(res)
+								passNext(res)
+								break;
+							}
+						}*/
+						eventNum++;
+						passNext();
 					}
 				}
 			};
@@ -27925,14 +27942,15 @@ Funcit.filters.dblclick = function(ev, cb){
 		}
 		for(var i = 0, ii = cleanEvents.length; i < ii; i++){
 			var ev = cleanEvents[i];
-			if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
+			//if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
+			if($.inArray(ev.type, ['visible','added']) > -1){
 				mutationEvents.push(ev);
 			}
 		}
 		
-		mainEv.mutationEvents = mutationEvents;
-		
-		return mainEv;
+		//mainEv.mutationEvents = mutationEvents;
+		mutationEvents.unshift(mainEv)
+		return mutationEvents
 	}
 
 
@@ -27945,7 +27963,6 @@ Funcit.filters.dblclick = function(ev, cb){
 			var call = filterEvents(events.slice(0), true);
 			clearTimeout(timer);
 			events = timer = undefined;
-			
 			return call;
 		} else {
 			
@@ -27957,7 +27974,7 @@ Funcit.filters.dblclick = function(ev, cb){
 				//var otherEvs = events.slice(1)
 				//console.log('dbl', call)
 				timer = events = undefined;
-				cb(call);
+				cb(call)
 				/*if(otherEvs.length > 0){
 					cb(otherEvs);
 				}*/
@@ -28003,14 +28020,8 @@ steal(function(){
 
 		//return previousEvent
 		// 
-		/*var el = cleanEvents[i].target;
+
 			
-			if(elDistance < distance){
-				mutationEv = cleanEvents[i];
-				distance = elDistance;
-			}*/
-			
-			console.log('nextevent', nextEvent)
 
 		for(var i = 0; i < modifiers.length; i++){
 			var modifier = modifiers[i];
@@ -28030,24 +28041,31 @@ steal(function(){
 		}
 		
 		var distance = 1/0;
-		var mod;
+		var mod, x, y;
+		if(typeof nextEvent.pageX != 'undefined' && typeof nextEvent.pageY != 'undefined'){
+			x = nextEvent.pageX;
+			y = nextEvent.pageY;
+		} else {
+			var offset = nextEvent.target.offset();
+			x = offset.left;
+			y = offset.top;
+		}
 		for(var i = 0; i < modifiers.length; i++){
 			var el = modifiers[i].target;
-			var elDistance = Math.abs(Math.sqrt(Math.pow((nextEvent.target.pageX-el.offset().left),2) + Math.pow((nextEvent.target.pageY-el.offset().top),2)));
+			var elDistance = Math.abs(Math.sqrt(Math.pow((x-el.offset().left),2) + Math.pow((y-el.offset().top),2)));
 			if(elDistance < distance){
 				mod = modifiers[i];
 				distance = elDistance;
 			}
 		}
 		if(typeof mod == 'undefined'){
-			mod = modifiers[0];
+			mod = false// modifiers[0];
 		}
 		return mod;
 	}
 	Funcit.filters.lastmodified = function(ev){
-		//console.log('lastmodified', ev)
-		//return ev;
-		console.log('Lastmodified: ', ev)
+		
+		//console.log('Lastmodified: ', ev)
 		
 	
 		
@@ -28064,14 +28082,13 @@ steal(function(){
 			modifiers = [];
 			
 			if(typeof ev.mutationEvents != 'undefined'){
-				console.log('mutation: ', ev.mutationEvents)
 				modifiers = ev.mutationEvents.slice(0);
-				//delete ev.mutationEvents;
+				delete ev.mutationEvents;
 			}
 			
 			//console.log('lm2:', ev, suggestion)
 			
-			console.log('suggestion', suggestion)
+			//console.log('suggestion', suggestion)
 			
 			if(suggestion !== false && typeof suggestion !== 'undefined')
 				return [suggestion, ev];
