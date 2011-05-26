@@ -92,9 +92,7 @@ steal(function(){
 	}
 	Funcit.filters.lastmodified = function(ev, cb){
 		if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
-			if($.inArray(ev.type, ['added','removed']) > -1){ // let's ignore invisible and visible for now
-				modifiers.unshift(ev);
-			}
+			modifiers.unshift(ev);
 			cb(false)
 			return true;
 		} else {
