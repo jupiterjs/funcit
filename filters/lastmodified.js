@@ -1,7 +1,7 @@
 steal(function(){
 	
 	var lastAction = [],
-		modifiers = [],
+			modifiers = [],
 		
 	
 	find = function(modifiers, target, type){
@@ -25,76 +25,85 @@ steal(function(){
 
 		//return previousEvent
 		// 
+		var suggestors = {
+			suggestSameOrParent: function(){
+				var evTarget = nextEvent.target[0];
+				
+				for(var i = 0; i < modifiers.length; i++){
+					var modifier = modifiers[i];
+					var modifierTarget = modifier.target[0];
+					if(($.isFunction(nextEvent.target.parents) && $.inArray(nextEvent.target.parents(), modifier.target) > -1) || evTarget  === modifierTarget){
+						if(evTarget === modifierTarget){ // adjust the selector to fix race condition
+							modifier.selector = nextEvent.selector;
+						}
+						return modifier;
+					}
+				}
+			},
 
-			
+			suggestSimilarText: function(){
+				// something added to what we just touched
+				var lastAround = find(modifiers, nextEvent.target);
+				if( lastAround > -1){
+					for(var i =0; i < modifiers.length; i++){
+						if(modifiers[i].similarText){
+							return modifiers[i];
+						}
+					}
+				}
+			},
 
-		for(var i = 0; i < modifiers.length; i++){
-			var modifier = modifiers[i];
-			if($.isFunction(nextEvent.target.parents) && ($.inArray(nextEvent.target.parents(), modifier.target) > -1 || nextEvent.target === modifier.target)){
-				return modifier;
-			}
-		}
-		
-		// something added to what we just touched
-		var lastAround = find(modifiers, nextEvent.target);
-		if( lastAround > -1){
-			for(var i =0; i < modifiers.length; i++){
-				if(modifiers[i].similarText){
-					return modifiers[i];
+			suggestClosestTouchedElement: function(){
+				var distance = 1/0;
+				var modifier, x, y;
+				if(typeof nextEvent.pageX != 'undefined' && typeof nextEvent.pageY != 'undefined'){
+					x = nextEvent.pageX;
+					y = nextEvent.pageY;
+				} else {
+					var offset = nextEvent.target.offset();
+					x = offset.left;
+					y = offset.top;
+				}
+				for(var i = 0; i < modifiers.length; i++){
+					var el = modifiers[i].target;
+					var elDistance = Math.abs(Math.sqrt(Math.pow((x-el.offset().left),2) + Math.pow((y-el.offset().top),2)));
+					if(elDistance < distance){
+						modifier = modifiers[i];
+						distance = elDistance;
+					}
+				}
+				if(distance < 201){ // Arbitrary distance in which we look for changed elements
+					return modifier;
 				}
 			}
 		}
 		
-		var distance = 1/0;
-		var mod, x, y;
-		if(typeof nextEvent.pageX != 'undefined' && typeof nextEvent.pageY != 'undefined'){
-			x = nextEvent.pageX;
-			y = nextEvent.pageY;
-		} else {
-			var offset = nextEvent.target.offset();
-			x = offset.left;
-			y = offset.top;
-		}
-		for(var i = 0; i < modifiers.length; i++){
-			var el = modifiers[i].target;
-			var elDistance = Math.abs(Math.sqrt(Math.pow((x-el.offset().left),2) + Math.pow((y-el.offset().top),2)));
-			if(elDistance < distance){
-				mod = modifiers[i];
-				distance = elDistance;
+		var suggestorsOrder = "SameOrParent SimilarText ClosestTouchedElement".split(' ');
+		var modifier = false;
+		
+		for(var i = 0; i < suggestorsOrder.length; i++){
+			var suggestion = suggestors['suggest' + suggestorsOrder[i]]()
+			if(typeof suggestion != 'undefined'){
+				modifier = suggestion;
+				break;
 			}
 		}
-		if(typeof mod == 'undefined'){
-			mod = false// modifiers[0];
-		}
-		return mod;
+		return modifier;
 	}
-	Funcit.filters.lastmodified = function(ev){
-		
-		//console.log('Lastmodified: ', ev)
-		
-	
-		
+	Funcit.filters.lastmodified = function(ev, cb){
 		if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
-			modifiers.unshift(ev);
+			if($.inArray(ev.type, ['added','removed']) > -1){ // let's ignore invisible and visible for now
+				modifiers.unshift(ev);
+			}
+			cb(false)
 			return true;
 		} else {
-			
-			
 			if(ev.type == 'char') return ev;
 			
 			var suggestion = getSuggestion(modifiers, lastAction, ev);
 			lastAction = ev;
 			modifiers = [];
-			
-			if(typeof ev.mutationEvents != 'undefined'){
-				modifiers = ev.mutationEvents.slice(0);
-				delete ev.mutationEvents;
-			}
-			
-			//console.log('lm2:', ev, suggestion)
-			
-			//console.log('suggestion', suggestion)
-			
+
 			if(suggestion !== false && typeof suggestion !== 'undefined')
 				return [suggestion, ev];
 			return [ev];

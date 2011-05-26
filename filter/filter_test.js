@@ -99,7 +99,7 @@ test("collect and fire", function(){
 
 test("dblclick", function(){
 	var called = [];
-	stop(1000);
+	stop();
 	
 	Funcit.filter(function(cb){
 		cb({type: "click"});

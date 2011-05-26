@@ -47,7 +47,7 @@ steal.plugins('jquery')
 			if(others.length > 1){
 				
 				var index = others.index($(target));
-				if(index !== 0){
+				if(index !== -1){
 					return (current+":eq("+index+")").replace(/undefined/g, '');
 				}
 

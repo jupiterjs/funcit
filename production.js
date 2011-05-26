@@ -27253,23 +27253,6 @@ steal.plugins('funcit/record').then(function(){
 							res = [res || current[eventNum]];
 						} 
 						passNext(res)
-					} else if(res === true){
-						/*//current.splice(eventNum, 1)
-						filterNum++;
-						filter = filters[filterNum]
-						while(filter && eventNum < current.length){
-							
-							res = filter(current[eventNum])
-							console.log(filter)
-							eventNum++;
-							if(res !== true){
-								console.log(res)
-								passNext(res)
-								break;
-							}
-						}*/
-						eventNum++;
-						passNext();
 					}
 				}
 			};
@@ -27940,17 +27923,9 @@ Funcit.filters.dblclick = function(ev, cb){
 			mainEv = events.slice(0,1)[0];
 			cleanEvents = events.slice(1);
 		}
-		for(var i = 0, ii = cleanEvents.length; i < ii; i++){
-			var ev = cleanEvents[i];
-			//if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
-			if($.inArray(ev.type, ['visible','added']) > -1){
-				mutationEvents.push(ev);
-			}
-		}
+		cleanEvents.unshift(mainEv)
 		
-		//mainEv.mutationEvents = mutationEvents;
-		mutationEvents.unshift(mainEv)
-		return mutationEvents
+		return cleanEvents;
 	}
 
 
@@ -27958,26 +27933,19 @@ Funcit.filters.dblclick = function(ev, cb){
 		
 		if(timer){ // we were a double click
 			ev.type = 'dblclick';
-			//console.log(events)
 			events.push(ev)
 			var call = filterEvents(events.slice(0), true);
 			clearTimeout(timer);
 			events = timer = undefined;
+			
 			return call;
 		} else {
 			
 			events = [ev];
 			timer = setTimeout(function(){
 				var call = filterEvents(events.slice(0), false);
-				//console.log(cb)
-				//call.push(call[0])
-				//var otherEvs = events.slice(1)
-				//console.log('dbl', call)
 				timer = events = undefined;
-				cb(call)
-				/*if(otherEvs.length > 0){
-					cb(otherEvs);
-				}*/
+				cb(call);
 				
 			},200)
 			return true;
@@ -27985,7 +27953,6 @@ Funcit.filters.dblclick = function(ev, cb){
 		
 	} else if(events){
 		events.push(ev);
-		//events.unshift(ev);
 		return true;
 	}
 }
@@ -28063,14 +28030,15 @@ steal(function(){
 		}
 		return mod;
 	}
-	Funcit.filters.lastmodified = function(ev){
+	Funcit.filters.lastmodified = function(ev, cb){
 		
 		//console.log('Lastmodified: ', ev)
-		
+		console.log(arguments)
 	
-		
+		//console.log
 		if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
 			modifiers.unshift(ev);
+			cb(false)
 			return true;
 		} else {
 			
@@ -28081,10 +28049,10 @@ steal(function(){
 			lastAction = ev;
 			modifiers = [];
 			
-			if(typeof ev.mutationEvents != 'undefined'){
+			/*if(typeof ev.mutationEvents != 'undefined'){
 				modifiers = ev.mutationEvents.slice(0);
 				delete ev.mutationEvents;
-			}
+			}*/
 			
 			//console.log('lm2:', ev, suggestion)
 			
