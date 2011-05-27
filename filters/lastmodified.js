@@ -27,18 +27,21 @@ steal(function(){
 		// 
 		var suggestors = {
 			suggestSameOrParent: function(){
-				var evTarget = nextEvent.target[0];
-				
-				for(var i = 0; i < modifiers.length; i++){
-					var modifier = modifiers[i];
-					var modifierTarget = modifier.target[0];
-					if(($.isFunction(nextEvent.target.parents) && $.inArray(nextEvent.target.parents(), modifier.target) > -1) || evTarget  === modifierTarget){
-						if(evTarget === modifierTarget){ // adjust the selector to fix race condition
-							modifier.selector = nextEvent.selector;
+				if(nextEvent.target){
+					var evTarget = nextEvent.target[0];
+
+					for(var i = 0; i < modifiers.length; i++){
+						var modifier = modifiers[i];
+						var modifierTarget = modifier.target[0];
+						if(($.isFunction(nextEvent.target.parents) && $.inArray(nextEvent.target.parents(), modifier.target) > -1) || evTarget  === modifierTarget){
+							if(evTarget === modifierTarget){ // adjust the selector to fix race condition
+								modifier.selector = nextEvent.selector;
+							}
+							return modifier;
 						}
-						return modifier;
 					}
 				}
+				
 			},
 
 			suggestSimilarText: function(){
@@ -61,6 +64,9 @@ steal(function(){
 					y = nextEvent.pageY;
 				} else {
 					var offset = nextEvent.target.offset();
+					if(offset == null){
+						return;
+					}
 					x = offset.left;
 					y = offset.top;
 				}
@@ -93,7 +99,7 @@ steal(function(){
 	Funcit.filters.lastmodified = function(ev, cb){
 		if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
 			modifiers.unshift(ev);
-			cb(false)
+			cb(false);
 			return true;
 		} else {
 			if(ev.type == 'char') return ev;

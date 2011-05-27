@@ -37,7 +37,10 @@ steal.plugins('jquery','funcit/pretty_selector',
 			}
 			target.addEventListener(""+this, eventHandler, true);
 		});
-		
+		if(old){
+			target.removeEventListener('scroll',old, true);
+		}
+		target.addEventListener('scroll', eventHandler, true)
 		
 	};
 	
@@ -58,7 +61,7 @@ steal.plugins('jquery','funcit/pretty_selector',
 		
 		var target = $(ev.target);
 		
-		if (target[0].ownerDocument.defaultView !== win || /firebug/i.test( target[0].className)) {
+		if ((target[0].ownerDocument && target[0].ownerDocument.defaultView !== win) || /firebug/i.test( target[0].className)) {
 			return;		
 		}
 		
@@ -90,7 +93,6 @@ steal.plugins('jquery','funcit/pretty_selector',
 				this.mousemoves++;
 				break;
 			case 'mouseover' : //listen for scrolling ...
-				
 				target.scroll($.proxy(onScroll, this));
 				break;
 			case 'mouseout' : 
@@ -197,7 +199,7 @@ steal.plugins('jquery','funcit/pretty_selector',
 			case 'mouseup':
 				this.isMouseDown = false;
 
-				if(false && isScrolling){ // block scrolling recording for now
+				if(isScrolling){ // block scrolling recording for now
 					if(this.scroll != null){
 						var direction = "top";
 						var amount = this.scroll.y;
@@ -208,7 +210,8 @@ steal.plugins('jquery','funcit/pretty_selector',
 						cb({type: "scroll",
 							direction: direction,
 							amount: amount,
-							selector: this._selector
+							selector: this._selector,
+							target: $(ev.currentTarget)
 						});
 					}
 					
@@ -285,6 +288,8 @@ steal.plugins('jquery','funcit/pretty_selector',
 				}
 				break;
 			case 'scroll':
+				scrollHandler = $.proxy(onScroll, this);
+				scrollHandler(ev)
 				if(ev.target.nodeName.toLowerCase() == "select"){
 	
 					var el = $("option:eq("+ev.target.selectedIndex+")", ev.target);
@@ -309,6 +314,7 @@ steal.plugins('jquery','funcit/pretty_selector',
 				this.scrollTimeout && clearTimeout(this.scrollTimeout);
 				this.scrollTimeout = setTimeout(function(){
 				  if(self.scroll != null){
+						
 						var direction = "top";
 						var amount = self.scroll.y;
 						if(amount == 0){
@@ -319,7 +325,7 @@ steal.plugins('jquery','funcit/pretty_selector',
 							type: "scroll",
 							direction: direction,
 							amount: amount,
-							target: self.scorll,
+							target: self.scroll,
 							selector: self.scroll.prettySelector()
 						} );
 						isScrolling = false;
