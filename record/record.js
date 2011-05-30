@@ -199,7 +199,7 @@ steal.plugins('jquery','funcit/pretty_selector',
 			case 'mouseup':
 				this.isMouseDown = false;
 
-				if(isScrolling){ // block scrolling recording for now
+				if(isScrolling){
 					if(this.scroll != null){
 						var direction = "top";
 						var amount = this.scroll.y;
@@ -304,11 +304,13 @@ steal.plugins('jquery','funcit/pretty_selector',
 		
 		
 		function onScroll(ev){
+			var self = this;
 			isScrolling = true;
 			this.scroll = {
-				x: ev.currentTarget.scrollLeft, 
-				y: ev.currentTarget.scrollTop, 
-				target:$(ev.currentTarget) 
+				x: $(ev.currentTarget).scrollLeft(), 
+				y: $(ev.currentTarget).scrollTop(), 
+				target: $(ev.currentTarget),
+				prettySelector: $(ev.currentTarget).prettySelector()
 			};
 			if(!this.isMouseDown){
 				this.scrollTimeout && clearTimeout(this.scrollTimeout);
@@ -326,7 +328,7 @@ steal.plugins('jquery','funcit/pretty_selector',
 							direction: direction,
 							amount: amount,
 							target: self.scroll,
-							selector: self.scroll.prettySelector()
+							selector: self.scroll.prettySelector
 						} );
 						isScrolling = false;
 					}

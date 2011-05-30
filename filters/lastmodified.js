@@ -63,8 +63,10 @@ steal(function(){
 					x = nextEvent.pageX;
 					y = nextEvent.pageY;
 				} else {
-					var offset = nextEvent.target.offset();
-					if(offset == null){
+					if($.isFunction(nextEvent.target.offset)){
+						var offset = nextEvent.target.offset();
+					}
+					if(typeof offset == 'undefined' || offset == null){
 						return;
 					}
 					x = offset.left;
