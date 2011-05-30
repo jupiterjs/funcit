@@ -27213,8 +27213,6 @@ steal.plugins('funcit/record').then(function(){
 			eventNum = 0,
 			current = [ev],
 			passNext = function(events){
-				//console.log('##########################################################')
-				console.log('pass next' ,events)
 				//console.log(events)
 				if(events === false){
 					current.splice(eventNum, 1);
@@ -27564,7 +27562,10 @@ steal.plugins('jquery','funcit/pretty_selector',
 			}
 			target.addEventListener(""+this, eventHandler, true);
 		});
-		
+		if(old){
+			target.removeEventListener('scroll',old, true);
+		}
+		target.addEventListener('scroll', eventHandler, true)
 		
 	};
 	
@@ -27585,7 +27586,7 @@ steal.plugins('jquery','funcit/pretty_selector',
 		
 		var target = $(ev.target);
 		
-		if (target[0].ownerDocument.defaultView !== win || /firebug/i.test( target[0].className)) {
+		if ((target[0].ownerDocument && target[0].ownerDocument.defaultView !== win) || /firebug/i.test( target[0].className)) {
 			return;		
 		}
 		
@@ -27617,7 +27618,6 @@ steal.plugins('jquery','funcit/pretty_selector',
 				this.mousemoves++;
 				break;
 			case 'mouseover' : //listen for scrolling ...
-				
 				target.scroll($.proxy(onScroll, this));
 				break;
 			case 'mouseout' : 
@@ -27724,7 +27724,7 @@ steal.plugins('jquery','funcit/pretty_selector',
 			case 'mouseup':
 				this.isMouseDown = false;
 
-				if(false && isScrolling){ // block scrolling recording for now
+				if(isScrolling){
 					if(this.scroll != null){
 						var direction = "top";
 						var amount = this.scroll.y;
@@ -27735,7 +27735,8 @@ steal.plugins('jquery','funcit/pretty_selector',
 						cb({type: "scroll",
 							direction: direction,
 							amount: amount,
-							selector: this._selector
+							selector: this._selector,
+							target: $(ev.currentTarget)
 						});
 					}
 					
@@ -27812,6 +27813,8 @@ steal.plugins('jquery','funcit/pretty_selector',
 				}
 				break;
 			case 'scroll':
+				scrollHandler = $.proxy(onScroll, this);
+				scrollHandler(ev)
 				if(ev.target.nodeName.toLowerCase() == "select"){
 	
 					var el = $("option:eq("+ev.target.selectedIndex+")", ev.target);
@@ -27826,16 +27829,19 @@ steal.plugins('jquery','funcit/pretty_selector',
 		
 		
 		function onScroll(ev){
+			var self = this;
 			isScrolling = true;
 			this.scroll = {
-				x: ev.currentTarget.scrollLeft, 
-				y: ev.currentTarget.scrollTop, 
-				target:$(ev.currentTarget) 
+				x: $(ev.currentTarget).scrollLeft(), 
+				y: $(ev.currentTarget).scrollTop(), 
+				target: $(ev.currentTarget),
+				prettySelector: $(ev.currentTarget).prettySelector()
 			};
 			if(!this.isMouseDown){
 				this.scrollTimeout && clearTimeout(this.scrollTimeout);
 				this.scrollTimeout = setTimeout(function(){
 				  if(self.scroll != null){
+						
 						var direction = "top";
 						var amount = self.scroll.y;
 						if(amount == 0){
@@ -27846,8 +27852,8 @@ steal.plugins('jquery','funcit/pretty_selector',
 							type: "scroll",
 							direction: direction,
 							amount: amount,
-							target: self.scorll,
-							selector: self.scroll.prettySelector()
+							target: self.scroll,
+							selector: self.scroll.prettySelector
 						} );
 						isScrolling = false;
 					}
@@ -27989,18 +27995,21 @@ steal(function(){
 		// 
 		var suggestors = {
 			suggestSameOrParent: function(){
-				var evTarget = nextEvent.target[0];
-				
-				for(var i = 0; i < modifiers.length; i++){
-					var modifier = modifiers[i];
-					var modifierTarget = modifier.target[0];
-					if(($.isFunction(nextEvent.target.parents) && $.inArray(nextEvent.target.parents(), modifier.target) > -1) || evTarget  === modifierTarget){
-						if(evTarget === modifierTarget){ // adjust the selector to fix race condition
-							modifier.selector = nextEvent.selector;
+				if(nextEvent.target){
+					var evTarget = nextEvent.target[0];
+
+					for(var i = 0; i < modifiers.length; i++){
+						var modifier = modifiers[i];
+						var modifierTarget = modifier.target[0];
+						if(($.isFunction(nextEvent.target.parents) && $.inArray(nextEvent.target.parents(), modifier.target) > -1) || evTarget  === modifierTarget){
+							if(evTarget === modifierTarget){ // adjust the selector to fix race condition
+								modifier.selector = nextEvent.selector;
+							}
+							return modifier;
 						}
-						return modifier;
 					}
 				}
+				
 			},
 
 			suggestSimilarText: function(){
@@ -28022,7 +28031,12 @@ steal(function(){
 					x = nextEvent.pageX;
 					y = nextEvent.pageY;
 				} else {
-					var offset = nextEvent.target.offset();
+					if($.isFunction(nextEvent.target.offset)){
+						var offset = nextEvent.target.offset();
+					}
+					if(typeof offset == 'undefined' || offset == null){
+						return;
+					}
 					x = offset.left;
 					y = offset.top;
 				}
@@ -28055,7 +28069,7 @@ steal(function(){
 	Funcit.filters.lastmodified = function(ev, cb){
 		if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
 			modifiers.unshift(ev);
-			cb(false)
+			cb(false);
 			return true;
 		} else {
 			if(ev.type == 'char') return ev;

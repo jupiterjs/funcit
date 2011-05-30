@@ -8,10 +8,13 @@ steal.plugins('jquery')
 			return (parseInt(id.match(/[0-9]+/)) < 100 || id.length < 15)
 		},
 		cur = function(selector){
-			return selector.id+" "+(selector.className || selector.nodeName)+(selector.contains || "");
+			return trim((selector.id || "")+" "+(selector.className || selector.nodeName)+(selector.contains || ""));
 		},
 		clean = function(part){
 			return part.replace(/\./g,"\\.").replace(/\:/,"\\:")
+		},
+		trim = function(string){
+			return string.replace(/^\s*/, "").replace(/\s*$/, "");
 		};
 		$.fn.prettySelector= function(useText) {
 			var target = this[0];
@@ -21,20 +24,25 @@ steal.plugins('jquery')
 			var selector = {
 				nodeName : target.nodeName.toLowerCase()
 			};
+			
+			if(selector.nodeName == '#document'){ // For some reason (document).nodeName returns #document
+				return 'document';
+			}
 			//always try to get an id
 			if(!useText && target.id && idOk(target.id)){
 				return "#"+clean(target.id);
-			}else{
-				var parent = target.parentNode;
-				while(parent){
-					if(parent.id){
-						selector.id = "#"+clean(parent.id)
-						break;
-					}else{
-						parent = parent.parentNode
-					}
+			}
+			
+			var parent = target.parentNode;
+			while(parent){
+				if(parent.id){
+					selector.id = "#"+clean(parent.id)
+					break;
+				}else{
+					parent = parent.parentNode
 				}
 			}
+			
 			if(useText){
 				selector.contains = ":contains("+useText+")";
 			}
@@ -48,10 +56,10 @@ steal.plugins('jquery')
 				
 				var index = others.index($(target));
 				if(index !== -1){
-					return (current+":eq("+index+")").replace(/undefined/g, '');
+					return (current+":eq("+index+")");
 				}
 
 			} 
-			return current.replace(/undefined/g, '');
+			return current;
 		};
 	})
