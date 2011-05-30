@@ -87,7 +87,7 @@ steal(function(){
 		}
 		
 		var suggestorsOrder = "SameOrParent SimilarText ClosestTouchedElement".split(' ');
-		var modifier = false;
+		var modifier = modifiers[0] || false;
 		
 		for(var i = 0; i < suggestorsOrder.length; i++){
 			var suggestion = suggestors['suggest' + suggestorsOrder[i]]()
@@ -100,7 +100,9 @@ steal(function(){
 	}
 	Funcit.filters.lastmodified = function(ev, cb){
 		if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
-			modifiers.unshift(ev);
+			//if(!(/style|script/).test(ev.selector)){
+				modifiers.unshift(ev);
+			//}
 			cb(false);
 			return true;
 		} else {

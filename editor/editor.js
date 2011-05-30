@@ -153,7 +153,6 @@ $.Controller("Funcit.Editor",{
   			setTimeout(this.callback('moveToLastTest'),13)
   		}
 
-  		//if(eventType != 'open') this.insertExistsIfNeeded(arguments[2]);
 
 			var args = $.makeArray(arguments);
 			//console.log("add"+$.String.capitalize(eventType))
@@ -228,21 +227,20 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addScroll : function(ev){
-		console.log(ev)
 	  var self = this;
 	  var selector = "";
 	  var val = "";
 		if(ev.target.window == ev.target){
 		  selector = "window";
 			if(direction == "top")
-			  val = '.scroll('+$.toJSON(ev.direction)+', '+ev.target.scrollY+')*';
+			  val = '.scroll('+$.toJSON(ev.direction)+', '+ev.amount+')*';
 			else{
-			  val = '.scroll('+$.toJSON(ev.direction)+', '+ev.target.scrollX+')*';
+			  val = '.scroll('+$.toJSON(ev.direction)+', '+ev.amount+')*';
 			}
 		} else {
-			amount = (ev.direction == 'left') ? $(ev.target).scrollLeft() : $(ev.target).scrollTop();
+			//amount = (ev.direction == 'left') ? $(ev.target).scrollLeft() : $(ev.target).scrollTop();
 		  selector = ev.selector;
-		  val = '.scroll('+$.toJSON(ev.direction)+', '+amount+')*';
+		  val = '.scroll('+$.toJSON(ev.direction)+', '+ev.amount+')*';
 		}
 		if(this.lastScroll[selector] != val){
 		  this.scrollTimeout && clearTimeout(this.scrollTimeout);
@@ -268,13 +266,6 @@ $.Controller("Funcit.Editor",{
 	},
 	addRemoved : function(ev) {
 		this.chainOrWriteLn(ev.selector,".missing()*");
-	},
-	insertExistsIfNeeded : function(el){
-		//console.log('insert exists')
-		if($(el) != null && $(el).parents('[funcit-dom-inserted="true"]').length > 0 && typeof $(el).attr('funcit-dom-exists') == 'undefined'){
-			this.addWait({type: 'exists'}, $(el).prettySelector())
-			$(el).attr('funcit-dom-exists', 'true')
-		}
 	},
 	
 	// if el is blank, add "target"
@@ -531,8 +522,8 @@ $.Controller("Funcit.Editor",{
 		}
 	},
 	// chains on selector or writes a new line
-	chainOrWriteLn : function(selector, text){
-		var selector = selector? $.toJSON(selector): ''; 
+	chainOrWriteLn : function(sel, text){
+		var selector = sel ? ((sel == 'document' || sel == 'window') ? sel : $.toJSON(sel)) : ''; 
 		//get an empty function or last statement
 		var stmntOrFunc = this.funcStatement();
 		
