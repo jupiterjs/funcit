@@ -100,9 +100,9 @@ steal(function(){
 	}
 	Funcit.filters.lastmodified = function(ev, cb){
 		if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
-			//if(!(/style|script/).test(ev.selector)){
+			if(!(/style|script/).test(ev.selector)){
 				modifiers.unshift(ev);
-			//}
+			}
 			cb(false);
 			return true;
 		} else {
