@@ -99,21 +99,34 @@ steal(function(){
 		return modifier;
 	}
 	Funcit.filters.lastmodified = function(ev, cb){
+		// if it's a modifier ...
 		if($.inArray(ev.type, ['invisible','visible','added','removed']) > -1){
+			// store .... (possibly only for a while)
 			if(!(/style|script/).test(ev.selector)){
 				modifiers.unshift(ev);
 			}
 			cb(false);
 			return true;
 		} else {
-			if(ev.type == 'char') return ev;
 			
+			// if it's typing ... send it forward ....
+			if (ev.type == 'char') {
+				return ev;
+			}
+			
+			// get suggestion tries different things ...
 			var suggestion = getSuggestion(modifiers, lastAction, ev);
+			
 			lastAction = ev;
 			modifiers = [];
 
-			if(suggestion !== false && typeof suggestion !== 'undefined')
+
+			// if we have a suggestion, send it (and the mousey event)
+			if(suggestion !== false && typeof suggestion !== 'undefined'){
 				return [suggestion, ev];
+			}
+			
+			// send the mousey event
 			return [ev];
 		}
 	};
