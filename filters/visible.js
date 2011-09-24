@@ -1,4 +1,4 @@
-steal('jquery/lang').then(function(){
+steal('jquery/lang/string').then(function(){
 	
 	var props = function(val){
 		var vals = {};

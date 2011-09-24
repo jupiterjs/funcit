@@ -1,4 +1,4 @@
-steal.plugins('jquery','funcit/pretty_selector',
+steal('jquery','funcit/pretty_selector',
 'funcunit/syn', 
 		'funcit/highlight', 
 		'mxui/layout/fit', 
