@@ -3,8 +3,80 @@ steal('funcit/record').then(function(){
 	
 	window.Funcit || (window.Funcit = {});
 	/**
-	 * Takes a list of filter functions that get called with the event ...
-	 * They are expected to callback with the event or events to pass to the next filter function
+	 * Takes a list of filter callbavcks (filterCB)
+	 *  that get called with the event ...
+	 * They are expected to callback with the event or 
+	 * events to pass to the next filter function.
+	 * 
+	 * The goal is to have the right filters that pick the right events ...
+	 * 
+	 * Here's how a filter callback should work:
+	 * 
+	 *     filterCB(event, passNext(false|Array|undefined) ) -> true|false|undefined|Array
+	 * 
+	 * A filterCB is called and can decide to:
+	 * 
+	 *  - Mutate an event
+	 *  - Prevent it from being passed to the next filterCB
+	 *  - Add more events
+	 *  - Delay calling the next filterCB
+	 *  - Here's how you do each:
+	 * 
+	 * ### Mutate an event
+	 * 
+	 *     function(ev){
+	 *       ev.someProperty = 'foo'
+	 *     }
+	 * 
+	 * ### Prevent it from being passed
+	 * 
+	 *     function(ev){
+	 *       return false;
+	 *     }
+	 * 
+	 * ### Add more events
+	 * 
+	 *     function(ev){
+	 *       return [ev, {custom: 'event'}]
+	 *     }
+	 * 
+	 * Notice that you have to pass the original event
+	 * 
+	 * ### Delay calling the next filterCB
+	 * 
+	 * To delay calling the next fitlterCB, the function must return true;  It should then
+	 * callback passNext with either undefined, false, or an array of events.
+	 * 
+	 * __undefined__ - calls the next filterCB with the event
+	 * 
+	 *     function(ev, passNext){
+	 *       setTimeout(function(){
+	 *         passNext()
+	 *       },1000)
+	 *      
+	 *       return false;
+	 *     }
+	 * 
+	 * __false__ - does not call the next filterCB with the event.  It will continue to the next event.
+	 * 
+	 *     function(ev, passNext){
+	 *       setTimeout(function(){
+	 *         passNext(false)
+	 *       },1000)
+	 *       
+	 *       return false;
+	 *     }
+	 * 
+	 * __array__  - calls the next filterCB with the events provided.  You MUST pass the original event if you want that to also be called.
+	 * 
+	 *     function(ev, passNext){
+	 *       setTimeout(function(){
+	 *         passNext([ev, {another: 'event'}])
+	 *       },1000)
+	 *       
+	 *       return false;
+	 *     }
+	 * 
 	 * @param {Object} feed
 	 */
 	Funcit.filter = function(feed){
