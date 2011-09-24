@@ -137,7 +137,6 @@ $.Controller("Funcit.Editor",{
 		this.saveToLocalStorage();
 	},
 	addEvent : function(ev, eventType){
-		
 	  if(this.record){
 	    steal.dev.log(eventType)
   		this.element.trigger('blur')
@@ -154,7 +153,9 @@ $.Controller("Funcit.Editor",{
   			setTimeout(this.callback('moveToLastTest'),13)
   		}
 
-  		var args = $.makeArray(arguments);
+
+			var args = $.makeArray(arguments);
+			//console.log("add"+$.String.capitalize(eventType))
   		this["add"+$.String.capitalize(eventType)].apply(this,args.slice(2))
 	  }
 	},
@@ -168,11 +169,12 @@ $.Controller("Funcit.Editor",{
 		}
 		this.saveToLocalStorage();
 	},
-	addChar: function(letter, el){
+	addChar: function(ev){
 		var stmt = this.funcStatement({
 			previous: true
 		});
-		
+		var el = ev.target;
+		var letter = ev.key;
 		var text = stmt.text();
 		var chainedCalls = stmt.chainedCalls();
 		if(chainedCalls[chainedCalls.length - 1] == '.type'){
@@ -190,70 +192,55 @@ $.Controller("Funcit.Editor",{
 			});
 			this.element.trigger('keyup')
 		}else{
-			this.chainOrWriteLn($(el).prettySelector(),".type('" + letter + "*')");
+			this.chainOrWriteLn(ev.selector,".type('" + letter + "*')");
 		}
 		this.saveToLocalStorage();
 	},
-	addChange : function(options, el){
+	addChange : function(ev){
 		/*var select = el.parent();
 		this.chainOrWriteLn($(select).prettySelector(),".trigger('focus').val('" + el.val() + "*')");*/
-		this.chainOrWriteLn($(el).prettySelector(),".click()*");
+		this.chainOrWriteLn(ev.selector, ".click()*");
 		this.saveToLocalStorage();
 	},
-	addClick : function(options, el){
-		var prettySelector = el;
-		if(typeof el !== "string"){ // assume we were passed a prettySelector if its a string
-			prettySelector = $(el).prettySelector();
-		}
-		
-		this.insertExistsIfNeeded(el);
-		
-		this.chainOrWriteLn(prettySelector,".click()*");
+	addClick : function(ev){
+		this.chainOrWriteLn(ev.selector, ".click({pageX: " + ev.pageX + ", pageY: " + ev.pageY + "})*");
 		this.saveToLocalStorage();
 	},
-	insertExistsIfNeeded : function(el){
-		if($(el).parents('[funcit-dom-inserted="true"]').length > 0 && typeof $(el).attr('funcit-dom-exists') == 'undefined'){
-			this.addWait({type: 'exists'}, $(el).prettySelector())
-			$(el).attr('funcit-dom-exists', 'true')
-		}
-		
-		
-	},
-	addRightClick : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(),".rightClick()*");
+	addRightClick : function(ev){
+		this.chainOrWriteLn(ev.selector, ".rightClick()*");
 		this.saveToLocalStorage();
 	},
-	addDoubleClick : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(),".dblclick()*");
+	addDblclick : function(ev){
+		this.chainOrWriteLn(ev.selector,".dblclick()*");
 		this.saveToLocalStorage();
 	},
-	addTrigger : function(value, el){
+	addTrigger : function(el, value){
 		this.chainOrWriteLn($(el).prettySelector(),".trigger("+$.toJSON(value)+")*");
 		this.saveToLocalStorage();
 	},
-	addDrag : function(options, el){
-		this.chainOrWriteLn($(el).prettySelector(),".drag("+$.toJSON(options)+")*");
+	addDrag : function(ev){
+		this.chainOrWriteLn(ev.selector,".drag("+$.toJSON({pageX: ev.pageX, pageY: ev.pageY})+")*");
 		this.saveToLocalStorage();
 	},
 	addMove: function(el, from, to){
 		this.chainOrWriteLn($(el).prettySelector(), '.move("'+to.x+'x'+to.y+'")*');
 		this.saveToLocalStorage();
 	},
-	addScroll : function(direction, amount, el){
+	addScroll : function(ev){
 	  var self = this;
 	  var selector = "";
 	  var val = "";
-		if(el.window == el){
+		if(ev.target.window == ev.target){
 		  selector = "window";
 			if(direction == "top")
-			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollY+')*';
+			  val = '.scroll('+$.toJSON(ev.direction)+', '+ev.amount+')*';
 			else{
-			  val = '.scroll('+$.toJSON(direction)+', '+el.scrollX+')*';
+			  val = '.scroll('+$.toJSON(ev.direction)+', '+ev.amount+')*';
 			}
 		} else {
-			amount = (direction == 'left') ? $(el).scrollLeft() : $(el).scrollTop();
-		  selector = $(el).prettySelector();
-		  val = '.scroll('+$.toJSON(direction)+', '+amount+')*';
+			//amount = (ev.direction == 'left') ? $(ev.target).scrollLeft() : $(ev.target).scrollTop();
+		  selector = ev.selector;
+		  val = '.scroll('+$.toJSON(ev.direction)+', '+ev.amount+')*';
 		}
 		if(this.lastScroll[selector] != val){
 		  this.scrollTimeout && clearTimeout(this.scrollTimeout);
@@ -268,6 +255,19 @@ $.Controller("Funcit.Editor",{
 		this.chainOrWriteLn('body', '.mousewheel("' + delta + '")');
 		this.saveToLocalStorage();
 	},
+	addVisible : function(ev) {
+		this.chainOrWriteLn(ev.selector,".visible()*");
+	},
+	addInvisible : function(ev) {
+		this.chainOrWriteLn(ev.selector,".invisible()*");
+	},
+	addAdded : function(ev) {
+		this.chainOrWriteLn(ev.selector,".exists()*");
+	},
+	addRemoved : function(ev) {
+		this.chainOrWriteLn(ev.selector,".missing()*");
+	},
+	
 	// if el is blank, add "target"
 	addWait: function(options, el){
 		var val = $.toJSON(options.value) || "",
@@ -292,8 +292,6 @@ $.Controller("Funcit.Editor",{
 		if(options.type == 'attr' || options.type == 'css'){
 			text = text + '"' + options.value + '"'
 		}	
-		
-		
 		
 		var variableStmt = "var "+this.getVariableName(options.type)+" = "+text+")";
 		
@@ -524,8 +522,8 @@ $.Controller("Funcit.Editor",{
 		}
 	},
 	// chains on selector or writes a new line
-	chainOrWriteLn : function(selector, text){
-		var selector = selector? $.toJSON(selector): ''; 
+	chainOrWriteLn : function(sel, text){
+		var selector = sel ? ((sel == 'document' || sel == 'window') ? sel : $.toJSON(sel)) : ''; 
 		//get an empty function or last statement
 		var stmntOrFunc = this.funcStatement();
 		

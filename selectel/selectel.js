@@ -48,22 +48,6 @@ $.Controller("Funcit.Selectel", {
 		elementPath: function(el){
 			if(this.currentEl != el){
 				this.currentEl = el;
-				/*var path = [];
-				var parents = $(el).parents().toArray();
-				parents.unshift(el);
-				
-				for(var i = 0, ii = parents.length; i < ii; i++){
-					var elem = parents[i].tagName.toLowerCase();
-					var $el = $(parents[i]);
-					var c = $el.attr('class');
-					var id = $el.attr('id');
-					if(id != "")
-						elem += "#" + id;
-					if(c != "")
-						elem += "." + c.replace(/ /g, '.');
-					path.push(elem);
-				}
-				$('#select-path').html(path.join(' < '));*/
 				$('#select-path').html($(el).prettySelector())
 			}
 		},
