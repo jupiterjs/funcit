@@ -1,4 +1,4 @@
-steal.plugins('jquery').then(function($){
+steal('jquery').then(function($){
 	/**
 	 * Returns the row height of a textarea (possibly other widgets eventually)
 	 */

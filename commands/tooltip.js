@@ -1,4 +1,4 @@
-steal.plugins('jquery', 'jquery/view/ejs', 'jquery/class').then(function(){
+steal('jquery', 'jquery/view/ejs', 'jquery/class').then(function(){
 	$(document).ready(function(){
 		$(document.body).append($.View('//funcit/commands/views/tooltip', {}))
 		var tooltip = $("#tooltip-click");

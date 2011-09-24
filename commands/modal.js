@@ -1,4 +1,4 @@
-steal.plugins('jquery', 'jquery/view/ejs', 'jquery/class').then(function(){
+steal('jquery', 'jquery/view/ejs', 'jquery/class').then(function(){
 		
 	$.Class("Funcit.Modal",{
 		open: function(html){

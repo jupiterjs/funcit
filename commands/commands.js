@@ -1,6 +1,10 @@
-steal.plugins('jquery/controller/subscribe', 'funcit/selectel')
-	.then('dialog', 'select_menu', 'tooltip','modal', 'open_page')
-	.then(function($){
+steal('jquery/controller/subscribe', 'funcit/selectel',
+	'./dialog', 
+	'./select_menu',
+	'./tooltip',
+	'./modal',
+	'./open_page',
+	function($){
 /**
  * Controls the command tab and inserting waits/getters/asserts into the test.
  */
@@ -178,14 +182,14 @@ $.Controller("Funcit.Commands",
 	})
 
 })
-.views(
-	'dialog.ejs',
-	'move_recording.ejs',
-	'move.ejs',
-	'open.ejs',
-	'scroll.ejs',
-	'select.ejs',
-	'select.ejs',
-	'sidebar.ejs',
-	'tooltip.ejs'
+.then(
+	'./views/dialog.ejs',
+	'./views/move_recording.ejs',
+	'./views/move.ejs',
+	'./views/open.ejs',
+	'./views/scroll.ejs',
+	'./views/select.ejs',
+	'./views/select.ejs',
+	'./views/sidebar.ejs',
+	'./views/tooltip.ejs'
 );

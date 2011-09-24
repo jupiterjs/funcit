@@ -1,13 +1,6 @@
-steal
-	.plugins('funcunit')
-	.then(function(){
-		// leave this empty to force funcunit
-	})
-	.plugins('steal/less')
-	.then(function($){
-		steal.less('funcit')
-	})
-	.plugins(
+steal('funcunit')
+	.then('steal/less')
+	.then('./funcit.less',
 		'mxui/layout/fill',
 		'mxui/nav/tabs',
 		'funcit/app',
@@ -20,9 +13,12 @@ steal
 		'funcit/file_reader',
 		'funcit/file_writer',
 		'funcit/pretty_selector',
-		'jquery/view/ejs')
-	.resources('jquery.mousewheel.3.0.2/jquery.mousewheel', 'jquery.has_scrollbar', 'hasLocalStorage')
+		'jquery/view/ejs',
+		'./resources/jquery.mousewheel.3.0.2/jquery.mousewheel.js', 
+		'./resources/jquery.has_scrollbar.js',
+		'./resources/hasLocalStorage')
 	.then(function(){
+		
 	$(document).ready(function(){
 		localStorageKey = function(){
 			return window.location.href;
@@ -67,4 +63,4 @@ steal
 		});
 	})
 })
-.views('init.ejs', 'app.ejs');
+.then('./views/init.ejs', './views/app.ejs');

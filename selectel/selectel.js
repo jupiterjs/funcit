@@ -1,4 +1,4 @@
-steal.plugins('jquery/controller', 'funcit/mask')
+steal('jquery/controller', 'funcit/mask')
 	.then(function($){
 
 $.Controller("Funcit.Selectel", {
@@ -77,4 +77,4 @@ $.Controller("Funcit.Selectel", {
 	})
 
 })
-.views('tooltip.ejs');
+.then('./views/tooltip.ejs');

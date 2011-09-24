@@ -1,5 +1,4 @@
-steal.plugins('jquery','funcunit','funcit/parse')
-	.then('results')
+steal('jquery','funcunit','funcit/parse','./results')
 	.then(function($){
 	
 	/**
@@ -40,4 +39,6 @@ steal.plugins('jquery','funcunit','funcit/parse')
 	}
 	
 })
-.views('assert.ejs', 'done.ejs', 'test.ejs');
+.then('./views/assert.ejs', 
+	'./views/done.ejs', 
+	'./views/test.ejs');

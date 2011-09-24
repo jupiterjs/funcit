@@ -1,5 +1,5 @@
-steal.plugins('jquery/controller')
-	.then(function($){
+steal('jquery/controller',
+	function($){
 /**
  * Controls special commands that display a dialog for users to enter a value.
  */

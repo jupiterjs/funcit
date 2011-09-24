@@ -1,4 +1,4 @@
-steal.plugins('jquery').then(function($){
+steal('jquery').then(function($){
 $.fn.hasScrollBar = function() {
     //note: clientHeight= height of holder
     //scrollHeight= we have content till this height

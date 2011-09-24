@@ -1,4 +1,4 @@
-steal.plugins('jquery').then(function($){
+steal('jquery').then(function($){
 
 /*!
  * listAttributes jQuery Plugin v1.1.0

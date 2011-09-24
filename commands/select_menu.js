@@ -1,4 +1,4 @@
-steal.plugins('jquery/controller')
+steal('jquery/controller')
 	.then(function($){
 /**
  * Controls special command types that display a menu of options for the user 

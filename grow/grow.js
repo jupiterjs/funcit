@@ -1,4 +1,4 @@
-steal.plugins('jquery/controller','funcit/rowheight').then(function($){
+steal('jquery/controller','funcit/rowheight').then(function($){
 
 $.Controller("Funcit.Grow",{
 	init : function(){

@@ -1,4 +1,4 @@
-steal.plugins('jquery/controller')
+steal('jquery/controller')
 	.then(function($){
 /**
  * Opens a new page in iframe

@@ -1,4 +1,7 @@
-steal.plugins('jquery/controller', 'jquery/controller/subscribe').resources('downloadify/js/swfobject', 'downloadify/js/downloadify.min')
+steal('jquery/controller', 
+	'jquery/controller/subscribe',
+	'./resources/downloadify/js/swfobject', 
+	'./resources/downloadify/js/downloadify.min.js')
 	.then(function($){
 
 $.Controller("Funcit.FileWriter", {

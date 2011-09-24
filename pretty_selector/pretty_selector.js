@@ -1,5 +1,4 @@
-steal.plugins('jquery')
-	.then(function(){
+steal('jquery', function(){
 		var getWindow = function( element ) {
 			return element.defaultView || element.ownerDocument.defaultView || element.ownerDocument.parentWindow
 		};

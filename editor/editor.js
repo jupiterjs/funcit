@@ -1,4 +1,4 @@
-steal.plugins('jquery/controller',
+steal('jquery/controller',
 	'funcit/parse',
 	'jquery/dom/selection',
 	'funcit/lastselection',

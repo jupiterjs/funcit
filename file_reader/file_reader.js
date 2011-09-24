@@ -1,4 +1,4 @@
-steal.plugins('jquery/controller', 'jquery/controller/subscribe')
+steal('jquery/controller', 'jquery/controller/subscribe')
 	.then(function($){
 
 $.Controller("Funcit.FileReader", {

@@ -1,5 +1,6 @@
-steal.plugins('jquery/controller', 'jquery/controller/subscribe')
-	.views('sync.ejs')
+steal('jquery/controller', 'jquery/controller/subscribe',
+	'jquery/view/ejs')
+	.then('./views/sync.ejs')
 	.then(function($){
 
 $.Controller("Funcit.Testbuttons", {

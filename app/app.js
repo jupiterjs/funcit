@@ -1,12 +1,11 @@
-steal
-	.plugins(
+steal(
 		'jquery/controller/subscribe',
 		'funcunit/syn', 
 		'funcit/highlight', 
 		'mxui/layout/fit', 
 		'jquery/dom/form_params',
-		'jquery/dom/compare')
-	.then(function($){
+		'jquery/dom/compare',
+		function($){
 	var getKey =  function( code ) {
 		for(var key in Syn.keycodes){
 			if(Syn.keycodes[key] == code){

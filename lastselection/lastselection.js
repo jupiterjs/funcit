@@ -1,4 +1,4 @@
-steal.plugins('jquery/controller',
+steal('jquery/controller',
 	'jquery/dom/selection',
 	'funcit/rowheight').then(function($){
 

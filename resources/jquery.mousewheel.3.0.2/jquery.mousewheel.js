@@ -1,4 +1,4 @@
-steal.plugins('jquery').then(function($){
+steal('jquery').then(function($){
 
 /*! Copyright (c) 2010 Brandon Aaron (http://brandonaaron.net)
  * Licensed under the MIT License (LICENSE.txt).

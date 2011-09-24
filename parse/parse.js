@@ -1,4 +1,4 @@
-steal.plugins('jquery').then('resources/jslint',function($){
+steal('jquery').then('./resources/jslint.js',function($){
 var isArray = Array.isArray || function( obj ) {
 		return jQuery.type(obj) === "array";
 	},

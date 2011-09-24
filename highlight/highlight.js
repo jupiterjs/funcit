@@ -1,4 +1,4 @@
-steal.plugins('jquery')
+steal('jquery')
 // TODO add this back (right now it breaks the build)
 //	.css('highlight')
 	.then(function($){
